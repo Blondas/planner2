@@ -1,0 +1,9 @@
+Funkcjê którê zosta³y wymienione przez promotora jako potrzebnê:
+
+-W pocz¹tkowej fazie tworzenie jednej instancji zestawu grup oraz grupy studenckiej do ka¿dego wprowadzonego/zaimportowanego przedmiotu (jednostki programu studiów)
+
+-Mo¿liwoœæ przypisania pustych awatarów (wakantów) do zestawu grup.
+
+-Mo¿liwoœæ rozdzielenia zestawu grup na dwa (podzielenie siê grupami studenckimi)
+
+-Przenesienie (zamienienie) elementu szablonu z jednej daty rzeczywistej(lub zakresu) na inn¹. 
