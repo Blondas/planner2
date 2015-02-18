@@ -1,7 +1,0 @@
-W spotkaniu brali udzial wszyscy. 
-Spotanie trwalo 2h
-
-- zostaly rozdzielone taski
-- stworzenie KPI i rozdzielenie zadan pomiedzy teamy - Roger
-- zaplanowane przyszle spotanie na 25 lutego o 20
-- skonfigurowanie klientow github
