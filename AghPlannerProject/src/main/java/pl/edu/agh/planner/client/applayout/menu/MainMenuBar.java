@@ -15,18 +15,29 @@ import java.util.ArrayList;
 
 class MainMenuBar extends RibbonBar {
 
-	private static final int groupRowHeight = 26;
+	private static final int GROUP_ROW_HEIGHT = 26;
 
 	private ArrayList<RibbonGroup> ribbonGroups = new ArrayList<RibbonGroup>();
 
 	public MainMenuBar() {
+			RibbonGroup artifactGroup = new RibbonGroup();
+			ribbonGroups.add(artifactGroup);
+			artifactGroup.setTitle(AllString.menuNewArtifactProgramTitle);
+			artifactGroup.setTitleAlign(Alignment.LEFT);
+			artifactGroup.setNumRows(3);
+			artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
+			artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), true));
+			artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), false));
+			artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
+			artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
+			artifactGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
 			RibbonGroup optionGroup = new RibbonGroup();
 			ribbonGroups.add(optionGroup);
 			optionGroup.setTitle(AllString.menuOptionsProgramTitle);
 			optionGroup.setTitleAlign(Alignment.CENTER);
 			optionGroup.setNumRows(3);
-			optionGroup.setRowHeight(groupRowHeight);
+			optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
 			optionGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
 			RibbonGroup aboutGroup = new RibbonGroup();
@@ -34,12 +45,12 @@ class MainMenuBar extends RibbonBar {
 			aboutGroup.setTitle(AllString.menuAboutProgramTitle);
 			aboutGroup.setTitleAlign(Alignment.CENTER);
 			aboutGroup.setNumRows(3);
-			aboutGroup.setRowHeight(groupRowHeight);
+			aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
 			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
 			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
 			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
 
-			addMembers(optionGroup, aboutGroup);
+			addMembers(artifactGroup, optionGroup, aboutGroup);
 
 			setLeft(0);
 			setWidth100();
