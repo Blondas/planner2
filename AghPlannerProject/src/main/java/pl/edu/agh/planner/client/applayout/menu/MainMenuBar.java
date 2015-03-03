@@ -20,43 +20,51 @@ class MainMenuBar extends RibbonBar {
 	private ArrayList<RibbonGroup> ribbonGroups = new ArrayList<RibbonGroup>();
 
 	public MainMenuBar() {
-			RibbonGroup artifactGroup = new RibbonGroup();
-			ribbonGroups.add(artifactGroup);
-			artifactGroup.setTitle(AllString.menuNewArtifactProgramTitle);
-			artifactGroup.setTitleAlign(Alignment.LEFT);
-			artifactGroup.setNumRows(3);
-			artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-			artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), true));
-			artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), false));
-			artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
-			artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
-			artifactGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
+		RibbonGroup artifactGroup = new RibbonGroup();
+		ribbonGroups.add(artifactGroup);
+		artifactGroup.setTitle(AllString.menuNewArtifactProgramTitle);
+		artifactGroup.setTitleAlign(Alignment.LEFT);
+		artifactGroup.setNumRows(3);
+		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
+		artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), true));
+		artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), false));
+		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
+		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
+		artifactGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
-			RibbonGroup optionGroup = new RibbonGroup();
-			ribbonGroups.add(optionGroup);
-			optionGroup.setTitle(AllString.menuOptionsProgramTitle);
-			optionGroup.setTitleAlign(Alignment.CENTER);
-			optionGroup.setNumRows(3);
-			optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
-			optionGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
+		RibbonGroup optionGroup = new RibbonGroup();
+		ribbonGroups.add(optionGroup);
+		optionGroup.setTitle(AllString.menuOptionsProgramTitle);
+		optionGroup.setTitleAlign(Alignment.CENTER);
+		optionGroup.setNumRows(3);
+		optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
+		optionGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
-			RibbonGroup aboutGroup = new RibbonGroup();
-			ribbonGroups.add(aboutGroup);
-			aboutGroup.setTitle(AllString.menuAboutProgramTitle);
-			aboutGroup.setTitleAlign(Alignment.CENTER);
-			aboutGroup.setNumRows(3);
-			aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
-			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
-			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
-			aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
+		RibbonGroup aboutGroup = new RibbonGroup();
+		ribbonGroups.add(aboutGroup);
+		aboutGroup.setTitle(AllString.menuAboutProgramTitle);
+		aboutGroup.setTitleAlign(Alignment.CENTER);
+		aboutGroup.setNumRows(3);
+		aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
+		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
 
-			addMembers(artifactGroup, optionGroup, aboutGroup);
+		RibbonGroup userActions = new RibbonGroup();
+		ribbonGroups.add(userActions);
+		userActions.setTitle(AllString.menuUserActionsTitle);
+		userActions.setTitleAlign(Alignment.LEFT);
+		userActions.setNumRows(3);
+		userActions.setRowHeight(GROUP_ROW_HEIGHT);
+		userActions.addControl(createIconButton(AllString.logout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
-			setLeft(0);
-			setWidth100();
-			setMembersMargin(2);
-			setLayoutLeftMargin(2);
-		}
+		addMembers(artifactGroup, optionGroup, aboutGroup, userActions);
+
+		setLeft(0);
+		setWidth100();
+		setMembersMargin(2);
+		setLayoutLeftMargin(2);
+	}
 
 	private IconButton createIconButton(String title, String iconName, boolean isVertical, ClickHandler clickHandler) {
 		String path16 = "16/";
