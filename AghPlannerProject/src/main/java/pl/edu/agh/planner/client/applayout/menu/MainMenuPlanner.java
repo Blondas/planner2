@@ -2,9 +2,9 @@ package pl.edu.agh.planner.client.applayout.menu;
 
 import com.smartgwt.client.widgets.layout.VLayout;
 
-public class MainMenu extends VLayout {
+public class MainMenuPlanner extends VLayout {
 
-	public MainMenu() {
+	public MainMenuPlanner() {
 		setWidth100();
 		setAutoHeight();
 		setShowEdges(false);

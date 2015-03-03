@@ -1,7 +1,8 @@
 package pl.edu.agh.planner.client.applayout;
 
 import com.smartgwt.client.widgets.layout.VLayout;
-import pl.edu.agh.planner.client.applayout.menu.MainMenu;
+import pl.edu.agh.planner.client.applayout.loginpanel.LoginPanelPlanner;
+import pl.edu.agh.planner.client.applayout.menu.MainMenuPlanner;
 
 public class RootPanelPlanner extends VLayout {
 
@@ -21,7 +22,7 @@ public class RootPanelPlanner extends VLayout {
 	private RootPanelPlanner() {
 		setWidth100();
 		setHeight100();
-		addMember(new MainMenu());
+		addMember(new MainMenuPlanner());
 		show();
 	}
 
