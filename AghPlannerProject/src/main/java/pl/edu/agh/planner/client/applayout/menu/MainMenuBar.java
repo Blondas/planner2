@@ -26,7 +26,7 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.setTitleAlign(Alignment.LEFT);
 		artifactGroup.setNumRows(3);
 		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), true));
+		artifactGroup.addControl(createIconMenuButton(AllString.newAdd, "add", new ArtifactsMenu(), true));
 		artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), false));
 		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
 		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
@@ -43,12 +43,12 @@ class MainMenuBar extends RibbonBar {
 		RibbonGroup aboutGroup = new RibbonGroup();
 		ribbonGroups.add(aboutGroup);
 		aboutGroup.setTitle(AllString.menuAboutProgramTitle);
-		aboutGroup.setTitleAlign(Alignment.CENTER);
+		aboutGroup.setTitleAlign(Alignment.LEFT);
 		aboutGroup.setNumRows(3);
 		aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
-		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
-		aboutGroup.addControl(createIconButton(AllString.authors, "chrome", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.aboutAgh, "agh", false, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -56,7 +56,9 @@ class MainMenuBar extends RibbonBar {
 		userActions.setTitleAlign(Alignment.LEFT);
 		userActions.setNumRows(3);
 		userActions.setRowHeight(GROUP_ROW_HEIGHT);
-		userActions.addControl(createIconButton(AllString.logout, "exit", true, new TYMCZASOWO_ClickHandler()));
+		userActions.addControl(buttonWithUserInfo());
+		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
+
 
 		addMembers(artifactGroup, optionGroup, aboutGroup, userActions);
 
@@ -64,6 +66,18 @@ class MainMenuBar extends RibbonBar {
 		setWidth100();
 		setMembersMargin(2);
 		setLayoutLeftMargin(2);
+	}
+
+	private IconButton buttonWithUserInfo() {
+		//TODO: zastanowic sie co z tym zrobic, to nie jest miejsce na ta metode.
+		IconButton iconButton = new IconButton();
+		iconButton.setOrientation("vertical");
+		iconButton.setTitle("<b>Zalogowany:</b> root<BR><b>Status:</b> God system");
+		iconButton.setWidth(150);
+		iconButton.setAlign(Alignment.LEFT);
+		iconButton.setCanDrop(false);
+
+		return iconButton;
 	}
 
 	private IconButton createIconButton(String title, String iconName, boolean isVertical, ClickHandler clickHandler) {
