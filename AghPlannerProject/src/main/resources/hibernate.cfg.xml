@@ -6,7 +6,7 @@
     <session-factory>
         <property name="connection.url">jdbc:postgresql://localhost/dupaJasISkrzypce</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">user</property>
+        <property name="connection.username">postgres</property>
         <property name="connection.password">password</property>
 
          <property name="hbm2ddl.auto">create-drop</property> 
@@ -15,5 +15,6 @@
         <property name="show_sql">true</property>
 
 
+        <mapping class="pl.edu.agh.planner.hibernate.entity.AppUser"/>
     </session-factory>
 </hibernate-configuration>

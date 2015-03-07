@@ -52,6 +52,13 @@
             <artifactId>postgresql</artifactId>
             <version>9.3-1102-jdbc41</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.14.8</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,10 +75,10 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>compile</goal>
-                            <goal>test</goal>
-                            <!--<goal>i18n</goal>-->
-                            <goal>generateAsync</goal>
+                            <!--<goal>compile</goal>-->
+                            <!--<goal>test</goal>-->
+                            <!--&lt;!&ndash;<goal>i18n</goal>&ndash;&gt;-->
+                            <!--<goal>generateAsync</goal>-->
                         </goals>
                     </execution>
                 </executions>
