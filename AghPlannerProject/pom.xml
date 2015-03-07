@@ -12,8 +12,8 @@
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.6.0</gwtVersion>
         <!-- GWT needs at least java 1.5 -->
-        <maven.compiler.source>3.0</maven.compiler.source>
-        <maven.compiler.target>3.0</maven.compiler.target>
+        <maven.compiler.source>3.1</maven.compiler.source>
+        <maven.compiler.target>3.1</maven.compiler.target>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     </properties>
 
@@ -41,6 +41,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>hibernate-jpa-2.1-api-1.0.0.Final</artifactId>
+            <version>SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -94,15 +99,6 @@
                 </executions>
                 <configuration>
                     <webappDirectory>${webappDirectory}</webappDirectory>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <!-- put your configurations here -->
                 </configuration>
             </plugin>
         </plugins>
