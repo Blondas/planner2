@@ -1,13 +1,15 @@
-package pl.edu.agh.planner.hibernate.entity;
+package pl.edu.agh.planner.hibernate.test;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.testng.annotations.Test;
+import pl.edu.agh.planner.hibernate.entity.User;
+import pl.edu.agh.planner.hibernate.others.HibernateUtil;
 
-public class AppUserTest {
+public class UserTest {
 
     @Test
-    public void testApp() {
+    public void testUser() {
 //        SessionFactory sessionFactory = new Configuration().configure("/hibernate.cfg.xml")
 //                .buildSessionFactory();
 
@@ -24,7 +26,8 @@ public class AppUserTest {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 //
-        AppUser user = new AppUser("firstuser");
+        User user = new User();
+        user.setLogin("firstUser");
         session.save(user);
 //
         session.getTransaction().commit();
