@@ -56,7 +56,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.setTitleAlign(Alignment.LEFT);
 		userActions.setNumRows(3);
 		userActions.setRowHeight(GROUP_ROW_HEIGHT);
-		userActions.addControl(buttonWithUserInfo());
+		userActions.addControl(buttonWithUserInfo("root", "God system"));
 		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
 
@@ -68,11 +68,17 @@ class MainMenuBar extends RibbonBar {
 		setLayoutLeftMargin(2);
 	}
 
-	private IconButton buttonWithUserInfo() {
+	private IconButton buttonWithUserInfo(String userName, String userRole) {
 		//TODO: zastanowic sie co z tym zrobic, to nie jest miejsce na ta metode.
+		String htmlNewline = "<BR>";
+		String htmlBoldStart = "<b>";
+		String htmlBoldEnd = "</b>";
+		String logged = htmlBoldStart + "Zalogowany: " + htmlBoldEnd;
+		String status = htmlBoldStart + "Status: " + htmlBoldEnd;
+
 		IconButton iconButton = new IconButton();
 		iconButton.setOrientation("vertical");
-		iconButton.setTitle("<b>Zalogowany:</b> root<BR><b>Status:</b> God system");
+		iconButton.setTitle(logged + userName + htmlNewline + status + userRole);
 		iconButton.setWidth(150);
 		iconButton.setAlign(Alignment.LEFT);
 		iconButton.setCanDrop(false);
