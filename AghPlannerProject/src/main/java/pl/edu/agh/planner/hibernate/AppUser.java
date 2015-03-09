@@ -1,4 +1,4 @@
-package pl.edu.agh.planner.hibernate.entity;
+package pl.edu.agh.planner.hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

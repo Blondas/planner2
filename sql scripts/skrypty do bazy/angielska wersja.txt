@@ -1,0 +1,131 @@
+
+
+
+--------------------------------------------- ogolne
+CREATE TABLE dictionary_name
+(
+  dn_id numeric(38,0) PRIMARY KEY
+  ,ns_nazwa text
+)  ;
+
+CREATE TABLE dictionary
+(
+  d_id numeric(38,0) PRIMARY KEY
+  ,d_dictionary_name_id numeric(38,0) PRIMARY KEY
+  ,d_name text
+);  
+
+create table authorization
+(
+a_id numeric(38,0) PRIMARY KEY
+,a_authorization_type_id numeric(38,0)
+,a_user_id numeric(38,0)
+);
+
+create table users
+(
+us_id numeric(38,0) PRIMARY KEY
+,us_login text
+,us_password text
+,us_password_md5 text
+);
+
+--------------------------------------------- zestawy grup
+CREATE TABLE curriculum unit  -- jednostka programu studiow
+(
+  cu_id numeric(38,0) PRIMARY KEY
+  ,cu_name_d_id numeric(38,0)
+  ,cu_curriculum_unit_type_d_id numeric(38,0)
+);
+
+
+CREATE TABLE student_group --grupy_studenckie 
+(
+  sg_id numeric(38,0) PRIMARY KEY
+  ,sg_letter designation_d_id numeric(38,0)
+  ,sg_start_date date
+  ,sg_end_date date
+  ,sg_field_of_study_id numeric(38,0)
+  ,sg_faculty_d_id numeric(38,0)
+);
+
+
+create table aggregate 
+(
+a_id numeric(38,0) PRIMARY KEY
+,a_avatar_id numeric(38,0) 
+,a_curriculum_unit_id numeric(38,0) 
+,a_student_group_id numeric(38,0) 
+);
+
+create table avatar
+(
+av_id numeric(38,0) PRIMARY KEY
+av_name text
+);
+
+create table ConductorOfClass
+(
+coc_id numeric(38,0) PRIMARY KEY
+,coc_name text
+,coc_last_name text
+,coc_avatar_id numeric(38,0)
+);
+
+--------------------------------------------- laczenie agregatow grup ,wykladowcow z datami i salami
+create table  lesson --zajecia_terminy_rel polaczenie agregatu grup,jednostki i awatarow jako 1 wpis i potem polaczenie z datami i godzinami
+(
+l_id numeric(38,0) PRIMARY KEY
+,l_aggregate_id numeric(38,0) 
+,l_lesson_schedule_id numeric(38,0) 
+);
+-------------------------------------------
+create table lesson_schedule 
+(
+ls_id numeric(38,0) PRIMARY KEY
+,ls_name numeric(38,0)
+,ls_data date
+,ls_operator_id numeric(38,0)
+);
+
+------------------------------------------- agregaty sal, godzin oraz dat
+create table sale_hour --salo_godzina
+(
+sh_id numeric(38,0) PRIMARY KEY
+,sh_lesson_id numeric(38,0) 
+,sh_lesson_begin_id numeric(38,0) 
+,sh_lesson_end_id numeric(38,0) 
+,sh_sale_id numeric(38,0) 
+);
+
+
+create table sales
+(
+s_id numeric(38,0) PRIMARY KEY
+,s_number numeric(38,0)
+,s_building_id numeric(38,0)
+,s_number_of_seats numeric(38,0)
+
+);
+
+create table set_of_terms
+(
+sot_id numeric(38,0) PRIMARY KEY
+,sot_lesson_id numeric(38,0)
+);
+
+create table template_of_accurate_date(
+toad_id numeric(38,0) PRIMARY KEY
+,toad_name text
+,toad_set_of_terms_id numeric(38,0)
+);
+
+create table accurate_date( --daty konkretne
+ad_id numeric(38,0) PRIMARY KEY
+,ad_real_date date
+,ad_template_of_accurate_date_id numeric(38,0)
+);
+
+
+  
+

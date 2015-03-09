@@ -1,4 +1,4 @@
-package pl.edu.agh.planner.hibernate.entity;
+package pl.edu.agh.planner.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

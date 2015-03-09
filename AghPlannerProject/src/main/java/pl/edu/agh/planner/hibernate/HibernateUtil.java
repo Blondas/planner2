@@ -1,4 +1,4 @@
-package pl.edu.agh.planner.hibernate.entity;
+package pl.edu.agh.planner.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
