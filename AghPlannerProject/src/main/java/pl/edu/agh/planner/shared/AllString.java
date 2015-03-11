@@ -42,6 +42,9 @@ public class AllString {
 	public static String helpButtonText = "Pomoc";
 	public static String backButtonText = "Wróć";
 
+	public static String addNewConductorTitle = "Prowadzącego";
+	public static String addNewConductorWindowTitle = "Dodaj prowadzącego";
+
 	public static String exceptionMessage = "Nieprawidłowy argument";
 
 }
