@@ -1,11 +1,28 @@
 package pl.edu.agh.planner.hibernate.entity;
 
-/**
- * Created by Krystian on 2015-03-09.
- */
-public class Lesson {
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Data
+@Entity
+public class Lesson {
+    @Id
+    @GeneratedValue
     private int id;
-    private int aggregateId;
-    private int lessonScheduleId;
+
+    @OneToMany(mappedBy = "lesson")
+    private Set<SetOfTerms> setOfTermses;
+
+    @OneToMany(mappedBy = "lesson")
+    private Set<SaleHour> saleHours;
+
+    @ManyToOne
+    @JoinColumn
+    private Aggregate aggregate;
+
+    @ManyToOne
+    @JoinColumn
+    private LessonSchedule lessonSchedule;
 }

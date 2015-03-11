@@ -1,7 +1,4 @@
-package pl.edu.agh.planner.hibernate;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+package pl.edu.agh.planner.hibernate.utils;
 
 public class AppUserTest {
 

@@ -1,10 +1,25 @@
 package pl.edu.agh.planner.hibernate.entity;
 
-/**
- * Created by Krystian on 2015-03-09.
- */
-public class Avatar {
+import lombok.Data;
 
-    private int avId;
-    private int avName;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
+
+@Data
+@Entity
+public class Avatar {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private int name;
+
+    @OneToMany(mappedBy = "avatar")
+    private Set<Aggregate> aggregates;
+
+    @OneToMany(mappedBy = "avatar")
+    private Set<ConductorOfClass> conductorOfClasses;
 }

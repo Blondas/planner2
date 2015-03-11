@@ -1,9 +1,29 @@
 package pl.edu.agh.planner.hibernate.entity;
 
-public class Aggregate {
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Data
+@Entity
+public class Aggregate {
+    @Id
+    @GeneratedValue
     private int id;
-    private int avatarId;
-    private int curriculumUnitId;
-    private int studentGroupId;
+
+    @OneToMany(mappedBy = "aggregate")
+    private Set<Lesson> lessons;
+
+    @ManyToOne
+    @JoinColumn
+    private Avatar avatar;
+
+    @ManyToOne
+    @JoinColumn
+    private CurriculumUnit curriculumUnit;
+
+    @ManyToOne
+    @JoinColumn
+    private StudentGroup studentGroup;
 }

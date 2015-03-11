@@ -1,11 +1,22 @@
 package pl.edu.agh.planner.hibernate.entity.general;
 
-/**
- * Created by Krystian on 2015-03-09.
- */
-public class Authorization {
+import lombok.Data;
+import pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryAuthorisationType;
 
+import javax.persistence.*;
+
+@Data
+@Entity
+public class Authorization {
+    @Id
+    @GeneratedValue
     private int id;
-    private int authorizationTypeDictionaryId;
-    private int userId;
+
+    @ManyToOne
+    @JoinColumn
+    private DictionaryAuthorisationType dictionaryAuthorisationType;
+
+    @ManyToOne
+    @JoinColumn
+    private User user;
 }

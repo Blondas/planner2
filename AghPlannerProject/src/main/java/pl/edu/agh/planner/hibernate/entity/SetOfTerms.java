@@ -3,23 +3,19 @@ package pl.edu.agh.planner.hibernate.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
-public class SaleHour {
+public class SetOfTerms {
     @Id
     @GeneratedValue
     private int id;
 
+    @OneToMany(mappedBy="setOfTerms")
+    private Set<TemplateOfConcreteDate> templateOfConcreteDates;
+
     @ManyToOne
     @JoinColumn
     private Lesson lesson;
-
-    private int lessonBeginId;
-
-    private int lessonEndId;
-
-    @ManyToOne
-    @JoinColumn
-    private Sale sale;
 }
