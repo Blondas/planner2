@@ -12,6 +12,7 @@ import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.DateItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import pl.edu.agh.planner.client.common.validators.MailAddressValidator;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ class HelpPanel extends Window {
 		backButton.setWidth(80);
 		backButton.setLeft(80);
 		backButton.setTitle(AllString.backButtonText);
-		backButton.addClickHandler(new BackButtonAction());
+		backButton.addClickHandler(new BackButton_ClickHandler());
 		buttonCanvas.addChild(backButton);
 
 		IButton cleanButton = new IButton();
@@ -69,7 +70,7 @@ class HelpPanel extends Window {
 		cleanButton.setWidth(backButton.getWidth());
 		cleanButton.setLeft(backButton.getLeft() + backButton.getWidth() + 10);
 		cleanButton.setTitle(AllString.cleanButtonText);
-		cleanButton.addClickHandler(new CleanButtonAction());
+		cleanButton.addClickHandler(new CleanButton_ClickHandler());
 		buttonCanvas.addChild(cleanButton);
 
 		//TODO: dodanie akcji przycisku, dopiero gdy bedziemy mieli baze z user'em i jego mailem
@@ -101,6 +102,7 @@ class HelpPanel extends Window {
 		TextItem mailAddress = new TextItem("mailAddress", AllString.mainAddress);
 		mailAddress.setMask(">?<??????????????");
 		mailAddress.setHint("<nobr>>?<??????????????</nobr>");
+		mailAddress.setValidators(new MailAddressValidator());
 		formItems.add(mailAddress);
 
 		DateItem dateField = new DateItem("dateItem", AllString.dateOfBirth);
@@ -134,7 +136,7 @@ class HelpPanel extends Window {
 		return img;
 	}
 
-	private class BackButtonAction implements ClickHandler {
+	private class BackButton_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
@@ -145,7 +147,7 @@ class HelpPanel extends Window {
 
 	}
 
-	private class CleanButtonAction implements ClickHandler {
+	private class CleanButton_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {

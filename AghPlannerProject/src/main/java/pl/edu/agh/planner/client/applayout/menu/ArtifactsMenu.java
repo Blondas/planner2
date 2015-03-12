@@ -7,8 +7,6 @@ import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewConductor;
 import pl.edu.agh.planner.shared.AllString;
 
-import java.awt.*;
-
 class ArtifactsMenu extends Menu {
 
 	public ArtifactsMenu() {

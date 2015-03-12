@@ -47,4 +47,5 @@ public class AllString {
 
 	public static String exceptionMessage = "Nieprawidłowy argument";
 
+	public static String mailValidatorMessage = "Nieprawidłowy format adresu mail";
 }

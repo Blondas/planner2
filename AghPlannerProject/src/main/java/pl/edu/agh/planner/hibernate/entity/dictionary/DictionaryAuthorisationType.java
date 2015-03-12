@@ -1,7 +1,6 @@
 package pl.edu.agh.planner.hibernate.entity.dictionary;
 
 import lombok.Data;
-import pl.edu.agh.planner.hibernate.entity.StudentGroup;
 import pl.edu.agh.planner.hibernate.entity.general.Authorization;
 
 import javax.persistence.Entity;
