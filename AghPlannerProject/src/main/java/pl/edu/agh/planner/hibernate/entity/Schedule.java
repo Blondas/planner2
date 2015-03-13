@@ -11,13 +11,13 @@ import java.util.Set;
 
 @Data
 @Entity
-public class LessonSchedule {
+public class Schedule {
     @Id
     @GeneratedValue
     private int id;
 
-    @OneToMany(mappedBy = "lessonSchedule")
-    private Set<Lesson> lessons;
+    @OneToMany(mappedBy = "schedule")
+    private Set<ConcreteLesson> concreteLessons;
 
     private String name;
 

@@ -6,14 +6,10 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class SaleHour {
+public class ClassroomHour {
     @Id
     @GeneratedValue
     private int id;
-
-    @ManyToOne
-    @JoinColumn
-    private Lesson lesson;
 
     private int lessonBeginId;
 
@@ -21,5 +17,5 @@ public class SaleHour {
 
     @ManyToOne
     @JoinColumn
-    private Sale sale;
+    private Classroom classroom;
 }

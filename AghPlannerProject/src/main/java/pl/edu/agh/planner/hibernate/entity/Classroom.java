@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Data
 @Entity
-public class Sale {
+public class Classroom {
     @Id
     @GeneratedValue
     private int id;
@@ -21,6 +21,6 @@ public class Sale {
 
     private int numberOfSeats;
 
-    @OneToMany(mappedBy = "sale")
-    private Set<SaleHour> saleHours;
+    @OneToMany(mappedBy = "classroom")
+    private Set<ClassroomHour> classroomHours;
 }

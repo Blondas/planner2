@@ -21,5 +21,5 @@ public class Avatar {
     private Set<Aggregate> aggregates;
 
     @OneToMany(mappedBy = "avatar")
-    private Set<ConductorOfClass> conductorOfClasses;
+    private Set<Teacher> teachers;
 }

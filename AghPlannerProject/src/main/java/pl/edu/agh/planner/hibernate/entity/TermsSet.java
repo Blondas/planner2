@@ -3,19 +3,16 @@ package pl.edu.agh.planner.hibernate.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
-public class ConductorOfClass {
+public class TermsSet {
     @Id
     @GeneratedValue
     private int id;
 
-    private String name;
+    @OneToMany(mappedBy="termsSet")
+    private Set<ConcreteDateTemplate> concreteDateTemplates;
 
-    private String lastName;
-
-    @ManyToOne
-    @JoinColumn
-    private Avatar avatar;
 }

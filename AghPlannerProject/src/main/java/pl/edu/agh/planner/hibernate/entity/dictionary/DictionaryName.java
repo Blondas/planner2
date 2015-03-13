@@ -1,7 +1,7 @@
 package pl.edu.agh.planner.hibernate.entity.dictionary;
 
 import lombok.Data;
-import pl.edu.agh.planner.hibernate.entity.CurriculumUnit;
+import pl.edu.agh.planner.hibernate.entity.ProgrammeUnit;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +22,6 @@ public class DictionaryName {
     private Set<Dictionary> dictionaries;
 
     @OneToMany(mappedBy = "dictionaryName")
-    private Set<CurriculumUnit> curriculumUnits;
+    private Set<ProgrammeUnit> programmeUnits;
 
 }

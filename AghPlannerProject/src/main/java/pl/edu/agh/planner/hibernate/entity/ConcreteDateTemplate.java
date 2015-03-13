@@ -5,17 +5,19 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
 @Entity
-public class SetOfTerms {
+@Data
+public class ConcreteDateTemplate {
     @Id
     @GeneratedValue
     private int id;
 
-    @OneToMany(mappedBy="setOfTerms")
-    private Set<TemplateOfConcreteDate> templateOfConcreteDates;
+    private String name;
+
+    @OneToMany(mappedBy="concreteDateTemplate")
+    private Set<ConcreteDate> concreteDates;
 
     @ManyToOne
     @JoinColumn
-    private Lesson lesson;
+    private TermsSet termsSet;
 }

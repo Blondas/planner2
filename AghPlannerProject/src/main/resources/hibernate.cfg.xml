@@ -16,17 +16,17 @@
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.AppUser"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteDate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.TemplateOfConcreteDate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.SetOfTerms"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.Lesson"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteDateTemplate"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.TermsSet"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteLesson"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.Aggregate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.LessonSchedule"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Schedule"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.Avatar"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.CurriculumUnit"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ProgrammeUnit"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.StudentGroup"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.ConductorOfClass"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.Sale"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.SaleHour"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Teacher"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Classroom"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ClassroomHour"/>
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.Authorization"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.User"/>

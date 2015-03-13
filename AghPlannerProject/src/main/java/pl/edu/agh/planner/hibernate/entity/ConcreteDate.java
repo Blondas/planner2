@@ -16,5 +16,6 @@ public class ConcreteDate {
 
     @ManyToOne
     @JoinColumn
-    private TemplateOfConcreteDate templateOfConcreteDate;
+    private ConcreteDateTemplate concreteDateTemplate;
+
 }
