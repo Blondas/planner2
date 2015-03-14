@@ -3,11 +3,16 @@ package pl.edu.agh.planner.shared;
 public class AllString {
 
 	public static String menuNewArtifactProgramTitle = "Nowy";
+	public static String menuViewProgramTitle = "Pokaż";
 	public static String menuOptionsProgramTitle = "Ustawienia";
 	public static String menuAboutProgramTitle = "O";
 	public static String menuUserActionsTitle = "Użytkownik";
 
 	public static String newAdd = "Dodaj";
+
+	public static String viewList = "Listę";
+	public static String viewListSale = "Sal";
+	public static String viewListConductors = "Prowadzących";
 
 	public static String options = "Opcje";
 

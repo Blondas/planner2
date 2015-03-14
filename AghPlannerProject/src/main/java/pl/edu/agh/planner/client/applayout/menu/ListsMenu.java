@@ -1,20 +1,17 @@
 package pl.edu.agh.planner.client.applayout.menu;
 
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.menu.MenuItem;
 import com.smartgwt.client.widgets.menu.events.ClickHandler;
 import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
-import pl.edu.agh.planner.client.applayout.menu.forms.AddNewConductor;
 import pl.edu.agh.planner.shared.AllString;
 
-class ArtifactsMenu extends Menu {
+class ListsMenu extends Menu {
 
-	public ArtifactsMenu() {
-
-		addItem(new MenuItem(AllString.addItem1, "16/add.png"));
-		addItem(new MenuItem(AllString.addItem2, "16/add.png"));
-		addItem(new MenuItem(AllString.addItem3, "16/add.png"));
-		addItem(addMenuItemButton(AllString.addNewConductorTitle, "16/add.png", new AddNewConductor_ClickHandler()));
+	public ListsMenu() {
+		addItem(addMenuItemButton(AllString.viewListSale, "16/add.png", new ViewListSale()));
+		addItem(addMenuItemButton(AllString.viewListConductors, "16/add.png", new ViewListConductors()));
 	}
 
 	private MenuItem addMenuItemButton(String title, String iconPath, ClickHandler clickHandler) {
@@ -26,11 +23,20 @@ class ArtifactsMenu extends Menu {
 		return menuItem;
 	}
 
-	private class AddNewConductor_ClickHandler implements ClickHandler {
+	private class ViewListSale implements ClickHandler {
 
 		@Override
 		public void onClick(MenuItemClickEvent event) {
-			new AddNewConductor();
+			SC.say("Dostępne już niebawem.");
+		}
+
+	}
+
+	private class ViewListConductors implements ClickHandler {
+
+		@Override
+		public void onClick(MenuItemClickEvent event) {
+			SC.say("Dostępne już niebawem.");
 		}
 
 	}
