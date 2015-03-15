@@ -14,7 +14,7 @@ public class ConcreteLesson {
     private int id;
 
     @OneToOne
-    @Column(name = "cl_aggregate_id")
+//    @Column(name = "cl_aggregate_id")
     private Aggregate aggregate;
 
     @ManyToOne
@@ -22,11 +22,11 @@ public class ConcreteLesson {
     private Schedule schedule;
 
     @OneToOne
-    @Column(name = "ch_classroom_hour_id")
+//    @Column(name = "ch_classroom_hour_id")
     private ClassroomHour classroomHour;
 
     @OneToOne
-    @Column(name = "ch_concrete_date_id")
+//    @Column(name = "ch_concrete_date_id")
     private ConcreteDate concreteDate;
 
 }

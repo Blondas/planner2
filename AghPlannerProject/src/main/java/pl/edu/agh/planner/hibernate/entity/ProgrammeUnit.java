@@ -12,11 +12,11 @@ import java.util.Set;
 public class ProgrammeUnit {
     @Id
     @GeneratedValue
-    @Column(name = "pu_id")
+//    @Column(name = "pu_id")
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "pu_type")
+    @JoinColumn //(name = "pu_type")
     private Dictionary type;
 
     @OneToMany(mappedBy = "programmeUnit")

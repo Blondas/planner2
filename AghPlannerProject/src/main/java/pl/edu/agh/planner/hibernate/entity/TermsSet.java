@@ -10,7 +10,7 @@ import java.util.Set;
 public class TermsSet {
     @Id
     @GeneratedValue
-    @Column(name = "ts_id")
+//    @Column(name = "ts_id")
     private int id;
 
     @OneToMany(mappedBy="termsSet")

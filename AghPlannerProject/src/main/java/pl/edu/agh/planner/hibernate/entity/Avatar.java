@@ -11,10 +11,10 @@ import java.util.Set;
 public class Avatar {
     @Id
     @GeneratedValue
-    @Column(name = "av_id")
+//    @Column(name = "av_id")
     private int id;
 
-    @Column(name = "av_name")
+//    @Column(name = "av_name")
     private int name;
 
     @OneToMany(mappedBy = "avatar")
