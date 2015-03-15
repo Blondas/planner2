@@ -9,27 +9,13 @@ import javax.persistence.*;
 public class Dictionary {
     @Id
     @GeneratedValue
+    @Column(name = "d_id")
     private int id;
 
+    @Column(name = "d_name")
     private String name;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "d_dictionary_name_id")
     private DictionaryName dictionaryName;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryLetterDesignation dictionaryLetterDesignation;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryFieldOfStudy dictionaryFieldOfStudy;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryFaculty dictionaryFaculty;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryAuthorisationType dictionaryAuthorisationType;
 }

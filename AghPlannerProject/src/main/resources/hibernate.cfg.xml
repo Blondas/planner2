@@ -9,34 +9,29 @@
         <property name="connection.username">postgres</property>
         <property name="connection.password">password</property>
 
-         <property name="hbm2ddl.auto">create-drop</property> 
-        
+        <property name="hbm2ddl.auto">create-drop</property>
+
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
 
-        <mapping class="pl.edu.agh.planner.hibernate.entity.AppUser"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteDate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.TemplateOfConcreteDate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.SetOfTerms"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.Lesson"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteDateTemplate"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.TermsSet"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ConcreteLesson"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.Aggregate"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.LessonSchedule"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Schedule"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.Avatar"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.CurriculumUnit"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ProgrammeUnit"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.StudentGroup"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.ConductorOfClass"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.Sale"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.SaleHour"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Teacher"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Classroom"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ClassroomHour"/>
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.Authorization"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.User"/>
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryName"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryLetterDesignation"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFieldOfStudy"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFaculty"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryAuthorisationType"/>
 
     </session-factory>
 </hibernate-configuration>

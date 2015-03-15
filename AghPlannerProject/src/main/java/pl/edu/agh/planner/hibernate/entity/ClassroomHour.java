@@ -6,20 +6,19 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class SaleHour {
+public class ClassroomHour {
     @Id
     @GeneratedValue
+    @Column(name = "ch_id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn
-    private Lesson lesson;
-
+    @Column(name = "ch_lesson_begin_id")
     private int lessonBeginId;
 
+    @Column(name = "ch_lesson_end_id")
     private int lessonEndId;
 
     @ManyToOne
-    @JoinColumn
-    private Sale sale;
+    @JoinColumn(name = "ch_classroom_id")
+    private Classroom classroom;
 }

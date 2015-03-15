@@ -7,17 +7,19 @@ import java.util.Set;
 
 @Entity
 @Data
-public class TemplateOfConcreteDate {
+public class ConcreteDateTemplate {
     @Id
     @GeneratedValue
+    @Column(name = "cdt_id")
     private int id;
 
+    @Column(name = "cdt_name")
     private String name;
 
-    @OneToMany(mappedBy="templateOfConcreteDate")
+    @OneToMany(mappedBy="concreteDateTemplate")
     private Set<ConcreteDate> concreteDates;
 
     @ManyToOne
-    @JoinColumn
-    private SetOfTerms setOfTerms;
+    @JoinColumn(name = "cdt_terms_set_id")
+    private TermsSet termsSet;
 }
