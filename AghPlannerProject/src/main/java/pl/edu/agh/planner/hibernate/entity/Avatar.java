@@ -2,10 +2,7 @@ package pl.edu.agh.planner.hibernate.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Data
@@ -14,8 +11,10 @@ import java.util.Set;
 public class Avatar {
     @Id
     @GeneratedValue
+    @Column(name = "av_id")
     private int id;
 
+    @Column(name = "av_name")
     private int name;
 
     @OneToMany(mappedBy = "avatar")

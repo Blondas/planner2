@@ -7,6 +7,7 @@ public class AggregateDaoTest extends TestCase {
 
     @Test
     public void testGetById() throws Exception {
-
+        AggregateDao aggregate = new AggregateDao();
+        aggregate.getById(1);
     }
 }
