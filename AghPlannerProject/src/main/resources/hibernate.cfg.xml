@@ -33,10 +33,6 @@
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryName"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryLetterDesignation"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFieldOfStudy"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFaculty"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryAuthorisationType"/>
 
     </session-factory>
 </hibernate-configuration>
