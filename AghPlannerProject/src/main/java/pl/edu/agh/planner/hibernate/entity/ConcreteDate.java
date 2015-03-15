@@ -10,12 +10,14 @@ import java.util.Date;
 public class ConcreteDate {
     @Id
     @GeneratedValue
+    @Column(name = "cd_id")
     private int id;
 
+    @Column(name = "cd_real_date")
     private Date realDate;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "cd_concrete_date_template_id")
     private ConcreteDateTemplate concreteDateTemplate;
 
 }

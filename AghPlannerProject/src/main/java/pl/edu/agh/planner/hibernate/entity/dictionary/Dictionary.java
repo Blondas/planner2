@@ -9,11 +9,13 @@ import javax.persistence.*;
 public class Dictionary {
     @Id
     @GeneratedValue
+    @Column(name = "d_id")
     private int id;
 
+    @Column(name = "d_name")
     private String name;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "d_dictionary_name_id")
     private DictionaryName dictionaryName;
 }
