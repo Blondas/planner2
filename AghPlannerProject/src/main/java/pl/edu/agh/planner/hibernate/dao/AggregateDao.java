@@ -17,4 +17,16 @@ public class AggregateDao extends GenericQuery {
 
         return aggregate;
     }
+
+    public void add(Aggregate aggregate) {
+        beginTransaction();
+        getSession().save(aggregate);
+        endTransaction();
+    }
+
+    public void update(Aggregate aggregate) {
+        beginTransaction();
+        getSession().update(aggregate);
+        endTransaction();
+    }
 }

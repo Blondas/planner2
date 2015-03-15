@@ -1,7 +1,8 @@
-package pl.edu.agh.planner.hibernate.dao;
+package pl.edu.agh.planner.hibernate.daoTest;
 
 import junit.framework.TestCase;
 import org.testng.annotations.Test;
+import pl.edu.agh.planner.hibernate.dao.AggregateDao;
 
 public class AggregateDaoTest extends TestCase {
 
