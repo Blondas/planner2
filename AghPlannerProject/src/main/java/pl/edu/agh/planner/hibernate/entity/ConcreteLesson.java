@@ -10,19 +10,23 @@ import java.util.Set;
 public class ConcreteLesson {
     @Id
     @GeneratedValue
+    @Column(name = "cl_id")
     private int id;
 
     @OneToOne
+    @Column(name = "cl_aggregate_id")
     private Aggregate aggregate;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "cl_schedule_id")
     private Schedule schedule;
 
     @OneToOne
+    @Column(name = "ch_classroom_hour_id")
     private ClassroomHour classroomHour;
 
     @OneToOne
+    @Column(name = "ch_concrete_date_id")
     private ConcreteDate concreteDate;
 
 }

@@ -12,12 +12,14 @@ import java.util.Set;
 public class ProgrammeUnit {
     @Id
     @GeneratedValue
+    @Column(name = "pu_id")
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "pu_type")
+    private Dictionary type;
 
     @OneToMany(mappedBy = "programmeUnit")
     private Set<Aggregate> aggregates;
 
-    @ManyToOne
-    @JoinColumn
-    private Dictionary type;
 }

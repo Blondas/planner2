@@ -10,13 +10,14 @@ import javax.persistence.*;
 public class Authorization {
     @Id
     @GeneratedValue
+    @Column(name = "a_id")
     private int id;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "a_type")
     private Dictionary type;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "a_user_id")
     private User user;
 }
