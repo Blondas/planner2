@@ -16,20 +16,4 @@ public class Dictionary {
     @ManyToOne
     @JoinColumn
     private DictionaryName dictionaryName;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryLetterDesignation dictionaryLetterDesignation;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryFieldOfStudy dictionaryFieldOfStudy;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryFaculty dictionaryFaculty;
-
-    @ManyToOne
-    @JoinColumn
-    private DictionaryAuthorisationType dictionaryAuthorisationType;
 }

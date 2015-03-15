@@ -21,7 +21,4 @@ public class DictionaryName {
     @OneToMany(mappedBy = "dictionaryName")
     private Set<Dictionary> dictionaries;
 
-    @OneToMany(mappedBy = "dictionaryName")
-    private Set<ProgrammeUnit> programmeUnits;
-
 }

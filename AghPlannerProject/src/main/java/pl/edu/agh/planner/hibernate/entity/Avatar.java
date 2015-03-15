@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @Entity
+// składowa agregatu
 public class Avatar {
     @Id
     @GeneratedValue

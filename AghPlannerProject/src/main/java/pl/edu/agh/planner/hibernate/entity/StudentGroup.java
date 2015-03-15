@@ -1,9 +1,7 @@
 package pl.edu.agh.planner.hibernate.entity;
 
 import lombok.Data;
-import pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFaculty;
-import pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryFieldOfStudy;
-import pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryLetterDesignation;
+import pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +9,7 @@ import java.util.Set;
 
 @Data
 @Entity
+// grupa studenctka (składowa agregatu)
 public class StudentGroup {
     @Id
     @GeneratedValue
@@ -22,17 +21,20 @@ public class StudentGroup {
 
     private Date endDate;
 
+    // wydzial
     @ManyToOne
     @JoinColumn
-    private DictionaryFieldOfStudy dictionaryFieldOfStudy;
+    private Dictionary department;
 
+    // oznaczenie grupy diekanatowej
     @ManyToOne
     @JoinColumn
-    private DictionaryLetterDesignation dictionaryLetterDesignation;
+    private Dictionary letterDesignation;
 
+    // kierunek studiow
     @ManyToOne
     @JoinColumn
-    private DictionaryFaculty dictionaryFaculty;
+    private Dictionary faculty;
 
     @OneToMany(mappedBy = "studentGroup")
     private Set<Aggregate> aggregates;
