@@ -3,6 +3,7 @@ package pl.edu.agh.planner.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.ClassroomHour;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 public class ClassroomHourDao extends GenericQuery {
 
@@ -27,6 +28,12 @@ public class ClassroomHourDao extends GenericQuery {
     public void update(ClassroomHour classroomHour) {
         beginTransaction();
         getSession().update(classroomHour);
+        endTransaction();
+    }
+
+    public void delete(ClassroomHour classroomHour) {
+        beginTransaction();
+        getSession().delete(classroomHour);
         endTransaction();
     }
 }

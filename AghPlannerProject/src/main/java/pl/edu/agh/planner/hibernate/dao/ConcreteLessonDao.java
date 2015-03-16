@@ -2,6 +2,7 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 public class ConcreteLessonDao extends GenericQuery {
 
@@ -26,6 +27,12 @@ public class ConcreteLessonDao extends GenericQuery {
     public void updateConcreteLessonDao (ConcreteLessonDao concreteLessonDao) {
         beginTransaction();
         getSession().update(concreteLessonDao);
+        endTransaction();
+    }
+
+    public void delete(ConcreteLessonDao concreteLessonDao) {
+        beginTransaction();
+        getSession().delete(concreteLessonDao);
         endTransaction();
     }
 }

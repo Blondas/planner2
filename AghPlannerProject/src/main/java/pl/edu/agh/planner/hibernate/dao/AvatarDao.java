@@ -3,6 +3,7 @@ package pl.edu.agh.planner.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.Avatar;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 public class AvatarDao extends GenericQuery {
 
@@ -27,6 +28,12 @@ public class AvatarDao extends GenericQuery {
     public void update(Avatar avatar) {
         beginTransaction();
         getSession().update(avatar);
+        endTransaction();
+    }
+
+    public void delete(Avatar avatar) {
+        beginTransaction();
+        getSession().delete(avatar);
         endTransaction();
     }
 }

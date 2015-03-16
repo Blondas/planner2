@@ -3,6 +3,7 @@ package pl.edu.agh.planner.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.TermsSet;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 
 public class TermsSetDao extends GenericQuery {
@@ -28,6 +29,12 @@ public class TermsSetDao extends GenericQuery {
     public void update(TermsSet termsSet) {
         beginTransaction();
         getSession().update(termsSet);
+        endTransaction();
+    }
+
+    public void delete(TermsSet termsSet) {
+        beginTransaction();
+        getSession().delete(termsSet);
         endTransaction();
     }
 }
