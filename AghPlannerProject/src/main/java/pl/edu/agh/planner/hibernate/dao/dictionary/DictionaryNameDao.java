@@ -1,8 +1,9 @@
-package pl.edu.agh.planner.hibernate.dao;
+package pl.edu.agh.planner.hibernate.dao.dictionary;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryName;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 public class DictionaryNameDao extends GenericQuery {
 
@@ -27,6 +28,12 @@ public class DictionaryNameDao extends GenericQuery {
     public void update(DictionaryName dictionaryName) {
         beginTransaction();
         getSession().update(dictionaryName);
+        endTransaction();
+    }
+
+    public void delete(DictionaryName dictionaryName) {
+        beginTransaction();
+        getSession().delete(dictionaryName);
         endTransaction();
     }
 }
