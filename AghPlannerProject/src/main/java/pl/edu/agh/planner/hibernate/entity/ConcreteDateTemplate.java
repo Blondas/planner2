@@ -10,16 +10,16 @@ import java.util.Set;
 public class ConcreteDateTemplate {
     @Id
     @GeneratedValue
-//    @Column(name = "cdt_id")
+    @Column(name = "cdt_id")
     private int id;
 
-//    @Column(name = "cdt_name")
+    @Column(name = "cdt_name")
     private String name;
 
     @OneToMany(mappedBy="concreteDateTemplate")
     private Set<ConcreteDate> concreteDates;
 
     @ManyToOne
-    @JoinColumn //(name = "cdt_terms_set_id")
+    @JoinColumn(name = "cdt_terms_set_id")
     private TermsSet termsSet;
 }

@@ -13,31 +13,31 @@ import java.util.Set;
 public class StudentGroup {
     @Id
     @GeneratedValue
-//    @Column(name = "sg_id")
+    @Column(name = "sg_id")
     private int id;
 
 //    @Column(name = "sg_letter_designation_id")
-    private int letterDesignationDictionaryId;
+//    private int letterDesignationDictionaryId;
 
-//    @Column(name = "sg_start_date")
+    @Column(name = "sg_start_date")
     private Date startDate;
 
-//    @Column(name = "sg_end_date")
+    @Column(name = "sg_end_date")
     private Date endDate;
 
     // wydzial
     @ManyToOne
-    @JoinColumn //(name = "sg_department_id")
+    @JoinColumn(name = "sg_department_id")
     private Dictionary department;
 
     // oznaczenie grupy diekanatowej
     @ManyToOne
-    @JoinColumn //(name = "sg_letter_designation_id")
+    @JoinColumn(name = "sg_letter_designation_id")
     private Dictionary letterDesignation;
 
     // kierunek studiow
     @ManyToOne
-    @JoinColumn //(name = "sg_faculty_id")
+    @JoinColumn(name = "sg_faculty_id")
     private Dictionary faculty;
 
     @OneToMany(mappedBy = "studentGroup")

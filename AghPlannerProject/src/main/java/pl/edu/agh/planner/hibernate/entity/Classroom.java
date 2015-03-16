@@ -10,16 +10,16 @@ import java.util.Set;
 public class Classroom {
     @Id
     @GeneratedValue
-//    @Column(name = "c_id")
+    @Column(name = "c_id")
     private int id;
 
-//    @Column(name = "c_number")
+    @Column(name = "c_number")
     private int number;
 
-//    @Column(name = "c_building_id")
+    @Column(name = "c_building_id")
     private int buildingId;
 
-//    @Column(name = "c_number_of_seats")
+    @Column(name = "c_number_of_seats")
     private int numberOfSeats;
 
     @OneToMany(mappedBy = "classroom")
