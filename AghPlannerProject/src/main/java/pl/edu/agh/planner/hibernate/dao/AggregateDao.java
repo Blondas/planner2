@@ -3,6 +3,7 @@ package pl.edu.agh.planner.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.Aggregate;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 public class AggregateDao extends GenericQuery {
 
@@ -27,6 +28,12 @@ public class AggregateDao extends GenericQuery {
     public void update(Aggregate aggregate) {
         beginTransaction();
         getSession().update(aggregate);
+        endTransaction();
+    }
+
+    public void delete(Aggregate aggregate) {
+        beginTransaction();
+        getSession().delete(aggregate);
         endTransaction();
     }
 }

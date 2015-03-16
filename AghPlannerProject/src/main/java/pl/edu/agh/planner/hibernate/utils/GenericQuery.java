@@ -1,8 +1,7 @@
-package pl.edu.agh.planner.hibernate.dao;
+package pl.edu.agh.planner.hibernate.utils;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pl.edu.agh.planner.hibernate.utils.HibernateUtil;
 
 public abstract class GenericQuery {
     private Transaction transaction = null;

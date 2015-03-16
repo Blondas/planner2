@@ -3,6 +3,7 @@ package pl.edu.agh.planner.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import pl.edu.agh.planner.hibernate.entity.StudentGroup;
+import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
 
 public class StudentGroupDao extends GenericQuery {
@@ -28,6 +29,12 @@ public class StudentGroupDao extends GenericQuery {
     public void update(StudentGroup studentGroup) {
         beginTransaction();
         getSession().update(studentGroup);
+        endTransaction();
+    }
+
+    public void delete(StudentGroup studentGroup) {
+        beginTransaction();
+        getSession().delete(studentGroup);
         endTransaction();
     }
 }
