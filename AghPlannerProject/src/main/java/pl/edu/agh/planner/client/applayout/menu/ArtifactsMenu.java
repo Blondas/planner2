@@ -7,8 +7,6 @@ import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewConductor;
 import pl.edu.agh.planner.shared.AllString;
 
-import java.awt.*;
-
 class ArtifactsMenu extends Menu {
 
 	public ArtifactsMenu() {
@@ -20,7 +18,6 @@ class ArtifactsMenu extends Menu {
 	}
 
 	private MenuItem addMenuItemButton(String title, String iconPath, ClickHandler clickHandler) {
-
 		MenuItem menuItem = new MenuItem();
 		menuItem.setTitle(title);
 		menuItem.setIcon(iconPath);

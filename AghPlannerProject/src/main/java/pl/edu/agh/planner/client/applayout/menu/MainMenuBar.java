@@ -32,6 +32,14 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
 		artifactGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
+		RibbonGroup viewGroup = new RibbonGroup();
+		ribbonGroups.add(viewGroup);
+		viewGroup.setTitle(AllString.menuViewProgramTitle);
+		viewGroup.setTitleAlign(Alignment.LEFT);
+		viewGroup.setNumRows(3);
+		viewGroup.setRowHeight(GROUP_ROW_HEIGHT);
+		viewGroup.addControl(createIconMenuButton(AllString.viewList, "view", new ListsMenu(), true));
+
 		RibbonGroup optionGroup = new RibbonGroup();
 		ribbonGroups.add(optionGroup);
 		optionGroup.setTitle(AllString.menuOptionsProgramTitle);
@@ -59,8 +67,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
 		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
-
-		addMembers(artifactGroup, optionGroup, aboutGroup, userActions);
+		addMembers(artifactGroup, viewGroup, optionGroup, aboutGroup, userActions);
 
 		setLeft(0);
 		setWidth100();
