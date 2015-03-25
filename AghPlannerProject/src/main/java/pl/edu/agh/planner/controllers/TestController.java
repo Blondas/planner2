@@ -1,5 +1,6 @@
 package pl.edu.agh.planner.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,4 +18,6 @@ public class TestController {
     {
         return "ALA MA KOTA HURA ";
     }
+
+
 }

@@ -1,7 +1,6 @@
 package pl.edu.agh.planner.hibernate.entity;
 
 import lombok.Data;
-import pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,9 +14,14 @@ public class ProgrammeUnit {
     @Column(name = "pu_id")
     private int id;
 
+
+    @Column(name = "pu_name")
+    private String name;
+
     @ManyToOne
-    @JoinColumn(name = "pu_type")
-    private Dictionary type;
+    @JoinColumn(name = "pu_type_id")
+    private ProgrammeUnitType type;
+
 
     @OneToMany(mappedBy = "programmeUnit")
     private Set<Aggregate> aggregates;
