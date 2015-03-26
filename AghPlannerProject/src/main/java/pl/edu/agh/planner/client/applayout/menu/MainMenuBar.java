@@ -10,7 +10,7 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AboutAghWindow;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddSubjectWindow;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -50,15 +50,15 @@ class MainMenuBar extends RibbonBar {
 		optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
 		optionGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
 
-		RibbonGroup aboutGroup = new RibbonGroup();
-		ribbonGroups.add(aboutGroup);
-		aboutGroup.setTitle(AllString.menuAboutProgramTitle);
-		aboutGroup.setTitleAlign(Alignment.LEFT);
-		aboutGroup.setNumRows(3);
-		aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		aboutGroup.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
-		aboutGroup.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
-		aboutGroup.addControl(createIconButton(AllString.aboutAgh, "agh", false, new AboutAghWindow_ClickHandler()));
+		RibbonGroup addSubject = new RibbonGroup();
+		ribbonGroups.add(addSubject);
+		addSubject.setTitle(AllString.menuAboutProgramTitle);
+		addSubject.setTitleAlign(Alignment.LEFT);
+		addSubject.setNumRows(3);
+		addSubject.setRowHeight(GROUP_ROW_HEIGHT);
+		addSubject.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(createIconButton(AllString.addSubject, "addSubject", false, new AddSubjectWindow_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -69,7 +69,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
 		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
-		addMembers(artifactGroup, viewGroup, optionGroup, aboutGroup, userActions);
+		addMembers(artifactGroup, viewGroup, optionGroup, addSubject, userActions);
 
 		setLeft(0);
 		setWidth100();
@@ -148,11 +148,11 @@ class MainMenuBar extends RibbonBar {
 
 	}
 
-	private class AboutAghWindow_ClickHandler implements ClickHandler {
+	private class AddSubjectWindow_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			RootPanel.get().add(new AboutAghWindow());
+			RootPanel.get().add(new AddSubjectWindow());
 		}
 
 	}

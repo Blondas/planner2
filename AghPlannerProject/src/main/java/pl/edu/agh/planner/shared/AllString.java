@@ -20,7 +20,7 @@ public class AllString {
 
 	public static String aboutProgram = "Programie";
 	public static String aboutAuthors = "Autorach";
-	public static String aboutAgh = "AGH";
+	public static String addSubject = "Dodaj Przedmiot";
 
 	public static String addItem1 = "Item1";
 	public static String addItem2 = "Item2";

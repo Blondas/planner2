@@ -9,8 +9,8 @@ import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import pl.edu.agh.planner.shared.AllString;
 
-public class AboutAghWindow extends Window {
-    public AboutAghWindow() {
+public class AddSubjectWindow extends Window {
+    public AddSubjectWindow() {
         setWidth(400);
 //        setHeight(400);
         setAlign(Alignment.CENTER);
@@ -19,7 +19,7 @@ public class AboutAghWindow extends Window {
 
         setCanDragResize(false);
 
-        addItem(createLogo());
+//        addItem(createLogo());
         addItem(createText());
         addItem(createButtons());
 
@@ -29,7 +29,7 @@ public class AboutAghWindow extends Window {
     private Img createLogo() {
         //TODO: logo do podmiany
         Img img = new Img("http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg");
-        img.setHeight(100);
+        img.setHeight(300);
         img.setWidth(400);
 
         return img;
@@ -65,7 +65,7 @@ public class AboutAghWindow extends Window {
 
         @Override
         public void onClick(ClickEvent event) {
-            AboutAghWindow.this.destroy();
+            AddSubjectWindow.this.destroy();
         }
 
     }
