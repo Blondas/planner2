@@ -1,5 +1,6 @@
 package pl.edu.agh.planner.client.applayout.menu;
 
+import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.IconButton;
@@ -9,6 +10,7 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AboutAghWindow;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -56,7 +58,7 @@ class MainMenuBar extends RibbonBar {
 		aboutGroup.setRowHeight(GROUP_ROW_HEIGHT);
 		aboutGroup.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
 		aboutGroup.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
-		aboutGroup.addControl(createIconButton(AllString.aboutAgh, "agh", false, new TYMCZASOWO_ClickHandler()));
+		aboutGroup.addControl(createIconButton(AllString.aboutAgh, "agh", false, new AboutAghWindow_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -142,6 +144,15 @@ class MainMenuBar extends RibbonBar {
 		@Override
 		public void onClick(ClickEvent event) {
 			SC.say("Dostępne już niebawem.");
+		}
+
+	}
+
+	private class AboutAghWindow_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			RootPanel.get().add(new AboutAghWindow());
 		}
 
 	}

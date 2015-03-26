@@ -46,6 +46,7 @@ public class AllString {
 	public static String confirmButtonText = "Zatwierdź";
 	public static String helpButtonText = "Pomoc";
 	public static String backButtonText = "Wróć";
+	public static String closeButtonText = "Zamknij";
 
 	public static String addNewConductorTitle = "Prowadzącego";
 	public static String addNewConductorWindowTitle = "Dodaj prowadzącego";
