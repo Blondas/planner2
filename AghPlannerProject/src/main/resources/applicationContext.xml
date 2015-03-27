@@ -8,4 +8,9 @@
 	<!--<bean id="jsonStockDataService" class="com.google.gwt.sample.stockwatcher_json.service.JsonStockDataService"/>-->
 
 
+
+    <!--<import resource="controllerContext.xml"/>-->
+    <!--<import resource="daoContext.xml"/>-->
+    <!--<import resource="serviceContext.xml"/>-->
+
 </beans>

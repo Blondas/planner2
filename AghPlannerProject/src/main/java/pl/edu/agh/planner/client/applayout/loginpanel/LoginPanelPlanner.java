@@ -22,6 +22,7 @@ public class LoginPanelPlanner extends Window {
 	private static volatile LoginPanelPlanner instance = null;
     private static final String JSON_STOCK_PRICES_URL = GWT.getModuleBaseURL() + "jsonStockPrices.json" + "?q=";
 
+
 	private TextItem loginItem = null;
 	private PasswordItem passwordItem = null;
 

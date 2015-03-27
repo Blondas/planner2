@@ -27,9 +27,17 @@
 		<property name="messageConverters" ref="jacksonMessageConverter"/>
 	</bean>
 		  	 	  	
-	<bean id="stockWatcherController" class="pl.edu.agh.planner.controllers.TestController">
+	<!--<bean id="stockWatcherController" class="pl.edu.agh.planner.controllers.TestController"/>-->
+    <!--<bean id="teacherController" class="pl.edu.agh.planner.controllers.TeacherController"/>-->
+
+    <!--<context:annotation-config></context:annotation-config>-->
+    <!--<context:component-scan base-package="pl.edu.agh.planner.controllers"/>-->
+    <!--<context:component-scan base-package="pl.edu.agh.planner.hibernate.dao"/>-->
+    <!--<context:component-scan base-package="pl.edu.agh.planner.service"/>-->
+
 		<!--<property name="jsonRandomizeService" ref="jsonRandomizeService"/>-->
-	</bean>
-	
+
+
+
 </beans>
 
