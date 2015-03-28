@@ -59,7 +59,7 @@ public class AddStudentGroupWindow extends Window {
 
         IButton saveButton = new IButton();
         saveButton.setTop(10);
-        saveButton.setWidth(80);
+        saveButton.setWidth(90);
         saveButton.setTitle(AllString.saveButtonText);
         saveButton.addClickHandler(new SaveButton_ClickHandler());
         buttonCanvas.addChild(saveButton);

@@ -6,51 +6,76 @@ import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Window;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.FormItem;
+import com.smartgwt.client.widgets.form.fields.TextItem;
 import pl.edu.agh.planner.shared.AllString;
 
-public class AddProgrammeUnitWindow extends Window {
-    public AddProgrammeUnitWindow() {
-        setWidth(400);
-//        setHeight(400);
-        setAlign(Alignment.CENTER);
+import java.util.ArrayList;
 
+public class AddProgrammeUnitWindow extends Window {
+    private ArrayList<FormItem> formItems = new ArrayList<FormItem>();
+    private DynamicForm dynamicForm = null;
+
+    public AddProgrammeUnitWindow() {
+        setTitle(AllString.addStudentGroup);
+        setWidth(400);
         setAutoSize(true);
 
-        setCanDragResize(false);
+        dynamicForm = new DynamicForm();
+        dynamicForm.setWidth100();
+        dynamicForm.setAlign(Alignment.CENTER);
 
-        addItem(createText());
+        createDynamicFormItems();
+
+        addItem(dynamicForm);
         addItem(createButtons());
 
+        show();
         centerInPage();
     }
 
-    private Canvas createText() {
-        final Canvas textCanvas = new Canvas();
-        textCanvas.setPrefix(AllString.helpPanelTitle);
-        textCanvas.setPadding(5);
-        textCanvas.setHeight(1);
-        textCanvas.setWidth100();
-        textCanvas.setAlign(Alignment.CENTER);
-        textCanvas.setContents(textCanvas.getPrefix() + AllString.helpPanelText);
+    private void createDynamicFormItems() {
+        TextItem name = new TextItem("name", AllString.name);
+        name.setRequired(true);
+        formItems.add(name);
 
-        return textCanvas;
+        dynamicForm.setFields(name);
     }
 
     private Canvas createButtons() {
         Canvas buttonCanvas = new Canvas();
 
-        IButton closeButton = new IButton();
-        closeButton = new IButton();
-        closeButton.setTop(10);
-        closeButton.setWidth(80);
-        closeButton.setTitle(AllString.closeButtonText);
-        closeButton.addClickHandler(new CloseButton_ClickHandler());
-        buttonCanvas.addChild(closeButton);
+        IButton saveButton = new IButton();
+        saveButton.setTop(10);
+        saveButton.setWidth(90);
+        saveButton.setTitle(AllString.saveButtonText);
+        saveButton.addClickHandler(new SaveButton_ClickHandler());
+        buttonCanvas.addChild(saveButton);
+
+        IButton saveAndCloseButton = new IButton();
+        saveAndCloseButton.setTop(saveButton.getTop());
+        saveAndCloseButton.setWidth(saveButton.getWidth());
+        saveAndCloseButton.setLeft(saveButton.getLeft() + saveAndCloseButton.getWidth() + 10);
+        saveAndCloseButton.setTitle(AllString.saveAndCloseButtonText);
+        saveAndCloseButton.addClickHandler(new SaveAndCloseButton_ClickHandler());
+        buttonCanvas.addChild(saveAndCloseButton);
 
         return buttonCanvas;
     }
 
-    private class CloseButton_ClickHandler implements ClickHandler {
+    private class SaveButton_ClickHandler implements ClickHandler {
+
+        @Override
+        public void onClick(ClickEvent event) {
+            for (FormItem formItem : formItems) {
+                formItem.clearValue();
+            }
+        }
+
+    }
+
+    private class SaveAndCloseButton_ClickHandler implements ClickHandler {
 
         @Override
         public void onClick(ClickEvent event) {
