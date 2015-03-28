@@ -16,23 +16,18 @@ import java.util.ArrayList;
 
 public class AddStudentGroupWindow extends Window {
     private ArrayList<FormItem> formItems = new ArrayList<FormItem>();
-    private DynamicForm addStudentGroupForm = null;
+    private DynamicForm dynamicForm = null;
 
     public AddStudentGroupWindow() {
         setTitle(AllString.addStudentGroup);
         setWidth(400);
         setAutoSize(true);
 
-        addStudentGroupForm = new DynamicForm();
-        addStudentGroupForm.setWidth100();
-        addStudentGroupForm.setAlign(Alignment.CENTER);
+        dynamicForm = new DynamicForm();
+        dynamicForm.setWidth100();
+        dynamicForm.setAlign(Alignment.CENTER);
 
-        createAddStudentGroupElements();
-
-        addItem(addStudentGroupForm);
-        addItem(createButtons());
-
-        centerInPage();
+        createDynamicFormItems();
 
         addItem(dynamicForm);
         addItem(createButtons());
@@ -41,33 +36,57 @@ public class AddStudentGroupWindow extends Window {
         centerInPage();
     }
 
-    private void createAddStudentGroupElements() {
+    private void createDynamicFormItems() {
         TextItem name = new TextItem("name", AllString.name);
         name.setRequired(true);
         formItems.add(name);
 
-        DateItem from = new DateItem();
-        from.setTitle("Start");
-        from.setUseTextField(true);
-        from.setHint("<nobr>Direct date input</nobr>");
+        DateItem startDate = new DateItem();
+        startDate.setTitle("Początek");
+        startDate.setUseTextField(true);
+        formItems.add(startDate);
 
+        DateItem endDate = new DateItem();
+        endDate.setTitle("Koniec");
+        endDate.setUseTextField(true);
+        formItems.add(endDate);
+
+        dynamicForm.setFields(name, startDate, endDate);
     }
 
     private Canvas createButtons() {
         Canvas buttonCanvas = new Canvas();
 
-        IButton closeButton = new IButton();
-        closeButton = new IButton();
-        closeButton.setTop(10);
-        closeButton.setWidth(80);
-        closeButton.setTitle(AllString.closeButtonText);
-        closeButton.addClickHandler(new CloseButton_ClickHandler());
-        buttonCanvas.addChild(closeButton);
+        IButton saveButton = new IButton();
+        saveButton.setTop(10);
+        saveButton.setWidth(80);
+        saveButton.setTitle(AllString.saveButtonText);
+        saveButton.addClickHandler(new SaveButton_ClickHandler());
+        buttonCanvas.addChild(saveButton);
 
+        IButton saveAndCloseButton = new IButton();
+        saveAndCloseButton.setTop(saveButton.getTop());
+        saveAndCloseButton.setWidth(saveButton.getWidth());
+        saveAndCloseButton.setLeft(saveButton.getLeft() + saveAndCloseButton.getWidth() + 10);
+        saveAndCloseButton.setTitle(AllString.saveAndCloseButtonText);
+        saveAndCloseButton.addClickHandler(new SaveAndCloseButton_ClickHandler());
+        buttonCanvas.addChild(saveAndCloseButton);
+       
         return buttonCanvas;
     }
 
-    private class CloseButton_ClickHandler implements ClickHandler {
+    private class SaveButton_ClickHandler implements ClickHandler {
+
+        @Override
+        public void onClick(ClickEvent event) {
+            for (FormItem formItem : formItems) {
+                formItem.clearValue();
+            }
+        }
+
+    }
+
+    private class SaveAndCloseButton_ClickHandler implements ClickHandler {
 
         @Override
         public void onClick(ClickEvent event) {
