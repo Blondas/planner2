@@ -3,14 +3,13 @@ package pl.edu.agh.planner.client.applayout.menu.menu_windows;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.IButton;
-import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Window;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import pl.edu.agh.planner.shared.AllString;
 
-public class AddSubjectWindow extends Window {
-    public AddSubjectWindow() {
+public class AddProgrammeUnitWindow extends Window {
+    public AddProgrammeUnitWindow() {
         setWidth(400);
 //        setHeight(400);
         setAlign(Alignment.CENTER);
@@ -19,20 +18,10 @@ public class AddSubjectWindow extends Window {
 
         setCanDragResize(false);
 
-//        addItem(createLogo());
         addItem(createText());
         addItem(createButtons());
 
         centerInPage();
-    }
-
-    private Img createLogo() {
-        //TODO: logo do podmiany
-        Img img = new Img("http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg");
-        img.setHeight(300);
-        img.setWidth(400);
-
-        return img;
     }
 
     private Canvas createText() {
@@ -65,7 +54,7 @@ public class AddSubjectWindow extends Window {
 
         @Override
         public void onClick(ClickEvent event) {
-            AddSubjectWindow.this.destroy();
+            AddProgrammeUnitWindow.this.destroy();
         }
 
     }

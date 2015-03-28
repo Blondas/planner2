@@ -10,7 +10,8 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddSubjectWindow;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddStudentGroupWindow;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddProgrammeUnitWindow;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -58,7 +59,6 @@ class MainMenuBar extends RibbonBar {
 		addSubject.setRowHeight(GROUP_ROW_HEIGHT);
 		addSubject.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
 		addSubject.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
-		addSubject.addControl(createIconButton(AllString.addSubject, "addSubject", false, new AddSubjectWindow_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -69,7 +69,24 @@ class MainMenuBar extends RibbonBar {
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
 		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
-		addMembers(artifactGroup, viewGroup, optionGroup, addSubject, userActions);
+
+		// Agregat:
+		RibbonGroup aggregateGroup = new RibbonGroup();
+		ribbonGroups.add(aggregateGroup);
+		aggregateGroup.setTitle(AllString.aggregateGroupTitle);
+		aggregateGroup.setTitleAlign(Alignment.LEFT);
+		aggregateGroup.setNumRows(3);
+		aggregateGroup.setRowHeight(GROUP_ROW_HEIGHT);
+
+		aggregateGroup.addControl(createIconButton(AllString.addStudentGroup, "authors",
+				false, new AddStudentGroupWindow_ClickHandler()));
+		aggregateGroup.addControl(createIconButton(AllString.addProgrammeUnit, "addProgrammeUnit",
+				false, new AddProgrammeUnitWindow_ClickHandler()));
+		aggregateGroup.addControl(createIconButton(AllString.addAvatar, "addAvatar",
+				false, new AddProgrammeUnitWindow_ClickHandler()));
+
+
+		addMembers(artifactGroup, viewGroup, optionGroup, addSubject, userActions, aggregateGroup);
 
 		setLeft(0);
 		setWidth100();
@@ -148,11 +165,20 @@ class MainMenuBar extends RibbonBar {
 
 	}
 
-	private class AddSubjectWindow_ClickHandler implements ClickHandler {
+	private class AddProgrammeUnitWindow_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			RootPanel.get().add(new AddSubjectWindow());
+			RootPanel.get().add(new AddProgrammeUnitWindow());
+		}
+
+	}
+
+	private class AddStudentGroupWindow_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			RootPanel.get().add(new AddStudentGroupWindow());
 		}
 
 	}

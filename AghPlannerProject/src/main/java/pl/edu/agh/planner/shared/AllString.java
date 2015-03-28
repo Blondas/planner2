@@ -20,7 +20,6 @@ public class AllString {
 
 	public static String aboutProgram = "Programie";
 	public static String aboutAuthors = "Autorach";
-	public static String addSubject = "Dodaj Przedmiot";
 
 	public static String addItem1 = "Item1";
 	public static String addItem2 = "Item2";
@@ -37,7 +36,7 @@ public class AllString {
 	public static String login = "Login";
 	public static String password = "Hasło";
 
-	public static String name = "Imię";
+	public static String firstName = "Imię";
 	public static String surname = "Nazwisko";
 	public static String mainAddress = "Email";
 	public static String dateOfBirth = "Data urodzin";
@@ -54,4 +53,11 @@ public class AllString {
 	public static String exceptionMessage = "Nieprawidłowy argument";
 
 	public static String mailValidatorMessage = "Nieprawidłowy format adresu mail";
+
+	public static String aggregateGroupTitle = "Agregat";
+
+	public static String addStudentGroup = "Dodaj grupę studencką";
+	public static String addAvatar = "Dodaj Awatar";
+	public static String addProgrammeUnit = "Dodaj Jednostkę programu studiów";
+	public static String name = "Nazwa";
 }
