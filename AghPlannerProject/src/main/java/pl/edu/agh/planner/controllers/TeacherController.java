@@ -3,6 +3,8 @@ package pl.edu.agh.planner.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.agh.planner.hibernate.dao.TeacherDao;
+import pl.edu.agh.planner.hibernate.entity.Teacher;
 import pl.edu.agh.planner.service.TeacherService;
 import pl.edu.agh.planner.shared.TeacherJson;
 
@@ -28,10 +30,12 @@ public class TeacherController {
 
 
     @RequestMapping(value = "**/" + "dupa.json", method = RequestMethod.POST)
-    public @ResponseBody TeacherJson saveTeacher(@RequestBody TeacherJson teacher){
+    public @ResponseBody Teacher saveTeacher(@RequestBody Teacher teacher){
         System.out.println(teacher);
 
-        teacherService.save(teacher);
+        TeacherDao dao = new TeacherDao();
+        dao.add(teacher);
+//        teacherService.save(teacher);
 
         return teacher;
     }
