@@ -10,8 +10,9 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddStudentGroupWindow;
 import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddProgrammeUnitWindow;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddStudentGroupWindow;
+import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddTeacherWindow;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -84,6 +85,8 @@ class MainMenuBar extends RibbonBar {
 				false, new AddProgrammeUnitWindow_ClickHandler()));
 		aggregateGroup.addControl(createIconButton(AllString.addAvatar, "addAvatar",
 				false, new AddProgrammeUnitWindow_ClickHandler()));
+		aggregateGroup.addControl(createIconButton(AllString.addTeacher, "addTeacher",
+				false, new AddTeacherWindow_ClickHandler()));
 
 
 		addMembers(artifactGroup, viewGroup, optionGroup, addSubject, userActions, aggregateGroup);
@@ -179,6 +182,15 @@ class MainMenuBar extends RibbonBar {
 		@Override
 		public void onClick(ClickEvent event) {
 			RootPanel.get().add(new AddStudentGroupWindow());
+		}
+
+	}
+
+	private class AddTeacherWindow_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			RootPanel.get().add(new AddTeacherWindow());
 		}
 
 	}

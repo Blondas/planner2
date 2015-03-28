@@ -62,4 +62,5 @@ public class AllString {
 	public static String addAvatar = "Dodaj Awatar";
 	public static String addProgrammeUnit = "Dodaj Jednostkę programu studiów";
 	public static String name = "Nazwa";
+	public static String addTeacher = "Dodaj Prowadzącego";
 }
