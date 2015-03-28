@@ -27,13 +27,13 @@ public class TeacherController {
     }
 
 
-    @RequestMapping(value = "**/" + "dupa.json", method = RequestMethod.POST, consumes ="text/html", produces = "application/json")
-    public String saveTeacher(@RequestBody String string){
-        System.out.println(string);
+    @RequestMapping(value = "**/" + "dupa.json", method = RequestMethod.POST)
+    public @ResponseBody TeacherJson saveTeacher(@RequestBody TeacherJson teacher){
+        System.out.println(teacher);
 
-//        teacherService.save(teacherJson);
+        teacherService.save(teacher);
 
-        return "KURWO DZIALAJ"+string.toString();
+        return teacher;
     }
 
 }
