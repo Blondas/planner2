@@ -90,7 +90,7 @@ class HelpPanel extends Window {
 		dynamicForm.setWidth100();
 		dynamicForm.setAlign(Alignment.CENTER);
 
-		TextItem firstName = new TextItem("firstName", AllString.name);
+		TextItem firstName = new TextItem("firstName", AllString.firstName);
 		firstName.setMask(">?<??????????????");
 		formItems.add(firstName);
 
