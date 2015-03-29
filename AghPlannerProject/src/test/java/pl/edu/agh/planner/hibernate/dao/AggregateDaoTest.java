@@ -2,8 +2,6 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.junit.Test;
 
-import static org.testng.Assert.*;
-
 public class AggregateDaoTest {
 
 	@Test

@@ -2,9 +2,11 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.hibernate.entity.ConcreteDateTemplate;
 import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
+@Component("concreteDateTemplateDao")
 public class ConcreteDateTemplateDao extends GenericQuery {
 
     public ConcreteDateTemplate getById (int id) {

@@ -2,10 +2,11 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.hibernate.entity.StudentGroup;
 import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
-
+@Component("studentGroupDao")
 public class StudentGroupDao extends GenericQuery {
 
     public StudentGroup getById (int id) {

@@ -4,6 +4,7 @@ import org.junit.Test;
 import pl.edu.agh.planner.hibernate.entity.ProgrammeUnit;
 import pl.edu.agh.planner.hibernate.entity.ProgrammeUnitType;
 
+
 public class ProgrammeUnitDaoTest {
 
 

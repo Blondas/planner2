@@ -3,7 +3,6 @@ package pl.edu.agh.planner.hibernate.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @Entity

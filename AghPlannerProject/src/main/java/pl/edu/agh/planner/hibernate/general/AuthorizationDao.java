@@ -1,4 +1,4 @@
-package pl.edu.agh.planner.hibernate.dao.general;
+package pl.edu.agh.planner.hibernate.general;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

@@ -2,8 +2,10 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
+@Component("concreteLessonDao")
 public class ConcreteLessonDao extends GenericQuery {
 
     public ConcreteLessonDao getById (int id) {
