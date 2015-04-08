@@ -13,4 +13,47 @@
         <servlet-name>pl.edu.agh.planner.Planner PlannerService</servlet-name>
         <url-pattern>/Planner/PlannerService</url-pattern>
     </servlet-mapping>
+
+
+
+    <!-- Spring classical web application context declaration -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+        <!--<param-value>-->
+            <!--classpath:daoContext.xml-->
+            <!--classpath:serviceContext.xml-->
+            <!--classpath:controllerContext.xml-->
+        <!--</param-value>-->
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Spring MVC Servlet declaration -->
+    <servlet>
+        <servlet-name>springMVCServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--<param-value>classpath:jsonMvc.xml</param-value>-->
+            <param-value>
+                classpath:jsonMvc.xml
+                classpath:daoContext.xml
+                classpath:serviceContext.xml
+                classpath:controllerContext.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Spring MVC Servlet mapping -->
+    <servlet-mapping>
+        <servlet-name>springMVCServlet</servlet-name>
+        <!--<url-pattern>*.json</url-pattern>-->
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

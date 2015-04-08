@@ -1,4 +1,4 @@
-package pl.edu.agh.planner.hibernate.entity.dictionary;
+package pl.edu.agh.planner.hibernate.entity;
 
 import lombok.Data;
 
@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Dictionary {
+public class Department {
+
+
     @Id
     @GeneratedValue
     @Column(name = "d_id")
@@ -15,7 +17,4 @@ public class Dictionary {
     @Column(name = "d_name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "d_dictionary_name_id")
-    private DictionaryName dictionaryName;
 }

@@ -28,10 +28,13 @@
         <mapping class="pl.edu.agh.planner.hibernate.entity.ClassroomHour"/>
 
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.Authorization"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.general.AuthorizationType"/>
         <mapping class="pl.edu.agh.planner.hibernate.entity.general.User"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Department"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.LetterDesignation"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.Faculty"/>
+        <mapping class="pl.edu.agh.planner.hibernate.entity.ProgrammeUnitType"/>
 
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary"/>
-        <mapping class="pl.edu.agh.planner.hibernate.entity.dictionary.DictionaryName"/>
 
     </session-factory>
 </hibernate-configuration>
