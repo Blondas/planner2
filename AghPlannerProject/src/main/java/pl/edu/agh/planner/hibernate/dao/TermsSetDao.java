@@ -2,10 +2,11 @@ package pl.edu.agh.planner.hibernate.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.hibernate.entity.TermsSet;
 import pl.edu.agh.planner.hibernate.utils.GenericQuery;
 
-
+@Component("termsSetDao")
 public class TermsSetDao extends GenericQuery {
 
     public TermsSet getById (int id) {

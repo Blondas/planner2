@@ -39,7 +39,7 @@ public class AddNewConductor extends Window {
 	}
 
 	private void createTextItems() {
-		TextItem firstName = new TextItem("firstName", AllString.name);
+		TextItem firstName = new TextItem("firstName", AllString.firstName);
 		firstName.setRequired(true);
 		formItems.add(firstName);
 

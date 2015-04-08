@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public abstract class GenericQuery {
-    private Transaction transaction = null;
+    protected Transaction transaction = null;
     protected Session session;
 
 
@@ -38,7 +38,11 @@ public abstract class GenericQuery {
         e.printStackTrace();
     }
 
-    public Session getSession()
-    {
-        return session;}
+    public Session getSession(){
+        return session;
+    }
+
+    public Transaction getTransaction(){
+        return transaction;
+    }
 }

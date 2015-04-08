@@ -1,7 +1,6 @@
 package pl.edu.agh.planner.hibernate.entity.general;
 
 import lombok.Data;
-import pl.edu.agh.planner.hibernate.entity.dictionary.Dictionary;
 
 import javax.persistence.*;
 
@@ -14,8 +13,8 @@ public class Authorization {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "a_type")
-    private Dictionary type;
+    @JoinColumn(name = "a_type_id")
+    private AuthorizationType type;
 
     @ManyToOne
     @JoinColumn(name = "a_user_id")

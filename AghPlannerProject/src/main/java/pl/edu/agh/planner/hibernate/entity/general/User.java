@@ -10,17 +10,17 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "us_id")
+    @Column(name = "u_id")
     private int id;
 
-    @Column(name = "us_login")
+    @Column(name = "u_login")
     private String login;
 
-    @Column(name = "us_password")
+    @Column(name = "u_password")
     private String password;
 
     //TODO: crete setter
-    @Column(name = "us_password_md5")
+    @Column(name = "u_password_md5")
     private String passwordMd5;
 
     @OneToMany(mappedBy = "user")
