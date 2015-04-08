@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.shared;
 
-public enum UserEnum {
+public enum UserLoginStatusEnum {
 
 	LOGGED, NOT_LOGGED
 

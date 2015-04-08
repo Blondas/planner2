@@ -10,7 +10,7 @@ public class User implements Serializable, IsSerializable {
 	private String login;
 	private String password;
 	private String passwordMd5;
-	private UserEnum userStatus;
+	private UserLoginStatusEnum userStatus;
 
 	public int getId() {
 		return id;
@@ -44,11 +44,11 @@ public class User implements Serializable, IsSerializable {
 		this.passwordMd5 = passwordMd5;
 	}
 
-	public UserEnum getUserStatus() {
+	public UserLoginStatusEnum getUserStatus() {
 		return userStatus;
 	}
 
-	public void setUserStatus(UserEnum userStatus) {
+	public void setUserStatus(UserLoginStatusEnum userStatus) {
 		this.userStatus = userStatus;
 	}
 
