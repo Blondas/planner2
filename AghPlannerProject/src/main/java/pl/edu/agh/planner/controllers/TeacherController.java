@@ -19,14 +19,16 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-    @RequestMapping(value = "**/" + "jsonStockPrices.json", method = RequestMethod.GET, produces = "application/json")
+//    @RequestMapping(value = "**/" + "jsonStockPrices.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/jsonStockPrices", method = RequestMethod.POST)
     public String saveTeacher(){
+        System.out.println("UDERZYLISMY DO KONTROLERA");
         TeacherJson teacherJson = new TeacherJson();
         teacherJson.setLastname("dupa2222");
         teacherJson.setName("dupa3333");
         teacherService.save(teacherJson);
 
-        return "ALA MA KOTA HURAaaaaaaaaaaaaaaaa teacher ";
+        return "ALA MA KOTA HURAaaaaaaaaaaaaaaaa ";
     }
 
 
