@@ -1,20 +1,16 @@
 package pl.edu.agh.planner.client;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import pl.edu.agh.planner.server.hibernate.entity.TeacherEntity;
+import pl.edu.agh.planner.shared.Teacher;
+
+import java.util.ArrayList;
 
 @RemoteServiceRelativePath("PlannerService")
 public interface PlannerService extends RemoteService {
-	/**
-	 * Utility/Convenience class.
-	 * Use PlannerService.App.getInstance() to access static instance of PlannerServiceAsync
-	 */
-	public static class App {
-		private static PlannerServiceAsync ourInstance = GWT.create(PlannerService.class);
 
-		public static synchronized PlannerServiceAsync getInstance() {
-			return ourInstance;
-		}
-	}
+	public ArrayList<Teacher> getTeachers();
+
+	public TeacherEntity getTestTeachers();
 }

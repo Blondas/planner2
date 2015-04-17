@@ -6,11 +6,11 @@
            version="3.0">
 
     <servlet>
-        <servlet-name>pl.edu.agh.planner.Planner PlannerService</servlet-name>
+        <servlet-name>PlannerService</servlet-name>
         <servlet-class>pl.edu.agh.planner.server.PlannerServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>pl.edu.agh.planner.Planner PlannerService</servlet-name>
+        <servlet-name>PlannerService</servlet-name>
         <url-pattern>/Planner/PlannerService</url-pattern>
     </servlet-mapping>
 
@@ -47,12 +47,12 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- Spring MVC Servlet mapping -->
-    <servlet-mapping>
-        <servlet-name>springMVCServlet</servlet-name>
-        <!--<url-pattern>*.json</url-pattern>-->
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; Spring MVC Servlet mapping &ndash;&gt;-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>springMVCServlet</servlet-name>-->
+        <!--&lt;!&ndash;<url-pattern>*.json</url-pattern>&ndash;&gt;-->
+        <!--<url-pattern>/rest/*</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 
 

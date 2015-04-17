@@ -1,6 +1,5 @@
 package pl.edu.agh.planner.client.applayout.loginpanel;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;

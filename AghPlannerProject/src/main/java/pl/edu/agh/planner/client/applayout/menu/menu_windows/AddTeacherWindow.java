@@ -10,7 +10,6 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
-import pl.edu.agh.planner.hibernate.entity.Teacher;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -86,9 +85,9 @@ public class AddTeacherWindow extends Window {
 //            RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 //            System.out.println(firstName.getEnteredValue());
 //            System.out.println(lastName.getEnteredValue());
-            Teacher teacher = new Teacher();
-            teacher.setName(firstName.getEnteredValue());
-            teacher.setName(lastName.getEnteredValue());
+//            Teacher teacher = new Teacher();
+//            teacher.setName(firstName.getEnteredValue());
+//            teacher.setName(lastName.getEnteredValue());
 
 //            String teacherJson = JsonFactory.serializeTeacherToJson(teacher);
 
