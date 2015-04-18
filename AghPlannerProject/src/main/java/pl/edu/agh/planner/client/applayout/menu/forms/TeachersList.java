@@ -31,7 +31,7 @@ public class TeachersList extends Window {
 		listGrid.setCanResizeFields(true);
 		listGrid.setData(new TeacherDataLoader().getTeacherRecords());
 
-		addItem(listGrid); //test
+		addItem(listGrid);
 
 		show();
 		centerInPage();
