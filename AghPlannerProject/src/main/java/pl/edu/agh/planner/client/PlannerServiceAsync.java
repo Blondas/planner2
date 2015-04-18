@@ -1,17 +1,19 @@
 package pl.edu.agh.planner.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import pl.edu.agh.planner.server.hibernate.entity.TeacherEntity;
 import pl.edu.agh.planner.shared.Teacher;
+import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The client side stub for the RPC service.
  */
 public interface PlannerServiceAsync {
 
-	public void getTeachers(AsyncCallback<ArrayList<Teacher>> async);
+	void getTeachersList(AsyncCallback<List<Teacher>> async);
 
-	void getTestTeachers(AsyncCallback<TeacherEntity> async);
+	void deleteTeacher(Teacher teacher, AsyncCallback<Void> async);
+
+	void addTeacher(Teacher teacher, AsyncCallback<Void> async);
 }

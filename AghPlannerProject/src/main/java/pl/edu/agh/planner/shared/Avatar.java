@@ -6,7 +6,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Set;
 
-@Data
 public class Avatar implements IsSerializable, Serializable {
 
 	private int id;
@@ -18,4 +17,35 @@ public class Avatar implements IsSerializable, Serializable {
 
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getName() {
+		return name;
+	}
+
+	public void setName(int name) {
+		this.name = name;
+	}
+
+	public Set<Aggregate> getAggregates() {
+		return aggregates;
+	}
+
+	public void setAggregates(Set<Aggregate> aggregates) {
+		this.aggregates = aggregates;
+	}
+
+	public Set<Teacher> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<Teacher> teachers) {
+		this.teachers = teachers;
+	}
 }

@@ -14,26 +14,26 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
 
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ConcreteDateEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ConcreteDateTemplateEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.TermsSetEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ConcreteLessonEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.AggregateEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ScheduleEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.AvatarEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ProgrammeUnitEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.StudentGroupEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.TeacherEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ClassroomEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ClassroomHourEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ConcreteDateEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ConcreteDateTemplateEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.TermsSetEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ConcreteLessonEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.AggregateEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ScheduleEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ProgrammeUnitEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.StudentGroupEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ClassroomEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ClassroomHourEntity"/>
 
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.AuthorizationEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.AuthorizationTypeEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.UserEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.DepartmentEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.LetterDesignationEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.FacultyEntity"/>
-        <mapping class="pl.edu.agh.planner.server.hibernate.entity.ProgrammeUnitTypeEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.AuthorizationEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.AuthorizationTypeEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.UserEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.DepartmentEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.LetterDesignationEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.FacultyEntity"/>
+        <mapping class="pl.edu.agh.planner.shared.hibernate.entity.ProgrammeUnitTypeEntity"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -17,35 +17,35 @@
 
 
     <!-- Spring classical web application context declaration -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-        <!--<param-value>-->
-            <!--classpath:daoContext.xml-->
-            <!--classpath:serviceContext.xml-->
-            <!--classpath:controllerContext.xml-->
-        <!--</param-value>-->
-    </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath:applicationContext.xml</param-value>-->
+        <!--&lt;!&ndash;<param-value>&ndash;&gt;-->
+            <!--&lt;!&ndash;classpath:daoContext.xml&ndash;&gt;-->
+            <!--&lt;!&ndash;classpath:serviceContext.xml&ndash;&gt;-->
+            <!--&lt;!&ndash;classpath:controllerContext.xml&ndash;&gt;-->
+        <!--&lt;!&ndash;</param-value>&ndash;&gt;-->
+    <!--</context-param>-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
 
-    <!-- Spring MVC Servlet declaration -->
-    <servlet>
-        <servlet-name>springMVCServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <!--<param-value>classpath:jsonMvc.xml</param-value>-->
-            <param-value>
-                classpath:jsonMvc.xml
-                classpath:daoContext.xml
-                classpath:serviceContext.xml
-                classpath:controllerContext.xml
-            </param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+    <!--&lt;!&ndash; Spring MVC Servlet declaration &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>springMVCServlet</servlet-name>-->
+        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--&lt;!&ndash;<param-value>classpath:jsonMvc.xml</param-value>&ndash;&gt;-->
+            <!--<param-value>-->
+                <!--classpath:jsonMvc.xml-->
+                <!--classpath:daoContext.xml-->
+                <!--classpath:serviceContext.xml-->
+                <!--classpath:controllerContext.xml-->
+            <!--</param-value>-->
+        <!--</init-param>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
 
     <!--&lt;!&ndash; Spring MVC Servlet mapping &ndash;&gt;-->
     <!--<servlet-mapping>-->
