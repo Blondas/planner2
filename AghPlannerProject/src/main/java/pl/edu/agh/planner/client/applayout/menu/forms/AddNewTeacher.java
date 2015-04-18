@@ -1,6 +1,8 @@
 package pl.edu.agh.planner.client.applayout.menu.forms;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Window;
@@ -9,18 +11,19 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import pl.edu.agh.planner.client.Context;
 import pl.edu.agh.planner.client.common.validators.MailAddressValidator;
 import pl.edu.agh.planner.shared.AllString;
-import pl.edu.agh.planner.shared.Conductor;
+import pl.edu.agh.planner.shared.Teacher;
 
 import java.util.ArrayList;
 
-public class AddNewConductor extends Window {
+public class AddNewTeacher extends Window {
 
 	private ArrayList<FormItem> formItems = new ArrayList<FormItem>();
 	private DynamicForm dynamicForm = null;
 
-	public AddNewConductor() {
+	public AddNewTeacher() {
 		setTitle(AllString.addNewConductorWindowTitle);
 		setWidth(350);
 		setHeight(200);
@@ -43,7 +46,7 @@ public class AddNewConductor extends Window {
 		firstName.setRequired(true);
 		formItems.add(firstName);
 
-		TextItem surname = new TextItem("lastName", AllString.surname);
+		TextItem surname = new TextItem("lastName", AllString.lastname);
 		surname.setRequired(true);
 		formItems.add(surname);
 
@@ -95,12 +98,22 @@ public class AddNewConductor extends Window {
 		public void onClick(ClickEvent event) {
 			try {
 				if (dynamicForm.validate(false)) {
-					Conductor conductor = new Conductor();
-					conductor.setFirstName(formItems.get(0).getValue().toString());
-					conductor.setLastName(formItems.get(1).getValue().toString());
-					conductor.setMailAddress(formItems.get(2).getValue().toString());
+					Teacher teacher = new Teacher();
+					teacher.setName(formItems.get(0).getValue().toString());
+					teacher.setLastName(formItems.get(1).getValue().toString());
+					teacher.setEmailAddress(formItems.get(2).getValue().toString());
 
-					//TODO: dodac przekazanie prowadzacego dalej.
+					Context.getInstance().getPlannerServiceAsync().addTeacher(teacher, new AsyncCallback<Void>() {
+						@Override
+						public void onFailure(Throwable caught) {
+							caught.printStackTrace();
+						}
+
+						@Override
+						public void onSuccess(Void result) {
+							SC.say(AllString.addNewTeacherSuccesful);
+						}
+					});
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

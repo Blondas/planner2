@@ -41,4 +41,11 @@ public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerS
 		return teacherList;
 	}
 
+	@Override
+	public Teacher findById(int id) {
+		TeacherEntity teacherEntity = new TeacherDbConnector().findById(id);
+
+		return new Teacher(teacherEntity);
+	}
+
 }

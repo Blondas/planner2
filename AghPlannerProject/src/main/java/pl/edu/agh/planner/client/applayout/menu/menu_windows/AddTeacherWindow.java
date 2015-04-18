@@ -1,6 +1,5 @@
 package pl.edu.agh.planner.client.applayout.menu.menu_windows;
 
-import com.google.gwt.core.client.GWT;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.IButton;
@@ -19,7 +18,6 @@ public class AddTeacherWindow extends Window {
     private TextItem firstName;
     private TextItem lastName;
     private DynamicForm dynamicForm = null;
-    private static final String TEACHER_ADD = GWT.getModuleBaseURL() + "dupa.json";
 
     public AddTeacherWindow() {
         setTitle(AllString.addTeacher);
@@ -45,7 +43,7 @@ public class AddTeacherWindow extends Window {
 
         formItems.add(firstName);
 
-        lastName = new TextItem("lastName", AllString.surname);
+        lastName = new TextItem("lastName", AllString.lastname);
         lastName.setRequired(true);
         formItems.add(lastName);
 

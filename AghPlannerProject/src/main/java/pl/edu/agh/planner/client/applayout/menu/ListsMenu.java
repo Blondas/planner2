@@ -5,6 +5,7 @@ import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.menu.MenuItem;
 import com.smartgwt.client.widgets.menu.events.ClickHandler;
 import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
+import pl.edu.agh.planner.client.applayout.menu.forms.TeachersList;
 import pl.edu.agh.planner.shared.AllString;
 
 class ListsMenu extends Menu {
@@ -36,7 +37,7 @@ class ListsMenu extends Menu {
 
 		@Override
 		public void onClick(MenuItemClickEvent event) {
-			SC.say("Dostępne już niebawem.");
+			new TeachersList();
 		}
 
 	}

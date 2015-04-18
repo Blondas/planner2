@@ -37,7 +37,7 @@ public class AllString {
 	public static String password = "Hasło";
 
 	public static String firstName = "Imię";
-	public static String surname = "Nazwisko";
+	public static String lastname = "Nazwisko";
 	public static String mainAddress = "Email";
 	public static String dateOfBirth = "Data urodzin";
 
@@ -51,6 +51,9 @@ public class AllString {
 
 	public static String addNewConductorTitle = "Prowadzącego";
 	public static String addNewConductorWindowTitle = "Dodaj prowadzącego";
+	public static String addNewTeacherSuccesful = "Nowy prowadzący został dodany pozytywnie.";
+
+	public static String teacherListTitle = "Lista prowadzących";
 
 	public static String exceptionMessage = "Nieprawidłowy argument";
 

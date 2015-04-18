@@ -11,6 +11,7 @@ public class Teacher implements IsSerializable, Serializable {
 	private int id;
 	private String name;
 	private String lastName;
+	private String emailAddress;
 	private Avatar avatar;
 
 	public Teacher() {
@@ -46,6 +47,14 @@ public class Teacher implements IsSerializable, Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 	public Avatar getAvatar() {

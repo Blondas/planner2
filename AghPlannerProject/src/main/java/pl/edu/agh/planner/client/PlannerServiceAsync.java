@@ -16,4 +16,6 @@ public interface PlannerServiceAsync {
 	void deleteTeacher(Teacher teacher, AsyncCallback<Void> async);
 
 	void addTeacher(Teacher teacher, AsyncCallback<Void> async);
+
+	void findById(int id, AsyncCallback<Teacher> async);
 }

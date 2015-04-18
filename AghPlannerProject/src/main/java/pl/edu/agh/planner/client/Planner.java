@@ -19,7 +19,6 @@ public class Planner implements EntryPoint {
 
 	public void onModuleLoad() {
 		RootPanel.get().add(LoginPanelPlanner.getInstance());
-
 	}
 
 }

@@ -4,7 +4,7 @@ import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.menu.MenuItem;
 import com.smartgwt.client.widgets.menu.events.ClickHandler;
 import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
-import pl.edu.agh.planner.client.applayout.menu.forms.AddNewConductor;
+import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
 import pl.edu.agh.planner.shared.AllString;
 
 class ArtifactsMenu extends Menu {
@@ -30,7 +30,7 @@ class ArtifactsMenu extends Menu {
 
 		@Override
 		public void onClick(MenuItemClickEvent event) {
-			new AddNewConductor();
+			new AddNewTeacher();
 		}
 
 	}

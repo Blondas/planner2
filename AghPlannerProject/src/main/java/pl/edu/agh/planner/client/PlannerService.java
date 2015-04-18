@@ -14,5 +14,6 @@ public interface PlannerService extends RemoteService {
 	public void addTeacher(Teacher teacher);
 	public void deleteTeacher(Teacher teacher);
 	public List<Teacher> getTeachersList();
+	public Teacher findById(int id);
 
 }
