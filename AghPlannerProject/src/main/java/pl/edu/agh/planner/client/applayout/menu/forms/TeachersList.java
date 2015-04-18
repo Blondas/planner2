@@ -9,7 +9,7 @@ import pl.edu.agh.planner.client.Context;
 import pl.edu.agh.planner.shared.AllString;
 import pl.edu.agh.planner.shared.Teacher;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeachersList extends Window {
@@ -29,7 +29,7 @@ public class TeachersList extends Window {
 
 		listGrid.setFields(namesListGridField, lastnamesListGridField);
 		listGrid.setCanResizeFields(true);
-
+		listGrid.setData(new TeacherDataLoader().getTeacherRecords());
 
 		addItem(listGrid);
 
@@ -37,12 +37,11 @@ public class TeachersList extends Window {
 		centerInPage();
 	}
 
-	private class TeacherRecord extends ListGridRecord {
+	private class TeacherDataLoader {
 
+		private List<TeacherRecord> teacherRecordList = new ArrayList<TeacherRecord>();
 
-
-		public TeacherRecord() {
-
+		public TeacherDataLoader() {
 			Context.getInstance().getPlannerServiceAsync().getTeachersList(new AsyncCallback<List<Teacher>>() {
 				@Override
 				public void onFailure(Throwable caught) {
@@ -52,15 +51,42 @@ public class TeachersList extends Window {
 				@Override
 				public void onSuccess(List<Teacher> result) {
 					for (Teacher teacher : result) {
+						TeacherRecord teacherRecord = new TeacherRecord();
+						teacherRecord.setNameAttribute(teacher.getName());
+						teacherRecord.setLastnameAttribute(teacher.getLastName());
 
-
+						teacherRecordList.add(teacherRecord);
 					}
 				}
 			});
-			
+
 		}
 
+		public TeacherRecord[] getTeacherRecords() {
+			return teacherRecordList.toArray(new TeacherRecord[teacherRecordList.size()]);
+		}
 
+	}
+
+	private class TeacherRecord extends ListGridRecord {
+
+
+		public TeacherRecord() {
+
+		}
+
+		public TeacherRecord(String name, String lastname) {
+			setNameAttribute(name);
+			setLastnameAttribute(lastname);
+		}
+
+		public void setNameAttribute(String name) {
+			setAttribute("names", name);
+		}
+
+		public void setLastnameAttribute(String lastname) {
+			setAttribute("lastnames", lastname);
+		}
 
 	}
 
