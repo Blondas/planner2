@@ -14,10 +14,13 @@ import java.util.List;
 
 public class TeachersList extends Window {
 
+	private TeacherDataLoader teacherDataLoader = new TeacherDataLoader();
+
 	public TeachersList() {
 		setTitle(AllString.teacherListTitle);
 		setWidth(350);
 		setHeight(200);
+
 
 		final ListGrid listGrid = new ListGrid();
 		listGrid.setWidth100();
@@ -29,7 +32,7 @@ public class TeachersList extends Window {
 
 		listGrid.setFields(namesListGridField, lastnamesListGridField);
 		listGrid.setCanResizeFields(true);
-		listGrid.setData(new TeacherDataLoader().getTeacherRecords());
+		listGrid.setData(teacherDataLoader.getTeacherRecords());
 
 		addItem(listGrid);
 
