@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.AggregateEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("aggregateDao")
-public class AggregateDao extends GenericQuery {
+import java.util.List;
 
-    public AggregateEntity getById (int id) {
+@Component("aggregateDao")
+public class AggregateDao extends GenericQuery implements DaoInterface<AggregateEntity, Integer>{
+
+    @Override
+    public AggregateEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(AggregateEntity.class);
@@ -21,10 +24,33 @@ public class AggregateDao extends GenericQuery {
         return aggregate;
     }
 
+    @Override
+    public List<AggregateEntity> getList() {
+        beginTransaction();
+        List<AggregateEntity> list = session.createCriteria(AggregateEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(AggregateEntity aggregate) {
         beginTransaction();
         getSession().save(aggregate);
         endTransaction();
+    }
+
+    @Override
+    public void add(List<AggregateEntity> aggregateEntities) {
+        beginTransaction();
+        for ( int i=0; i< aggregateEntities.size(); i++ ) {
+            getSession().save(aggregateEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
+        endTransaction();
+
     }
 
     public void update(AggregateEntity aggregate) {

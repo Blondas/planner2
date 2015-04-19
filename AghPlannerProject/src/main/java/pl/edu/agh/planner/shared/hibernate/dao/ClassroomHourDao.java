@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.ClassroomHourEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("classroomHourDao")
-public class ClassroomHourDao extends GenericQuery {
+import java.util.List;
 
-    public ClassroomHourEntity getById (int id) {
+@Component("classroomHourDao")
+public class ClassroomHourDao extends GenericQuery implements DaoInterface<ClassroomHourEntity, Integer>{
+
+    @Override
+    public ClassroomHourEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(ClassroomHourEntity.class);
@@ -21,9 +24,31 @@ public class ClassroomHourDao extends GenericQuery {
         return classroomHourEntity;
     }
 
+    @Override
+    public List<ClassroomHourEntity> getList() {
+        beginTransaction();
+        List<ClassroomHourEntity> list = session.createCriteria(ClassroomHourEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(ClassroomHourEntity classroomHourEntity) {
         beginTransaction();
         getSession().save(classroomHourEntity);
+        endTransaction();
+    }
+
+    @Override
+    public void add(List<ClassroomHourEntity> classroomHourEntities) {
+        beginTransaction();
+        for ( int i=0; i< classroomHourEntities.size(); i++ ) {
+            getSession().save(classroomHourEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
         endTransaction();
     }
 

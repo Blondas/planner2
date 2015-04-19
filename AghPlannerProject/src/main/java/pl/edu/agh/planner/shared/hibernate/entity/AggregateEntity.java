@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class AggregateEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ag_id")
     private int id;
 

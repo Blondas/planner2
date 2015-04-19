@@ -8,12 +8,11 @@ import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
 import java.util.List;
 
-@Component("TeacherDao")
-public class TeacherDao extends GenericQuery {
+@Component("teacherDao")
+public class TeacherDao extends GenericQuery implements DaoInterface<TeacherEntity, Integer>{
 
-    private final int FULL_BATCH_SIZE = 20;
-
-    public TeacherEntity getById(int id) {
+    @Override
+    public TeacherEntity getById(Integer id) {
         beginTransaction();
 
         Criteria criteria = getSession().createCriteria(TeacherEntity.class);
@@ -33,10 +32,10 @@ public class TeacherDao extends GenericQuery {
         return list;
     }
 
-    public void add(List<TeacherEntity> TeacherEntitys){
+    public void add(List<TeacherEntity> teacherEntitys){
         beginTransaction();
-        for ( int i=0; i<TeacherEntitys.size(); i++ ) {
-            getSession().save(TeacherEntitys.get(i));
+        for ( int i=0; i< teacherEntitys.size(); i++ ) {
+            getSession().save(teacherEntitys.get(i));
             if ( i % FULL_BATCH_SIZE == 0 ) {
                 getSession().flush();
                 getSession().clear();
@@ -45,23 +44,22 @@ public class TeacherDao extends GenericQuery {
         endTransaction();
     }
 
-
-
-    public void add(TeacherEntity TeacherEntity) {
+    public void add(TeacherEntity teacherEntity) {
         beginTransaction();
-        getSession().save(TeacherEntity);
+        getSession().save(teacherEntity);
         endTransaction();
     }
 
-    public void update(TeacherEntity TeacherEntity) {
+    public void update(TeacherEntity teacherEntity) {
         beginTransaction();
-        getSession().update(TeacherEntity);
+        getSession().update(teacherEntity);
         endTransaction();
     }
 
-    public void delete(TeacherEntity TeacherEntity) {
+    public void delete(TeacherEntity teacherEntity) {
         beginTransaction();
-        getSession().delete(TeacherEntity);
+        getSession().delete(teacherEntity);
         endTransaction();
     }
+
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 public class ConcreteDateEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_id")
     private int id;
 

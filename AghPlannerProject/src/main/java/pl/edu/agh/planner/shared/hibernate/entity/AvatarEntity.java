@@ -15,7 +15,7 @@ public class AvatarEntity {
     private int id;
 
     @Column(name = "av_name")
-    private int name;
+    private String name;
 
     @OneToMany(mappedBy = "avatar")
     private Set<AggregateEntity> aggregates;

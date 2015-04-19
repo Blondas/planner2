@@ -7,11 +7,13 @@ public interface ServiceInterface<T, Id extends Serializable> {
 
 	public void add(T entity);
 
+    public void add(List<T> object);
+
 	public void update(T entity);
 
 	public void delete(T entity);
 
-	public T findById(Id id);
+	public T getById(Id id);
 
 	public List<T> getList();
 

@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class ClassroomEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_id")
     private int id;
 

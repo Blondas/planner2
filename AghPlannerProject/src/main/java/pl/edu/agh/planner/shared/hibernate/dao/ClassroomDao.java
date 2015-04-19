@@ -9,11 +9,10 @@ import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 import java.util.List;
 
 @Component("classroomDao")
-public class ClassroomDao extends GenericQuery {
+public class ClassroomDao extends GenericQuery implements DaoInterface<ClassroomEntity, Integer>{
 
-    private final int FULL_BATCH_SIZE = 20;
-
-    public ClassroomEntity getById (int id) {
+    @Override
+    public ClassroomEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(ClassroomEntity.class);

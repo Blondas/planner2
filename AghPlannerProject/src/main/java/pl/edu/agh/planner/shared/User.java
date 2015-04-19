@@ -1,7 +1,6 @@
 package pl.edu.agh.planner.shared;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
 import pl.edu.agh.planner.shared.enums.UserLoginStatusEnum;
 import pl.edu.agh.planner.shared.hibernate.entity.UserEntity;
 

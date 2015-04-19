@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class TeacherEntity implements IsSerializable, Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "t_id")
     private int id;
 
@@ -22,7 +22,8 @@ public class TeacherEntity implements IsSerializable, Serializable {
     @Column(name = "t_last_name")
     private String lastName;
 
-    @ManyToOne
+    // TODO poprawic typy kaskadowosci poprawnie wszedzie
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "t_avatar_id")
     private AvatarEntity avatar;
 
@@ -35,6 +36,11 @@ public class TeacherEntity implements IsSerializable, Serializable {
         this.name = teacher.getName();
         this.lastName = teacher.getLastName();
         //TODO: avatar
+        if(teacher.getAvatar() != null){
+            this.avatar.setId(teacher.getAvatar().getId());
+            this.avatar.setName(teacher.getName());
+        }
+
     }
 
     public int getId() {

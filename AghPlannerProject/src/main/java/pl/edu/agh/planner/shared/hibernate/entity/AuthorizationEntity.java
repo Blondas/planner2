@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class AuthorizationEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "a_id")
     private int id;
 

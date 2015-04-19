@@ -17,5 +17,5 @@ public interface PlannerServiceAsync {
 
 	void addTeacher(Teacher teacher, AsyncCallback<Void> async);
 
-	void findById(int id, AsyncCallback<Teacher> async);
+	void getById(int id, AsyncCallback<Teacher> async);
 }

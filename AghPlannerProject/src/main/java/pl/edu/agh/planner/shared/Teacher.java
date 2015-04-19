@@ -1,7 +1,7 @@
 package pl.edu.agh.planner.shared;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
+import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
 import java.io.Serializable;
@@ -23,6 +23,12 @@ public class Teacher implements IsSerializable, Serializable {
 		this.name = teacherEntity.getName();
 		this.lastName = teacherEntity.getLastName();
 		//TODO: brakuje avatara
+
+//        if(teacherEntity.getAvatar() != null){
+//            AvatarEntity avatarEntity = teacherEntity.getAvatar();
+//            this.avatar.setId(avatarEntity.getId());
+//            this.avatar.setName(avatarEntity.getName());
+//        }
 	}
 
 	public int getId() {

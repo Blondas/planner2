@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("avatarDao")
-public class AvatarDao extends GenericQuery {
+import java.util.List;
 
-    public AvatarEntity getById (int id) {
+@Component("avatarDao")
+public class AvatarDao extends GenericQuery implements DaoInterface<AvatarEntity, Integer>{
+
+    @Override
+    public AvatarEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(AvatarEntity.class);
@@ -21,9 +24,31 @@ public class AvatarDao extends GenericQuery {
         return avatarEntity;
     }
 
+    @Override
+    public List<AvatarEntity> getList() {
+        beginTransaction();
+        List<AvatarEntity> list = session.createCriteria(AvatarEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(AvatarEntity avatarEntity) {
         beginTransaction();
         getSession().save(avatarEntity);
+        endTransaction();
+    }
+
+    @Override
+    public void add(List<AvatarEntity> avatarEntities) {
+        beginTransaction();
+        for ( int i=0; i< avatarEntities.size(); i++ ) {
+            getSession().save(avatarEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
         endTransaction();
     }
 

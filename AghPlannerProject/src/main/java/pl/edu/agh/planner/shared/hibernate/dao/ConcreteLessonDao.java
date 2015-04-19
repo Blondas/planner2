@@ -3,38 +3,71 @@ package pl.edu.agh.planner.shared.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import pl.edu.agh.planner.shared.hibernate.entity.ConcreteLessonEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
+import java.util.List;
+
 @Component("concreteLessonDao")
-public class ConcreteLessonDao extends GenericQuery {
+public class ConcreteLessonDao extends GenericQuery implements DaoInterface<ConcreteLessonEntity, Integer>{
 
-    public ConcreteLessonDao getById (int id) {
+    @Override
+    public ConcreteLessonEntity getById (Integer id) {
         beginTransaction();
 
-        Criteria criteria = session.createCriteria(ConcreteLessonDao.class);
+        Criteria criteria = session.createCriteria(ConcreteLessonEntity.class);
         criteria.add( Restrictions.naturalId().set("id", id)).setCacheable(true);
-        ConcreteLessonDao concreteLessonDao = (ConcreteLessonDao) criteria.uniqueResult();
+        ConcreteLessonEntity concreteLessonEntity = (ConcreteLessonEntity) criteria.uniqueResult();
 
         endTransaction();
 
-        return concreteLessonDao;
+        return concreteLessonEntity;
     }
 
-    public void addConcreteLessonDao (ConcreteLessonDao concreteLessonDao) {
+    @Override
+    public void add(ConcreteLessonEntity concreteLessonEntity) {
         beginTransaction();
-        getSession().save(concreteLessonDao);
+        getSession().save(concreteLessonEntity);
         endTransaction();
     }
 
-    public void updateConcreteLessonDao (ConcreteLessonDao concreteLessonDao) {
+    @Override
+    public void update(ConcreteLessonEntity concreteLessonEntity) {
         beginTransaction();
-        getSession().update(concreteLessonDao);
+        getSession().update(concreteLessonEntity);
         endTransaction();
     }
 
-    public void delete(ConcreteLessonDao concreteLessonDao) {
+    @Override
+    public void delete(ConcreteLessonEntity concreteLessonEntity) {
         beginTransaction();
-        getSession().delete(concreteLessonDao);
+        getSession().delete(concreteLessonEntity);
         endTransaction();
     }
+
+    @Override
+    public List<ConcreteLessonEntity> getList() {
+        beginTransaction();
+        List<ConcreteLessonEntity> list = session.createCriteria(ConcreteLessonEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
+    @Override
+    public void add(List<ConcreteLessonEntity> concreteLessonEntities) {
+        beginTransaction();
+        for ( int i=0; i< concreteLessonEntities.size(); i++ ) {
+            getSession().save(concreteLessonEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
+        endTransaction();
+
+    }
+
+
+
 }

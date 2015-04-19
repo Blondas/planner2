@@ -1,8 +1,5 @@
 package pl.edu.agh.planner.client.applayout.loginpanel;
 
-import com.google.gwt.http.client.*;
-import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.json.client.JSONString;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
@@ -21,8 +18,6 @@ import pl.edu.agh.planner.shared.AllString;
 public class LoginPanelPlanner extends Window {
 
 	private static volatile LoginPanelPlanner instance = null;
-    private static final String JSON_STOCK_PRICES_URL = "rest/jsonStockPrices";
-
 
 	private TextItem loginItem = null;
 	private PasswordItem passwordItem = null;
@@ -133,54 +128,6 @@ public class LoginPanelPlanner extends Window {
 
 		@Override
 		public void onClick(ClickEvent event) {
-
-
-            String url = JSON_STOCK_PRICES_URL;
-//            url = URL.encode(url);
-//            GWT.log("url = " + url);
-            // Send request to server and catch any errors.
-//            RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
-
-            JSONObject request = new JSONObject();
-            request.put("hello", new JSONString("world"));
-
-
-
-            String postData = request.toString();
-
-            RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
-//            String s = ("  {\n") +
-//                      ("    \"symbol\": \" \n")
-//                    + ("test\n")
-//                    + ("  }\n")
-//                +("]\n");
-
-            try
-            {
-                builder.sendRequest(postData, new RequestCallback()
-                {
-
-                    public void onResponseReceived(Request request, Response response)
-                    {
-                        if (200 == response.getStatusCode())
-                        {
-                            System.out.println("UDALO SIE TO JEST ODPOWIEDZ : " + response.getText());
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Request request, Throwable exception) {
-
-                    }
-                });
-            }
-            catch (RequestException e)
-            {
-
-            }
-
-
 			if (loginItem.getValueAsString().equals("root") && passwordItem.getValueAsString().equals("root")) {
 				LoginPanelPlanner.this.destroy();
 				RootPanelPlanner.getInstance();

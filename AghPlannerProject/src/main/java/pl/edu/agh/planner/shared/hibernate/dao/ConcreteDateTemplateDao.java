@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.ConcreteDateTemplateEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("concreteDateTemplateDao")
-public class ConcreteDateTemplateDao extends GenericQuery {
+import java.util.List;
 
-    public ConcreteDateTemplateEntity getById (int id) {
+@Component("concreteDateTemplateDao")
+public class ConcreteDateTemplateDao extends GenericQuery implements DaoInterface<ConcreteDateTemplateEntity, Integer>{
+
+    @Override
+    public ConcreteDateTemplateEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(ConcreteDateTemplateEntity.class);
@@ -21,18 +24,43 @@ public class ConcreteDateTemplateDao extends GenericQuery {
         return concreteDateTemplateEntity;
     }
 
-    public void addConcreteDateTemplate (ConcreteDateTemplateEntity concreteDateTemplateEntity) {
+    @Override
+    public void add (ConcreteDateTemplateEntity concreteDateTemplateEntity) {
         beginTransaction();
         getSession().save(concreteDateTemplateEntity);
         endTransaction();
     }
 
-    public void updateConcreteDateTemplate (ConcreteDateTemplateEntity concreteDateTemplateEntity) {
+    @Override
+    public void update (ConcreteDateTemplateEntity concreteDateTemplateEntity) {
         beginTransaction();
         getSession().update(concreteDateTemplateEntity);
         endTransaction();
     }
 
+    @Override
+    public List<ConcreteDateTemplateEntity> getList() {
+        beginTransaction();
+        List<ConcreteDateTemplateEntity> list = session.createCriteria(ConcreteDateTemplateEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
+    @Override
+    public void add(List<ConcreteDateTemplateEntity> concreteDateTemplateEntities) {
+        beginTransaction();
+        for ( int i=0; i< concreteDateTemplateEntities.size(); i++ ) {
+            getSession().save(concreteDateTemplateEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
+        endTransaction();
+    }
+
+    @Override
     public void delete(ConcreteDateTemplateEntity concreteDateTemplateEntity) {
         beginTransaction();
         getSession().delete(concreteDateTemplateEntity);

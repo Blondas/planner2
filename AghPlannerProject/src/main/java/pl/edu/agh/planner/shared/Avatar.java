@@ -1,7 +1,7 @@
 package pl.edu.agh.planner.shared;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
+import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -9,13 +9,18 @@ import java.util.Set;
 public class Avatar implements IsSerializable, Serializable {
 
 	private int id;
-	private int name;
+	private String name;
 	private Set<Aggregate> aggregates;
 	private Set<Teacher> teachers;
 
 	public Avatar() {
 
 	}
+
+    public Avatar(AvatarEntity avatarEntity){
+        this.id = avatarEntity.getId();
+        this.name = avatarEntity.getName();
+    }
 
 	public int getId() {
 		return id;
@@ -25,11 +30,11 @@ public class Avatar implements IsSerializable, Serializable {
 		this.id = id;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

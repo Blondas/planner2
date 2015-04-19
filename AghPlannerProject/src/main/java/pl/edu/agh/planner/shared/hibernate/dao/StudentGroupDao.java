@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.StudentGroupEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("studentGroupDao")
-public class StudentGroupDao extends GenericQuery {
+import java.util.List;
 
-    public StudentGroupEntity getById (int id) {
+@Component("studentGroupDao")
+public class StudentGroupDao extends GenericQuery implements DaoInterface<StudentGroupEntity, Integer>{
+
+    @Override
+    public StudentGroupEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(StudentGroupEntity.class);
@@ -21,10 +24,33 @@ public class StudentGroupDao extends GenericQuery {
         return studentGroup;
     }
 
+    @Override
+    public List<StudentGroupEntity> getList() {
+        beginTransaction();
+        List<StudentGroupEntity> list = session.createCriteria(StudentGroupEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(StudentGroupEntity studentGroup) {
         beginTransaction();
         getSession().save(studentGroup);
         endTransaction();
+    }
+
+    @Override
+    public void add(List<StudentGroupEntity> studentGroupEntities) {
+        beginTransaction();
+        for ( int i=0; i<studentGroupEntities.size(); i++ ) {
+            getSession().save(studentGroupEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
+        endTransaction();
+
     }
 
     public void update(StudentGroupEntity studentGroup) {

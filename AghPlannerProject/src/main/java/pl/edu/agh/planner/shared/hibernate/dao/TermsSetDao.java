@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.TermsSetEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("termsSetDao")
-public class TermsSetDao extends GenericQuery {
+import java.util.List;
 
-    public TermsSetEntity getById (int id) {
+@Component("termsSetDao")
+public class TermsSetDao extends GenericQuery implements DaoInterface<TermsSetEntity,Integer>{
+
+    @Override
+    public TermsSetEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(TermsSetEntity.class);
@@ -21,9 +24,31 @@ public class TermsSetDao extends GenericQuery {
         return termsSet;
     }
 
+    @Override
+    public List<TermsSetEntity> getList() {
+        beginTransaction();
+        List<TermsSetEntity> list = session.createCriteria(TermsSetEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(TermsSetEntity termsSet) {
         beginTransaction();
         getSession().save(termsSet);
+        endTransaction();
+    }
+
+    @Override
+    public void add(List<TermsSetEntity> termsSetEntities) {
+        beginTransaction();
+        for ( int i=0; i<termsSetEntities.size(); i++ ) {
+            getSession().save(termsSetEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
         endTransaction();
     }
 

@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.LetterDesignationEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("letterDesignationDao")
-public class LetterDesignationDao extends GenericQuery {
+import java.util.List;
 
-    public LetterDesignationEntity getById (int id) {
+@Component("letterDesignationDao")
+public class LetterDesignationDao extends GenericQuery implements DaoInterface<LetterDesignationEntity, Integer>{
+
+    @Override
+    public LetterDesignationEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(LetterDesignationEntity.class);
@@ -21,9 +24,31 @@ public class LetterDesignationDao extends GenericQuery {
         return letterDesignation;
     }
 
+    @Override
+    public List<LetterDesignationEntity> getList() {
+        beginTransaction();
+        List<LetterDesignationEntity> list = session.createCriteria(LetterDesignationEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(LetterDesignationEntity letterDesignation) {
         beginTransaction();
         getSession().save(letterDesignation);
+        endTransaction();
+    }
+
+    @Override
+    public void add(List<LetterDesignationEntity> letterDesignationEntities) {
+        beginTransaction();
+        for ( int i=0; i<letterDesignationEntities.size(); i++ ) {
+            getSession().save(letterDesignationEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
         endTransaction();
     }
 

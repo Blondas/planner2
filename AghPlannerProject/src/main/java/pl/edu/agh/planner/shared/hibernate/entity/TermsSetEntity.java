@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class TermsSetEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ts_id")
     private int id;
 

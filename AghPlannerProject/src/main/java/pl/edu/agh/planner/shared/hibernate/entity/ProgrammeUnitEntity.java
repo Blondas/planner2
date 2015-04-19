@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class ProgrammeUnitEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pu_id")
     private int id;
 

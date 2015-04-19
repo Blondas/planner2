@@ -6,10 +6,13 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.ScheduleEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
-@Component("scheduleDao")
-public class ScheduleDao extends GenericQuery {
+import java.util.List;
 
-    public ScheduleEntity getById (int id) {
+@Component("scheduleDao")
+public class ScheduleDao extends GenericQuery implements  DaoInterface<ScheduleEntity, Integer>{
+
+    @Override
+    public ScheduleEntity getById (Integer id) {
         beginTransaction();
 
         Criteria criteria = session.createCriteria(ScheduleEntity.class);
@@ -21,9 +24,31 @@ public class ScheduleDao extends GenericQuery {
         return schedule;
     }
 
+    @Override
+    public List<ScheduleEntity> getList() {
+        beginTransaction();
+        List<ScheduleEntity> list = session.createCriteria(ScheduleEntity.class).list();
+        endTransaction();
+
+        return list;
+    }
+
     public void add(ScheduleEntity schedule) {
         beginTransaction();
         getSession().save(schedule);
+        endTransaction();
+    }
+
+    @Override
+    public void add(List<ScheduleEntity> scheduleEntities) {
+        beginTransaction();
+        for ( int i=0; i<scheduleEntities.size(); i++ ) {
+            getSession().save(scheduleEntities.get(i));
+            if ( i % FULL_BATCH_SIZE == 0 ) {
+                getSession().flush();
+                getSession().clear();
+            }
+        }
         endTransaction();
     }
 

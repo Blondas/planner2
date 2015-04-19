@@ -7,6 +7,7 @@ public abstract class GenericQuery {
     protected Transaction transaction = null;
     protected Session session;
 
+    protected final int FULL_BATCH_SIZE = 20;
 
     public final void beginTransaction(){
         session = HibernateUtil.getSessionFactory().openSession();

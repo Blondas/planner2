@@ -11,7 +11,7 @@ import java.util.Set;
 // grupa studenctka (składowa agregatu)
 public class StudentGroupEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sg_id")
     private int id;
 

@@ -1,6 +1,7 @@
 package pl.edu.agh.planner.shared.hibernate.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.planner.shared.hibernate.dao.TeacherDao;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
@@ -12,14 +13,14 @@ public class TeacherService implements ServiceInterface<TeacherEntity, Integer> 
 
     private TeacherDao teacherDao;
 
-    public TeacherService() {
-        this.teacherDao = new TeacherDao();
-    }
+    @Autowired
+    public void setTeacherDao(TeacherDao teacherDao) { this.teacherDao = teacherDao; }
 
     @Override
-    public void add(TeacherEntity entity) {
-        teacherDao.add(entity);
-    }
+    public void add(TeacherEntity entity) { teacherDao.add(entity); }
+
+    @Override
+    public void add(List<TeacherEntity> object) { teacherDao.add(object); }
 
     @Override
     public void update(TeacherEntity entity) {
@@ -32,7 +33,7 @@ public class TeacherService implements ServiceInterface<TeacherEntity, Integer> 
     }
 
     @Override
-    public TeacherEntity findById(Integer integer) {
+    public TeacherEntity getById(Integer integer) {
         return teacherDao.getById(integer);
     }
 

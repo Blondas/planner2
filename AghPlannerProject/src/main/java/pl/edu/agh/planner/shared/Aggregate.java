@@ -1,17 +1,45 @@
 package pl.edu.agh.planner.shared;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
 public class Aggregate implements IsSerializable, Serializable {
 
-	//TODO: utworzyć resztę struktury oraz uzupełnić AGREGAT o zmienne.
+    private int id;
+    private Avatar avatar;
+    private ProgrammeUnit programmeUnit;
+    private StudentGroup studentGroup;
 
-	public Aggregate() {
+    public int getId() {
+        return id;
+    }
 
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
+
+    public ProgrammeUnit getProgrammeUnit() {
+        return programmeUnit;
+    }
+
+    public void setProgrammeUnit(ProgrammeUnit programmeUnit) {
+        this.programmeUnit = programmeUnit;
+    }
+
+    public StudentGroup getStudentGroup() {
+        return studentGroup;
+    }
+
+    public void setStudentGroup(StudentGroup studentGroup) {
+        this.studentGroup = studentGroup;
+    }
 }
