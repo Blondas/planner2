@@ -36,10 +36,10 @@ public class TeacherEntity implements IsSerializable, Serializable {
         this.name = teacher.getName();
         this.lastName = teacher.getLastName();
         //TODO: avatar
-        if(teacher.getAvatar() != null){
-            this.avatar.setId(teacher.getAvatar().getId());
-            this.avatar.setName(teacher.getName());
-        }
+//        if(teacher.getAvatar() != null){
+//            this.avatar.setId(teacher.getAvatar().getId());
+//            this.avatar.setName(teacher.getName());
+//        }
 
     }
 
