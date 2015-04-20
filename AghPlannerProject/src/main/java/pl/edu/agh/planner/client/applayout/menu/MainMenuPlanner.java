@@ -5,6 +5,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
 public class MainMenuPlanner extends VLayout {
 
 	public MainMenuPlanner() {
+		setID("MainMenuPlanner");
 		setWidth100();
 		setAutoHeight();
 		setShowEdges(false);

@@ -1,6 +1,5 @@
 package pl.edu.agh.planner.client.applayout.menu;
 
-import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.IconButton;
@@ -10,9 +9,8 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddProgrammeUnitWindow;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddStudentGroupWindow;
-import pl.edu.agh.planner.client.applayout.menu.menu_windows.AddTeacherWindow;
+import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -30,11 +28,7 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.setTitleAlign(Alignment.LEFT);
 		artifactGroup.setNumRows(3);
 		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		artifactGroup.addControl(createIconMenuButton(AllString.newAdd, "add", new ArtifactsMenu(), true));
-		artifactGroup.addControl(createIconMenuButton(AllString.options, "settings", new ArtifactsMenu(), false));
-		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
-		artifactGroup.addControl(createIconButton(AllString.options, "settings", false, new TYMCZASOWO_ClickHandler()));
-		artifactGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
+		artifactGroup.addControl(createIconButton(AllString.addNewConductorTitle, "settings", false, new AddNewConductor_ClickHandler()));
 
 		RibbonGroup viewGroup = new RibbonGroup();
 		ribbonGroups.add(viewGroup);
@@ -43,6 +37,15 @@ class MainMenuBar extends RibbonBar {
 		viewGroup.setNumRows(3);
 		viewGroup.setRowHeight(GROUP_ROW_HEIGHT);
 		viewGroup.addControl(createIconMenuButton(AllString.viewList, "view", new ListsMenu(), true));
+
+		RibbonGroup callendarTools = new RibbonGroup();
+		ribbonGroups.add(callendarTools);
+		callendarTools.setTitle(AllString.callendarTitle);
+		callendarTools.setTitleAlign(Alignment.LEFT);
+		callendarTools.setNumRows(3);
+		callendarTools.setRowHeight(GROUP_ROW_HEIGHT);
+		callendarTools.addControl(createIconButton(AllString.callendarOpen, "view", true, new OpenCalendar_ClickHandler()));
+
 
 		RibbonGroup optionGroup = new RibbonGroup();
 		ribbonGroups.add(optionGroup);
@@ -70,26 +73,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
 		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
 
-
-		// Agregat:
-		RibbonGroup aggregateGroup = new RibbonGroup();
-		ribbonGroups.add(aggregateGroup);
-		aggregateGroup.setTitle(AllString.aggregateGroupTitle);
-		aggregateGroup.setTitleAlign(Alignment.LEFT);
-		aggregateGroup.setNumRows(3);
-		aggregateGroup.setRowHeight(GROUP_ROW_HEIGHT);
-
-		aggregateGroup.addControl(createIconButton(AllString.addStudentGroup, "authors",
-				false, new AddStudentGroupWindow_ClickHandler()));
-		aggregateGroup.addControl(createIconButton(AllString.addProgrammeUnit, "addProgrammeUnit",
-				false, new AddProgrammeUnitWindow_ClickHandler()));
-		aggregateGroup.addControl(createIconButton(AllString.addAvatar, "addAvatar",
-				false, new AddProgrammeUnitWindow_ClickHandler()));
-		aggregateGroup.addControl(createIconButton(AllString.addTeacher, "addTeacher",
-				false, new AddTeacherWindow_ClickHandler()));
-
-
-		addMembers(artifactGroup, viewGroup, optionGroup, addSubject, userActions, aggregateGroup);
+		addMembers(artifactGroup, viewGroup, callendarTools, optionGroup, addSubject, userActions);
 
 		setLeft(0);
 		setWidth100();
@@ -168,30 +152,20 @@ class MainMenuBar extends RibbonBar {
 
 	}
 
-	private class AddProgrammeUnitWindow_ClickHandler implements ClickHandler {
+	private class AddNewConductor_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			RootPanel.get().add(new AddProgrammeUnitWindow());
+			new AddNewTeacher();
 		}
-
 	}
 
-	private class AddStudentGroupWindow_ClickHandler implements ClickHandler {
+	private class OpenCalendar_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			RootPanel.get().add(new AddStudentGroupWindow());
+			new PlannerCalendar();
 		}
-
 	}
 
-	private class AddTeacherWindow_ClickHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			RootPanel.get().add(new AddTeacherWindow());
-		}
-
-	}
 }

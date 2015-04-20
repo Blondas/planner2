@@ -44,15 +44,18 @@ public class AddNewTeacher extends Window {
 	private void createTextItems() {
 		TextItem firstName = new TextItem("firstName", AllString.firstName);
 		firstName.setRequired(true);
+		firstName.setValue("TestName");
 		formItems.add(firstName);
 
 		TextItem surname = new TextItem("lastName", AllString.lastname);
 		surname.setRequired(true);
+		surname.setValue("TestSurname");
 		formItems.add(surname);
 
 		TextItem mailAddress = new TextItem("mailAddress", AllString.mainAddress);
 		mailAddress.setRequired(true);
 		mailAddress.setValidators(new MailAddressValidator());
+		mailAddress.setValue("test@test.test");
 		formItems.add(mailAddress);
 
 		dynamicForm.setFields(firstName, surname, mailAddress);

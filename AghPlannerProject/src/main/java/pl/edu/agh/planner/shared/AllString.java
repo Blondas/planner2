@@ -59,12 +59,6 @@ public class AllString {
 
 	public static String mailValidatorMessage = "Nieprawidłowy format adresu mail";
 
-	public static String aggregateGroupTitle = "Agregat";
-
-	public static String addStudentGroup = "Dodaj grupę studencką";
-	public static String addAvatar = "Dodaj Awatar";
-	public static String addProgrammeUnit = "Dodaj Jednostkę programu studiów";
-	public static String name = "Nazwa";
-	public static String addTeacher = "Dodaj Prowadzącego";
-
+	public static String callendarTitle = "Kalendarz";
+	public static String callendarOpen = "Otwórz";
 }
