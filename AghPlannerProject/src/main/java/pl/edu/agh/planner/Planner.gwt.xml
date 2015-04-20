@@ -10,7 +10,6 @@
     <!-- Specify the app entry point class.                   -->
     <entry-point class='pl.edu.agh.planner.client.Planner'/>
 
-
     <!-- Specify the app servlets.                   -->
     <servlet path='/PlannerService' class='pl.edu.agh.planner.server.PlannerServiceImpl'/>
 
