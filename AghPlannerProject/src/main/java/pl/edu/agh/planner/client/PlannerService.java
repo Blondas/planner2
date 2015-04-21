@@ -3,6 +3,7 @@ package pl.edu.agh.planner.client;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import pl.edu.agh.planner.shared.Classroom;
+import pl.edu.agh.planner.shared.Krystian;
 import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 

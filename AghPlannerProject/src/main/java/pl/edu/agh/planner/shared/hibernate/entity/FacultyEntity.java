@@ -1,9 +1,11 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity

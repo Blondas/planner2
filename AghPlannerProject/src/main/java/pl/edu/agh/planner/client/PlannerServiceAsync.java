@@ -3,7 +3,6 @@ package pl.edu.agh.planner.client;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import pl.edu.agh.planner.shared.Classroom;
 import pl.edu.agh.planner.shared.Teacher;
-import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
 import java.util.List;
 
@@ -27,4 +26,5 @@ public interface PlannerServiceAsync {
 	void getClassroomsList(AsyncCallback<List<Classroom>> async);
 
 	void getClassroomById(int id, AsyncCallback<Classroom> async);
+
 }

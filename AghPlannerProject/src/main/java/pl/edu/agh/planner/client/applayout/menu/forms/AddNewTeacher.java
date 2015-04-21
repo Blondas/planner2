@@ -17,6 +17,7 @@ import pl.edu.agh.planner.shared.AllString;
 import pl.edu.agh.planner.shared.Teacher;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddNewTeacher extends Window {
 
@@ -102,9 +103,9 @@ public class AddNewTeacher extends Window {
 			try {
 				if (dynamicForm.validate(false)) {
 					Teacher teacher = new Teacher();
+					teacher.setId(99991);
 					teacher.setName(formItems.get(0).getValue().toString());
 					teacher.setLastName(formItems.get(1).getValue().toString());
-					teacher.setEmailAddress(formItems.get(2).getValue().toString());
 
 					Context.getInstance().getPlannerServiceAsync().addTeacher(teacher, new AsyncCallback<Void>() {
 						@Override
