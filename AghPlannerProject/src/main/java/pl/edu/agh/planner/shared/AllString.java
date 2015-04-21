@@ -51,7 +51,11 @@ public class AllString {
 
 	public static String addNewConductorTitle = "Prowadzącego";
 	public static String addNewConductorWindowTitle = "Dodaj prowadzącego";
-	public static String addNewTeacherSuccesful = "Nowy prowadzący został dodany pozytywnie.";
+	public static String addNewTeacherSuccess = "Nowy prowadzący został dodany pozytywnie.";
+
+	public static String addNewClassroom = "Salę wykładową";
+	public static String addNewClassroomNumber = "Numer sali";
+	public static String addNewClassroomSuccess = "Nowa sala została dodana pozytywnie.";
 
 	public static String teacherListTitle = "Lista prowadzących";
 
@@ -60,5 +64,15 @@ public class AllString {
 	public static String mailValidatorMessage = "Nieprawidłowy format adresu mail";
 
 	public static String callendarTitle = "Kalendarz";
-	public static String callendarOpen = "Otwórz";
+	public static String callendarShow = "Pokaż";
+	public static String callendarChooseDate = "Wybierz datę";
+	public static String callendarAddEvent = "Dodaj wydarzenie";
+	public static String callendarNext = "Następny";
+	public static String callendarPrev = "Poprzedni";
+	public static String callendarToday = "Dzisiaj";
+
+	public static String exportTitle = "Exportowanie";
+	public static String exportPrint = "Drukuj";
+	public static String exportPdf = "PDF";
+
 }

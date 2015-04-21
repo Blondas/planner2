@@ -3,6 +3,7 @@ package pl.edu.agh.planner.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import pl.edu.agh.planner.client.PlannerService;
 import pl.edu.agh.planner.server.controllers.TeacherController;
+import pl.edu.agh.planner.shared.Classroom;
 import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
@@ -42,10 +43,30 @@ public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerS
 	}
 
 	@Override
-	public Teacher getById(int id) {
+	public Teacher getTeacherById(int id) {
 		TeacherEntity teacherEntity = new TeacherController().getById(id);
 
 		return new Teacher(teacherEntity);
+	}
+
+	@Override
+	public void addClassroom(Classroom classroom) {
+
+	}
+
+	@Override
+	public void deleteClassroom(Classroom classroom) {
+
+	}
+
+	@Override
+	public List<Classroom> getClassroomsList() {
+		return null;
+	}
+
+	@Override
+	public Classroom getClassroomById(int id) {
+		return null;
 	}
 
 }

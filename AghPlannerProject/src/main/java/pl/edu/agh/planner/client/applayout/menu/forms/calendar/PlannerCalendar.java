@@ -1,26 +1,33 @@
 package pl.edu.agh.planner.client.applayout.menu.forms.calendar;
 
-import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.TimeFormatter;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.calendar.Calendar;
-import com.smartgwt.client.widgets.calendar.events.CalendarEventClick;
-import com.smartgwt.client.widgets.calendar.events.EventClickHandler;
 
 public class PlannerCalendar extends Calendar {
 
-	public PlannerCalendar() {
+	private static volatile PlannerCalendar instance = null;
+
+	public static PlannerCalendar getInstance() {
+		if (instance == null) {
+			synchronized (PlannerCalendar.class) {
+				if (instance == null) {
+					instance = new PlannerCalendar();
+				}
+			}
+		}
+		return instance;
+	}
+
+	private PlannerCalendar() {
 		setTimeFormatter(TimeFormatter.TOSHORT24HOURTIME);
 		setDateFormatter(DateDisplayFormat.TOEUROPEANSHORTDATE);
 		setFirstDayOfWeek(1);
+		setVisible(false);
 		setShowWeekends(true);
 		setDisableWeekends(false);
+		setShowControlsBar(false);
 
-		SC.say("Jesli otworzyles kalendarz musisz zrestartowac apke. Jeszcze nie jest dopracowany.");
-
-		RootPanel.get().add(this);
 	}
-
 
 }

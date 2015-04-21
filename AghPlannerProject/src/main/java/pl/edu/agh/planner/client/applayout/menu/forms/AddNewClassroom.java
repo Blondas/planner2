@@ -12,21 +12,20 @@ import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 import pl.edu.agh.planner.client.Context;
-import pl.edu.agh.planner.client.common.validators.MailAddressValidator;
 import pl.edu.agh.planner.shared.AllString;
-import pl.edu.agh.planner.shared.Teacher;
+import pl.edu.agh.planner.shared.Classroom;
 
 import java.util.ArrayList;
 
-public class AddNewTeacher extends Window {
+public class AddNewClassroom extends Window {
 
 	private ArrayList<FormItem> formItems = new ArrayList<FormItem>();
 	private DynamicForm dynamicForm = null;
 
-	public AddNewTeacher() {
-		setTitle(AllString.addNewConductorWindowTitle);
+	public AddNewClassroom() {
+		setTitle(AllString.addNewClassroom);
 		setWidth(350);
-		setHeight(200);
+		setHeight(150);
 
 		dynamicForm = new DynamicForm();
 		dynamicForm.setWidth100();
@@ -42,23 +41,18 @@ public class AddNewTeacher extends Window {
 	}
 
 	private void createTextItems() {
-		TextItem firstName = new TextItem("firstName", AllString.firstName);
-		firstName.setRequired(true);
-		firstName.setValue("TestName");
-		formItems.add(firstName);
+		TextItem classroom = new TextItem("classroom", AllString.addNewClassroomNumber);
+		classroom.setRequired(true);
+		classroom.setValue("3.1");
+		formItems.add(classroom);
 
-		TextItem surname = new TextItem("lastName", AllString.lastname);
-		surname.setRequired(true);
-		surname.setValue("TestSurname");
-		formItems.add(surname);
+		TextItem numberOfSeats = new TextItem("numberOfSeats", AllString.lastname);
+		numberOfSeats.setRequired(true);
+		numberOfSeats.setValue("123");
+		//TODO: dodac validator only numbers
+		formItems.add(numberOfSeats);
 
-		TextItem mailAddress = new TextItem("mailAddress", AllString.mainAddress);
-		mailAddress.setRequired(true);
-		mailAddress.setValidators(new MailAddressValidator());
-		mailAddress.setValue("test@test.test");
-		formItems.add(mailAddress);
-
-		dynamicForm.setFields(firstName, surname, mailAddress);
+		dynamicForm.setFields(classroom, numberOfSeats);
 	}
 
 	private Canvas createButtons() {
@@ -99,29 +93,23 @@ public class AddNewTeacher extends Window {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			try {
-				if (dynamicForm.validate(false)) {
-					Teacher teacher = new Teacher();
-					teacher.setName(formItems.get(0).getValue().toString());
-					teacher.setLastName(formItems.get(1).getValue().toString());
-					teacher.setEmailAddress(formItems.get(2).getValue().toString());
+			Classroom classroom = new Classroom();
+			//TODO: dodac reszte atrybutow
+			classroom.setNumberOfSeats(new Integer(formItems.get(1).getValue().toString()));
 
-					Context.getInstance().getPlannerServiceAsync().addTeacher(teacher, new AsyncCallback<Void>() {
-						@Override
-						public void onFailure(Throwable caught) {
-							caught.printStackTrace();
-						}
-
-						@Override
-						public void onSuccess(Void result) {
-							SC.say(AllString.addNewTeacherSuccess);
-						}
-					});
+			Context.getInstance().getPlannerServiceAsync().addClassroom(classroom, new AsyncCallback<Void>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					caught.printStackTrace();
 				}
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
+				@Override
+				public void onSuccess(Void result) {
+					SC.say(AllString.addNewClassroomSuccess);
+				}
+			});
+
+		}
+
+	}
 }

@@ -21,7 +21,7 @@ public class RootPanelPlanner extends VLayout {
 	private RootPanelPlanner() {
 		setWidth100();
 		setHeight100();
-		addMember(new MainMenuPlanner());
+		addMember(WorkspacePanel.getInstance());
 		show();
 	}
 
