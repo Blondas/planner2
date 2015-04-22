@@ -13,6 +13,7 @@ import pl.edu.agh.planner.client.applayout.menu.forms.AddNewClassroom;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.CallendarEventsListTool;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
+import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -31,8 +32,8 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.setTitleAlign(Alignment.LEFT);
 		artifactGroup.setNumRows(GROUP_ROW_NUMBER);
 		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		artifactGroup.addControl(new PlannerIconButton(AllString.addNewConductorTitle, "settings.png", false, new AddNewConductor_ClickHandler()));
-		artifactGroup.addControl(new PlannerIconButton(AllString.addNewClassroom, "settings.png", false, new AddNewClassroom_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewConductorTitle, AllGraphic.addNewConductorTitleIcon, false, new AddNewConductor_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewClassroom, AllGraphic.addNewClassroomIcon, false, new AddNewClassroom_ClickHandler()));
 
 		RibbonGroup viewGroup = new RibbonGroup();
 		ribbonGroups.add(viewGroup);
@@ -40,7 +41,7 @@ class MainMenuBar extends RibbonBar {
 		viewGroup.setTitleAlign(Alignment.LEFT);
 		viewGroup.setNumRows(GROUP_ROW_NUMBER);
 		viewGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		viewGroup.addControl(createIconMenuButton(AllString.viewList, "view", new ListsMenu(), true));
+		viewGroup.addControl(createIconMenuButton(AllString.viewList, AllGraphic.menuViewShowIcon, new ListsMenu(), true));
 
 		RibbonGroup callendarTools = new RibbonGroup();
 		ribbonGroups.add(callendarTools);
@@ -48,14 +49,12 @@ class MainMenuBar extends RibbonBar {
 		callendarTools.setTitleAlign(Alignment.CENTER);
 		callendarTools.setNumRows(GROUP_ROW_NUMBER);
 		callendarTools.setRowHeight(GROUP_ROW_HEIGHT);
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarShow, "bulboff.png", "", true, new ShowCalendar_ClickHandler()));
-
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarShowList, "view.png", true, new ShowCalendarList_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, "choosedate.png", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, "add-event-icon.png", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, "prev.png", true, new CalendarPrev_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, "today.png", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarNext, "next.png", true, new CalendarNext_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarShow, AllGraphic.callendarShowIcon, true, new ShowCalendar_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, AllGraphic.callendarChooseDateIcon, true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, AllGraphic.callendarAddEventIcon, true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, AllGraphic.callendarPrevIcon, true, new CalendarPrev_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, AllGraphic.callendarTodayIcon, true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarNext, AllGraphic.callendarNextIcon, true, new CalendarNext_ClickHandler()));
 
 		RibbonGroup exportTools = new RibbonGroup();
 		ribbonGroups.add(exportTools);
@@ -63,8 +62,10 @@ class MainMenuBar extends RibbonBar {
 		exportTools.setTitleAlign(Alignment.LEFT);
 		exportTools.setNumRows(GROUP_ROW_NUMBER);
 		exportTools.setRowHeight(GROUP_ROW_HEIGHT);
-		exportTools.addControl(new PlannerIconButton(AllString.exportPdf, "pdf.png", true, new TYMCZASOWO_ClickHandler()));
-		exportTools.addControl(new PlannerIconButton(AllString.exportPrint, "printer.png", true, new TYMCZASOWO_ClickHandler()));
+
+		exportTools.addControl(new PlannerIconButton(AllString.exportPdf, AllGraphic.exportPdfIcon, true, new TYMCZASOWO_ClickHandler()));
+		exportTools.addControl(new PlannerIconButton(AllString.exportPrint, AllGraphic.exportPrintIcon, true, new TYMCZASOWO_ClickHandler()));
+
 
 		RibbonGroup optionGroup = new RibbonGroup();
 		ribbonGroups.add(optionGroup);
@@ -72,7 +73,8 @@ class MainMenuBar extends RibbonBar {
 		optionGroup.setTitleAlign(Alignment.CENTER);
 		optionGroup.setNumRows(GROUP_ROW_NUMBER);
 		optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		optionGroup.addControl(new PlannerIconButton(AllString.options, "settings.png", true, new TYMCZASOWO_ClickHandler()));
+
+		optionGroup.addControl(new PlannerIconButton(AllString.options, AllGraphic.optionsIcon, true, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup addSubject = new RibbonGroup();
 		ribbonGroups.add(addSubject);
@@ -80,8 +82,8 @@ class MainMenuBar extends RibbonBar {
 		addSubject.setTitleAlign(Alignment.LEFT);
 		addSubject.setNumRows(GROUP_ROW_NUMBER);
 		addSubject.setRowHeight(GROUP_ROW_HEIGHT);
-		addSubject.addControl(new PlannerIconButton(AllString.aboutAuthors, "authors.png", false, new TYMCZASOWO_ClickHandler()));
-		addSubject.addControl(new PlannerIconButton(AllString.aboutProgram, "cli.png", false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(new PlannerIconButton(AllString.aboutAuthors, AllGraphic.aboutAuthorsIcon, false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(new PlannerIconButton(AllString.aboutProgram, AllGraphic.aboutProgramIcon, false, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -90,7 +92,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.setNumRows(GROUP_ROW_NUMBER);
 		userActions.setRowHeight(GROUP_ROW_HEIGHT);
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
-		userActions.addControl(new PlannerIconButton(AllString.userLogout, "exit.png", true, new TYMCZASOWO_ClickHandler()));
+		userActions.addControl(new PlannerIconButton(AllString.userLogout, AllGraphic.userLogoutIcon, true, new TYMCZASOWO_ClickHandler()));
 
 		addMembers(artifactGroup, viewGroup, callendarTools, exportTools, optionGroup, addSubject, userActions);
 
