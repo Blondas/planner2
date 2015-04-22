@@ -1,10 +1,8 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
 import pl.edu.agh.planner.shared.Teacher;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 //@Data
 @Entity
