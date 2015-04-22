@@ -17,7 +17,6 @@ import pl.edu.agh.planner.shared.AllString;
 import pl.edu.agh.planner.shared.Teacher;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddNewTeacher extends Window {
 

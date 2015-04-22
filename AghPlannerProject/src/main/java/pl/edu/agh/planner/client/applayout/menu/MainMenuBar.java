@@ -11,6 +11,7 @@ import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewClassroom;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.CallendarEventsListTool;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 import pl.edu.agh.planner.shared.AllString;
 
@@ -30,8 +31,8 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.setTitleAlign(Alignment.LEFT);
 		artifactGroup.setNumRows(GROUP_ROW_NUMBER);
 		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		artifactGroup.addControl(createIconButton(AllString.addNewConductorTitle, "settings", false, new AddNewConductor_ClickHandler()));
-		artifactGroup.addControl(createIconButton(AllString.addNewClassroom, "settings", false, new AddNewClassroom_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewConductorTitle, "settings.png", false, new AddNewConductor_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewClassroom, "settings.png", false, new AddNewClassroom_ClickHandler()));
 
 		RibbonGroup viewGroup = new RibbonGroup();
 		ribbonGroups.add(viewGroup);
@@ -47,12 +48,14 @@ class MainMenuBar extends RibbonBar {
 		callendarTools.setTitleAlign(Alignment.CENTER);
 		callendarTools.setNumRows(GROUP_ROW_NUMBER);
 		callendarTools.setRowHeight(GROUP_ROW_HEIGHT);
-		callendarTools.addControl(createIconButton(AllString.callendarShow, "view", true, new OpenCalendar_ClickHandler()));
-		callendarTools.addControl(createIconButton(AllString.callendarChooseDate, "choosedate", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(createIconButton(AllString.callendarAddEvent, "add-event-icon", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(createIconButton(AllString.callendarPrev, "prev", true, new CalendarPrev_ClickHandler()));
-		callendarTools.addControl(createIconButton(AllString.callendarToday, "today", true, new TYMCZASOWO_ClickHandler()));
-		callendarTools.addControl(createIconButton(AllString.callendarNext, "next", true, new CalendarNext_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarShow, "bulboff.png", "", true, new ShowCalendar_ClickHandler()));
+
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarShowList, "view.png", true, new ShowCalendarList_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, "choosedate.png", true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, "add-event-icon.png", true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, "prev.png", true, new CalendarPrev_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, "today.png", true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarNext, "next.png", true, new CalendarNext_ClickHandler()));
 
 		RibbonGroup exportTools = new RibbonGroup();
 		ribbonGroups.add(exportTools);
@@ -60,8 +63,8 @@ class MainMenuBar extends RibbonBar {
 		exportTools.setTitleAlign(Alignment.LEFT);
 		exportTools.setNumRows(GROUP_ROW_NUMBER);
 		exportTools.setRowHeight(GROUP_ROW_HEIGHT);
-		exportTools.addControl(createIconButton(AllString.exportPdf, "pdf", true, new TYMCZASOWO_ClickHandler()));
-		exportTools.addControl(createIconButton(AllString.exportPrint, "printer", true, new TYMCZASOWO_ClickHandler()));
+		exportTools.addControl(new PlannerIconButton(AllString.exportPdf, "pdf.png", true, new TYMCZASOWO_ClickHandler()));
+		exportTools.addControl(new PlannerIconButton(AllString.exportPrint, "printer.png", true, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup optionGroup = new RibbonGroup();
 		ribbonGroups.add(optionGroup);
@@ -69,7 +72,7 @@ class MainMenuBar extends RibbonBar {
 		optionGroup.setTitleAlign(Alignment.CENTER);
 		optionGroup.setNumRows(GROUP_ROW_NUMBER);
 		optionGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		optionGroup.addControl(createIconButton(AllString.options, "settings", true, new TYMCZASOWO_ClickHandler()));
+		optionGroup.addControl(new PlannerIconButton(AllString.options, "settings.png", true, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup addSubject = new RibbonGroup();
 		ribbonGroups.add(addSubject);
@@ -77,8 +80,8 @@ class MainMenuBar extends RibbonBar {
 		addSubject.setTitleAlign(Alignment.LEFT);
 		addSubject.setNumRows(GROUP_ROW_NUMBER);
 		addSubject.setRowHeight(GROUP_ROW_HEIGHT);
-		addSubject.addControl(createIconButton(AllString.aboutAuthors, "authors", false, new TYMCZASOWO_ClickHandler()));
-		addSubject.addControl(createIconButton(AllString.aboutProgram, "cli", false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(new PlannerIconButton(AllString.aboutAuthors, "authors.png", false, new TYMCZASOWO_ClickHandler()));
+		addSubject.addControl(new PlannerIconButton(AllString.aboutProgram, "cli.png", false, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup userActions = new RibbonGroup();
 		ribbonGroups.add(userActions);
@@ -87,7 +90,7 @@ class MainMenuBar extends RibbonBar {
 		userActions.setNumRows(GROUP_ROW_NUMBER);
 		userActions.setRowHeight(GROUP_ROW_HEIGHT);
 		userActions.addControl(buttonWithUserInfo("root", "God system"));
-		userActions.addControl(createIconButton(AllString.userLogout, "exit", true, new TYMCZASOWO_ClickHandler()));
+		userActions.addControl(new PlannerIconButton(AllString.userLogout, "exit.png", true, new TYMCZASOWO_ClickHandler()));
 
 		addMembers(artifactGroup, viewGroup, callendarTools, exportTools, optionGroup, addSubject, userActions);
 
@@ -110,27 +113,6 @@ class MainMenuBar extends RibbonBar {
 		iconButton.setWidth(150);
 		iconButton.setAlign(Alignment.LEFT);
 		iconButton.setCanDrop(false);
-
-		return iconButton;
-	}
-
-	private IconButton createIconButton(String title, String iconName, boolean isVertical, ClickHandler clickHandler) {
-		String path16 = "16/";
-		String path48 = "48/";
-		String extend = ".png";
-
-		IconButton iconButton = new IconButton();
-		iconButton.setTitle(title);
-		iconButton.addClickHandler(clickHandler);
-
-		if (iconName == null || iconName.equals("")) {
-			throw new IllegalArgumentException(AllString.exceptionMessage);
-		} else {
-			iconButton.setIcon(path16 + iconName + extend);
-			iconButton.setLargeIcon(path48 + iconName + extend);
-			if (isVertical)
-				iconButton.setOrientation("vertical");
-		}
 
 		return iconButton;
 	}
@@ -184,14 +166,29 @@ class MainMenuBar extends RibbonBar {
 
 	}
 
-	private class OpenCalendar_ClickHandler implements ClickHandler {
+	private class ShowCalendar_ClickHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
 			if (PlannerCalendar.getInstance().isVisible()) {
 				PlannerCalendar.getInstance().setVisible(false);
+				CallendarEventsListTool.getInstance().setVisible(false);
 			} else {
 				PlannerCalendar.getInstance().setVisible(true);
+			}
+		}
+
+	}
+
+	private class ShowCalendarList_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			if (CallendarEventsListTool.getInstance().isVisible()) {
+				CallendarEventsListTool.getInstance().setVisible(false);
+			} else {
+				PlannerCalendar.getInstance().setVisible(true);
+				CallendarEventsListTool.getInstance().setVisible(true);
 			}
 		}
 

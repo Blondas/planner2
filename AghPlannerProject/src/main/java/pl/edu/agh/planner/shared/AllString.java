@@ -65,6 +65,7 @@ public class AllString {
 
 	public static String callendarTitle = "Kalendarz";
 	public static String callendarShow = "Pokaż";
+	public static String callendarShowList = "Pokaż listę";
 	public static String callendarChooseDate = "Wybierz datę";
 	public static String callendarAddEvent = "Dodaj wydarzenie";
 	public static String callendarNext = "Następny";
