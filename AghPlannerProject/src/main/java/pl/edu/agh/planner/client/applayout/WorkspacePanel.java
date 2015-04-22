@@ -6,6 +6,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
 import pl.edu.agh.planner.client.applayout.menu.MainMenuPlanner;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.CallendarEventsListTool;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
+import pl.edu.agh.planner.shared.AllGraphic;
 
 public class WorkspacePanel extends VLayout {
 
@@ -25,7 +26,7 @@ public class WorkspacePanel extends VLayout {
 	private WorkspacePanel() {
 		setWidth100();
 		setHeight100();
-		setBackgroundImage("wallpaper.png");
+		setBackgroundImage(AllGraphic.backgroundImage);
 		setShowEdges(false);
 
 		HLayout hLayout = new HLayout();

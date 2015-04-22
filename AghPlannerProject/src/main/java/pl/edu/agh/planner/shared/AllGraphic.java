@@ -26,5 +26,8 @@ public class AllGraphic {
 
     public static String userLogoutIcon = "exit" + extendPNG;
 
+    public static String backgroundImage = "wallpaper" + extendPNG;
+
+    public static String logoImage = "http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg";
 
 }
