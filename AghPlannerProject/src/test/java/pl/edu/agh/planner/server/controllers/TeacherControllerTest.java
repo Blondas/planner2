@@ -3,7 +3,7 @@ package pl.edu.agh.planner.server.controllers;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Test;
 import pl.edu.agh.planner.shared.Avatar;
-import pl.edu.agh.planner.shared.DtoToEntity;
+import pl.edu.agh.planner.shared.DtoEntityMapper;
 import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
@@ -101,7 +101,7 @@ public class TeacherControllerTest extends DefaultTest {
         teacher.setLastName("111");
         teacher.setName("222");
         teacher.setAvatar(avatar);
-        TeacherEntity teacherEntity = DtoToEntity.teacherToEntity(teacher);
+        TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
 
         teacherController.add(teacherEntity);
     }

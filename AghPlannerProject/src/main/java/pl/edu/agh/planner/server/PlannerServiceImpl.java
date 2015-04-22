@@ -2,10 +2,11 @@ package pl.edu.agh.planner.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import pl.edu.agh.planner.client.PlannerService;
 import pl.edu.agh.planner.server.controllers.TeacherController;
 import pl.edu.agh.planner.shared.Classroom;
-import pl.edu.agh.planner.shared.DtoToEntity;
+import pl.edu.agh.planner.shared.DtoEntityMapper;
 import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
@@ -14,28 +15,20 @@ import java.util.List;
 
 public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerService {
 
+    private TeacherController teacherController = new TeacherController();
 
-//    private DtoToEntity dtoToEntity;
-//
-//    @Autowired
-//    public void setDtoToEntity(DtoToEntity dtoToEntity) {
-//        this.dtoToEntity = dtoToEntity;
-//    }
 
     @Override
 	public void addTeacher(Teacher teacher) {
-//		TeacherEntity teacherEntity = new TeacherEntity(teacher);
-        TeacherEntity teacherEntity = DtoToEntity.teacherToEntity(teacher);
+        TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
 
-		TeacherController teacherController = new TeacherController();
 		teacherController.add(teacherEntity);
 	}
 
 	@Override
 	public void deleteTeacher(Teacher teacher) {
-		TeacherEntity teacherEntity = new TeacherEntity(teacher);
+        TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
 
-		TeacherController teacherController = new TeacherController();
 		teacherController.delete(teacherEntity);
 	}
 
@@ -43,10 +36,11 @@ public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerS
 	public List<Teacher> getTeachersList() {
 		List<Teacher> teacherList = new ArrayList<Teacher>();
 
-		List<TeacherEntity> teacherEntities = new TeacherController().getList();
+		List<TeacherEntity> teacherEntities = teacherController.getList();
 
 		for (TeacherEntity teacherEntity : teacherEntities) {
-			Teacher teacher = new Teacher(teacherEntity);
+			Teacher teacher = DtoEntityMapper.entityToTeacher(teacherEntity);
+
 			teacherList.add(teacher);
 		}
 
@@ -55,9 +49,9 @@ public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerS
 
 	@Override
 	public Teacher getTeacherById(int id) {
-		TeacherEntity teacherEntity = new TeacherController().getById(id);
+		TeacherEntity teacherEntity = teacherController.getById(id);
 
-		return new Teacher(teacherEntity);
+        return new Teacher(teacherEntity);
 	}
 
 	@Override
