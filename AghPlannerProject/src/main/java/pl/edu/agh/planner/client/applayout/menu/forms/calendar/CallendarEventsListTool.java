@@ -20,8 +20,9 @@ public class CallendarEventsListTool extends ListGrid {
 
 	private CallendarEventsListTool() {
 		setWidth("20%");
-		setMaxWidth(250);
+		setVisible(false);
 		setLayoutAlign(Alignment.RIGHT);
+
 
 
 	}

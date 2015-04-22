@@ -50,6 +50,7 @@ class MainMenuBar extends RibbonBar {
 		callendarTools.setNumRows(GROUP_ROW_NUMBER);
 		callendarTools.setRowHeight(GROUP_ROW_HEIGHT);
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarShow, AllGraphic.callendarShowIcon, true, new ShowCalendar_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarShowList, AllGraphic.callendarShowIcon, true, new ShowCalendarList_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, AllGraphic.callendarChooseDateIcon, true, new TYMCZASOWO_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, AllGraphic.callendarAddEventIcon, true, new TYMCZASOWO_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, AllGraphic.callendarPrevIcon, true, new CalendarPrev_ClickHandler()));
