@@ -2,6 +2,9 @@ package pl.edu.agh.planner.server.controllers;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Test;
+import pl.edu.agh.planner.shared.Avatar;
+import pl.edu.agh.planner.shared.DtoToEntity;
+import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 import utils.DefaultTest;
@@ -86,6 +89,21 @@ public class TeacherControllerTest extends DefaultTest {
         TeacherEntity teacherReceived = teacherListReceived.get(0);
 
         avatarController.delete(teacherReceived.getAvatar());
+    }
+
+    @Test
+    public void testDtoToEntity(){
+        Avatar avatar = new Avatar();
+        avatar.setName("avatar");
+
+
+        Teacher teacher = new Teacher();
+        teacher.setLastName("111");
+        teacher.setName("222");
+        teacher.setAvatar(avatar);
+        TeacherEntity teacherEntity = DtoToEntity.teacherToEntity(teacher);
+
+        teacherController.add(teacherEntity);
     }
 
     private TeacherEntity givenTeacher(){

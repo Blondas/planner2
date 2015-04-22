@@ -11,7 +11,7 @@ public class Teacher implements IsSerializable, Serializable {
 	private String name;
 	private String lastName;
 //	private String emailAddress;
-//	private Avatar avatar;
+	private Avatar avatar;
 
 	public Teacher() {
 
@@ -48,4 +48,11 @@ public class Teacher implements IsSerializable, Serializable {
 		this.lastName = lastName;
 	}
 
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
 }

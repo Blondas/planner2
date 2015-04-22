@@ -5,7 +5,7 @@ import pl.edu.agh.planner.shared.Teacher;
 import javax.persistence.*;
 
 @Entity
-public class TeacherEntity implements IsSerializable, Serializable {
+public class TeacherEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "t_id")

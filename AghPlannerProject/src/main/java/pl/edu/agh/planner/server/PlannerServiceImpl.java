@@ -1,9 +1,11 @@
 package pl.edu.agh.planner.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.planner.client.PlannerService;
 import pl.edu.agh.planner.server.controllers.TeacherController;
 import pl.edu.agh.planner.shared.Classroom;
+import pl.edu.agh.planner.shared.DtoToEntity;
 import pl.edu.agh.planner.shared.Teacher;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
 
@@ -12,9 +14,18 @@ import java.util.List;
 
 public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerService {
 
-	@Override
+
+//    private DtoToEntity dtoToEntity;
+//
+//    @Autowired
+//    public void setDtoToEntity(DtoToEntity dtoToEntity) {
+//        this.dtoToEntity = dtoToEntity;
+//    }
+
+    @Override
 	public void addTeacher(Teacher teacher) {
-		TeacherEntity teacherEntity = new TeacherEntity(teacher);
+//		TeacherEntity teacherEntity = new TeacherEntity(teacher);
+        TeacherEntity teacherEntity = DtoToEntity.teacherToEntity(teacher);
 
 		TeacherController teacherController = new TeacherController();
 		teacherController.add(teacherEntity);
