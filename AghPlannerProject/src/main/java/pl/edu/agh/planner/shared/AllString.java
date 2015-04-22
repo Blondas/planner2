@@ -56,6 +56,7 @@ public class AllString {
 	public static String addNewClassroom = "Salę wykładową";
 	public static String addNewClassroomNumber = "Numer sali";
 	public static String addNewClassroomSuccess = "Nowa sala została dodana pozytywnie.";
+	public static String addNewClassroomGroupName = "Nowa sala";
 
 	public static String teacherListTitle = "Lista prowadzących";
 
@@ -65,6 +66,7 @@ public class AllString {
 
 	public static String callendarTitle = "Kalendarz";
 	public static String callendarShow = "Pokaż";
+	public static String callendarShowList = "Pokaż listę";
 	public static String callendarChooseDate = "Wybierz datę";
 	public static String callendarAddEvent = "Dodaj wydarzenie";
 	public static String callendarNext = "Następny";

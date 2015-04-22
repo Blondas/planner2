@@ -4,7 +4,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.ProgrammeUnitEntity;
-import pl.edu.agh.planner.shared.hibernate.entity.ProgrammeUnitTypeEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 
 import java.util.List;
