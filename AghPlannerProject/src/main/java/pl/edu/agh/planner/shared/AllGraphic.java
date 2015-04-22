@@ -9,7 +9,8 @@ public class AllGraphic {
 
     public static String menuViewShowIcon = "view" + extendPNG;
 
-    public static String callendarShowIcon = "view" + extendPNG;
+    public static String callendarShowIcon = "bulbon" + extendPNG;
+    public static String callendarHideIcon = "bulboff" + extendPNG;
     public static String callendarChooseDateIcon = "choosedate" + extendPNG;
     public static String callendarAddEventIcon = "add-event-icon" + extendPNG;
     public static String callendarPrevIcon = "prev" + extendPNG;
