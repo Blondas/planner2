@@ -1,15 +1,12 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
 import pl.edu.agh.planner.shared.Teacher;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-//@Data
 @Entity
-
 public class TeacherEntity implements IsSerializable, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +33,6 @@ public class TeacherEntity implements IsSerializable, Serializable {
         this.name = teacher.getName();
         this.lastName = teacher.getLastName();
         //TODO: avatar
-//        if(teacher.getAvatar() != null){
-//            this.avatar.setId(teacher.getAvatar().getId());
-//            this.avatar.setName(teacher.getName());
-//        }
-
     }
 
     public int getId() {
@@ -73,5 +65,15 @@ public class TeacherEntity implements IsSerializable, Serializable {
 
     public void setAvatar(AvatarEntity avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "TeacherEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", avatar=" + avatar +
+                '}';
     }
 }

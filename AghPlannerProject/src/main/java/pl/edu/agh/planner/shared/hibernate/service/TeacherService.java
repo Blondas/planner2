@@ -17,7 +17,9 @@ public class TeacherService implements ServiceInterface<TeacherEntity, Integer> 
     public void setTeacherDao(TeacherDao teacherDao) { this.teacherDao = teacherDao; }
 
     @Override
-    public void add(TeacherEntity entity) { teacherDao.add(entity); }
+    public void add(TeacherEntity entity) {
+        teacherDao.add(entity);
+    }
 
     @Override
     public void add(List<TeacherEntity> object) { teacherDao.add(object); }

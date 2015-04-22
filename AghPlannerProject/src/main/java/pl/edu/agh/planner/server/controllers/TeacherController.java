@@ -19,7 +19,9 @@ public class TeacherController implements ControllerInterface<TeacherEntity, Int
     }
 
 	@Override
-	public void add(TeacherEntity object) { teacherService.add(object); }
+	public void add(TeacherEntity object) {
+        teacherService.add(object);
+    }
 
     @Override
     public void add(List<TeacherEntity> object) { teacherService.add(object); }

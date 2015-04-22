@@ -1,12 +1,9 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Data
 @Entity
 // grupa studenctka (składowa agregatu)
 public class StudentGroupEntity {
@@ -38,4 +35,60 @@ public class StudentGroupEntity {
 
     @OneToMany(mappedBy = "studentGroup")
     private Set<AggregateEntity> aggregates;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
+    }
+
+    public LetterDesignationEntity getLetterDesignation() {
+        return letterDesignation;
+    }
+
+    public void setLetterDesignation(LetterDesignationEntity letterDesignation) {
+        this.letterDesignation = letterDesignation;
+    }
+
+    public FacultyEntity getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(FacultyEntity faculty) {
+        this.faculty = faculty;
+    }
+
+    public Set<AggregateEntity> getAggregates() {
+        return aggregates;
+    }
+
+    public void setAggregates(Set<AggregateEntity> aggregates) {
+        this.aggregates = aggregates;
+    }
 }

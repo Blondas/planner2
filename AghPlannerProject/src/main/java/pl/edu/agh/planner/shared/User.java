@@ -5,6 +5,7 @@ import pl.edu.agh.planner.shared.enums.UserLoginStatusEnum;
 import pl.edu.agh.planner.shared.hibernate.entity.UserEntity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class User implements Serializable, IsSerializable {
 
@@ -13,6 +14,7 @@ public class User implements Serializable, IsSerializable {
 	private String password;
 	private String passwordMd5;
 	private UserLoginStatusEnum userStatus;
+    private Set<Authorization> authorizations;
 
 	public User() {
 
@@ -65,4 +67,11 @@ public class User implements Serializable, IsSerializable {
 		this.passwordMd5 = passwordMd5;
 	}
 
+    public Set<Authorization> getAuthorizations() {
+        return authorizations;
+    }
+
+    public void setAuthorizations(Set<Authorization> authorizations) {
+        this.authorizations = authorizations;
+    }
 }
