@@ -1,7 +1,10 @@
 package pl.edu.agh.planner.client.applayout;
 
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import pl.edu.agh.planner.client.applayout.menu.MainMenuPlanner;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.CallendarEventsListTool;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 
 public class WorkspacePanel extends VLayout {
@@ -24,7 +27,12 @@ public class WorkspacePanel extends VLayout {
 		setHeight100();
 		setBackgroundImage("wallpaper.png");
 		setShowEdges(false);
-		addMembers(new MainMenuPlanner(), PlannerCalendar.getInstance());
+
+		HLayout hLayout = new HLayout();
+		hLayout.addMembers(PlannerCalendar.getInstance(), CallendarEventsListTool.getInstance());
+
+		addMembers(new MainMenuPlanner(), hLayout);
+
 		show();
 	}
 
