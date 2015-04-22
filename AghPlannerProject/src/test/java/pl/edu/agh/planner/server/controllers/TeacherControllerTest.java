@@ -1,39 +1,34 @@
 package pl.edu.agh.planner.server.controllers;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.edu.agh.planner.shared.hibernate.dao.AvatarDao;
-import pl.edu.agh.planner.shared.hibernate.dao.TeacherDao;
 import pl.edu.agh.planner.shared.hibernate.entity.AvatarEntity;
 import pl.edu.agh.planner.shared.hibernate.entity.TeacherEntity;
+import utils.DefaultTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration(locations = {
-        "classpath:controllerContext.xml",
-        "classpath:daoContext.xml",
-        "classpath:serviceContext.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class TeacherControllerTest {
-
-    @Autowired
-    TeacherController teacherController;
+public class TeacherControllerTest extends DefaultTest {
 
     @Test
-     public void shouldAdd(){
+     public void shouldAddTeacher(){
         //given
 
-        TeacherEntity teacher = givenTeacher();
+        TeacherEntity givenTeacher = givenTeacher();
 
         // when
-        teacherController.add(teacher);
+        teacherController.add(givenTeacher);
 
 
         //then
-        assertEquals("Marmolada", teacherController.getById(1).getName());
+        ArrayList<TeacherEntity> teacherListReceived = (ArrayList<TeacherEntity>) teacherController.getList();
+        TeacherEntity teacherReceived = teacherListReceived.get(teacherListReceived.size()-1);
+
+        assertEquals(givenTeacher.getName(), teacherReceived.getName());
 
     }
 
@@ -41,38 +36,61 @@ public class TeacherControllerTest {
     public void shouldAddTeacherAvatar(){
         //given
 
-        AvatarEntity avatar = givenAvatar();
-        TeacherEntity teacher = givenTeacher();
-        teacher.setAvatar(avatar);
+        AvatarEntity givenAvatar = givenAvatar();
+        TeacherEntity givenTeacher = givenTeacher();
+        givenTeacher.setAvatar(givenAvatar);
 
 
         // when
 
-        TeacherDao teacherDao = new TeacherDao();
-        teacherDao.add(teacher);
+        teacherController.add(givenTeacher);
 
 
         //then
-        assertEquals("Marmolada", teacherDao.getById(1).getName());
 
+        ArrayList<TeacherEntity> teacherListReceived = (ArrayList<TeacherEntity>) teacherController.getList();
+        TeacherEntity teacherReceived = teacherListReceived.get(teacherListReceived.size()-1);
 
+        assertEquals(givenTeacher.getName(), teacherReceived.getName());
+        assertEquals(givenTeacher.getAvatar().getName(), teacherReceived.getAvatar().getName());
 
     }
-
-
 
     @Test
-    public void shouldDeleteAvatar(){
-        AvatarDao avatarDao = new AvatarDao();
-        AvatarEntity av = new AvatarEntity();
-        av.setId(1);
-        avatarDao.delete(av);
+    public void shouldReturnTeachersList(){
+
+        //when
+        List<TeacherEntity> teachers = teacherController.getList();
+
+        //then
+        assertNotNull("list is empty ", teachers);
+
     }
 
+    @Test(expected=ConstraintViolationException.class)
+    public void shouldNotDeleteAvatar(){
+        //given
+
+        AvatarEntity givenAvatar = givenAvatar();
+        TeacherEntity givenTeacher = givenTeacher();
+        givenTeacher.setAvatar(givenAvatar);
+
+
+        // when
+
+        teacherController.add(givenTeacher);
+        List<TeacherEntity> teacherListReceived = (ArrayList<TeacherEntity>) teacherController.getList();
+        System.out.println("list size :"+teacherListReceived.size());
+
+
+        TeacherEntity teacherReceived = teacherListReceived.get(0);
+
+        avatarController.delete(teacherReceived.getAvatar());
+    }
 
     private TeacherEntity givenTeacher(){
         TeacherEntity teacher = new TeacherEntity();
-        teacher.setName("Marmolada");
+        teacher.setName("Marmolada 2");
         teacher.setLastName("Muchomorek");
 
         return teacher;

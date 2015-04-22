@@ -1,11 +1,8 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
 @Entity
 public class ClassroomEntity {
     @Id
@@ -14,7 +11,7 @@ public class ClassroomEntity {
     private int id;
 
     @Column(name = "c_number")
-    private int number;
+    private String number;
 
     @Column(name = "c_building_id")
     private int buildingId;
@@ -23,5 +20,45 @@ public class ClassroomEntity {
     private int numberOfSeats;
 
     @OneToMany(mappedBy = "classroom")
-    private Set<ClassroomHourEntity> classroomHourEntities;
+    private Set<ClassroomHourEntity> classroomHours;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public int getBuildingId() {
+        return buildingId;
+    }
+
+    public void setBuildingId(int buildingId) {
+        this.buildingId = buildingId;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public Set<ClassroomHourEntity> getClassroomHours() {
+        return classroomHours;
+    }
+
+    public void setClassroomHours(Set<ClassroomHourEntity> classroomHours) {
+        this.classroomHours = classroomHours;
+    }
 }

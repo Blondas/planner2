@@ -20,6 +20,7 @@
             classpath:daoContext.xml
             classpath:serviceContext.xml
             classpath:controllerContext.xml
+            classpath:applicationContext.xml
         </param-value>
     </context-param>
     <listener>

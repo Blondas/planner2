@@ -3,9 +3,7 @@ package pl.edu.agh.planner.shared.hibernate.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-//@Data
 @Entity
-
 // składowa agregatu
 public class AvatarEntity {
     @Id
