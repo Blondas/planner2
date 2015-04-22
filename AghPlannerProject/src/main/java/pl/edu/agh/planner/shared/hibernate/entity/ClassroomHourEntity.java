@@ -1,12 +1,7 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Data
 @Entity
 public class ClassroomHourEntity {
     @Id
@@ -23,4 +18,36 @@ public class ClassroomHourEntity {
     @ManyToOne
     @JoinColumn(name = "ch_classroom_id")
     private ClassroomEntity classroom;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getLessonBeginId() {
+        return lessonBeginId;
+    }
+
+    public void setLessonBeginId(int lessonBeginId) {
+        this.lessonBeginId = lessonBeginId;
+    }
+
+    public int getLessonEndId() {
+        return lessonEndId;
+    }
+
+    public void setLessonEndId(int lessonEndId) {
+        this.lessonEndId = lessonEndId;
+    }
+
+    public ClassroomEntity getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(ClassroomEntity classroom) {
+        this.classroom = classroom;
+    }
 }

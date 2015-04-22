@@ -1,12 +1,7 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Data
 @Entity
 public class ConcreteLessonEntity {
     @Id
@@ -24,10 +19,49 @@ public class ConcreteLessonEntity {
 
     @OneToOne
     @JoinColumn(name = "cl_classroom_hour_id")
-    private ClassroomHourEntity classroomHourEntity;
+    private ClassroomHourEntity classroomHour;
 
     @OneToOne
     @JoinColumn(name = "cl_concrete_date_id")
-    private ConcreteDateEntity concreteDateEntity;
+    private ConcreteDateEntity concreteDate;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public AggregateEntity getAggregate() {
+        return aggregate;
+    }
+
+    public void setAggregate(AggregateEntity aggregate) {
+        this.aggregate = aggregate;
+    }
+
+    public ScheduleEntity getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(ScheduleEntity schedule) {
+        this.schedule = schedule;
+    }
+
+    public ClassroomHourEntity getClassroomHour() {
+        return classroomHour;
+    }
+
+    public void setClassroomHour(ClassroomHourEntity classroomHour) {
+        this.classroomHour = classroomHour;
+    }
+
+    public ConcreteDateEntity getConcreteDate() {
+        return concreteDate;
+    }
+
+    public void setConcreteDate(ConcreteDateEntity concreteDate) {
+        this.concreteDate = concreteDate;
+    }
 }

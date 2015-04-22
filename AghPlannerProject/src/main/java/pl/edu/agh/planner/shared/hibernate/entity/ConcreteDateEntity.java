@@ -1,14 +1,9 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Data
 public class ConcreteDateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +17,28 @@ public class ConcreteDateEntity {
     @JoinColumn(name = "cd_concrete_date_template_id")
     private ConcreteDateTemplateEntity concreteDateTemplate;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getRealDate() {
+        return realDate;
+    }
+
+    public void setRealDate(Date realDate) {
+        this.realDate = realDate;
+    }
+
+    public ConcreteDateTemplateEntity getConcreteDateTemplate() {
+        return concreteDateTemplate;
+    }
+
+    public void setConcreteDateTemplate(ConcreteDateTemplateEntity concreteDateTemplate) {
+        this.concreteDateTemplate = concreteDateTemplate;
+    }
 }

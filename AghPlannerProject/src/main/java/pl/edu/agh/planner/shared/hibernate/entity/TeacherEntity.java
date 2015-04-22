@@ -6,10 +6,8 @@ import pl.edu.agh.planner.shared.Teacher;
 import javax.persistence.*;
 import java.io.Serializable;
 
-//@Data
 @Entity
-
-public class TeacherEntity {
+public class TeacherEntity implements IsSerializable, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "t_id")
@@ -67,5 +65,15 @@ public class TeacherEntity {
 
     public void setAvatar(AvatarEntity avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "TeacherEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", avatar=" + avatar +
+                '}';
     }
 }

@@ -1,14 +1,9 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Data
 public class ConcreteDateTemplateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +14,41 @@ public class ConcreteDateTemplateEntity {
     private String name;
 
     @OneToMany(mappedBy="concreteDateTemplate")
-    private Set<ConcreteDateEntity> concreteDateEntities;
+    private Set<ConcreteDateEntity> concreteDates;
 
     @ManyToOne
     @JoinColumn(name = "cdt_terms_set_id")
     private TermsSetEntity termsSet;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<ConcreteDateEntity> getConcreteDates() {
+        return concreteDates;
+    }
+
+    public void setConcreteDates(Set<ConcreteDateEntity> concreteDates) {
+        this.concreteDates = concreteDates;
+    }
+
+    public TermsSetEntity getTermsSet() {
+        return termsSet;
+    }
+
+    public void setTermsSet(TermsSetEntity termsSet) {
+        this.termsSet = termsSet;
+    }
 }
