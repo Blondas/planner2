@@ -3,7 +3,6 @@ package pl.edu.agh.planner.shared.hibernate.dao;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
-import pl.edu.agh.planner.shared.hibernate.entity.AuthorizationEntity;
 import pl.edu.agh.planner.shared.hibernate.entity.AuthorizationTypeEntity;
 import pl.edu.agh.planner.shared.hibernate.utils.GenericQuery;
 

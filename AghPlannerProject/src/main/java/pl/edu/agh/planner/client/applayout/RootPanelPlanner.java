@@ -1,7 +1,6 @@
 package pl.edu.agh.planner.client.applayout;
 
 import com.smartgwt.client.widgets.layout.VLayout;
-import pl.edu.agh.planner.client.applayout.menu.MainMenuPlanner;
 
 public class RootPanelPlanner extends VLayout {
 

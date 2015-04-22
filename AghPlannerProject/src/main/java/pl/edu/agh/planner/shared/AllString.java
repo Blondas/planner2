@@ -56,6 +56,7 @@ public class AllString {
 	public static String addNewClassroom = "Salę wykładową";
 	public static String addNewClassroomNumber = "Numer sali";
 	public static String addNewClassroomSuccess = "Nowa sala została dodana pozytywnie.";
+	public static String addNewClassroomGroupName = "Nowa sala";
 
 	public static String teacherListTitle = "Lista prowadzących";
 
