@@ -11,7 +11,7 @@ import java.util.List;
 @Service("teacherService")
 public class TeacherService implements ServiceInterface<TeacherEntity, Integer> {
 
-    private TeacherDao teacherDao;
+    private TeacherDao teacherDao = new TeacherDao();
 
     @Autowired
     public void setTeacherDao(TeacherDao teacherDao) { this.teacherDao = teacherDao; }

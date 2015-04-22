@@ -11,7 +11,7 @@ import java.util.List;
 public class TeacherController implements ControllerInterface<TeacherEntity, Integer> {
 
 
-    private TeacherService teacherService;
+    private TeacherService teacherService = new TeacherService();
 
     @Autowired
     public void setTeacherService(TeacherService teacherService) {
