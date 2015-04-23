@@ -59,7 +59,7 @@ class MainMenuBar extends RibbonBar {
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, AllGraphic.callendarChooseDateIcon, true, new CalendarDataChooser_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, AllGraphic.callendarAddEventIcon, true, new TYMCZASOWO_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, AllGraphic.callendarPrevIcon, true, new CalendarPrev_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, AllGraphic.callendarTodayIcon, true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, AllGraphic.callendarTodayIcon, true, new CalendarToday_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarNext, AllGraphic.callendarNextIcon, true, new CalendarNext_ClickHandler()));
 
 		RibbonGroup exportTools = new RibbonGroup();
@@ -223,7 +223,7 @@ class MainMenuBar extends RibbonBar {
 
 		@Override
 		public void onClick(ClickEvent event) {
-
+			PlannerCalendar.getInstance().setChosenDate(new Date());
 		}
 
 	}
