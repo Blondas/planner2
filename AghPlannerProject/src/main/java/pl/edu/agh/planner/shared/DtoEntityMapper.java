@@ -6,8 +6,7 @@ import org.dozer.Mapper;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.planner.shared.hibernate.entity.*;
 
-@Component("dtoToEntity")
-public class DtoToEntity {
+public class DtoEntityMapper {
 
     private static Mapper mapper = (DozerBeanMapper) DozerBeanMapperSingletonWrapper.getInstance();
 
@@ -77,6 +76,10 @@ public class DtoToEntity {
 
     public static TeacherEntity teacherToEntity(Teacher teacher) {
         return mapper.map(teacher, TeacherEntity.class);
+    }
+
+    public static Teacher entityToTeacher(TeacherEntity teacherEntityher) {
+        return mapper.map(teacherEntityher, Teacher.class);
     }
 
     public static TermsSetEntity termsSetToEntity(TermsSet termsSet) {
