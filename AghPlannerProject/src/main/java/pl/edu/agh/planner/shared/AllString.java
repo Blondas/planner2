@@ -8,8 +8,6 @@ public class AllString {
 	public static String menuAboutProgramTitle = "O";
 	public static String menuUserActionsTitle = "Użytkownik";
 
-	public static String newAdd = "Dodaj";
-
 	public static String viewList = "Listę";
 	public static String viewListSale = "Sal";
 	public static String viewListConductors = "Prowadzących";
@@ -20,10 +18,6 @@ public class AllString {
 
 	public static String aboutProgram = "Programie";
 	public static String aboutAuthors = "Autorach";
-
-	public static String addItem1 = "Item1";
-	public static String addItem2 = "Item2";
-	public static String addItem3 = "Item3";
 
 	public static String loginPanelTitle = "<b>Panel Logowania</b><BR>";
 	public static String loginPanelText = "Aby się zalogować proszę użyć swojego login'u oraz hasła. W razie problemów proszę skorzystać z opcji pomocy.";
@@ -72,6 +66,7 @@ public class AllString {
 	public static String callendarNext = "Następny";
 	public static String callendarPrev = "Poprzedni";
 	public static String callendarToday = "Dzisiaj";
+	public static String callendarListItemTitle = "Agregat";
 
 	public static String exportTitle = "Exportowanie";
 	public static String exportPrint = "Drukuj";

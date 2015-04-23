@@ -2,21 +2,26 @@ package pl.edu.agh.planner.client.applayout.menu;
 
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
+import com.smartgwt.client.widgets.DateChooser;
 import com.smartgwt.client.widgets.IconButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.events.DataChangedEvent;
+import com.smartgwt.client.widgets.events.DataChangedHandler;
 import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewClassroom;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
-import pl.edu.agh.planner.client.applayout.menu.forms.calendar.CallendarEventsListTool;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsListTool;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerDateChooser;
 import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 class MainMenuBar extends RibbonBar {
 
@@ -51,7 +56,7 @@ class MainMenuBar extends RibbonBar {
 		callendarTools.setRowHeight(GROUP_ROW_HEIGHT);
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarShow, AllGraphic.callendarShowIcon, true, new ShowCalendar_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarShowList, AllGraphic.callendarShowIcon, true, new ShowCalendarList_ClickHandler()));
-		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, AllGraphic.callendarChooseDateIcon, true, new TYMCZASOWO_ClickHandler()));
+		callendarTools.addControl(new PlannerIconButton(AllString.callendarChooseDate, AllGraphic.callendarChooseDateIcon, true, new CalendarDataChooser_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarAddEvent, AllGraphic.callendarAddEventIcon, true, new TYMCZASOWO_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarPrev, AllGraphic.callendarPrevIcon, true, new CalendarPrev_ClickHandler()));
 		callendarTools.addControl(new PlannerIconButton(AllString.callendarToday, AllGraphic.callendarTodayIcon, true, new TYMCZASOWO_ClickHandler()));
@@ -123,7 +128,6 @@ class MainMenuBar extends RibbonBar {
 	private IconMenuButton createIconMenuButton(String title, String iconName, Menu menu, boolean isVertical) {
 		String path16 = "16/";
 		String path48 = "48/";
-		String extend = ".png";
 
 		IconMenuButton iconMenuButton = new IconMenuButton();
 		iconMenuButton.setTitle(title);
@@ -132,8 +136,8 @@ class MainMenuBar extends RibbonBar {
 		if (iconName == null || iconName.equals("")) {
 			throw new IllegalArgumentException(AllString.exceptionMessage);
 		} else {
-			iconMenuButton.setIcon(path16 + iconName + extend);
-			iconMenuButton.setLargeIcon(path48 + iconName + extend);
+			iconMenuButton.setIcon(path16 + iconName);
+			iconMenuButton.setLargeIcon(path48 + iconName);
 			if (isVertical)
 				iconMenuButton.setOrientation("vertical");
 			if (menu != null)
@@ -175,7 +179,7 @@ class MainMenuBar extends RibbonBar {
 		public void onClick(ClickEvent event) {
 			if (PlannerCalendar.getInstance().isVisible()) {
 				PlannerCalendar.getInstance().setVisible(false);
-				CallendarEventsListTool.getInstance().setVisible(false);
+				PlannerCallendarEventsListTool.getInstance().setVisible(false);
 			} else {
 				PlannerCalendar.getInstance().setVisible(true);
 			}
@@ -187,12 +191,21 @@ class MainMenuBar extends RibbonBar {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (CallendarEventsListTool.getInstance().isVisible()) {
-				CallendarEventsListTool.getInstance().setVisible(false);
+			if (PlannerCallendarEventsListTool.getInstance().isVisible()) {
+				PlannerCallendarEventsListTool.getInstance().setVisible(false);
 			} else {
 				PlannerCalendar.getInstance().setVisible(true);
-				CallendarEventsListTool.getInstance().setVisible(true);
+				PlannerCallendarEventsListTool.getInstance().setVisible(true);
 			}
+		}
+
+	}
+
+	private class CalendarDataChooser_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			PlannerDateChooser.getInstance();
 		}
 
 	}
@@ -202,6 +215,15 @@ class MainMenuBar extends RibbonBar {
 		@Override
 		public void onClick(ClickEvent event) {
 			PlannerCalendar.getInstance().next();
+		}
+
+	}
+
+	private class CalendarToday_ClickHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+
 		}
 
 	}
