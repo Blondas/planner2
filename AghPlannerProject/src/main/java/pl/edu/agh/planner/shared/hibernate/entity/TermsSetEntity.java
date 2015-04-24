@@ -1,13 +1,8 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
-@Data
 @Entity
 public class TermsSetEntity {
     @Id
@@ -16,6 +11,21 @@ public class TermsSetEntity {
     private int id;
 
     @OneToMany(mappedBy="termsSet")
-    private Set<ConcreteDateTemplateEntity> concreteDateTemplateEntities;
+    private Set<ConcreteDateTemplateEntity> concreteDateTemplates;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<ConcreteDateTemplateEntity> getConcreteDateTemplates() {
+        return concreteDateTemplates;
+    }
+
+    public void setConcreteDateTemplates(Set<ConcreteDateTemplateEntity> concreteDateTemplates) {
+        this.concreteDateTemplates = concreteDateTemplates;
+    }
 }

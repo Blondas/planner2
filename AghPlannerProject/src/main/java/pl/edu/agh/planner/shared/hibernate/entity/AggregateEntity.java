@@ -1,12 +1,7 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Data
 @Entity
 public class AggregateEntity {
     @Id
@@ -25,4 +20,36 @@ public class AggregateEntity {
     @ManyToOne
     @JoinColumn(name = "ag_student_group_id")
     private StudentGroupEntity studentGroup;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public AvatarEntity getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(AvatarEntity avatar) {
+        this.avatar = avatar;
+    }
+
+    public ProgrammeUnitEntity getProgrammeUnit() {
+        return programmeUnit;
+    }
+
+    public void setProgrammeUnit(ProgrammeUnitEntity programmeUnit) {
+        this.programmeUnit = programmeUnit;
+    }
+
+    public StudentGroupEntity getStudentGroup() {
+        return studentGroup;
+    }
+
+    public void setStudentGroup(StudentGroupEntity studentGroup) {
+        this.studentGroup = studentGroup;
+    }
 }

@@ -11,13 +11,14 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.VLayout;
 import pl.edu.agh.planner.client.Context;
 import pl.edu.agh.planner.client.common.validators.MailAddressValidator;
 import pl.edu.agh.planner.shared.AllString;
 import pl.edu.agh.planner.shared.Teacher;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddNewTeacher extends Window {
 
@@ -30,12 +31,24 @@ public class AddNewTeacher extends Window {
 		setHeight(200);
 
 		dynamicForm = new DynamicForm();
-		dynamicForm.setWidth100();
+		dynamicForm.setWidth("50%");
 		dynamicForm.setAlign(Alignment.CENTER);
+
+		HLayout newTeacherText = new HLayout();
+		VLayout vLayout = new VLayout();
+		vLayout.setHeight("25%");
+		newTeacherText.setHeight("65%");
+		newTeacherText.setAlign(Alignment.CENTER);
+		newTeacherText.addMember(vLayout);
+		newTeacherText.addMember(dynamicForm);
+		newTeacherText.addMember(vLayout);
+		newTeacherText.setIsGroup(true);
+		newTeacherText.setMargin(8);
+		newTeacherText.setLayoutMargin(8);
 
 		createTextItems();
 
-		addItem(dynamicForm);
+		addItem(newTeacherText);
 		addItem(createButtons());
 
 		show();

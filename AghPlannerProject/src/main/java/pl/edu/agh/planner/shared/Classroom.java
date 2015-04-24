@@ -8,7 +8,7 @@ import java.util.Set;
 public class Classroom implements IsSerializable, Serializable {
 
     private int id;
-    private int number;
+    private String number;
     private int buildingId;
     private int numberOfSeats;
     private Set<ClassroomHour> classroomHours;
@@ -21,11 +21,11 @@ public class Classroom implements IsSerializable, Serializable {
         this.id = id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

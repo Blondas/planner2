@@ -1,12 +1,7 @@
 package pl.edu.agh.planner.shared.hibernate.entity;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Data
 @Entity
 public class DepartmentEntity {
 
@@ -18,4 +13,19 @@ public class DepartmentEntity {
     @Column(name = "d_name")
     private String name;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -13,6 +13,7 @@ import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 import pl.edu.agh.planner.client.applayout.RootPanelPlanner;
+import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
 
 public class LoginPanelPlanner extends Window {
@@ -44,6 +45,11 @@ public class LoginPanelPlanner extends Window {
 		setShowCloseButton(false);
 		setShowMinimizeButton(false);
 		setShowMaximizeButton(false);
+
+		setShowHeader(false);
+		setShowStatusBar(false);
+		setLayoutMargin(0);
+		setAttribute("styleName", "", true);
 
 		addItem(createLogo());
 		addItem(createText());
@@ -117,7 +123,7 @@ public class LoginPanelPlanner extends Window {
 
 	private Img createLogo() {
 		//TODO: logo do podmiany
-		Img img = new Img("http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg");
+		Img img = new Img(AllGraphic.logoImage);
 		img.setHeight(100);
 		img.setWidth(400);
 

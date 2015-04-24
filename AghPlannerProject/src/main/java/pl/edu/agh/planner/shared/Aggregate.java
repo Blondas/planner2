@@ -42,4 +42,5 @@ public class Aggregate implements IsSerializable, Serializable {
     public void setStudentGroup(StudentGroup studentGroup) {
         this.studentGroup = studentGroup;
     }
+
 }

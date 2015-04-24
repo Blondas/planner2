@@ -20,11 +20,11 @@
             classpath:daoContext.xml
             classpath:serviceContext.xml
             classpath:controllerContext.xml
+            classpath:applicationContext.xml
         </param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
 
 </web-app>

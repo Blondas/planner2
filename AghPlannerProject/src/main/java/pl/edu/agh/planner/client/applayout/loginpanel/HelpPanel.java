@@ -46,6 +46,11 @@ class HelpPanel extends Window {
 		setShowMinimizeButton(false);
 		setShowMaximizeButton(false);
 
+		setShowHeader(false);
+		setShowStatusBar(false);
+		setLayoutMargin(0);
+		setAttribute("styleName", "", true);
+
 		addItem(createLogo());
 		addItem(createText());
 		addItem(createForm());

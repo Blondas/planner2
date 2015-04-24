@@ -11,7 +11,9 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import com.smartgwt.client.widgets.layout.VLayout;
 import pl.edu.agh.planner.client.Context;
+import com.smartgwt.client.widgets.layout.HLayout;
 import pl.edu.agh.planner.shared.AllString;
 import pl.edu.agh.planner.shared.Classroom;
 
@@ -25,16 +27,30 @@ public class AddNewClassroom extends Window {
 	public AddNewClassroom() {
 		setTitle(AllString.addNewClassroom);
 		setWidth(350);
-		setHeight(150);
+		setHeight(170);
 
 		dynamicForm = new DynamicForm();
-		dynamicForm.setWidth100();
+		dynamicForm.setWidth("50%");
 		dynamicForm.setAlign(Alignment.CENTER);
 
 		createTextItems();
 
-		addItem(dynamicForm);
+		HLayout newClassroomText = new HLayout();
+		VLayout vLayout = new VLayout();
+		vLayout.setHeight("25%");
+		newClassroomText.setHeight("65%");
+		newClassroomText.setAlign(Alignment.CENTER);
+		newClassroomText.addMember(vLayout);
+		newClassroomText.addMember(dynamicForm);
+		newClassroomText.addMember(vLayout);
+		newClassroomText.setIsGroup(true);
+		newClassroomText.setMargin(8);
+		newClassroomText.setLayoutMargin(8);
+
+		addItem(newClassroomText);
 		addItem(createButtons());
+
+
 
 		show();
 		centerInPage();
