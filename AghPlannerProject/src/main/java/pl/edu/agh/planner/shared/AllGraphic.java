@@ -4,8 +4,9 @@ public class AllGraphic {
 
     public static String extendPNG = ".png";
 
-    public static String addNewConductorTitleIcon = "settings" + extendPNG;
-    public static String addNewClassroomIcon = "settings" + extendPNG;
+    public static String addNewTeacherIcon = "teacher" + extendPNG;
+    public static String addNewClassroomIcon = "classroom" + extendPNG;
+    public static String addNewStudentGroupIcon = "group" + extendPNG;
 
     public static String menuViewShowIcon = "view" + extendPNG;
 
@@ -29,6 +30,6 @@ public class AllGraphic {
 
     public static String backgroundImage = "wallpaper" + extendPNG;
 
-    public static String logoImage = "http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg";
+    public static String loginPanelLogoImage = "loginHeader" + extendPNG;
 
 }

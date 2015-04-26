@@ -2,19 +2,16 @@ package pl.edu.agh.planner.client.applayout.menu;
 
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
-import com.smartgwt.client.widgets.DateChooser;
 import com.smartgwt.client.widgets.IconButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
-import com.smartgwt.client.widgets.events.DataChangedEvent;
-import com.smartgwt.client.widgets.events.DataChangedHandler;
 import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewClassroom;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
-import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsListTool;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsList;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerDateChooser;
 import pl.edu.agh.planner.shared.AllGraphic;
@@ -37,8 +34,9 @@ class MainMenuBar extends RibbonBar {
 		artifactGroup.setTitleAlign(Alignment.LEFT);
 		artifactGroup.setNumRows(GROUP_ROW_NUMBER);
 		artifactGroup.setRowHeight(GROUP_ROW_HEIGHT);
-		artifactGroup.addControl(new PlannerIconButton(AllString.addNewConductorTitle, AllGraphic.addNewConductorTitleIcon, false, new AddNewConductor_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewConductorTitle, AllGraphic.addNewTeacherIcon, false, new AddNewConductor_ClickHandler()));
 		artifactGroup.addControl(new PlannerIconButton(AllString.addNewClassroom, AllGraphic.addNewClassroomIcon, false, new AddNewClassroom_ClickHandler()));
+		artifactGroup.addControl(new PlannerIconButton(AllString.addNewStudentGroup, AllGraphic.addNewStudentGroupIcon, false, new TYMCZASOWO_ClickHandler()));
 
 		RibbonGroup viewGroup = new RibbonGroup();
 		ribbonGroups.add(viewGroup);
@@ -179,7 +177,7 @@ class MainMenuBar extends RibbonBar {
 		public void onClick(ClickEvent event) {
 			if (PlannerCalendar.getInstance().isVisible()) {
 				PlannerCalendar.getInstance().setVisible(false);
-				PlannerCallendarEventsListTool.getInstance().setVisible(false);
+				PlannerCallendarEventsList.getInstance().setVisible(false);
 			} else {
 				PlannerCalendar.getInstance().setVisible(true);
 			}
@@ -191,11 +189,11 @@ class MainMenuBar extends RibbonBar {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (PlannerCallendarEventsListTool.getInstance().isVisible()) {
-				PlannerCallendarEventsListTool.getInstance().setVisible(false);
+			if (PlannerCallendarEventsList.getInstance().isVisible()) {
+				PlannerCallendarEventsList.getInstance().setVisible(false);
 			} else {
 				PlannerCalendar.getInstance().setVisible(true);
-				PlannerCallendarEventsListTool.getInstance().setVisible(true);
+				PlannerCallendarEventsList.getInstance().setVisible(true);
 			}
 		}
 

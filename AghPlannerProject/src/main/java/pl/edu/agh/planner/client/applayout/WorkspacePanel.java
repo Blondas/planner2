@@ -3,7 +3,7 @@ package pl.edu.agh.planner.client.applayout;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import pl.edu.agh.planner.client.applayout.menu.MainMenuPlanner;
-import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsListTool;
+import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsList;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 import pl.edu.agh.planner.shared.AllGraphic;
 
@@ -29,7 +29,7 @@ public class WorkspacePanel extends VLayout {
 		setShowEdges(false);
 
 		HLayout hLayout = new HLayout();
-		hLayout.addMembers(PlannerCalendar.getInstance(), PlannerCallendarEventsListTool.getInstance());
+		hLayout.addMembers(PlannerCalendar.getInstance(), PlannerCallendarEventsList.getInstance());
 
 		addMembers(new MainMenuPlanner(), hLayout);
 
