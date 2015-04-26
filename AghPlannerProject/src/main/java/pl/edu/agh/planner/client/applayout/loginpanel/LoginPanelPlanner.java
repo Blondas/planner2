@@ -123,7 +123,7 @@ public class LoginPanelPlanner extends Window {
 
 	private Img createLogo() {
 		//TODO: logo do podmiany
-		Img img = new Img(AllGraphic.logoImage);
+		Img img = new Img(AllGraphic.loginPanelLogoImage);
 		img.setHeight(100);
 		img.setWidth(400);
 

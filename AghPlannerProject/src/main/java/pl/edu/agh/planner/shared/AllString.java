@@ -25,7 +25,6 @@ public class AllString {
 
 	public static String helpPanelTitle = "<b>Formularz Pomocy</b><BR>";
 	public static String helpPanelText = "Aby Twoje hasło zostało zrestartowane i wysłane na maila uzupełnij poniższe dane weryfikacyjne zgodnie z podanymi przy rejestracji";
-	public static String helpWarningMsg = "Podane dane nie odpowiadają żadnemu z użytkowników";
 
 	public static String login = "Login";
 	public static String password = "Hasło";
@@ -39,9 +38,6 @@ public class AllString {
 	public static String confirmButtonText = "Zatwierdź";
 	public static String helpButtonText = "Pomoc";
 	public static String backButtonText = "Wróć";
-	public static String closeButtonText = "Zamknij";
-	public static String saveButtonText = "Zapisz";
-	public static String saveAndCloseButtonText = "Zapisz i Zamknij";
 
 	public static String addNewConductorTitle = "Prowadzącego";
 	public static String addNewConductorWindowTitle = "Dodaj prowadzącego";
@@ -50,7 +46,8 @@ public class AllString {
 	public static String addNewClassroom = "Salę wykładową";
 	public static String addNewClassroomNumber = "Numer sali";
 	public static String addNewClassroomSuccess = "Nowa sala została dodana pozytywnie.";
-	public static String addNewClassroomGroupName = "Nowa sala";
+
+	public static String addNewStudentGroup = "Grupę studencką";
 
 	public static String teacherListTitle = "Lista prowadzących";
 

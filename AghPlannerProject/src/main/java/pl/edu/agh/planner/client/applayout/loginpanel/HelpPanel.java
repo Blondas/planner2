@@ -13,6 +13,7 @@ import com.smartgwt.client.widgets.form.fields.DateItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 import pl.edu.agh.planner.client.common.validators.MailAddressValidator;
+import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
 
 import java.util.ArrayList;
@@ -134,7 +135,7 @@ class HelpPanel extends Window {
 
 	private Img createLogo() {
 		//TODO: logo do podmiany
-		Img img = new Img("http://www.simplybathroomsmerseyside.co.uk/wp-content/uploads/2014/05/simply-logo-600x100.jpg");
+		Img img = new Img(AllGraphic.loginPanelLogoImage);
 		img.setHeight(100);
 		img.setWidth(400);
 
