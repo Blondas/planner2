@@ -1,5 +1,7 @@
 package pl.edu.agh.planner.client.applayout.loginpanel;
 
+import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
@@ -12,9 +14,13 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import pl.edu.agh.planner.client.LoginService;
 import pl.edu.agh.planner.client.applayout.RootPanelPlanner;
 import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
+import pl.edu.agh.planner.shared.User;
+
+import java.util.Date;
 
 public class LoginPanelPlanner extends Window {
 
@@ -33,6 +39,7 @@ public class LoginPanelPlanner extends Window {
 		}
 		return instance;
 	}
+
 
 	private LoginPanelPlanner() {
 		setWidth(400);
@@ -132,17 +139,49 @@ public class LoginPanelPlanner extends Window {
 
 	private class ConfirmButtonAction implements ClickHandler {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			if (loginItem.getValueAsString().equals("root") && passwordItem.getValueAsString().equals("root")) {
-				LoginPanelPlanner.this.destroy();
-				RootPanelPlanner.getInstance();
-			} else {
-				SC.warn(AllString.loginWarningMsg);
-			}
-		}
+        @Override
+        public void onClick(ClickEvent event) {
+            LoginService.Util.getInstance().loginServer(loginItem.getValueAsString(), passwordItem.getValueAsString(), new AsyncCallback<User>() {
 
-	}
+                @Override
+                public void onSuccess(User user) {
+                    if (user.isLoggedIn()) {
+                        RootPanel.get().clear();
+                        String sessionID = user.getSessionId();
+                        final long DURATION = 1000 * 60;
+                        Date expires = new Date(System.currentTimeMillis() + DURATION);
+                        LoginPanelPlanner.this.destroy();
+                        instance = null;
+                        RootPanelPlanner.getInstance();
+                        Cookies.setCookie("sid", sessionID, expires, null, "/", false);
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable caught) {
+
+                }
+            });
+
+        }
+    }
+
+
+
+//		@Override
+//		public void onClick(ClickEvent event) {
+//
+//			if (loginItem.getValueAsString().equals("root") && passwordItem.getValueAsString().equals("root")) {
+//				LoginPanelPlanner.this.destroy();
+//				RootPanelPlanner.getInstance();
+//			} else {
+//				SC.warn(AllString.loginWarningMsg);
+//			}
+
+
+
+
+
 
 	private class CleanButtonAction implements ClickHandler {
 
