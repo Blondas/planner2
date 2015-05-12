@@ -17,7 +17,7 @@ public class User implements Serializable, IsSerializable {
     private Set<Authorization> authorizations;
 
     private boolean isLoggedIn = false;
-    private String sessionId;
+    private String sessionId ;
 
 	public User() {
 
