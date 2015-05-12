@@ -1,5 +1,7 @@
 package pl.edu.agh.planner.client.applayout.menu;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.IconButton;
@@ -9,6 +11,11 @@ import com.smartgwt.client.widgets.menu.IconMenuButton;
 import com.smartgwt.client.widgets.menu.Menu;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 import com.smartgwt.client.widgets.toolbar.RibbonGroup;
+import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
+import pl.edu.agh.planner.client.LoginService;
+import pl.edu.agh.planner.client.applayout.RootPanelPlanner;
+import pl.edu.agh.planner.client.applayout.WorkspacePanel;
+import pl.edu.agh.planner.client.applayout.loginpanel.LoginPanelPlanner;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewClassroom;
 import pl.edu.agh.planner.client.applayout.menu.forms.AddNewTeacher;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCallendarEventsList;
@@ -16,6 +23,7 @@ import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerCalendar;
 import pl.edu.agh.planner.client.applayout.menu.forms.calendar.PlannerDateChooser;
 import pl.edu.agh.planner.shared.AllGraphic;
 import pl.edu.agh.planner.shared.AllString;
+import pl.edu.agh.planner.shared.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -147,10 +155,24 @@ class MainMenuBar extends RibbonBar {
 
 	private class TYMCZASOWO_ClickHandler implements ClickHandler {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			SC.say("Dostępne już niebawem.");
-		}
+        @Override
+        public void onClick(ClickEvent event) {
+            LoginService.Util.getInstance().logout(new AsyncCallback<Void>() {
+
+                @Override
+                public void onFailure(Throwable caught) {
+
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+                    MainMenuBar.this.destroy();
+                    WorkspacePanel.getInstance().destroy();
+                    WorkspacePanel.nulluj();
+                    RootPanel.get().add(LoginPanelPlanner.getInstance());
+                }
+            });
+        }
 
 	}
 

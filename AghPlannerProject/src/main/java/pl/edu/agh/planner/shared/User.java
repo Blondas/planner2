@@ -16,6 +16,9 @@ public class User implements Serializable, IsSerializable {
 	private UserLoginStatusEnum userStatus;
     private Set<Authorization> authorizations;
 
+    private boolean isLoggedIn = false;
+    private String sessionId;
+
 	public User() {
 
 	}
@@ -73,5 +76,21 @@ public class User implements Serializable, IsSerializable {
 
     public void setAuthorizations(Set<Authorization> authorizations) {
         this.authorizations = authorizations;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }

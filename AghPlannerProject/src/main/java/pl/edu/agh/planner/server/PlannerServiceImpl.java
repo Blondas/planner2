@@ -1,8 +1,6 @@
 package pl.edu.agh.planner.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import pl.edu.agh.planner.client.PlannerService;
 import pl.edu.agh.planner.server.controllers.TeacherController;
 import pl.edu.agh.planner.shared.Classroom;
@@ -17,6 +15,9 @@ public class PlannerServiceImpl extends RemoteServiceServlet implements PlannerS
 
     private TeacherController teacherController = new TeacherController();
 
+    void createSession(String Username) {
+        getThreadLocalRequest().getSession().setAttribute("Username", Username);
+    }
 
     @Override
 	public void addTeacher(Teacher teacher) {

@@ -22,6 +22,10 @@ public class WorkspacePanel extends VLayout {
 		return instance;
 	}
 
+    public static void nulluj(){
+        instance=null;
+    }
+
 	private WorkspacePanel() {
 		setWidth100();
 		setHeight100();
