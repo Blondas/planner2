@@ -45,20 +45,8 @@ public class TeacherController  {
 
     @RequestMapping(method=POST,value="/teacher")
     public Teacher saveOrUpdate(@RequestBody Teacher teacher){
-//        public Teacher saveOrUpdate(){
-//        TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
-
-//        TeacherEntity entity = teacherService.getOne(new Long(6));
-//        entity.setLastName("update dzialaj prosze");
-//        Teacher teacher = new Teacher();
-//        teacher.setId(new Long(7));
-//        teacher.setLastName("update kurwa wpis");
-//        teacher.setName("update dupa123 wpis");
-
         TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
         return DtoEntityMapper.entityToTeacher(teacherService.saveOrUpdate(teacherEntity));
-
-//        return new Teacher();
     }
 
 
