@@ -1,7 +1,6 @@
 // sample POST request to spring REST api
 function teacherPOST() {
     $.ajax({
-        //url: "/rest/teacher.json",
         url: "/teacher",
         type: 'POST',
         dataType: 'json',
@@ -41,7 +40,7 @@ function teacherUPDATE() {
 
 function teacherGET() {
     $.ajax({
-        url: "/rest/teacher/1",
+        url: "/teachers",
         type: 'GET',
         dataType: 'json',
         data: '{"name": "Krystian", "lastName": "Ujma"}',
