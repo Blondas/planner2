@@ -37,7 +37,8 @@ StudentGroup.prototype.detach = function(event) {
 };
 
 StudentGroup.prototype.handleDragStart = function(event) {
-    event.stopPropagation();
+    event.stopPropagation()
+
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('studentGroup', this.serialize());
 
@@ -60,6 +61,7 @@ StudentGroup.prototype.handleDragOver = function(event) {
     //console.log('StudentGroup.handleDragOver');
 
     event.stopPropagation();
+
     $('.aggregate').addClass('over');
     $('#aggregateContainer').addClass('over');
 
@@ -73,6 +75,7 @@ StudentGroup.prototype.handleDragOver = function(event) {
 // odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 StudentGroup.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
+
     //console.log('StudentGroup.handleDragEnter');
     // event.target is the current hover target.
     //$('.avatar').addClass('over');
@@ -82,6 +85,7 @@ StudentGroup.prototype.handleDragEnter = function(event) {
 // odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
 StudentGroup.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
+
     //console.log('StudentGroup.handleDragLeave');
     // event.target is previous element
     //$('.avatar').removeClass('over');

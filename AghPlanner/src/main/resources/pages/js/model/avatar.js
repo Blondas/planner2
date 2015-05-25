@@ -109,17 +109,25 @@ Avatar.prototype.handleDragLeave = function(event) {
 };
 
 Avatar.prototype.handleDocumentDrop = function(event) {
+    event.stopPropagation();
+
     if (event.dataTransfer.types.indexOf('teacher') > -1) {
-        var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
-        event.dataTransfer.clearData('teacher')
-        teacher.position = this;
-        new Teacher(teacher);
+        console.log(this.name);
+        //var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
+        //event.dataTransfer.clearData('teacher');
+        //teacher.position = this;
+        //this.addTeacher(teacher);
     }
 }
 
 Avatar.prototype.detach = function(event) {
+    event.stopPropagation();
+
     //console.log(this.$el.className);
-    // todo: detach events
     $(this.$el).detach();
 };
+
+Avatar.prototype.save = function() {
+
+}
 

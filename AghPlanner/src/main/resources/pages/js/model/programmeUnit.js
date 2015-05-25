@@ -44,6 +44,7 @@ ProgrammeUnit.prototype.detach = function(event) {
 
 ProgrammeUnit.prototype.handleDragStart = function(event) {
     event.stopPropagation();
+
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('programmeUnit', this.serialize());
 
@@ -66,6 +67,7 @@ ProgrammeUnit.prototype.handleDragOver = function(event) {
     //console.log('ProgrammeUnit.handleDragOver');
 
     event.stopPropagation();
+
     $('.aggregate').addClass('over');
     $('#aggregateContainer').addClass('over');
 
@@ -79,6 +81,7 @@ ProgrammeUnit.prototype.handleDragOver = function(event) {
 // odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 ProgrammeUnit.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
+
     //console.log('ProgrammeUnit.handleDragEnter');
     // event.target is the current hover target.
     //$('.avatar').addClass('over');
@@ -88,6 +91,7 @@ ProgrammeUnit.prototype.handleDragEnter = function(event) {
 // odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
 ProgrammeUnit.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
+
     //console.log('ProgrammeUnit.handleDragLeave');
     // event.target is previous element
     //$('.avatar').removeClass('over');

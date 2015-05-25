@@ -3,9 +3,9 @@ function AvatarContainer(object) {
     this.$el = document.createElement('div');
     this.setPosition(object.position);
     this.$el.className = 'objectsContainer';
-    this.$el.id = 'avatarContainer';
+    $(this.$el).attr('id', 'avatarContainer');
 
-    $(this.$el).append('<div class="containerTitle">Prowadzący Zajęcia:</div>');
+    $(this.$el).append('<div class="containerTitle">Awatary:</div>');
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 }
@@ -17,20 +17,21 @@ AvatarContainer.prototype.setPosition = function(containerID) {
 
 AvatarContainer.prototype.addAvatar = function(avatar) {
     avatar.setPosition(this.$el);
-    this.avatars.push(teacher);
+    this.avatars.push(avatar);
 };
 
-Avatar.prototype.removeAvatar = function(avatar) {
+AvatarContainer.prototype.removeAvatar = function(avatar) {
     this.teachers.remove(avatar);
 };
 
 AvatarContainer.prototype.handleDocumentDrop = function(event) {
+    event.stopPropagation();
+
     if (event.dataTransfer.types.indexOf('teacher') > -1) {
         var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
         event.dataTransfer.clearData('teacher')
-
-        var avatar = new Avatar({position: this.$el.className});
+        var avatar = new Avatar({position: $(this.$el).attr('id')});
+        console.log($(this.$el).attr('id')  );
         avatar.addTeacher(new Teacher(teacher));
-        thi
     }
 };

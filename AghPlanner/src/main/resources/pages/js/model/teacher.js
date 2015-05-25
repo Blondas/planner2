@@ -28,10 +28,14 @@ Teacher.prototype.setLastName = function(lastName) {
     $(this.$el).text($(this.$el).text() + ' ' + this.lastName);
 };
 
-Teacher.prototype.setPosition = function(containerID) {
-    this.position = containerID;
+Teacher.prototype.setPosition = function(parent) {
+    this.position = parent;
     $(this.position).append(this.$el);
 };
+
+Teacher.prototype.getParentID = function() {
+    return $(this.$el).parent().attr('id');
+}
 
 Teacher.prototype.serialize = function() {
     var data = {
@@ -48,6 +52,26 @@ Teacher.prototype.serialize = function() {
 Teacher.prototype.detach = function(event) {
     $(this.$el).detach();
 };
+
+Teacher.prototype.save() = function() {
+    function teacherUPDATE() {
+        $.ajax({
+            //url: "/rest/teacher.json",
+            url: "/teacher",
+            type: 'POST',
+            dataType: 'json',
+            data: '{"id": this.id, "name": "up Krystian", "lastName": "up Ujma"}',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                console.log(data);
+            },
+            error:function(data, status, er) {
+                console.log('Fail to save teacher.');
+            }
+        });
+    }
+}
 
 // poczatek ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragStart = function(event) {
@@ -68,8 +92,7 @@ Teacher.prototype.handleDragEnd = function(event) {
     $('.avatar').removeClass('over');
     $('#avatarContainer').removeClass('over');
 
-    //console.log(this.position);
-    if (this.position != '#teacherContainer') {
+    if (this.getParentID() != 'teacherContainer') {
         this.detach();
     }
 };
@@ -77,6 +100,7 @@ Teacher.prototype.handleDragEnd = function(event) {
 // odpalany co chwile podczas trwania calego ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragOver = function(event) {
     event.stopPropagation();
+
     $('.avatar').addClass('over');
     $('#avatarContainer').addClass('over');
 
@@ -91,6 +115,7 @@ Teacher.prototype.handleDragOver = function(event) {
 // odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
+
     //console.log('StudentGroup.handleDragEnter');
     // event.target is the current hover target.
     //$('.avatar').addClass('over');
