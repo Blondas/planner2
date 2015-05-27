@@ -1,12 +1,12 @@
 function Avatar(object) {
     this.teachers = Array();
-    this.$el = document.createElement('div');
+
     this.setId(object.id);
     this.setName(object.name);
     this.setPosition(object.position);
 
-    this.$el.className = 'avatar';
-    this.$el.setAttribute('draggable', 'true');
+    this.setElement();
+
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
@@ -15,8 +15,17 @@ function Avatar(object) {
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    this.$el.innerHTML ='<span class="avatar_title">' + new Date().getMilliseconds() + '</span>';
     this.setTeachers(object.teachers);
+}
+
+Avatar.prototype.setElement = function () {
+    this.$el = document.createElement('div');
+    this.$el.className = 'avatar';
+    this.$el.setAttribute('draggable', 'true');
+
+    $(this.$el).data('obj', this);
+
+    this.$el.innerHTML ='<span class="avatar_title">' + new Date().getMilliseconds() + '</span>';
 }
 
 Avatar.prototype.setId = function(id) {
@@ -112,13 +121,17 @@ Avatar.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
     if (event.dataTransfer.types.indexOf('teacher') > -1) {
-        console.log(this.name);
-        //var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
-        //event.dataTransfer.clearData('teacher');
-        //teacher.position = this;
-        //this.addTeacher(teacher);
+        var avatar = $(this).data('obj');
+
+        var object = JSON.parse(event.dataTransfer.getData('teacher'));
+        object.position = avatar.$el;
+
+
+        avatar.addTeacher( new Teacher(object) );
+
+        event.dataTransfer.clearData('teacher');
     }
-}
+};
 
 Avatar.prototype.detach = function(event) {
     event.stopPropagation();

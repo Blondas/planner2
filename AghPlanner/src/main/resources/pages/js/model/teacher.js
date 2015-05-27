@@ -1,11 +1,10 @@
 function Teacher(object) {
-    this.$el = document.createElement('div');
     this.setId(object.id);
     this.setName(object.name);
     this.setLastName(object.lastName);
     this.setPosition(object.position);
-    this.$el.className = 'teacher';
-    this.$el.setAttribute('draggable', 'true');
+
+    this.setElement(this.name, this.lastName, this.position);
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -14,18 +13,26 @@ function Teacher(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
+Teacher.prototype.setElement = function(name, lastName) {
+    this.$el = document.createElement('div');
+    this.$el.className = 'teacher';
+    this.$el.setAttribute('draggable', 'true');
+
+    $(this.$el).text(this.name + ' ' + lastName);
+
+    $(this.$el).data('obj', this);
+};
+
 Teacher.prototype.setId = function(id) {
     this.id = id;
 };
 
 Teacher.prototype.setName = function(name) {
     this.name = name;
-    $(this.$el).text(this.name);
 };
 
 Teacher.prototype.setLastName = function(lastName) {
     this.lastName = lastName;
-    $(this.$el).text($(this.$el).text() + ' ' + this.lastName);
 };
 
 Teacher.prototype.setPosition = function(parent) {
@@ -53,25 +60,25 @@ Teacher.prototype.detach = function(event) {
     $(this.$el).detach();
 };
 
-Teacher.prototype.save() = function() {
-    function teacherUPDATE() {
-        $.ajax({
-            //url: "/rest/teacher.json",
-            url: "/teacher",
-            type: 'POST',
-            dataType: 'json',
-            data: '{"id": this.id, "name": "up Krystian", "lastName": "up Ujma"}',
-            contentType: 'application/json',
-            mimeType: 'application/json',
-            success: function(data) {
-                console.log(data);
-            },
-            error:function(data, status, er) {
-                console.log('Fail to save teacher.');
-            }
-        });
-    }
-}
+//Teacher.prototype.save() = function() {
+//    function teacherUPDATE() {
+//        $.ajax({
+//            //url: "/rest/teacher.json",
+//            url: "/teacher",
+//            type: 'POST',
+//            dataType: 'json',
+//            data: '{"id": ' + this.id + ', "name": "up Krystian", "lastName": "up Ujma"}',
+//            contentType: 'application/json',
+//            mimeType: 'application/json',
+//            success: function(data) {
+//                console.log(data);
+//            },
+//            error:function(data, status, er) {
+//                console.log('Fail to save teacher.');
+//            }
+//        });
+//    }
+//};
 
 // poczatek ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragStart = function(event) {
