@@ -100,6 +100,7 @@ Teacher.prototype.handleDragEnd = function(event) {
     $('#avatarContainer').removeClass('over');
 
     if (this.getParentID() != 'teacherContainer') {
+        $(this.position)
         this.detach();
     }
 };
