@@ -1,9 +1,19 @@
 function Avatar(object) {
     this.teachers = Array();
 
-    this.setId(object.id);
-    this.setName(object.name);
-    this.setPosition(object.position);
+    if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
+        this.setId(object.id);
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('name') ) {
+        this.setName(object.name);
+    } else {
+        this.setName("");
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
 
     this.setElement();
 
@@ -15,7 +25,10 @@ function Avatar(object) {
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    this.setTeachers(object.teachers);
+    if ( typeof object != "undefined" && object.hasOwnProperty('teachers') ) {
+        this.setTeachers(object.teachers);
+    }
+
 }
 
 Avatar.prototype.setElement = function () {
@@ -43,13 +56,27 @@ Avatar.prototype.setTeachers = function(teachers) {
     }
 };
 
+Avatar.prototype.inTeachers = function(teacher) {
+    this.teachers.forEach(function(entry) {
+        if (entry.id == teacher.id) {
+            return true;
+        }
+    });
+
+    return false;
+};
+
 Avatar.prototype.addTeacher = function(teacher) {
-    teacher.setPosition(this.$el);
-    this.teachers.push(teacher);
+    var inTeachers = this.inTeachers(teacher);
+    if ( !inTeachers ) {
+        teacher.setPosition(this.$el);
+        this.teachers.push(teacher);
+    }
 };
 
 Avatar.prototype.removeTeacher = function(teacher) {
-    this.teachers.remove(teacher);
+    this.teachers.splice( $.inArray(teacher, this.teachers), 1 );
+    teacher.detach();
 };
 
 Avatar.prototype.setPosition = function(domId) {
@@ -72,6 +99,7 @@ Avatar.prototype.serialize = function() {
 Avatar.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+    event.dataTransfer.clearData();
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('avatar', this.serialize());
 
@@ -85,6 +113,9 @@ Avatar.prototype.handleDragEnd = function(event) {
 
     $('.aggregate').removeClass('over');
     $('#aggregateContainer').removeClass('over');
+
+    var object = $(this.position).data('obj')
+    $(this.position).data('obj').removeAvatar(this);
 
     this.detach();
 };
@@ -120,21 +151,17 @@ Avatar.prototype.handleDragLeave = function(event) {
 Avatar.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
-    if (event.dataTransfer.types.indexOf('teacher') > -1) {
+    if (event.dataTransfer.types[0] ==  'teacher') {
         var avatar = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('teacher'));
         object.position = avatar.$el;
 
-
         avatar.addTeacher( new Teacher(object) );
-
-        event.dataTransfer.clearData('teacher');
     }
 };
 
-Avatar.prototype.detach = function(event) {
-    event.stopPropagation();
+Avatar.prototype.detach = function() {
 
     //console.log(this.$el.className);
     $(this.$el).detach();

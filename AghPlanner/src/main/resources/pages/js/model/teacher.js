@@ -1,10 +1,25 @@
 function Teacher(object) {
-    this.setId(object.id);
-    this.setName(object.name);
-    this.setLastName(object.lastName);
-    this.setPosition(object.position);
+    if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
+        this.setId(object.id);
+    }
 
-    this.setElement(this.name, this.lastName, this.position);
+    if ( typeof object != "undefined" && object.hasOwnProperty('name') ) {
+        this.setName(object.name);
+    } else {
+        this.setName("");
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('lastName') ) {
+        this.setLastName(object.lastName);
+    } else {
+        this.setLastName("");
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.setElement(this.name, this.lastName);
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -56,7 +71,7 @@ Teacher.prototype.serialize = function() {
     return JSON.stringify(JSON.decycle(data));
 };
 
-Teacher.prototype.detach = function(event) {
+Teacher.prototype.detach = function() {
     $(this.$el).detach();
 };
 
@@ -84,6 +99,7 @@ Teacher.prototype.detach = function(event) {
 Teacher.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+    event.dataTransfer.clearData();
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('teacher', this.serialize());
 
@@ -100,8 +116,8 @@ Teacher.prototype.handleDragEnd = function(event) {
     $('#avatarContainer').removeClass('over');
 
     if (this.getParentID() != 'teacherContainer') {
-        $(this.position)
-        this.detach();
+        var object = $(this.position).data('obj')
+        $(this.position).data('obj').removeTeacher(this);
     }
 };
 

@@ -1,13 +1,25 @@
 function AvatarContainer(object) {
     this.avatars = Array();
+
+    this.setElement();
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+}
+
+AvatarContainer.prototype.setElement = function () {
     this.$el = document.createElement('div');
-    this.setPosition(object.position);
     this.$el.className = 'objectsContainer';
     $(this.$el).attr('id', 'avatarContainer');
+    this.$el.setAttribute('draggable', 'true');
 
     $(this.$el).append('<div class="containerTitle">Awatary:</div>');
 
-    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+    $(this.$el).data('obj', this);
 }
 
 AvatarContainer.prototype.setPosition = function(containerID) {
@@ -21,17 +33,33 @@ AvatarContainer.prototype.addAvatar = function(avatar) {
 };
 
 AvatarContainer.prototype.removeAvatar = function(avatar) {
-    this.teachers.remove(avatar);
+    this.avatars.splice( $.inArray(avatar, this.avatars), 1 );
+    avatar.detach();
 };
 
 AvatarContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
-    if (event.dataTransfer.types.indexOf('teacher') > -1) {
-        var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
-        event.dataTransfer.clearData('teacher')
-        var avatar = new Avatar({position: $(this.$el).attr('id')});
-        console.log($(this.$el).attr('id')  );
-        avatar.addTeacher(new Teacher(teacher));
+    if (event.dataTransfer.types[0] ==  'teacher') {
+        var avatarContainer = $(this).data('obj');
+
+        var avatar = new Avatar();
+        avatar.position = avatarContainer.$el;
+        avatarContainer.addAvatar(avatar);
+
+        var object = JSON.parse(event.dataTransfer.getData('teacher'));
+        object.position = avatar.$el;
+        avatar.addTeacher( new Teacher(object) );
     }
 };
+
+AvatarContainer.prototype.handleDragOver = function(event) {
+    event.stopPropagation();
+
+    if (event.preventDefault) {
+        event.preventDefault();
+    }
+
+    return false;
+};
+
