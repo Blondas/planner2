@@ -8,6 +8,7 @@ import com.smartgwt.client.widgets.calendar.CalendarEvent;
 import com.smartgwt.client.widgets.calendar.HeaderLevel;
 import com.smartgwt.client.widgets.calendar.Lane;
 import com.smartgwt.client.widgets.grid.ListGridField;
+import com.smartgwt.client.widgets.layout.SectionStackSection;
 import pl.edu.agh.planner.shared.Aggregate;
 
 import java.time.Instant;
