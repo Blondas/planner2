@@ -19,7 +19,7 @@ function Teacher(object) {
         this.setPosition(object.position);
     }
 
-    this.setElement(this.name, this.lastName);
+    this.setElement();
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -28,12 +28,12 @@ function Teacher(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
-Teacher.prototype.setElement = function(name, lastName) {
+Teacher.prototype.setElement = function() {
     this.$el = document.createElement('div');
     this.$el.className = 'teacher';
     this.$el.setAttribute('draggable', 'true');
 
-    $(this.$el).text(this.name + ' ' + lastName);
+    $(this.$el).text(this.name + ' ' + this.lastName);
 
     $(this.$el).data('obj', this);
 };

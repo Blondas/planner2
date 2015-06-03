@@ -1,10 +1,19 @@
 function ProgrammeUnit(object) {
-    this.$el = document.createElement('div');
-    this.setId(object.id);
-    this.setName(object.name);
-    this.setPosition(object.position);
-    this.$el.className = 'programmeUnit';
-    this.$el.setAttribute('draggable', 'true');
+    if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
+        this.setId(object.id);
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('name') ) {
+        this.setName(object.name);
+    } else {
+        this.setName("");
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.setElement();
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -12,6 +21,16 @@ function ProgrammeUnit(object) {
     this.$el.addEventListener('dragenter', this.handleDragEnter, false);
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
+
+ProgrammeUnit.prototype.setElement = function() {
+    this.$el = document.createElement('div');
+    this.$el.className = 'programmeUnit';
+    this.$el.setAttribute('draggable', 'true');
+
+    $(this.$el).data('obj', this);
+
+    $(this.$el).text(this.name + ' ' + this.lastName);
+};
 
 ProgrammeUnit.prototype.setId = function(id) {
     this.id = id;
@@ -26,6 +45,10 @@ ProgrammeUnit.prototype.setPosition = function(containerID) {
     this.position = containerID;
     $(this.position).append(this.$el);
 };
+
+ProgrammeUnit.prototype.getParentID = function() {
+    return $(this.$el).parent().attr('id');
+}
 
 ProgrammeUnit.prototype.serialize = function() {
     var data = {
@@ -58,15 +81,13 @@ ProgrammeUnit.prototype.handleDragEnd = function(event) {
     this.$el.style.opacity = '1';
 
     $('.aggregate').removeClass('over');
-    $('aggregateContainer').removeClass('over');
+    $('#aggregateContainer').removeClass('over');
 
     //console.log(this.position);
     this.detach();
 };
 
 ProgrammeUnit.prototype.handleDragOver = function(event) {
-    //console.log('ProgrammeUnit.handleDragOver');
-
     event.stopPropagation();
 
     $('.aggregate').addClass('over');

@@ -231,14 +231,14 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
 
             break;
 
-        case 'studentGroup':
+        case 'studentgroup':
             var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
             object.position = aggregate.$el;
             aggregate.addStudentGroup( new StudentGroup(object) );
 
             break;
 
-        case 'programmeUnit':
+        case 'programmeunit':
             var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
             object.position = aggregate.$el;
             aggregate.addProgrammeUnit( new ProgrammeUnit(object) );

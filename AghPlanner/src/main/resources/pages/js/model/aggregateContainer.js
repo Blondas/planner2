@@ -40,8 +40,8 @@ AggregateContainer.prototype.removeAggregate = function(aggregate) {
 AggregateContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
-    if (event.dataTransfer.types[0] ==  'avatar' || event.dataTransfer.types[0] ==  'studentGroup'
-            || event.dataTransfer.types[0] ==  'programmeUnit') {
+    if (event.dataTransfer.types[0] ==  'avatar' || event.dataTransfer.types[0] ==  'studentgroup'
+            || event.dataTransfer.types[0] ==  'programmeunit') {
         var aggregateContainer = $(this).data('obj');
 
         var aggregate = new Aggregate();
@@ -56,14 +56,14 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
 
                 break;
 
-            case 'studentGroup':
+            case 'studentgroup':
                 var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
                 object.position = aggregate.$el;
                 aggregate.addStudentGroup( new StudentGroup(object) );
 
                 break;
 
-            case 'programmeUnit':
+            case 'programmeunit':
                 var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
                 object.position = aggregate.$el;
                 aggregate.addProgrammeUnit( new ProgrammeUnit(object) );

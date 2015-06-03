@@ -1,9 +1,13 @@
 function StudentGroup(object) {
-    this.$el = document.createElement('div');
-    this.setId(object.id);
-    this.setPosition(object.position);
-    this.$el.className = 'studentGroup';
-    this.$el.setAttribute('draggable', 'true');
+    if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
+        this.setId(object.id);
+    }
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.setElement();
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -12,15 +16,28 @@ function StudentGroup(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
+StudentGroup.prototype.setElement = function() {
+    this.$el = document.createElement('div');
+    this.$el.className = 'studentGroup';
+    this.$el.setAttribute('draggable', 'true');
+
+    $(this.$el).data('obj', this);
+
+    this.$el.innerHTML ='<span class="studentGroup_title">' + new Date().getMilliseconds() + '</span>';
+};
+
 StudentGroup.prototype.setId = function(id) {
     this.id = id;
-    $(this.$el).text(this.id);
 };
 
 StudentGroup.prototype.setPosition = function(containerID) {
     this.position = containerID;
     $(this.position).append(this.$el);
 };
+
+StudentGroup.prototype.getParentID = function() {
+    return $(this.$el).parent().attr('id');
+}
 
 StudentGroup.prototype.serialize = function() {
     var data = {
@@ -52,15 +69,13 @@ StudentGroup.prototype.handleDragEnd = function(event) {
     this.$el.style.opacity = '1';
 
     $('.aggregate').removeClass('over');
-    $('aggregateContainer').removeClass('over');
+    $('#aggregateContainer').removeClass('over');
 
-    //console.log(this.position);
-    this.detach();
+    var object = $(this.position).data('obj')
+    $(this.position).data('obj').removeStudentGroup(this);
 };
 
 StudentGroup.prototype.handleDragOver = function(event) {
-    //console.log('StudentGroup.handleDragOver');
-
     event.stopPropagation();
 
     $('.aggregate').addClass('over');
@@ -73,7 +88,6 @@ StudentGroup.prototype.handleDragOver = function(event) {
     return false;
 };
 
-// odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 StudentGroup.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
 
@@ -83,7 +97,6 @@ StudentGroup.prototype.handleDragEnter = function(event) {
     //$('#avatarContainer').addClass('over');
 };
 
-// odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
 StudentGroup.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
 
