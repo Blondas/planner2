@@ -56,18 +56,18 @@ Avatar.prototype.setTeachers = function(teachers) {
     }
 };
 
-Avatar.prototype.inTeachers = function(teacher) {
+Avatar.prototype.isInTeachers = function(teacher) {
+    var inTeachers = false;
     this.teachers.forEach(function(entry) {
         if (entry.id == teacher.id) {
-            return true;
+            inTeachers =  true;
         }
     });
-
-    return false;
+    return inTeachers;
 };
 
 Avatar.prototype.addTeacher = function(teacher) {
-    var inTeachers = this.inTeachers(teacher);
+    var inTeachers = this.isInTeachers(teacher);
     if ( !inTeachers ) {
         teacher.setPosition(this.$el);
         this.teachers.push(teacher);
