@@ -45,6 +45,7 @@ ProgrammeUnit.prototype.detach = function(event) {
 ProgrammeUnit.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+    event.dataTransfer.clearData();
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('programmeUnit', this.serialize());
 

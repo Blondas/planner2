@@ -88,7 +88,7 @@ Avatar.prototype.serialize = function() {
     var data = {
         id: this.id,
         name: this.name,
-        avatars: this.avatars,
+        teachers: this.teachers,
         className: this.$el.className,
         position: this.position
     };
