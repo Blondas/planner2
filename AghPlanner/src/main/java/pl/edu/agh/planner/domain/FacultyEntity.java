@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "faculty")
 public class FacultyEntity {
 
     @Id

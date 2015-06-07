@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "concrete_date_template")
 public class ConcreteDateTemplateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

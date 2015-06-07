@@ -2,8 +2,9 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
-@Entity
+@Entity(name = "concrete_date")
 public class ConcreteDateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,9 @@ public class ConcreteDateEntity {
     @JoinColumn(name = "cd_concrete_date_template_id")
     private ConcreteDateTemplateEntity concreteDateTemplate;
 
+    //@OneToOne old - do przemyslenia
+    @OneToMany(mappedBy = "concreteDate")
+    private Set<ConcreteLessonEntity> concreteLessons;
 
     public Long getId() {
         return id;
@@ -40,5 +44,13 @@ public class ConcreteDateEntity {
 
     public void setConcreteDateTemplate(ConcreteDateTemplateEntity concreteDateTemplate) {
         this.concreteDateTemplate = concreteDateTemplate;
+    }
+
+    public Set<ConcreteLessonEntity> getConcreteLessons() {
+        return concreteLessons;
+    }
+
+    public void setConcreteLessons(Set<ConcreteLessonEntity> concreteLessons) {
+        this.concreteLessons = concreteLessons;
     }
 }

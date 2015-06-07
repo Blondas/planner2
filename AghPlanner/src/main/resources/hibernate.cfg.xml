@@ -4,17 +4,40 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost/postgres</property>
+        <property name="connection.url">jdbc:postgresql://localhost/postgres??UseUnicode=true&amp;characterEncoding=utf8</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">password</property>
 
-        <!--<property name="hbm2ddl.auto">create-drop</property>-->
+        <property name="hbm2ddl.auto">update</property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
 
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+
+        <mapping class="pl.edu.agh.planner.domain.ConcreteDateEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ConcreteDateTemplateEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.TermsSetEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ConcreteLessonEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.AggregateEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ScheduleEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.AvatarEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ProgrammeUnitEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.StudentGroupEntity"/>
         <mapping class="pl.edu.agh.planner.domain.TeacherEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ClassroomEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ClassroomHourEntity"/>
+
+        <mapping class="pl.edu.agh.planner.domain.AuthorizationEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.AuthorizationTypeEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.UserEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.DepartmentEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.LetterDesignationEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.FacultyEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.ProgrammeUnitTypeEntity"/>
 
 
     </session-factory>

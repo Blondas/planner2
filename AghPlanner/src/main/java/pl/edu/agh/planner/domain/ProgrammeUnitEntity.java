@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "programme_unit")
 public class ProgrammeUnitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

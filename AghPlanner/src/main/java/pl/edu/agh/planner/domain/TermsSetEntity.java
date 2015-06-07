@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "terms_set")
 public class TermsSetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

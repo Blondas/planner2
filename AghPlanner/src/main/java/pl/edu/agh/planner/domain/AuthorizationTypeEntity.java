@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "authorization_type")
 public class AuthorizationTypeEntity {
 
     @Id

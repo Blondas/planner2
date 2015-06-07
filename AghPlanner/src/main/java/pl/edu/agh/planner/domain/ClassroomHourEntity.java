@@ -2,7 +2,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "classroom_hour")
 public class ClassroomHourEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

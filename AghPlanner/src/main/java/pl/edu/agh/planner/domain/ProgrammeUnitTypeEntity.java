@@ -2,7 +2,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "programme_unit_type")
 public class ProgrammeUnitTypeEntity {
 
     @Id

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.edu.agh.planner.domain.AvatarEntity;
 import pl.edu.agh.planner.dto.Avatar;
 import pl.edu.agh.planner.service.AvatarService;
-import pl.edu.agh.planner.service.AvatarServiceImpl;
 import pl.edu.agh.planner.utils.DtoEntityMapper;
 
 import java.util.List;
@@ -28,21 +27,22 @@ public class AvatarController {
 
     @RequestMapping(method=GET,value="/avatar")
     public Avatar getTeacher(@RequestParam("id") Long id){
-        AvatarEntity avatarEntity = avatarService.getOne(id);
+        AvatarEntity avatarEntity = avatarService.getById(id);
         return DtoEntityMapper.entityToAvatar(avatarEntity);
     }
 
     @RequestMapping(method=GET,value="/avatars")
     public List<Avatar> findAvatars(){
-        List<AvatarEntity> teacherEntity = avatarService.findAll();
+        List<AvatarEntity> teacherEntity = avatarService.getList();
         List<Avatar> avatars = teacherEntity.stream().map(DtoEntityMapper::entityToAvatar).collect(Collectors.toList());
 
         return avatars;
     }
 
     @RequestMapping(method=DELETE,value="/avatar")
-    public void deleteAvatar(@RequestParam("id") Long teacherId){
-        avatarService.delete(teacherId);
+    public void deleteAvatar(@RequestBody Avatar avatar){
+        AvatarEntity avatarEntity = DtoEntityMapper.avatarToEntity(avatar);
+        avatarService.delete(avatarEntity);
     }
 
     @RequestMapping(method=POST,value="/avatar")

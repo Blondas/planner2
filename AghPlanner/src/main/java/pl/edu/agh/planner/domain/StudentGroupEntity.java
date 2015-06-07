@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
+@Entity(name = "student_group")
 // grupa studenctka (sk³adowa agregatu)
 public class StudentGroupEntity {
     @Id

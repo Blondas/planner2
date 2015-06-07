@@ -2,7 +2,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "concrete_lesson")
 public class ConcreteLessonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,8 @@ public class ConcreteLessonEntity {
     @JoinColumn(name = "cl_classroom_hour_id")
     private ClassroomHourEntity classroomHour;
 
-    @OneToOne
+    //@OneToOne old - do przemyslenia
+    @ManyToOne
     @JoinColumn(name = "cl_concrete_date_id")
     private ConcreteDateEntity concreteDate;
 

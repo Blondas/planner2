@@ -2,7 +2,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "authorization")
 public class AuthorizationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

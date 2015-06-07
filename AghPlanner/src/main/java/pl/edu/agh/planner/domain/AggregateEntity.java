@@ -2,7 +2,7 @@ package pl.edu.agh.planner.domain;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "aggregate")
 public class AggregateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 
-@Entity
+@Entity(name = "teacher")
 public class TeacherEntity {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class TeacherEntity {
     private String lastName;
 
     // TODO poprawic typy kaskadowosci poprawnie wszedzie
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "t_avatar_id")
     private AvatarEntity avatar;
 

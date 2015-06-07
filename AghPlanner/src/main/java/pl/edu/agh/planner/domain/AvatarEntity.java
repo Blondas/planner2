@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "avatar")
 // sk³adowa agregatu
 public class AvatarEntity {
     @Id
@@ -17,7 +17,7 @@ public class AvatarEntity {
     @OneToMany(mappedBy = "avatar")
     private Set<AggregateEntity> aggregates;
 
-    @OneToMany(mappedBy = "avatar")
+    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
     private Set<TeacherEntity> teachers;
 
     public Long getId() {

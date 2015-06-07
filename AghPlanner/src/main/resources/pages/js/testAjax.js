@@ -55,6 +55,25 @@ function teacherGET() {
     });
 }
 
+function teacherDELETE() {
+    $.ajax({
+        url: "/teacher",
+        type: 'DELETE',
+        dataType: 'json',
+        data: '{"id": "1", "name": "up Krystian", "lastName": "up Ujma"}',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            console.log('SUKCES, data: ' + data);
+        },
+        error:function(data, status, er) {
+            console.log('FAIL, data: ' + data);
+            console.log('status: ' + status);
+            console.log('er: ' + er);
+        }
+    });
+}
+
 function classroomPOST() {
     $.ajax({
         url: "/rest/classroom/add",
