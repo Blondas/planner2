@@ -1,14 +1,26 @@
 function TeacherContainer(object) {
     this.teachers = Array();
+
+    this.setElement();
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+}
+
+TeacherContainer.prototype.setElement = function () {
     this.$el = document.createElement('div');
-    this.setPosition(object.position);
     this.$el.className = 'objectsContainer';
-    this.$el.id = 'teacherContainer';
+    $(this.$el).attr('id', 'teacherContainer');
+    this.$el.setAttribute('draggable', 'true');
 
     $(this.$el).append('<div class="containerTitle">Wykładowcy:</div>');
 
-    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
-}
+    $(this.$el).data('obj', this);
+};
 
 TeacherContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
@@ -27,11 +39,21 @@ TeacherContainer.prototype.removeTeacher = function(teacher) {
 TeacherContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
-    if (event.dataTransfer.types.indexOf('teacher') > -1) {
-        var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
-        event.dataTransfer.clearData('teacher')
+    if (event.dataTransfer.types[0] ==  'teacher') {
+        var teacherContainer = $(this).data('obj');
 
-        var teacher = new Teacher({position: this.$el.className});
-        teacher.addTeacher(new Teacher(teacher));
+        var object = JSON.parse(event.dataTransfer.getData('teacher'));
+        object.position = teacherContainer.$el;
+        teacherContainer.addTeacher( new Teacher(object))
     }
+};
+
+TeacherContainer.prototype.handleDragOver = function(event) {
+    event.stopPropagation();
+
+    if (event.preventDefault) {
+        event.preventDefault();
+    }
+
+    return false;
 };

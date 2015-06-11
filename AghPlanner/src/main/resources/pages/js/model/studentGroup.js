@@ -54,7 +54,7 @@ StudentGroup.prototype.detach = function(event) {
 };
 
 StudentGroup.prototype.handleDragStart = function(event) {
-    event.stopPropagation()
+    event.stopPropagation();
 
     event.dataTransfer.clearData();
     event.dataTransfer.effectAllowed = 'all';

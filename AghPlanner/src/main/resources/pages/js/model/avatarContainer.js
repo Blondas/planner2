@@ -20,7 +20,7 @@ AvatarContainer.prototype.setElement = function () {
     $(this.$el).append('<div class="containerTitle">Awatary:</div>');
 
     $(this.$el).data('obj', this);
-}
+};
 
 AvatarContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
