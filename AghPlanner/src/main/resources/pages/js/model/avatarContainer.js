@@ -63,3 +63,20 @@ AvatarContainer.prototype.handleDragOver = function(event) {
     return false;
 };
 
+AvatarContainer.prototype.loadAllAvatars = function() {
+    var avatarContainer = this;
+
+    $.ajax({
+        url: "/avatars",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                avatarContainer.addAvatar( new Avatar(entry) );
+            });
+        }
+    });
+};
+
