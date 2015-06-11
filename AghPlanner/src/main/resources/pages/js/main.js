@@ -1,15 +1,8 @@
 $('document').ready(function(){
     addContainers();
 
-    teacher1 = new Teacher({id: 1, name: "nauczyciel 1", lastName: "nazwisko 1"});
-    teacher2 = new Teacher({id: 2, name: "nauczyciel 2", lastName: "nazwisko 2"});
-    teacher3 = new Teacher({id: 3, name: "nauczyciel 3", lastName: "nazwisko 3"});
-    teacher4 = new Teacher({id: 4, name: "nauczyciel 4", lastName: "nazwisko 4"});
+    teacherContainer.loadAllTeachers();
 
-    teacherContainer.addTeacher(teacher1);
-    teacherContainer.addTeacher(teacher2);
-    teacherContainer.addTeacher(teacher3);
-    teacherContainer.addTeacher(teacher4);
 
 
     avatar1 = new Avatar({id: 1, name: "awatar 1"});

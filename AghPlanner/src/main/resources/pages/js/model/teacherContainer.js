@@ -57,3 +57,20 @@ TeacherContainer.prototype.handleDragOver = function(event) {
 
     return false;
 };
+
+TeacherContainer.prototype.loadAllTeachers = function() {
+    var teacherContainer = this;
+
+    $.ajax({
+        url: "/teachers",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                teacherContainer.addTeacher( new Teacher(entry) );
+            });
+        }
+    });
+};
