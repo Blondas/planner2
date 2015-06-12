@@ -158,6 +158,7 @@ Avatar.prototype.handleDocumentDrop = function(event) {
         object.position = avatar.$el;
 
         avatar.addTeacher( new Teacher(object) );
+        avatar.save();
     }
 };
 
@@ -168,6 +169,21 @@ Avatar.prototype.detach = function() {
 };
 
 Avatar.prototype.save = function() {
-
-}
+    $.ajax({
+        url: "/avatar",
+        type: 'POST',
+        dataType: 'json',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            console.log('Avatar saved, data: ' + data);
+        },
+        error:function(data, status, er) {
+            console.log('Avatar failed to save, data: ' + data);
+            console.log('status: ' + status);
+            console.log('er: ' + er);
+        }
+    });
+};
 

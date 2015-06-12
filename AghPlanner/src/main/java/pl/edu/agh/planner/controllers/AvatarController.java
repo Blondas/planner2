@@ -51,6 +51,4 @@ public class AvatarController {
 
         return DtoEntityMapper.entityToAvatar(avatarService.saveOrUpdate(avatarEntity));
     }
-
-
 }
