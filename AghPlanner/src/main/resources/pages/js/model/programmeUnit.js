@@ -1,4 +1,5 @@
 function ProgrammeUnit(object) {
+<<<<<<< HEAD
     if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
         this.setId(object.id);
     }
@@ -14,6 +15,14 @@ function ProgrammeUnit(object) {
     }
 
     this.setElement();
+=======
+    this.$el = document.createElement('div');
+    this.setId(object.id);
+    this.setName(object.name);
+    this.setPosition(object.position);
+    this.$el.className = 'programmeUnit';
+    this.$el.setAttribute('draggable', 'true');
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -22,6 +31,7 @@ function ProgrammeUnit(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
+<<<<<<< HEAD
 ProgrammeUnit.prototype.setElement = function() {
     this.$el = document.createElement('div');
     this.$el.className = 'programmeUnit';
@@ -32,6 +42,8 @@ ProgrammeUnit.prototype.setElement = function() {
     $(this.$el).text(this.name + ' ' + this.lastName);
 };
 
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 ProgrammeUnit.prototype.setId = function(id) {
     this.id = id;
 };
@@ -46,10 +58,13 @@ ProgrammeUnit.prototype.setPosition = function(containerID) {
     $(this.position).append(this.$el);
 };
 
+<<<<<<< HEAD
 ProgrammeUnit.prototype.getParentID = function() {
     return $(this.$el).parent().attr('id');
 }
 
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 ProgrammeUnit.prototype.serialize = function() {
     var data = {
         id: this.id,
@@ -68,7 +83,10 @@ ProgrammeUnit.prototype.detach = function(event) {
 ProgrammeUnit.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     event.dataTransfer.clearData();
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('programmeUnit', this.serialize());
 
@@ -81,13 +99,22 @@ ProgrammeUnit.prototype.handleDragEnd = function(event) {
     this.$el.style.opacity = '1';
 
     $('.aggregate').removeClass('over');
+<<<<<<< HEAD
     $('#aggregateContainer').removeClass('over');
+=======
+    $('aggregateContainer').removeClass('over');
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     //console.log(this.position);
     this.detach();
 };
 
 ProgrammeUnit.prototype.handleDragOver = function(event) {
+<<<<<<< HEAD
+=======
+    //console.log('ProgrammeUnit.handleDragOver');
+
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     event.stopPropagation();
 
     $('.aggregate').addClass('over');

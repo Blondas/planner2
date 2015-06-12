@@ -1,5 +1,6 @@
 function TeacherContainer(object) {
     this.teachers = Array();
+<<<<<<< HEAD
 
     this.setElement();
 
@@ -21,6 +22,17 @@ TeacherContainer.prototype.setElement = function () {
 
     $(this.$el).data('obj', this);
 };
+=======
+    this.$el = document.createElement('div');
+    this.setPosition(object.position);
+    this.$el.className = 'objectsContainer';
+    this.$el.id = 'teacherContainer';
+
+    $(this.$el).append('<div class="containerTitle">Wykładowcy:</div>');
+
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+}
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
 TeacherContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
@@ -39,6 +51,7 @@ TeacherContainer.prototype.removeTeacher = function(teacher) {
 TeacherContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     if (event.dataTransfer.types[0] ==  'teacher') {
         var teacherContainer = $(this).data('obj');
 
@@ -73,4 +86,13 @@ TeacherContainer.prototype.loadAllTeachers = function() {
             });
         }
     });
+=======
+    if (event.dataTransfer.types.indexOf('teacher') > -1) {
+        var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
+        event.dataTransfer.clearData('teacher')
+
+        var teacher = new Teacher({position: this.$el.className});
+        teacher.addTeacher(new Teacher(teacher));
+    }
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 };

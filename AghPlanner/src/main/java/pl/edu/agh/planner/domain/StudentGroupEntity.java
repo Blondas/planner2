@@ -4,8 +4,13 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+<<<<<<< HEAD:AghPlanner/src/main/java/pl/edu/agh/planner/domain/StudentGroupEntity.java
 @Entity(name = "student_group")
 // grupa studenctka (skï¿½adowa agregatu)
+=======
+@Entity
+// grupa studenctka (sk³adowa agregatu)
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6:AghPlanner/src/main/java/pl/edu/agh/planner/domain/StudentGroupEntity.java
 public class StudentGroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

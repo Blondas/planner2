@@ -29,7 +29,11 @@
     cursor: move;
 }
 
+<<<<<<< HEAD
 .objectsContainer .avatar, .objectsContainer .aggregate {
+=======
+.objectsContainer .avatar {
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     margin: 5px auto;
     width: 95%;
     border: 1px dotted black;
@@ -62,8 +66,17 @@
     -webkit-user-drag: element;
 }
 
+<<<<<<< HEAD
 .over {
     border: 2px dashed #000!important;
+=======
+.avatar.over {
+    border: 2px dashed #000;
+}
+
+#avatarContainer.over {
+    border: 2px dashed #000;
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 }
 
 .containerTitle {

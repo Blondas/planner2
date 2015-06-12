@@ -3,7 +3,11 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 
+<<<<<<< HEAD:AghPlanner/src/main/java/pl/edu/agh/planner/domain/TeacherEntity.java
 @Entity(name = "teacher")
+=======
+@Entity
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6:AghPlanner/src/main/java/pl/edu/agh/planner/domain/TeacherEntity.java
 public class TeacherEntity {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

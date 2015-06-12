@@ -3,8 +3,13 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 import java.util.Set;
 
+<<<<<<< HEAD:AghPlanner/src/main/java/pl/edu/agh/planner/domain/AvatarEntity.java
 @Entity(name = "avatar")
 // skï¿½adowa agregatu
+=======
+@Entity
+// sk³adowa agregatu
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6:AghPlanner/src/main/java/pl/edu/agh/planner/domain/AvatarEntity.java
 public class AvatarEntity {
     @Id
     @GeneratedValue

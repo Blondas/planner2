@@ -1,5 +1,6 @@
 function AvatarContainer(object) {
     this.avatars = Array();
+<<<<<<< HEAD
 
     this.setElement();
 
@@ -21,6 +22,17 @@ AvatarContainer.prototype.setElement = function () {
 
     $(this.$el).data('obj', this);
 };
+=======
+    this.$el = document.createElement('div');
+    this.setPosition(object.position);
+    this.$el.className = 'objectsContainer';
+    $(this.$el).attr('id', 'avatarContainer');
+
+    $(this.$el).append('<div class="containerTitle">Awatary:</div>');
+
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+}
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
 AvatarContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
@@ -33,13 +45,18 @@ AvatarContainer.prototype.addAvatar = function(avatar) {
 };
 
 AvatarContainer.prototype.removeAvatar = function(avatar) {
+<<<<<<< HEAD
     this.avatars.splice( $.inArray(avatar, this.avatars), 1 );
     avatar.detach();
+=======
+    this.teachers.remove(avatar);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 };
 
 AvatarContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     if (event.dataTransfer.types[0] ==  'teacher') {
         var avatarContainer = $(this).data('obj');
 
@@ -84,3 +101,13 @@ AvatarContainer.prototype.loadAllAvatars = function() {
     });
 };
 
+=======
+    if (event.dataTransfer.types.indexOf('teacher') > -1) {
+        var teacher = JSON.parse(event.dataTransfer.getData('teacher'));
+        event.dataTransfer.clearData('teacher')
+        var avatar = new Avatar({position: $(this.$el).attr('id')});
+        console.log($(this.$el).attr('id')  );
+        avatar.addTeacher(new Teacher(teacher));
+    }
+};
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6

@@ -1,5 +1,6 @@
 function StudentGroupContainer(object) {
     this.studentGroups = Array();
+<<<<<<< HEAD
 
     this.setElement();
 
@@ -20,6 +21,16 @@ StudentGroupContainer.prototype.setElement = function () {
     $(this.$el).append('<div class="containerTitle">Grupy Studenckie:</div>');
 
     $(this.$el).data('obj', this);
+=======
+    this.$el = document.createElement('div');
+    this.setPosition(object.position);
+    this.$el.className = 'objectsContainer';
+    this.$el.id = 'studentGroupContainer';
+
+    $(this.$el).append('<div class="containerTitle">Grupy Studenckie:</div>');
+
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 }
 
 StudentGroupContainer.prototype.setPosition = function(containerID) {
@@ -33,6 +44,7 @@ StudentGroupContainer.prototype.addStudentGroup = function(studentGroup) {
 };
 
 StudentGroupContainer.prototype.removeStudentGroup = function(studentGroup) {
+<<<<<<< HEAD
     this.studentGroups.splice( $.inArray(studentGroup, this.studentGroups), 1 );
     studentGroup.detach();
 };
@@ -56,4 +68,17 @@ StudentGroupContainer.prototype.handleDragOver = function(event) {
     }
 
     return false;
+=======
+    this.studentGroups.remove(studentGroup);
+};
+
+StudentGroupContainer.prototype.handleDocumentDrop = function(event) {
+    if (event.dataTransfer.types.indexOf('studentGroup') > -1) {
+        var studentGroup = JSON.parse(event.dataTransfer.getData('studentGroup'));
+        event.dataTransfer.clearData('studentGroup')
+
+        var studentGroup = new StudentGroup({position: this.$el.className});
+        studentGroup.addStudentGroup(new StudentGroup(studentGroup));
+    }
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 };

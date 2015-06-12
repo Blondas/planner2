@@ -1,5 +1,6 @@
 function AggregateContainer(object) {
     this.aggregates = Array();
+<<<<<<< HEAD
 
     this.setElement();
 
@@ -20,6 +21,16 @@ AggregateContainer.prototype.setElement = function () {
     $(this.$el).append('<div class="containerTitle">Agregaty:</div>');
 
     $(this.$el).data('obj', this);
+=======
+    this.$el = document.createElement('div');
+    this.setPosition(object.position);
+    this.$el.className = 'objectsContainer';
+    this.$el.id = 'aggregateContainer';
+
+    $(this.$el).append('<div class="containerTitle">Agregaty:</div>');
+
+    this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 }
 
 AggregateContainer.prototype.setPosition = function(containerID) {
@@ -33,13 +44,18 @@ AggregateContainer.prototype.addAggregate = function(aggregate) {
 };
 
 AggregateContainer.prototype.removeAggregate = function(aggregate) {
+<<<<<<< HEAD
     this.aggregates.splice( $.inArray(aggregate, this.aggregates), 1 );
     aggregate.detach();
+=======
+    this.aggregates.remove(aggregate);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 };
 
 AggregateContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     if (event.dataTransfer.types[0] ==  'avatar' || event.dataTransfer.types[0] ==  'studentgroup'
             || event.dataTransfer.types[0] ==  'programmeunit') {
         var aggregateContainer = $(this).data('obj');
@@ -72,6 +88,8 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
         }
     }
 
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     if (event.dataTransfer.types.indexOf('aggregate') > -1) {
         var aggregate = JSON.parse(event.dataTransfer.getData('aggregate'));
         event.dataTransfer.clearData('aggregate')
@@ -80,6 +98,7 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
         aggregate.addAggregate(new Aggregate(aggregate));
     }
 };
+<<<<<<< HEAD
 
 AggregateContainer.prototype.handleDragOver = function(event) {
     event.stopPropagation();
@@ -90,3 +109,5 @@ AggregateContainer.prototype.handleDragOver = function(event) {
 
     return false;
 };
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6

@@ -26,22 +26,35 @@ public class TeacherController  {
 
     @RequestMapping(method=GET,value="/teacher")
     public Teacher getTeacher(@RequestParam("id") Long teacherId){
+<<<<<<< HEAD
         TeacherEntity teacherEntity = teacherService.getById(teacherId);
+=======
+        TeacherEntity teacherEntity = teacherService.getOne(teacherId);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
         return DtoEntityMapper.entityToTeacher(teacherEntity);
     }
 
     @RequestMapping(method=GET,value="/teachers")
     public List<Teacher> findTeachers(){
+<<<<<<< HEAD
         List<TeacherEntity> teacherEntity = teacherService.getList();
+=======
+        List<TeacherEntity> teacherEntity = teacherService.findAll();
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
         List<Teacher> teachers = teacherEntity.stream().map(DtoEntityMapper::entityToTeacher).collect(Collectors.toList());
 
         return teachers;
     }
 
     @RequestMapping(method=DELETE,value="/teacher")
+<<<<<<< HEAD
     public void deleteTeacher(@RequestBody Teacher teacher){
         TeacherEntity teacherEntity = DtoEntityMapper.teacherToEntity(teacher);
         teacherService.delete(teacherEntity);
+=======
+    public void deleteTeacher(@RequestParam("id") Long teacherId){
+        teacherService.delete(teacherId);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     }
 
     @RequestMapping(method=POST,value="/teacher")

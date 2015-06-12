@@ -4,16 +4,25 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+<<<<<<< HEAD
         <property name="connection.url">jdbc:postgresql://localhost/postgres??UseUnicode=true&amp;characterEncoding=utf8</property>
+=======
+        <property name="connection.url">jdbc:postgresql://localhost/postgres</property>
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">password</property>
 
+<<<<<<< HEAD
         <property name="hbm2ddl.auto">update</property>
+=======
+        <!--<property name="hbm2ddl.auto">create-drop</property>-->
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
 
+<<<<<<< HEAD
         <property name="hibernate.connection.CharSet">utf8</property>
         <property name="hibernate.connection.characterEncoding">utf8</property>
         <property name="hibernate.connection.useUnicode">true</property>
@@ -38,6 +47,9 @@
         <mapping class="pl.edu.agh.planner.domain.LetterDesignationEntity"/>
         <mapping class="pl.edu.agh.planner.domain.FacultyEntity"/>
         <mapping class="pl.edu.agh.planner.domain.ProgrammeUnitTypeEntity"/>
+=======
+        <mapping class="pl.edu.agh.planner.domain.TeacherEntity"/>
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
 
     </session-factory>

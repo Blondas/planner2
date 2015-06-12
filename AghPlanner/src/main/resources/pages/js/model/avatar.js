@@ -1,6 +1,7 @@
 function Avatar(object) {
     this.teachers = Array();
 
+<<<<<<< HEAD
     if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
         this.setId(object.id);
     }
@@ -14,6 +15,11 @@ function Avatar(object) {
     if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
         this.setPosition(object.position);
     }
+=======
+    this.setId(object.id);
+    this.setName(object.name);
+    this.setPosition(object.position);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     this.setElement();
 
@@ -25,10 +31,14 @@ function Avatar(object) {
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
+<<<<<<< HEAD
     if ( typeof object != "undefined" && object.hasOwnProperty('teachers') ) {
         this.setTeachers(object.teachers);
     }
 
+=======
+    this.setTeachers(object.teachers);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 }
 
 Avatar.prototype.setElement = function () {
@@ -56,6 +66,7 @@ Avatar.prototype.setTeachers = function(teachers) {
     }
 };
 
+<<<<<<< HEAD
 Avatar.prototype.isInTeachers = function(teacher) {
     var inTeachers = false;
     this.teachers.forEach(function(entry) {
@@ -77,6 +88,15 @@ Avatar.prototype.addTeacher = function(teacher) {
 Avatar.prototype.removeTeacher = function(teacher) {
     this.teachers.splice( $.inArray(teacher, this.teachers), 1 );
     teacher.detach();
+=======
+Avatar.prototype.addTeacher = function(teacher) {
+    teacher.setPosition(this.$el);
+    this.teachers.push(teacher);
+};
+
+Avatar.prototype.removeTeacher = function(teacher) {
+    this.teachers.remove(teacher);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 };
 
 Avatar.prototype.setPosition = function(domId) {
@@ -88,7 +108,11 @@ Avatar.prototype.serialize = function() {
     var data = {
         id: this.id,
         name: this.name,
+<<<<<<< HEAD
         teachers: this.teachers,
+=======
+        avatars: this.avatars,
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
         className: this.$el.className,
         position: this.position
     };
@@ -99,7 +123,10 @@ Avatar.prototype.serialize = function() {
 Avatar.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     event.dataTransfer.clearData();
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('avatar', this.serialize());
 
@@ -114,9 +141,12 @@ Avatar.prototype.handleDragEnd = function(event) {
     $('.aggregate').removeClass('over');
     $('#aggregateContainer').removeClass('over');
 
+<<<<<<< HEAD
     var object = $(this.position).data('obj')
     $(this.position).data('obj').removeAvatar(this);
 
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     this.detach();
 };
 
@@ -151,12 +181,17 @@ Avatar.prototype.handleDragLeave = function(event) {
 Avatar.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     if (event.dataTransfer.types[0] ==  'teacher') {
+=======
+    if (event.dataTransfer.types.indexOf('teacher') > -1) {
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
         var avatar = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('teacher'));
         object.position = avatar.$el;
 
+<<<<<<< HEAD
         var teacher = new Teacher(object);
 
         avatar.addTeacher(teacher);
@@ -165,12 +200,24 @@ Avatar.prototype.handleDocumentDrop = function(event) {
 };
 
 Avatar.prototype.detach = function() {
+=======
+
+        avatar.addTeacher( new Teacher(object) );
+
+        event.dataTransfer.clearData('teacher');
+    }
+};
+
+Avatar.prototype.detach = function(event) {
+    event.stopPropagation();
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     //console.log(this.$el.className);
     $(this.$el).detach();
 };
 
 Avatar.prototype.save = function() {
+<<<<<<< HEAD
     $.ajax({
         url: "/avatar",
         type: 'POST',
@@ -186,4 +233,8 @@ Avatar.prototype.save = function() {
         }
     });
 };
+=======
+
+}
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 

@@ -1,4 +1,5 @@
 function Teacher(object) {
+<<<<<<< HEAD
     if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
         this.setId(object.id);
     }
@@ -20,6 +21,14 @@ function Teacher(object) {
     }
 
     this.setElement();
+=======
+    this.setId(object.id);
+    this.setName(object.name);
+    this.setLastName(object.lastName);
+    this.setPosition(object.position);
+
+    this.setElement(this.name, this.lastName, this.position);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     this.$el.addEventListener('dragstart', this.handleDragStart.bind(this), false);
     this.$el.addEventListener('dragend', this.handleDragEnd.bind(this), false);
@@ -28,12 +37,20 @@ function Teacher(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
+<<<<<<< HEAD
 Teacher.prototype.setElement = function() {
+=======
+Teacher.prototype.setElement = function(name, lastName) {
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     this.$el = document.createElement('div');
     this.$el.className = 'teacher';
     this.$el.setAttribute('draggable', 'true');
 
+<<<<<<< HEAD
     $(this.$el).text(this.name + ' ' + this.lastName);
+=======
+    $(this.$el).text(this.name + ' ' + lastName);
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
     $(this.$el).data('obj', this);
 };
@@ -71,6 +88,7 @@ Teacher.prototype.serialize = function() {
     return JSON.stringify(JSON.decycle(data));
 };
 
+<<<<<<< HEAD
 Teacher.prototype.detach = function() {
     $(this.$el).detach();
 };
@@ -93,12 +111,40 @@ Teacher.prototype.save = function() {
         });
     }
 };
+=======
+Teacher.prototype.detach = function(event) {
+    $(this.$el).detach();
+};
+
+//Teacher.prototype.save() = function() {
+//    function teacherUPDATE() {
+//        $.ajax({
+//            //url: "/rest/teacher.json",
+//            url: "/teacher",
+//            type: 'POST',
+//            dataType: 'json',
+//            data: '{"id": ' + this.id + ', "name": "up Krystian", "lastName": "up Ujma"}',
+//            contentType: 'application/json',
+//            mimeType: 'application/json',
+//            success: function(data) {
+//                console.log(data);
+//            },
+//            error:function(data, status, er) {
+//                console.log('Fail to save teacher.');
+//            }
+//        });
+//    }
+//};
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
 
 // poczatek ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragStart = function(event) {
     event.stopPropagation();
 
+<<<<<<< HEAD
     event.dataTransfer.clearData();
+=======
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     event.dataTransfer.effectAllowed = 'all';
     event.dataTransfer.setData('teacher', this.serialize());
 
@@ -115,8 +161,13 @@ Teacher.prototype.handleDragEnd = function(event) {
     $('#avatarContainer').removeClass('over');
 
     if (this.getParentID() != 'teacherContainer') {
+<<<<<<< HEAD
         var object = $(this.position).data('obj')
         $(this.position).data('obj').removeTeacher(this);
+=======
+        $(this.position)
+        this.detach();
+>>>>>>> bcb0c636d15f156ae24142734a9613f33aca3fa6
     }
 };
 
