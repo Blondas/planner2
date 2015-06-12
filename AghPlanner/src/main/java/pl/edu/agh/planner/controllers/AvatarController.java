@@ -33,8 +33,8 @@ public class AvatarController {
 
     @RequestMapping(method=GET,value="/avatars")
     public List<Avatar> findAvatars(){
-        List<AvatarEntity> teacherEntity = avatarService.getList();
-        List<Avatar> avatars = teacherEntity.stream().map(DtoEntityMapper::entityToAvatar).collect(Collectors.toList());
+        List<AvatarEntity> avatarEntity = avatarService.getList();
+        List<Avatar> avatars = avatarEntity.stream().map(DtoEntityMapper::entityToAvatar).collect(Collectors.toList());
 
         return avatars;
     }

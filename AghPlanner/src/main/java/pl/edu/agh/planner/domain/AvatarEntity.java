@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "avatar")
-// sk³adowa agregatu
+// skï¿½adowa agregatu
 public class AvatarEntity {
     @Id
     @GeneratedValue
@@ -14,7 +14,7 @@ public class AvatarEntity {
     @Column(name = "av_name")
     private String name;
 
-    @OneToMany(mappedBy = "avatar")
+    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
     private Set<AggregateEntity> aggregates;
 
     @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
