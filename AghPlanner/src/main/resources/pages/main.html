@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/cycle.js"></script>
+    <script src="js/ui.js"></script>
+
+    <script src="js/testAjax.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/model/Aggregate.js"></script>
+    <script src="js/model/AggregateContainer.js"></script>
+    <script src="js/model/Avatar.js"></script>
+    <script src="js/model/AvatarContainer.js"></script>
+    <script src="js/model/ProgrammeUnit.js"></script>
+    <script src="js/model/ProgrammeUnitContainer.js"></script>
+    <script src="js/model/StudentGroup.js"></script>
+    <script src="js/model/StudentGroupContainer.js"></script>
+    <script src="js/model/Teacher.js"></script>
+    <script src="js/model/TeacherContainer.js"></script>
+
+
+</head>
+<body>
+<div id="menu" class="menu">
+    <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#teacherContainer')">
+        Prowadzący Zajęcia
+    </button>
+    <button class="menu-button" id="EnableAvatarContainer" onclick="toggleElement('#avatarContainer')">
+        Awatary
+    </button>
+    <button class="menu-button" id="EnableAggregateContainer" onclick="toggleElement('#aggregateContainer')">
+        Agregaty
+    </button>
+    <button class="menu-button" id="EnableStudentContainer" onclick="toggleElement('#studentGroupContainer')">
+        Grupy Studenckie
+    </button>
+    <button class="menu-button" id="EnableProgrammeUnitContainer" onclick="toggleElement('#programmeUnitContainer')">
+        Jednostki Programu Studiów
+    </button>
+</div>
+</body>
+</html>
