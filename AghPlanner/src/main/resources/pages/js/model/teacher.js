@@ -75,25 +75,24 @@ Teacher.prototype.detach = function() {
     $(this.$el).detach();
 };
 
-//Teacher.prototype.save() = function() {
-//    function teacherUPDATE() {
-//        $.ajax({
-//            //url: "/rest/teacher.json",
-//            url: "/teacher",
-//            type: 'POST',
-//            dataType: 'json',
-//            data: '{"id": ' + this.id + ', "name": "up Krystian", "lastName": "up Ujma"}',
-//            contentType: 'application/json',
-//            mimeType: 'application/json',
-//            success: function(data) {
-//                console.log(data);
-//            },
-//            error:function(data, status, er) {
-//                console.log('Fail to save teacher.');
-//            }
-//        });
-//    }
-//};
+Teacher.prototype.save = function() {
+    function teacherUPDATE() {
+        $.ajax({
+            url: "/teacher",
+            type: 'POST',
+            dataType: 'json',
+            data: this.serialize(),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                console.log('Teacher saved');
+            },
+            error:function(data, status, er) {
+                console.log('Teacher failed to save');
+            }
+        });
+    }
+};
 
 // poczatek ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragStart = function(event) {

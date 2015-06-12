@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "student_group")
-// grupa studenctka (sk³adowa agregatu)
+// grupa studenctka (skï¿½adowa agregatu)
 public class StudentGroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +19,21 @@ public class StudentGroupEntity {
     private Date endDate;
 
     // wydzial
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sg_department_id")
     private DepartmentEntity department;
 
     // oznaczenie grupy diekanatowej
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sg_letter_designation_id")
     private LetterDesignationEntity letterDesignation;
 
     // kierunek studiow
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sg_faculty_id")
     private FacultyEntity faculty;
 
-    @OneToMany(mappedBy = "studentGroup")
+    @OneToMany(mappedBy = "studentGroup", fetch = FetchType.EAGER)
     private Set<AggregateEntity> aggregates;
 
     public Long getId() {

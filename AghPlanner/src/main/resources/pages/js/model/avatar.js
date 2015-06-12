@@ -157,7 +157,9 @@ Avatar.prototype.handleDocumentDrop = function(event) {
         var object = JSON.parse(event.dataTransfer.getData('teacher'));
         object.position = avatar.$el;
 
-        avatar.addTeacher( new Teacher(object) );
+        var teacher = new Teacher(object);
+
+        avatar.addTeacher(teacher);
         avatar.save();
     }
 };
@@ -177,12 +179,10 @@ Avatar.prototype.save = function() {
         contentType: 'application/json',
         mimeType: 'application/json',
         success: function(data) {
-            console.log('Avatar saved, data: ' + data);
+            console.log('Avatar saved');
         },
         error:function(data, status, er) {
-            console.log('Avatar failed to save, data: ' + data);
-            console.log('status: ' + status);
-            console.log('er: ' + er);
+            console.log('Avatar failed to save, ');
         }
     });
 };

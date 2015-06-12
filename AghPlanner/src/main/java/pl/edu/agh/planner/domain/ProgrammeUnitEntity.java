@@ -14,12 +14,12 @@ public class ProgrammeUnitEntity {
     @Column(name = "pu_name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pu_type_id")
     private ProgrammeUnitTypeEntity type;
 
 
-    @OneToMany(mappedBy = "programmeUnit")
+    @OneToMany(mappedBy = "programmeUnit", fetch = FetchType.EAGER)
     private Set<AggregateEntity> aggregates;
 
 

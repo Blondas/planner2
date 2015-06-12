@@ -49,7 +49,10 @@ AvatarContainer.prototype.handleDocumentDrop = function(event) {
 
         var object = JSON.parse(event.dataTransfer.getData('teacher'));
         object.position = avatar.$el;
-        avatar.addTeacher( new Teacher(object) );
+
+        var teacher = new Teacher(object);
+
+        avatar.addTeacher(teacher);
         avatar.save();
     }
 };
