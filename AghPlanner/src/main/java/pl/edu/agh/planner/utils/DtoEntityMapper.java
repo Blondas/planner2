@@ -15,6 +15,10 @@ public class DtoEntityMapper {
         return mapper.map(aggregate, AggregateEntity.class);
     }
 
+    public static Aggregate entityToAggregate(AggregateEntity aggregateEntity) {
+        return mapper.map(aggregateEntity, Aggregate.class);
+    }
+
     public static AuthorizationEntity authorizationToEntity(DozerBeanMapper mapper, Authorization authorization) {
         return mapper.map(authorization, AuthorizationEntity.class);
     }
