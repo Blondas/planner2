@@ -38,7 +38,7 @@ Avatar.prototype.setElement = function () {
 
     $(this.$el).data('obj', this);
 
-    this.$el.innerHTML ='<span class="avatar_title">' + new Date().getMilliseconds() + '</span>';
+    this.$el.innerHTML ='<span class="avatar_title">' + this.name + '</span>';
 }
 
 Avatar.prototype.setId = function(id) {
@@ -158,6 +158,9 @@ Avatar.prototype.handleDocumentDrop = function(event) {
         object.position = avatar.$el;
 
         var teacher = new Teacher(object);
+
+        console.log('object: ' + object);
+        console.log('teacher: ' + teacher);
 
         avatar.addTeacher(teacher);
         avatar.save();

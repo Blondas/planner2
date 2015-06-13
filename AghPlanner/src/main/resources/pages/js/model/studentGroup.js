@@ -23,7 +23,7 @@ StudentGroup.prototype.setElement = function() {
 
     $(this.$el).data('obj', this);
 
-    this.$el.innerHTML ='<span class="studentGroup_title">' + new Date().getMilliseconds() + '</span>';
+    this.$el.innerHTML ='<span class="studentGroup_title">' + this.id + '</span>';
 };
 
 StudentGroup.prototype.setId = function(id) {
