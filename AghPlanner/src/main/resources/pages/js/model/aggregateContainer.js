@@ -90,3 +90,20 @@ AggregateContainer.prototype.handleDragOver = function(event) {
 
     return false;
 };
+
+AggregateContainer.prototype.loadAllAggregates = function() {
+    var aggregateContainer = this;
+
+    $.ajax({
+        url: "/aggregates",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                aggregateContainer.addAggregate( new Aggregate(entry) );
+            });
+        }
+    });
+};
