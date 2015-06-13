@@ -57,3 +57,20 @@ StudentGroupContainer.prototype.handleDragOver = function(event) {
 
     return false;
 };
+
+StudentGroupContainer.prototype.loadAllStudentGroups = function() {
+    var studentGroupContainer = this;
+
+    $.ajax({
+        url: "/studentGroups",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                studentGroupContainer.addStudentGroup( new StudentGroup(entry) );
+            });
+        }
+    });
+};

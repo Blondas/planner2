@@ -35,3 +35,20 @@ ProgrammeUnitContainer.prototype.handleDocumentDrop = function(event) {
         programmeUnit.addProgrammeUnit(new ProgrammeUnit(programmeUnit));
     }
 };
+
+ProgrammeUnitContainer.prototype.loadAllProgrammeUnits = function() {
+    var programmeUnitContainer = this;
+
+    $.ajax({
+        url: "/programmeUnit",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                programmeUnitContainer.addProgrammeUnit( new ProgrammeUnit(entry) );
+            });
+        }
+    });
+};
