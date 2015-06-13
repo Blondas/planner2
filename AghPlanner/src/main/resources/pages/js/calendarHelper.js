@@ -2,8 +2,8 @@ var calendarHelper = {
     handleDrop: function(event) {
         event.stopPropagation();
 
-        if (event.dataTransfer.types[0] ==  'avatar') {
-            var object = JSON.parse(event.dataTransfer.getData('avatar'));
+        if (event.dataTransfer.types[0] ==  'aggregate') {
+            var object = JSON.parse(event.dataTransfer.getData('aggregate'));
             var date = $(this).attr('data-date');
 
             $('#calendar').fullCalendar( 'renderEvent', {
