@@ -47,11 +47,10 @@ public class StudentGroupController {
     }
 
     @RequestMapping(method=POST,value="/studentGroup")
-    public ResponseEntity saveOrUpdate(@RequestBody StudentGroup studentGroup){
+    public StudentGroup saveOrUpdate(@RequestBody StudentGroup studentGroup){
         StudentGroupEntity studentGroupEntity = DtoEntityMapper.studentGroupToEntity(studentGroup);
-        studentGroupDao.saveOrUpdate(studentGroupEntity);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return DtoEntityMapper.entityToStudentGroup(studentGroupDao.saveOrUpdate(studentGroupEntity));
     }
 
 }

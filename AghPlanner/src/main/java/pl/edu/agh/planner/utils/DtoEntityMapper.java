@@ -71,6 +71,10 @@ public class DtoEntityMapper {
         return mapper.map(letterDesignation, LetterDesignationEntity.class);
     }
 
+    public static ProgrammeUnit entityToProgrammeUnit(ProgrammeUnitEntity programmeUnitEntity) {
+        return mapper.map(programmeUnitEntity, ProgrammeUnit.class);
+    }
+
     public static ProgrammeUnitEntity programmeUnitToEntity(ProgrammeUnit programmeUnit) {
         return mapper.map(programmeUnit, ProgrammeUnitEntity.class);
     }

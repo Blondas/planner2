@@ -55,7 +55,7 @@ public class AvatarController {
     }
 
     @RequestMapping(method=POST,value="/avatar")
-    public ResponseEntity saveOrUpdate(@RequestBody Avatar avatar){
+    public Avatar saveOrUpdate(@RequestBody Avatar avatar){
         AvatarEntity avatarEntity = DtoEntityMapper.avatarToEntity(avatar);
 
         Set<TeacherEntity> teacherSet = avatarEntity.getTeachers();
@@ -64,7 +64,7 @@ public class AvatarController {
             teacherService.saveOrUpdate(teacherEntity);
         }
 //        avatarEntity.setTeachers(teacherSet);
-//        return DtoEntityMapper.entityToAvatar(avatarService.saveOrUpdate(avatarEntity));
-        return new ResponseEntity(HttpStatus.OK);
+        return DtoEntityMapper.entityToAvatar(avatarService.saveOrUpdate(avatarEntity));
+//        return new ResponseEntity(HttpStatus.OK);
     }
 }

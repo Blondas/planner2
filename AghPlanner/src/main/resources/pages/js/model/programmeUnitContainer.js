@@ -40,7 +40,7 @@ ProgrammeUnitContainer.prototype.loadAllProgrammeUnits = function() {
     var programmeUnitContainer = this;
 
     $.ajax({
-        url: "/programmeUnit",
+        url: "/programmeUnits",
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
