@@ -46,7 +46,7 @@ Aggregate.prototype.setElement = function () {
 
     $(this.$el).data('obj', this);
 
-    this.$el.innerHTML ='<span class="aggregate_title">' + new Date().getMilliseconds() + '</span>';
+    this.$el.innerHTML ='<span class="aggregate_title">' + this.name + '</span>';
 }
 
 Aggregate.prototype.setId = function(id) {

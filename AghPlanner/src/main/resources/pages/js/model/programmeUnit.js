@@ -29,7 +29,7 @@ ProgrammeUnit.prototype.setElement = function() {
 
     $(this.$el).data('obj', this);
 
-    $(this.$el).text(this.name + ' ' + this.lastName);
+    $(this.$el).text(this.name);
 };
 
 ProgrammeUnit.prototype.setId = function(id) {
