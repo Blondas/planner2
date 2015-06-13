@@ -1,5 +1,7 @@
 package pl.edu.agh.planner.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,7 +19,7 @@ public class AvatarEntity {
     @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
     private Set<AggregateEntity> aggregates;
 
-    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<TeacherEntity> teachers;
 
     public Long getId() {
@@ -50,5 +52,15 @@ public class AvatarEntity {
 
     public void setTeachers(Set<TeacherEntity> teachers) {
         this.teachers = teachers;
+    }
+
+    @Override
+    public String toString() {
+        return "AvatarEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", aggregates=" + aggregates +
+                ", teachers=" + teachers +
+                '}';
     }
 }

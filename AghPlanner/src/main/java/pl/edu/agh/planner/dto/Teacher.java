@@ -1,11 +1,14 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class Teacher{
 
 	private Long id;
 	private String name;
 	private String lastName;
+	@JsonBackReference
 	private Avatar avatar;
 
 	public Teacher() {

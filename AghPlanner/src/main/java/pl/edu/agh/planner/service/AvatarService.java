@@ -49,7 +49,7 @@ public class AvatarService implements ServiceInterface<AvatarEntity, Long> {
 
     @Override
     public AvatarEntity saveOrUpdate(AvatarEntity entity) {
-        return null;
+        return avatarDao.saveOrUpdate(entity);
     }
 
 }

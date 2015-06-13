@@ -1,6 +1,8 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 
 public class Avatar {
@@ -8,6 +10,7 @@ public class Avatar {
 	private Long id;
 	private String name;
 	private Set<Aggregate> aggregates;
+	@JsonManagedReference
 	private Set<Teacher> teachers;
 
 	public Avatar() {
@@ -44,5 +47,15 @@ public class Avatar {
 
 	public void setTeachers(Set<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+
+	@Override
+	public String toString() {
+		return "Avatar{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", aggregates=" + aggregates +
+				", teachers=" + teachers +
+				'}';
 	}
 }
