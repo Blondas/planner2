@@ -2,8 +2,6 @@ package pl.edu.agh.planner.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.edu.agh.planner.domain.AvatarEntity;
 import pl.edu.agh.planner.domain.TeacherEntity;
 import pl.edu.agh.planner.dto.Avatar;
-import pl.edu.agh.planner.dto.Teacher;
 import pl.edu.agh.planner.service.AvatarService;
 import pl.edu.agh.planner.service.TeacherService;
 import pl.edu.agh.planner.utils.DtoEntityMapper;
