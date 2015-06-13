@@ -35,6 +35,14 @@ public class DtoEntityMapper {
         return mapper.map(avatar, Avatar.class);
     }
 
+    public static StudentGroup entityToStudentGroup(StudentGroupEntity entity) {
+        return mapper.map(entity, StudentGroup.class);
+    }
+
+    public static StudentGroupEntity studentGroupToEntity(StudentGroup studentGroup) {
+        return mapper.map(studentGroup, StudentGroupEntity.class);
+    }
+
     public static ClassroomEntity classroomToEntity(Classroom classroom) {
         return mapper.map(classroom, ClassroomEntity.class);
     }
