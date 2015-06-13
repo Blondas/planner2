@@ -1,6 +1,11 @@
 $('document').ready(function(){
     $('#calendar').fullCalendar({
-        defaultDate: '2015-02-12',
+        theme: true,
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
         editable: true,
         eventLimit: true
     });

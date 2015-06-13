@@ -228,6 +228,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
             var object = JSON.parse(event.dataTransfer.getData('avatar'));
             object.position = aggregate.$el;
             aggregate.addAvatar( new Avatar(object) );
+            aggregate.save();
 
             break;
 
@@ -235,6 +236,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
             var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
             object.position = aggregate.$el;
             aggregate.addStudentGroup( new StudentGroup(object) );
+            aggregate.save();
 
             break;
 
@@ -242,6 +244,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
             var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
             object.position = aggregate.$el;
             aggregate.addProgrammeUnit( new ProgrammeUnit(object) );
+            aggregate.save();
 
             break;
     }
@@ -255,6 +258,18 @@ Aggregate.prototype.detach = function() {
 };
 
 Aggregate.prototype.save = function() {
-
+    $.ajax({
+        url: "/aggregate",
+        type: 'POST',
+        dataType: 'json',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            console.log('Aggregate saved');
+        },
+        error:function(data, status, er) {
+            console.log('Aggregate failed to save, ');
+        }
+    });
 };
-

@@ -159,9 +159,6 @@ Avatar.prototype.handleDocumentDrop = function(event) {
 
         var teacher = new Teacher(object);
 
-        console.log('object: ' + object);
-        console.log('teacher: ' + teacher);
-
         avatar.addTeacher(teacher);
         avatar.save();
     }
