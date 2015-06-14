@@ -170,6 +170,10 @@ Avatar.prototype.detach = function() {
     $(this.$el).detach();
 };
 
+/*
+AJAX
+ */
+
 Avatar.prototype.save = function() {
     $.ajax({
         url: "/avatar",

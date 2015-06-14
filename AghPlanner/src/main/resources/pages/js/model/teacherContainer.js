@@ -33,7 +33,8 @@ TeacherContainer.prototype.addTeacher = function(teacher) {
 };
 
 TeacherContainer.prototype.removeTeacher = function(teacher) {
-    this.teachers.remove(teacher);
+    this.teachers.splice( $.inArray(teacher, this.teachers), 1 );
+    teacher.detach();
 };
 
 TeacherContainer.prototype.handleDocumentDrop = function(event) {
@@ -74,3 +75,4 @@ TeacherContainer.prototype.loadAllTeachers = function() {
         }
     });
 };
+

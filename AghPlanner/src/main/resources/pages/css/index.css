@@ -69,3 +69,14 @@
     display: inline-block;
     vertical-align: top;
 }
+
+.remove_button {
+    background-image: url("../images/Close.png");
+    /*background-color: red;*/
+    height: 10px;
+    width: 10px;
+}
+
+#dialog_remove_confirmation {
+    visibility: hidden;
+}

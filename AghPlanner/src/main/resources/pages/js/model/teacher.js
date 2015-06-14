@@ -35,6 +35,8 @@ Teacher.prototype.setElement = function() {
 
     $(this.$el).text(this.name + ' ' + this.lastName);
 
+    this.createRemoveButton();
+
     $(this.$el).data('obj', this);
 };
 
@@ -59,6 +61,12 @@ Teacher.prototype.getParentID = function() {
     return $(this.$el).parent().attr('id');
 }
 
+Teacher.prototype.getParent = function() {
+    var parent = $(this.position).data('obj');
+
+    return parent;
+};
+
 Teacher.prototype.serialize = function() {
     var data = {
         id: this.id,
@@ -75,24 +83,10 @@ Teacher.prototype.detach = function() {
     $(this.$el).detach();
 };
 
-Teacher.prototype.save = function() {
-    function teacherUPDATE() {
-        $.ajax({
-            url: "/teacher",
-            type: 'POST',
-            dataType: 'json',
-            data: this.serialize(),
-            contentType: 'application/json',
-            mimeType: 'application/json',
-            success: function(data) {
-                console.log('Teacher saved');
-            },
-            error:function(data, status, er) {
-                console.log('Teacher failed to save');
-            }
-        });
-    }
-};
+
+/*
+DRAG EVENTS
+ */
 
 // poczatek ruchu, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragStart = function(event) {
@@ -133,7 +127,7 @@ Teacher.prototype.handleDragOver = function(event) {
     }
     event.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
     return false;
-}
+};
 
 // odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragEnter = function(event) {
@@ -143,7 +137,7 @@ Teacher.prototype.handleDragEnter = function(event) {
     // event.target is the current hover target.
     //$('.avatar').addClass('over');
     //$('#avatarContainer').addClass('over');
-}
+};
 
 // odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragLeave = function(event) {
@@ -152,5 +146,86 @@ Teacher.prototype.handleDragLeave = function(event) {
     // event.target is previous element
     //$('.avatar').removeClass('over');
     //$('#avatarContainer').removeClass('over');
+};
+
+/*
+HTML
+ */
+
+Teacher.prototype.createRemoveButton = function() {
+    $(this.$el).append('<div class="remove_button"></div>');
+    $(this.$el).find('.remove_button').click(function(){
+
+        var elem = this;
+
+        $("#dialog_remove_confirmation").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons : {
+                "Confirm" : function() {
+                    console.log(this);
+                    var teacher = $(elem).parent().data('obj');
+                    teacher.remove();
+                    $("#dialog_remove_confirmation").dialog("close");
+                    $('#dialog_remove_confirmation').hide();
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog_remove_confirmation").dialog("open");
+        $('#dialog_remove_confirmation').show();
+    });
 }
+
+
+/*
+AJAX
+ */
+
+Teacher.prototype.remove = function() {
+    var teacher = this;
+
+    $.ajax({
+        url: "/teacher",
+        type: 'DELETE',
+        dataType: 'text',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            $(teacher.$el).remove();
+            var parent = teacher.getParent();
+            parent.removeTeacher();
+
+            console.log('Teacher removed.');
+        },
+        error:function(data, status, er) {
+            console.log('Teacher deletion failed.');
+        }
+    });
+};
+
+Teacher.prototype.save = function() {
+    function teacherUPDATE() {
+        $.ajax({
+            url: "/teacher",
+            type: 'POST',
+            dataType: 'json',
+            data: this.serialize(),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                console.log('Teacher saved');
+            },
+            error:function(data, status, er) {
+                console.log('Teacher failed to save');
+            }
+        });
+    }
+};
+
+
 
