@@ -1,10 +1,15 @@
 package pl.edu.agh.planner.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class Aggregate {
 
     private Long id;
+    @JsonBackReference(value = "avatar-aggregate")
     private Avatar avatar;
+    @JsonBackReference(value = "programmeUnit-aggregate")
     private ProgrammeUnit programmeUnit;
+    @JsonBackReference(value = "studentGroup-aggregate")
     private StudentGroup studentGroup;
 
     public Long getId() {

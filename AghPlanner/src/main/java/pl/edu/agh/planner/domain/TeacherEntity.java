@@ -23,7 +23,7 @@ public class TeacherEntity {
     private String lastName;
 
     // TODO poprawic typy kaskadowosci poprawnie wszedzie
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "t_avatar_id")
     private AvatarEntity avatar;
 

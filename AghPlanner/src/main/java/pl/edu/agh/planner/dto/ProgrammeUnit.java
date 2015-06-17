@@ -1,6 +1,8 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 
 public class ProgrammeUnit{
@@ -8,6 +10,7 @@ public class ProgrammeUnit{
     private Long id;
     private String name;
     private ProgrammeUnitType type;
+    @JsonManagedReference(value = "programmeUnit-aggregate")
     private Set<Aggregate> aggregates;
 
     public Long getId() {

@@ -9,8 +9,9 @@ public class Avatar {
 
 	private Long id;
 	private String name;
+	@JsonManagedReference(value = "avatar-aggregate")
 	private Set<Aggregate> aggregates;
-	@JsonManagedReference
+	@JsonManagedReference(value = "avatar-teacher")
 	private Set<Teacher> teachers;
 
 	public Avatar() {

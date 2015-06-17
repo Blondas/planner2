@@ -39,6 +39,8 @@ Avatar.prototype.setElement = function () {
     $(this.$el).data('obj', this);
 
     this.$el.innerHTML ='<span class="avatar_title">' + this.name + '</span>';
+
+    this.createRemoveButton();
 }
 
 Avatar.prototype.setId = function(id) {
@@ -50,10 +52,12 @@ Avatar.prototype.setName = function(name) {
 };
 
 Avatar.prototype.setTeachers = function(teachers) {
-    for (var teacher in teachers) {
-        teacher = new Teacher(teacher);
-        this.addTeacher(teacher);
-    }
+    var avatar = this;
+
+    teachers.forEach(function(entry) {
+        var teacher = new Teacher(entry);
+        avatar.addTeacher(teacher);
+    });
 };
 
 Avatar.prototype.isInTeachers = function(teacher) {
@@ -95,6 +99,10 @@ Avatar.prototype.serialize = function() {
 
     return JSON.stringify(data);
 };
+
+/*
+DRAG EVENTS
+ */
 
 Avatar.prototype.handleDragStart = function(event) {
     event.stopPropagation();
@@ -170,6 +178,36 @@ Avatar.prototype.detach = function() {
     $(this.$el).detach();
 };
 
+
+Avatar.prototype.createRemoveButton = function() {
+    $(this.$el).append('<div class="remove_button"></div>');
+    $(this.$el).find('.remove_button').click(function(){
+
+        var elem = this;
+
+        $("#dialog_remove_confirmation").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons : {
+                "Confirm" : function() {
+                    console.log(this);
+                    var avatar = $(elem).parent().data('obj');
+                    avatar.remove();
+
+                    $("#dialog_remove_confirmation").dialog("close");
+                    $('#dialog_remove_confirmation').hide();
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog_remove_confirmation").dialog("open");
+        $('#dialog_remove_confirmation').show();
+    });
+}
+
 /*
 AJAX
  */
@@ -191,3 +229,22 @@ Avatar.prototype.save = function() {
     });
 };
 
+Avatar.prototype.remove = function() {
+    var avatar = this;
+
+    $.ajax({
+        url: "/avatar",
+        type: 'DELETE',
+        dataType: 'text',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            $(avatar.$el).remove();
+            console.log('Avatar removed.');
+        },
+        error:function(data, status, er) {
+            console.log('Avatar deletion failed.');
+        }
+    });
+}

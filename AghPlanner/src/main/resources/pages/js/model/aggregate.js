@@ -47,6 +47,8 @@ Aggregate.prototype.setElement = function () {
     $(this.$el).data('obj', this);
 
     this.$el.innerHTML ='<span class="aggregate_title">' + this.name + '</span>';
+
+    this.createRemoveButton();
 }
 
 Aggregate.prototype.setId = function(id) {
@@ -273,3 +275,56 @@ Aggregate.prototype.save = function() {
         }
     });
 };
+
+Aggregate.prototype.createRemoveButton = function() {
+    $(this.$el).append('<div class="remove_button"></div>');
+    $(this.$el).find('.remove_button').click(function(){
+
+        var elem = this;
+
+        $("#dialog_remove_confirmation").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons : {
+                "Confirm" : function() {
+                    console.log(this);
+                    var aggregate = $(elem).parent().data('obj');
+                    aggregate.remove();
+
+                    $("#dialog_remove_confirmation").dialog("close");
+                    $('#dialog_remove_confirmation').hide();
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog_remove_confirmation").dialog("open");
+        $('#dialog_remove_confirmation').show();
+    });
+}
+
+/*
+ AJAX
+ */
+
+Aggregate.prototype.remove = function() {
+    var aggregate = this;
+
+    $.ajax({
+        url: "/aggregate",
+        type: 'DELETE',
+        dataType: 'text',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            $(aggregate.$el).remove();
+            console.log('ProgrammeUnit removed.');
+        },
+        error:function(data, status, er) {
+            console.log('ProgrammeUnit deletion failed.');
+        }
+    });
+}

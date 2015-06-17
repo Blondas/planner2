@@ -1,6 +1,9 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -12,6 +15,7 @@ public class StudentGroup{
     private Department department;
     private LetterDesignation letterDesignation;
     private Faculty faculty;
+    @JsonManagedReference(value = "studentGroup-aggregate")
     private Set<Aggregate> aggregates;
 
     public Long getId() {

@@ -30,6 +30,8 @@ ProgrammeUnit.prototype.setElement = function() {
     $(this.$el).data('obj', this);
 
     $(this.$el).text(this.name);
+
+    this.createRemoveButton();
 };
 
 ProgrammeUnit.prototype.setId = function(id) {
@@ -119,4 +121,57 @@ ProgrammeUnit.prototype.handleDragLeave = function(event) {
     //$('.avatar').removeClass('over');
     //$('#avatarContainer').removeClass('over');
 };
+
+ProgrammeUnit.prototype.createRemoveButton = function() {
+    $(this.$el).append('<div class="remove_button"></div>');
+    $(this.$el).find('.remove_button').click(function(){
+
+        var elem = this;
+
+        $("#dialog_remove_confirmation").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons : {
+                "Confirm" : function() {
+                    console.log(this);
+                    var programmeUnit = $(elem).parent().data('obj');
+                    programmeUnit.remove();
+
+                    $("#dialog_remove_confirmation").dialog("close");
+                    $('#dialog_remove_confirmation').hide();
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog_remove_confirmation").dialog("open");
+        $('#dialog_remove_confirmation').show();
+    });
+}
+
+/*
+AJAX
+ */
+
+ProgrammeUnit.prototype.remove = function() {
+    var programmeUnit = this;
+
+    $.ajax({
+        url: "/programmeUnit",
+        type: 'DELETE',
+        dataType: 'text',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            $(programmeUnit.$el).remove();
+            console.log('ProgrammeUnit removed.');
+        },
+        error:function(data, status, er) {
+            console.log('ProgrammeUnit deletion failed.');
+        }
+    });
+}
 

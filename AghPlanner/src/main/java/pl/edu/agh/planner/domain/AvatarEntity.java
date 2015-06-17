@@ -19,7 +19,7 @@ public class AvatarEntity {
     @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
     private Set<AggregateEntity> aggregates;
 
-    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<TeacherEntity> teachers;
 
     public Long getId() {

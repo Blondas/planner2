@@ -8,7 +8,7 @@ public class Teacher{
 	private Long id;
 	private String name;
 	private String lastName;
-	@JsonBackReference
+	@JsonBackReference(value = "avatar-teacher")
 	private Avatar avatar;
 
 	public Teacher() {

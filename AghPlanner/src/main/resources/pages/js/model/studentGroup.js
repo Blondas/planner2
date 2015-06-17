@@ -24,6 +24,8 @@ StudentGroup.prototype.setElement = function() {
     $(this.$el).data('obj', this);
 
     this.$el.innerHTML ='<span class="studentGroup_title">' + this.id + '</span>';
+
+    this.createRemoveButton();
 };
 
 StudentGroup.prototype.setId = function(id) {
@@ -105,4 +107,55 @@ StudentGroup.prototype.handleDragLeave = function(event) {
     //$('.avatar').removeClass('over');
     //$('#avatarContainer').removeClass('over');
 };
+
+StudentGroup.prototype.createRemoveButton = function() {
+    $(this.$el).append('<div class="remove_button"></div>');
+    $(this.$el).find('.remove_button').click(function(){
+
+        var elem = this;
+
+        $("#dialog_remove_confirmation").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons : {
+                "Confirm" : function() {
+                    console.log(this);
+                    var studentGroup = $(elem).parent().data('obj');
+                    studentGroup.remove();
+
+                    $("#dialog_remove_confirmation").dialog("close");
+                    $('#dialog_remove_confirmation').hide();
+                },
+                "Cancel" : function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog_remove_confirmation").dialog("open");
+        $('#dialog_remove_confirmation').show();
+    });
+}
+
+
+StudentGroup.prototype.remove = function() {
+    var studentGroup = this;
+
+    $.ajax({
+        url: "/studentGroup",
+        type: 'DELETE',
+        dataType: 'text',
+        data: this.serialize(),
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            $(studentGroup.$el).remove();
+            console.log('StudentGroup removed.');
+        },
+        error:function(data, status, er) {
+            console.log('StudentGroup deletion failed.');
+        }
+    });
+}
+
 
