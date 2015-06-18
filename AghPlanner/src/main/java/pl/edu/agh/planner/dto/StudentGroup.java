@@ -15,7 +15,7 @@ public class StudentGroup implements java.io.Serializable{
     private Department department;
     private LetterDesignation letterDesignation;
     private Faculty faculty;
-    @JsonManagedReference(value = "studentGroup-aggregate")
+//    @JsonBackReference(value = "studentGroup-aggregate")
     private Set<Aggregate> aggregates;
 
     public Long getId() {

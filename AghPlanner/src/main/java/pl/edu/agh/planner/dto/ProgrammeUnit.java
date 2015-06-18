@@ -1,6 +1,7 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Set;
@@ -10,8 +11,8 @@ public class ProgrammeUnit implements java.io.Serializable{
     private Long id;
     private String name;
     private ProgrammeUnitType type;
-    @JsonManagedReference(value = "programmeUnit-aggregate")
-    private Set<Aggregate> aggregates;
+//    @JsonBackReference(value = "programmeUnit-aggregate")
+//    private Set<Aggregate> aggregates;
 
     public Long getId() {
         return id;
@@ -37,11 +38,11 @@ public class ProgrammeUnit implements java.io.Serializable{
         this.type = type;
     }
 
-    public Set<Aggregate> getAggregates() {
-        return aggregates;
-    }
+//    public Set<Aggregate> getAggregates() {
+//        return aggregates;
+//    }
 
-    public void setAggregates(Set<Aggregate> aggregates) {
-        this.aggregates = aggregates;
-    }
+//    public void setAggregates(Set<Aggregate> aggregates) {
+//        this.aggregates = aggregates;
+//    }
 }
