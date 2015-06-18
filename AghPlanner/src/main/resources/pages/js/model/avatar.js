@@ -153,7 +153,6 @@ Avatar.prototype.handleDragLeave = function(event) {
 
 Avatar.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
-    event.originalEvent.dataTransfer.getData('source')
 
     if (event.dataTransfer.types[0] ==  'teacher') {
         var avatar = $(this).data('obj');
