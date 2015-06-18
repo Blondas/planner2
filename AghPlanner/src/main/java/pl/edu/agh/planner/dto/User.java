@@ -3,7 +3,7 @@ package pl.edu.agh.planner.dto;
 
 import java.util.Set;
 
-public class User {
+public class User implements java.io.Serializable{
 
 	private Long id;
 	private String login;

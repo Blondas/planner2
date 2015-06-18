@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Set;
 
-public class ProgrammeUnit{
+public class ProgrammeUnit implements java.io.Serializable{
 
     private Long id;
     private String name;

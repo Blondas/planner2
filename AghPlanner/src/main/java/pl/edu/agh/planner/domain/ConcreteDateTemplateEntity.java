@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "concrete_date_template")
-public class ConcreteDateTemplateEntity {
+public class ConcreteDateTemplateEntity implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cdt_id")

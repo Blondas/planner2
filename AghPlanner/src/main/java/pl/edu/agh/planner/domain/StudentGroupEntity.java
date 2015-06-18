@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity(name = "student_group")
 // grupa studenctka (sk�adowa agregatu)
-public class StudentGroupEntity {
+public class StudentGroupEntity implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sg_id")

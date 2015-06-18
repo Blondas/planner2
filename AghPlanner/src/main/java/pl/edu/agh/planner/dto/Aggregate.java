@@ -2,7 +2,7 @@ package pl.edu.agh.planner.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-public class Aggregate {
+public class Aggregate implements java.io.Serializable{
 
     private Long id;
     @JsonBackReference(value = "avatar-aggregate")

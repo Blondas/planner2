@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 @Entity(name = "letter_designation")
-public class LetterDesignationEntity {
+public class LetterDesignationEntity implements java.io.Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

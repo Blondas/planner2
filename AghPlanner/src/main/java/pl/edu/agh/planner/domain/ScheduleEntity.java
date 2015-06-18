@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "schedule")
-public class ScheduleEntity {
+public class ScheduleEntity implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "s_id")

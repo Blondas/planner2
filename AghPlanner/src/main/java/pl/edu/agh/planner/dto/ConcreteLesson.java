@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-public class ConcreteLesson {
+public class ConcreteLesson implements java.io.Serializable{
 
     private Long id;
     private Aggregate aggregate;

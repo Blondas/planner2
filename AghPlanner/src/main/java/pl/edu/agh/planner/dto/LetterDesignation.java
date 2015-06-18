@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-public class LetterDesignation{
+public class LetterDesignation implements java.io.Serializable{
 
     private int id;
     private String name;

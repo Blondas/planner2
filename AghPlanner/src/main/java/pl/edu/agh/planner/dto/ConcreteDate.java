@@ -2,7 +2,7 @@ package pl.edu.agh.planner.dto;
 
 import java.util.Date;
 
-public class ConcreteDate{
+public class ConcreteDate implements java.io.Serializable{
 
     private Long id;
     private Date realDate;

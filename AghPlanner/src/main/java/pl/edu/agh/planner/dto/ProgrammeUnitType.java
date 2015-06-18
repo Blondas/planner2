@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-public class ProgrammeUnitType{
+public class ProgrammeUnitType implements java.io.Serializable{
 
     private Long id;
     private String name;

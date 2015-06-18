@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Set;
 
-public class Avatar {
+public class Avatar implements java.io.Serializable{
 
 	private Long id;
 	private String name;

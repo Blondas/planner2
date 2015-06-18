@@ -1,7 +1,7 @@
 package pl.edu.agh.planner.dto;
 
 
-public class AuthorizationType  {
+public class AuthorizationType implements java.io.Serializable {
 
     private Long id;
     private String name;

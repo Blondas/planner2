@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 @Entity(name = "programme_unit_type")
-public class ProgrammeUnitTypeEntity {
+public class ProgrammeUnitTypeEntity implements java.io.Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

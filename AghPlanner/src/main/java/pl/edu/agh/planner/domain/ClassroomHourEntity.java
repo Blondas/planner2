@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 @Entity(name = "classroom_hour")
-public class ClassroomHourEntity {
+public class ClassroomHourEntity implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ch_id")

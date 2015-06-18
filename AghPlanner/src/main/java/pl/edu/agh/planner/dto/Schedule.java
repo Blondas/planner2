@@ -3,7 +3,7 @@ package pl.edu.agh.planner.dto;
 import java.util.Date;
 import java.util.Set;
 
-public class Schedule{
+public class Schedule implements java.io.Serializable{
 
     private Long id;
     private Set<ConcreteLesson> concreteLessons;

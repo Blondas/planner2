@@ -3,7 +3,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 @Entity(name = "concrete_lesson")
-public class ConcreteLessonEntity {
+public class ConcreteLessonEntity implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cl_id")

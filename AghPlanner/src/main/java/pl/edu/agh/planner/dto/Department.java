@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-public class Department{
+public class Department implements java.io.Serializable{
 
     private Long id;
     private String name;

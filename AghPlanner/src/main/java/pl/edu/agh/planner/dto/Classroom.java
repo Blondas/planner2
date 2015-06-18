@@ -3,7 +3,7 @@ package pl.edu.agh.planner.dto;
 
 import java.util.Set;
 
-public class Classroom{
+public class Classroom implements java.io.Serializable{
 
     private Long id;
     private String number;

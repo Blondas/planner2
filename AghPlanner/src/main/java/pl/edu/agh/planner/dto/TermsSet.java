@@ -2,7 +2,7 @@ package pl.edu.agh.planner.dto;
 
 import java.util.Set;
 
-public class TermsSet {
+public class TermsSet implements java.io.Serializable{
 
     private Long id;
     private Set<ConcreteDateTemplate> concreteDateTemplates;

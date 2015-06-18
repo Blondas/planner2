@@ -3,7 +3,7 @@ package pl.edu.agh.planner.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-public class Teacher{
+public class Teacher implements java.io.Serializable{
 
 	private Long id;
 	private String name;

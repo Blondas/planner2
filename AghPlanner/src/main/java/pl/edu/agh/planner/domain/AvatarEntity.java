@@ -3,11 +3,12 @@ package pl.edu.agh.planner.domain;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity(name = "avatar")
 // sk�adowa agregatu
-public class AvatarEntity {
+public class AvatarEntity implements Serializable{
     @Id
     @GeneratedValue
     @Column(name = "av_id")

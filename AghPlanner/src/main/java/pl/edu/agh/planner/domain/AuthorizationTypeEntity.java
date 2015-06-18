@@ -4,7 +4,7 @@ package pl.edu.agh.planner.domain;
 import javax.persistence.*;
 
 @Entity(name = "authorization_type")
-public class AuthorizationTypeEntity {
+public class AuthorizationTypeEntity implements java.io.Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

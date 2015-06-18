@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "concrete_date")
-public class ConcreteDateEntity {
+public class ConcreteDateEntity implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_id")

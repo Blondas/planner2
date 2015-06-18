@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity(name = "teacher")
-public class TeacherEntity {
+public class TeacherEntity implements java.io.Serializable{
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "t_id")

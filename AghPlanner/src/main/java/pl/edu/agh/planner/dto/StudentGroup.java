@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import java.util.Set;
 
-public class StudentGroup{
+public class StudentGroup implements java.io.Serializable{
 
     private Long id;
     private Date startDate;

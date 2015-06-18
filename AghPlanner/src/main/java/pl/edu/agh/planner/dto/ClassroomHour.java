@@ -1,7 +1,7 @@
 package pl.edu.agh.planner.dto;
 
 
-public class ClassroomHour{
+public class ClassroomHour implements java.io.Serializable{
     private Long id;
     private int lessonBeginId;
     private int lessonEndId;

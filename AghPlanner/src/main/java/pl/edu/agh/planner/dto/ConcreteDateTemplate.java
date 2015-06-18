@@ -2,7 +2,7 @@ package pl.edu.agh.planner.dto;
 
 import java.util.Set;
 
-public class ConcreteDateTemplate{
+public class ConcreteDateTemplate implements java.io.Serializable{
 
     private Long id;
     private String name;

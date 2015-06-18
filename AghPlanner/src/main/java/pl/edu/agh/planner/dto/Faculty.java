@@ -1,6 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-public class Faculty {
+public class Faculty implements java.io.Serializable {
 
     private Long id;
     private String name;
