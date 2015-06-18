@@ -1,7 +1,4 @@
 function Aggregate(object) {
-    this.avatars = Array();
-    this.studentGroups = Array();
-    this.programmeUnits = Array();
 
     if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
         this.setId(object.id);
@@ -27,14 +24,14 @@ function Aggregate(object) {
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    if ( typeof object != "undefined" && object.hasOwnProperty('avatars') ) {
-        this.setAvatars(object.avatars);
+    if ( typeof object != "undefined" && object.hasOwnProperty('avatar') && object.avatar != null) {
+        this.setAvatar(object.avatar);
     }
-    if ( typeof object != "undefined" && object.hasOwnProperty('studentGroups') ) {
-        this.setStudentGroups(object.studentGroups);
+    if ( typeof object != "undefined" && object.hasOwnProperty('studentGroup')  && object.studentGroup != null) {
+        this.setStudentGroup(object.studentGroup);
     }
-    if ( typeof object != "undefined" && object.hasOwnProperty('programmeUnits') ) {
-        this.setProgrammeUnits(object.programmeUnits);
+    if ( typeof object != "undefined" && object.hasOwnProperty('programmeUnit') && object.programmeUnit != null) {
+        this.setProgrammeUnit(object.programmeUnit);
     }
 
 }
@@ -59,95 +56,41 @@ Aggregate.prototype.setName = function(name) {
     this.name = name;
 };
 
-Aggregate.prototype.setAvatars = function(avatars) {
-    for (var avatar in avatars) {
-        avatar = new Avatar(avatar);
-        this.addAvatar(avatar);
-    }
+Aggregate.prototype.setAvatar = function(object) {
+    var avatar = new Avatar(object);
+    avatar.setPosition(this.$el);
+    this.avatar = avatar;
 };
 
-Aggregate.prototype.isInAvatars = function(avatar) {
-    var inAvatars = false;
-    this.avatars.forEach(function(entry) {
-        if (entry.id == avatar.id) {
-            inAvatars =  true;
-        }
-    });
-    return inAvatars;
+//Aggregate.prototype.removeAvatar = function(avatar) {
+//    this.avatars.splice( $.inArray(avatar, this.avatars), 1 );
+//    avatar.detach();
+//};
+
+Aggregate.prototype.setStudentGroup = function(object) {
+    var studentGroup = new StudentGroup(object);
+    studentGroup.setPosition(this.$el);
+    this.studentGroup = studentGroup;
 };
 
-Aggregate.prototype.addAvatar = function(avatar) {
-    var inAvatars = this.isInAvatars(avatar);
-    if ( !inAvatars ) {
-        avatar.setPosition(this.$el);
-        this.avatars.push(avatar);
-    }
+
+//Aggregate.prototype.removeStudentGroup = function(studentGroup) {
+//    this.studentGroups.splice( $.inArray(studentGroup, this.studentGroups), 1 );
+//    studentGroup.detach();
+//};
+
+Aggregate.prototype.setProgrammeUnit = function(object) {
+    var programmeUnit = new ProgrammeUnit(object);
+    programmeUnit.setPosition(this.$el);
+
+    this.programmeUnit = programmeUnit;
 };
 
-Aggregate.prototype.removeAvatar = function(avatar) {
-    this.avatars.splice( $.inArray(avatar, this.avatars), 1 );
-    avatar.detach();
-};
 
-Aggregate.prototype.setStudentGroups = function(studentGroups) {
-    for (var studentGroup in studentGroups) {
-        studentGroup = new StudentGroup(studentGroup);
-        this.addStudentGroup(studentGroup);
-    }
-};
-
-Aggregate.prototype.isInStudentGroups = function(studentGroup) {
-    var inStudentGroups = false;
-    this.studentGroups.forEach(function(entry) {
-        if (entry.id == studentGroup.id) {
-            inStudentGroups =  true;
-        }
-    });
-    return inStudentGroups;
-};
-
-Aggregate.prototype.addStudentGroup = function(studentGroup) {
-    var inStudentGroups = this.isInStudentGroups(studentGroup);
-    if ( !inStudentGroups ) {
-        studentGroup.setPosition(this.$el);
-        this.studentGroups.push(studentGroup);
-    }
-};
-
-Aggregate.prototype.removeStudentGroup = function(studentGroup) {
-    this.studentGroups.splice( $.inArray(studentGroup, this.studentGroups), 1 );
-    studentGroup.detach();
-};
-
-Aggregate.prototype.setProgrammeUnits = function(programmeUnits) {
-    for (var programmeUnit in programmeUnits) {
-        programmeUnit = new ProgrammeUnit(programmeUnit);
-        this.addProgrammeUnit(programmeUnit);
-    }
-};
-
-Aggregate.prototype.isInProgrammeUnits = function(programmeUnit) {
-    var inProgrammeUnits = false;
-    this.programmeUnits.forEach(function(entry) {
-        if (entry.id == programmeUnit.id) {
-            inProgrammeUnits =  true;
-        }
-    });
-    return inProgrammeUnits;
-};
-
-Aggregate.prototype.addProgrammeUnit = function(programmeUnit) {
-    var inProgrammeUnits = this.isInProgrammeUnits(programmeUnit);
-    if ( !inProgrammeUnits ) {
-        programmeUnit.setPosition(this.$el);
-        this.programmeUnits.push(programmeUnit);
-    }
-};
-
-Aggregate.prototype.removeProgrammeUnit = function(programmeUnit) {
-    this.programmeUnits.splice( $.inArray(programmeUnit, this.programmeUnits), 1 );
-    programmeUnit.detach();
-};
+//Aggregate.prototype.removeProgrammeUnit = function(programmeUnit) {
+//    this.programmeUnits.splice( $.inArray(programmeUnit, this.programmeUnits), 1 );
+//    programmeUnit.detach();
+//};
 
 Aggregate.prototype.setPosition = function(domId) {
     this.position = domId;
@@ -158,9 +101,9 @@ Aggregate.prototype.serialize = function() {
     var data = {
         id: this.id,
         name: this.name,
-        avatars: this.avatars,
-        studentGroups: this.studentGroups,
-        programmeUnits: this.programmeUnits,
+        avatar: this.avatar,
+        studentGroup: this.studentGroup,
+        programmeUnit: this.programmeUnit,
         className: this.$el.className,
         position: this.position
     };
@@ -223,7 +166,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'avatar':
             var object = JSON.parse(event.dataTransfer.getData('avatar'));
             object.position = aggregate.$el;
-            aggregate.addAvatar( new Avatar(object) );
+            aggregate.avatar =  new Avatar(object) ;
             aggregate.save();
 
             break;
@@ -231,7 +174,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'studentgroup':
             var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
             object.position = aggregate.$el;
-            aggregate.addStudentGroup( new StudentGroup(object) );
+            aggregate.studentGroup = new StudentGroup(object)
             aggregate.save();
 
             break;
@@ -239,7 +182,7 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'programmeunit':
             var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
             object.position = aggregate.$el;
-            aggregate.addProgrammeUnit( new ProgrammeUnit(object) );
+            aggregate.programmeUnit = new ProgrammeUnit(object)
             aggregate.save();
 
             break;

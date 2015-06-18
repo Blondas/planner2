@@ -19,8 +19,8 @@ public class ProgrammeUnitEntity implements java.io.Serializable{
     private ProgrammeUnitTypeEntity type;
 
 
-    @OneToMany(mappedBy = "programmeUnit", fetch = FetchType.EAGER)
-    private Set<AggregateEntity> aggregates;
+//    @OneToMany(mappedBy = "programmeUnit", fetch = FetchType.EAGER)
+//    private Set<AggregateEntity> aggregates;
 
 
     public Long getId() {
@@ -47,11 +47,11 @@ public class ProgrammeUnitEntity implements java.io.Serializable{
         this.type = type;
     }
 
-    public Set<AggregateEntity> getAggregates() {
-        return aggregates;
-    }
-
-    public void setAggregates(Set<AggregateEntity> aggregates) {
-        this.aggregates = aggregates;
-    }
+//    public Set<AggregateEntity> getAggregates() {
+//        return aggregates;
+//    }
+//
+//    public void setAggregates(Set<AggregateEntity> aggregates) {
+//        this.aggregates = aggregates;
+//    }
 }

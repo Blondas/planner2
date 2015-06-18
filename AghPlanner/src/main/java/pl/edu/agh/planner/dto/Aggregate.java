@@ -1,15 +1,16 @@
 package pl.edu.agh.planner.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class Aggregate implements java.io.Serializable{
 
     private Long id;
     @JsonBackReference(value = "avatar-aggregate")
     private Avatar avatar;
-    @JsonBackReference(value = "programmeUnit-aggregate")
+//    @JsonManagedReference(value = "programmeUnit-aggregate")
     private ProgrammeUnit programmeUnit;
-    @JsonBackReference(value = "studentGroup-aggregate")
+//    @JsonManagedReference(value = "studentGroup-aggregate")
     private StudentGroup studentGroup;
 
     public Long getId() {
