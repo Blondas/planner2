@@ -22,7 +22,7 @@ StudentGroupContainer.prototype.setElement = function () {
     $(this.$el).append('<div class="containerTitle">Grupy Studenckie:</div>');
 
     $(this.$el).data('obj', this);
-}
+};
 
 StudentGroupContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
@@ -30,13 +30,28 @@ StudentGroupContainer.prototype.setPosition = function(containerID) {
 };
 
 StudentGroupContainer.prototype.addStudentGroup = function(studentGroup) {
-    studentGroup.setPosition(this.$el);
-    this.studentGroups.push(studentGroup);
+    var entry = this.doesStudentGroupExists(studentGroup);
+
+    if ( entry == false) {
+        studentGroup.setPosition(this.$el);
+        this.studentGroups.push(studentGroup);
+    }
+};
+
+StudentGroupContainer.prototype.doesStudentGroupExists = function(studentGroup) {
+    var ret = false;
+    this.studentGroups.forEach(function(entry) {
+        if (entry.id == studentGroup.id) {
+            ret = entry;
+        }
+    });
+
+    return ret;
 };
 
 StudentGroupContainer.prototype.removeStudentGroup = function(studentGroup) {
     this.studentGroups.splice( $.inArray(studentGroup, this.studentGroups), 1 );
-    studentGroup.detach();
+    //studentGroup.detach();
 };
 
 StudentGroupContainer.prototype.handleDocumentDrop = function(event) {

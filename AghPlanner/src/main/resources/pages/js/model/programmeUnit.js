@@ -84,8 +84,8 @@ ProgrammeUnit.prototype.handleDragEnd = function (event) {
 
     $('*').removeClass('over');
 
-    //console.log(this.position);
-    this.detach();
+    var object = $(this.position).data('obj')
+    $(this.position).data('obj').removeProgrammeUnit(this)
 };
 
 ProgrammeUnit.prototype.handleDragOver = function (event) {

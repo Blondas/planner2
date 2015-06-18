@@ -18,12 +18,28 @@ ProgrammeUnitContainer.prototype.setPosition = function(containerID) {
 };
 
 ProgrammeUnitContainer.prototype.addProgrammeUnit = function(programmeUnit) {
-    programmeUnit.setPosition(this.$el);
-    this.programmeUnits.push(programmeUnit);
+    var entry = this.doesProgrammeUnitExists(programmeUnit);
+
+    if ( entry == false) {
+        programmeUnit.setPosition(this.$el);
+        this.programmeUnits.push(programmeUnit);
+    }
+};
+
+ProgrammeUnitContainer.prototype.doesProgrammeUnitExists = function(programmeUnit) {
+    var ret = false;
+    this.programmeUnits.forEach(function(entry) {
+        if (entry.id == programmeUnit.id) {
+            ret = entry;
+        }
+    });
+
+    return ret;
 };
 
 ProgrammeUnitContainer.prototype.removeProgrammeUnit = function(programmeUnit) {
-    this.programmeUnits.remove(programmeUnit);
+    this.programmeUnits.splice( $.inArray(programmeUnit, this.programmeUnits), 1 );
+    //programmeUnit.detach();
 };
 
 ProgrammeUnitContainer.prototype.handleDocumentDrop = function(event) {
