@@ -30,20 +30,25 @@ AvatarContainer.prototype.setPosition = function(containerID) {
 };
 
 AvatarContainer.prototype.addAvatar = function(avatar) {
-    if(!this.doesAvatarExists(avatar)){
+    var entry = this.doesAvatarExists(avatar);
+
+    if ( entry == false) {
         avatar.setPosition(this.$el);
         this.avatars.push(avatar);
+    } else {
+        entry.setTeachers(avatar.teachers);
     }
 };
 
 AvatarContainer.prototype.doesAvatarExists = function(avatar) {
-    var avatarExists = false;
+    var ret = false;
     this.avatars.forEach(function(entry) {
         if (entry.id == avatar.id) {
-            avatarExists = true;
+            ret = entry;
         }
     });
-    return avatarExists;
+
+    return ret;
 };
 
 AvatarContainer.prototype.removeAvatar = function(avatar) {

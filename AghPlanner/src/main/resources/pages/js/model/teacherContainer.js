@@ -30,13 +30,28 @@ TeacherContainer.prototype.setPosition = function(containerID) {
 };
 
 TeacherContainer.prototype.addTeacher = function(teacher) {
-    teacher.setPosition(this.$el);
-    this.teachers.push(teacher);
+    var entry = this.doesTeacherExists(teacher);
+
+    if ( entry == false) {
+        teacher.setPosition(this.$el);
+        this.teachers.push(teacher);
+    }
+};
+
+TeacherContainer.prototype.doesTeacherExists = function(teacher) {
+    var ret = false;
+    this.teachers.forEach(function(entry) {
+        if (entry.id == teacher.id) {
+            ret = entry;
+        }
+    });
+
+    return ret;
 };
 
 TeacherContainer.prototype.removeTeacher = function(teacher) {
     this.teachers.splice( $.inArray(teacher, this.teachers), 1 );
-    teacher.detach();
+    //teacher.detach();
 };
 
 TeacherContainer.prototype.handleDocumentDrop = function(event) {

@@ -131,6 +131,9 @@ StudentGroup.prototype.createRemoveButton = function() {
                 "Cancel" : function() {
                     $(this).dialog("close");
                 }
+            },
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
             }
         });
 
