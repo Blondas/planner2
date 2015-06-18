@@ -9,6 +9,8 @@ function AvatarContainer(object) {
 
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+
+    this.loadAllAvatars();
 }
 
 AvatarContainer.prototype.setElement = function () {

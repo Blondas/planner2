@@ -9,6 +9,8 @@ function AggregateContainer(object) {
 
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+
+    this.loadAllAggregates();
 }
 
 AggregateContainer.prototype.setElement = function () {

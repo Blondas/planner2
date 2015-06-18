@@ -39,7 +39,7 @@ StudentGroup.prototype.setPosition = function(containerID) {
 
 StudentGroup.prototype.getParentID = function() {
     return $(this.$el).parent().attr('id');
-}
+};
 
 StudentGroup.prototype.serialize = function() {
     var data = {
@@ -70,8 +70,7 @@ StudentGroup.prototype.handleDragEnd = function(event) {
 
     this.$el.style.opacity = '1';
 
-    $('.aggregate').removeClass('over');
-    $('#aggregateContainer').removeClass('over');
+    $('*').removeClass('over');
 
     var object = $(this.position).data('obj')
     $(this.position).data('obj').removeStudentGroup(this);
@@ -80,8 +79,11 @@ StudentGroup.prototype.handleDragEnd = function(event) {
 StudentGroup.prototype.handleDragOver = function(event) {
     event.stopPropagation();
 
-    $('.aggregate').addClass('over');
-    $('#aggregateContainer').addClass('over');
+    if (event.dataTransfer.types[0] == 'studentgroup') {
+        $('*').removeClass('over');
+        $('.aggregate').addClass('over');
+        $('#aggregateContainer').addClass('over');
+    }
 
     if (event.preventDefault) {
         event.preventDefault();

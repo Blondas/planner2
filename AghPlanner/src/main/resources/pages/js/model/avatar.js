@@ -119,8 +119,7 @@ Avatar.prototype.handleDragEnd = function(event) {
 
     this.$el.style.opacity = '1';
 
-    $('.aggregate').removeClass('over');
-    $('#aggregateContainer').removeClass('over');
+    $('*').removeClass('over');
 
     var object = $(this.position).data('obj')
     $(this.position).data('obj').removeAvatar(this);
@@ -130,8 +129,12 @@ Avatar.prototype.handleDragEnd = function(event) {
 
 Avatar.prototype.handleDragOver = function(event) {
     event.stopPropagation();
-    $('.aggregate').addClass('over');
-    $('#aggregateContainer').addClass('over');
+
+    if (event.dataTransfer.types[0] == 'avatar') {
+        $('*').removeClass('over');
+        $('.aggregate').addClass('over');
+        $('#aggregateContainer').addClass('over');
+    }
 
     if (event.preventDefault) {
         event.preventDefault();
@@ -142,22 +145,15 @@ Avatar.prototype.handleDragOver = function(event) {
 
 Avatar.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
-
-    // event.target is the current hover target.
-    //$('.avatar').addClass('over');
-    //$('#avatarContainer').addClass('over');
 };
 
 Avatar.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
-
-    // event.target is previous element
-    //$('.avatar').removeClass('over');
-    //$('#avatarContainer').removeClass('over');
 };
 
 Avatar.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
+    event.originalEvent.dataTransfer.getData('source')
 
     if (event.dataTransfer.types[0] ==  'teacher') {
         var avatar = $(this).data('obj');

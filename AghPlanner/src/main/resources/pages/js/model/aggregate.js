@@ -183,8 +183,7 @@ Aggregate.prototype.handleDragEnd = function(event) {
 
     this.$el.style.opacity = '1';
 
-    $('.aggregate').removeClass('over');
-    $('#aggregateContainer').removeClass('over');
+    $('*').removeClass('over');
 
     var object = $(this.position).data('obj')
     $(this.position).data('obj').removeAggregate(this);
@@ -194,8 +193,11 @@ Aggregate.prototype.handleDragEnd = function(event) {
 
 Aggregate.prototype.handleDragOver = function(event) {
     event.stopPropagation();
-    $('.aggregate').addClass('over');
-    $('#aggregateContainer').addClass('over');
+    if (event.dataTransfer.types[0] == 'aggregate') {
+        $('*').removeClass('over');
+        $('#calendar').addClass('over');
+    }
+
 
     if (event.preventDefault) {
         event.preventDefault();
@@ -206,18 +208,10 @@ Aggregate.prototype.handleDragOver = function(event) {
 
 Aggregate.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
-
-    // event.target is the current hover target.
-    //$('.aggregate').addClass('over');
-    //$('#aggregateContainer').addClass('over');
 };
 
 Aggregate.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
-
-    // event.target is previous element
-    //$('.aggregate').removeClass('over');
-    //$('#aggregateContainer').removeClass('over');
 };
 
 Aggregate.prototype.handleDocumentDrop = function(event) {

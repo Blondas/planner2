@@ -105,8 +105,7 @@ Teacher.prototype.handleDragEnd = function(event) {
 
     this.$el.style.opacity = '1';
 
-    $('.avatar').removeClass('over');
-    $('#avatarContainer').removeClass('over');
+    $('*').removeClass('over');
 
     if (this.getParentID() != 'teacherContainer') {
         var object = $(this.position).data('obj')
@@ -118,8 +117,12 @@ Teacher.prototype.handleDragEnd = function(event) {
 Teacher.prototype.handleDragOver = function(event) {
     event.stopPropagation();
 
-    $('.avatar').addClass('over');
-    $('#avatarContainer').addClass('over');
+    if (event.dataTransfer.types[0] == 'teacher') {
+        $('*').removeClass('over');
+        $('.avatar').addClass('over');
+        $('#avatarContainer').addClass('over');
+    }
+
 
     //console.log('StudentGroup.handleDragOver');
     if (event.preventDefault) {
@@ -132,20 +135,11 @@ Teacher.prototype.handleDragOver = function(event) {
 // odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragEnter = function(event) {
     event.stopPropagation();
-
-    //console.log('StudentGroup.handleDragEnter');
-    // event.target is the current hover target.
-    //$('.avatar').addClass('over');
-    //$('#avatarContainer').addClass('over');
 };
 
 // odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
 Teacher.prototype.handleDragLeave = function(event) {
     event.stopPropagation();
-    //console.log('StudentGroup.handleDragLeave');
-    // event.target is previous element
-    //$('.avatar').removeClass('over');
-    //$('#avatarContainer').removeClass('over');
 };
 
 /*

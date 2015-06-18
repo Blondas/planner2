@@ -9,6 +9,8 @@ function StudentGroupContainer(object) {
 
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+
+    this.loadAllStudentGroups();
 }
 
 StudentGroupContainer.prototype.setElement = function () {

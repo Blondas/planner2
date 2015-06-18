@@ -12,14 +12,13 @@
     <link rel="stylesheet" type="text/css" href="libs/calendar/fullcalendar.print.css" media="print">
 
     <script type="text/javascript" src="libs/calendar/moment.min.js"></script>
+    <script src="libs/contextMenu.js"></script>
     <script src="libs/calendar/fullcalendar.min.js"></script>
-    <!--<script src="libs/contextMenu.js"></script>-->
 
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-
+    <script src="js/ui.js"></script>
     <script src="js/testAjax.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/calendarHelper.js"></script>
+    <script src="js/calendarAdapter.js"></script>
     <script src="js/model/Aggregate.js"></script>
     <script src="js/model/AggregateContainer.js"></script>
     <script src="js/model/Avatar.js"></script>
@@ -31,9 +30,12 @@
     <script src="js/model/Teacher.js"></script>
     <script src="js/model/TeacherContainer.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
 
 </head>
 <body>
+<div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
 <div id="menu" class="menu">
     <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#teacherContainer')">
         Wykładowcy
@@ -52,8 +54,6 @@
     </button>
 </div>
 <div id='calendar'></div>
-
-<div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
-
 </body>
+
 </html>

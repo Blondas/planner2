@@ -1,5 +1,6 @@
 $('document').ready(function(){
     $('#calendar').fullCalendar({
+        firstDay: 1,
         theme: true,
         header: {
             left: 'prev,next today',
@@ -10,7 +11,7 @@ $('document').ready(function(){
         eventLimit: true
     });
 
-    calendarHelper.addEventListeners();
+    calendarAdapter.addEventListeners();
     addContainers();
 });
 
@@ -21,13 +22,5 @@ function addContainers() {
     studentGroupContainer = new StudentGroupContainer({position: 'body'});
     programmeUnitContainer = new ProgrammeUnitContainer({position: 'body'});
 
-    teacherContainer.loadAllTeachers();
-    avatarContainer.loadAllAvatars();
-    aggregateContainer.loadAllAggregates();
-    studentGroupContainer.loadAllStudentGroups();
-    programmeUnitContainer.loadAllProgrammeUnits();
-}
-
-function toggleElement(e) {
-    $(e).toggle();
+    addDragEventsForAllElems();
 }

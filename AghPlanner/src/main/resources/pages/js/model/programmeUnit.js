@@ -1,15 +1,15 @@
 function ProgrammeUnit(object) {
-    if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
+    if (typeof object != "undefined" && object.hasOwnProperty('id')) {
         this.setId(object.id);
     }
 
-    if ( typeof object != "undefined" && object.hasOwnProperty('name') ) {
+    if (typeof object != "undefined" && object.hasOwnProperty('name')) {
         this.setName(object.name);
     } else {
         this.setName("");
     }
 
-    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+    if (typeof object != "undefined" && object.hasOwnProperty('position')) {
         this.setPosition(object.position);
     }
 
@@ -22,7 +22,7 @@ function ProgrammeUnit(object) {
     this.$el.addEventListener('dragleave', this.handleDragLeave, false);
 }
 
-ProgrammeUnit.prototype.setElement = function() {
+ProgrammeUnit.prototype.setElement = function () {
     this.$el = document.createElement('div');
     this.$el.className = 'programmeUnit';
     this.$el.setAttribute('draggable', 'true');
@@ -34,25 +34,25 @@ ProgrammeUnit.prototype.setElement = function() {
     this.createRemoveButton();
 };
 
-ProgrammeUnit.prototype.setId = function(id) {
+ProgrammeUnit.prototype.setId = function (id) {
     this.id = id;
 };
 
-ProgrammeUnit.prototype.setName = function(name) {
+ProgrammeUnit.prototype.setName = function (name) {
     this.name = name;
     $(this.$el).text(this.name);
 };
 
-ProgrammeUnit.prototype.setPosition = function(containerID) {
+ProgrammeUnit.prototype.setPosition = function (containerID) {
     this.position = containerID;
     $(this.position).append(this.$el);
 };
 
-ProgrammeUnit.prototype.getParentID = function() {
+ProgrammeUnit.prototype.getParentID = function () {
     return $(this.$el).parent().attr('id');
 }
 
-ProgrammeUnit.prototype.serialize = function() {
+ProgrammeUnit.prototype.serialize = function () {
     var data = {
         id: this.id,
         name: this.name,
@@ -63,11 +63,11 @@ ProgrammeUnit.prototype.serialize = function() {
     return JSON.stringify(JSON.decycle(data));
 };
 
-ProgrammeUnit.prototype.detach = function(event) {
+ProgrammeUnit.prototype.detach = function (event) {
     $(this.$el).detach();
 };
 
-ProgrammeUnit.prototype.handleDragStart = function(event) {
+ProgrammeUnit.prototype.handleDragStart = function (event) {
     event.stopPropagation();
 
     event.dataTransfer.clearData();
@@ -77,23 +77,25 @@ ProgrammeUnit.prototype.handleDragStart = function(event) {
     this.$el.style.opacity = '0.4';
 };
 
-ProgrammeUnit.prototype.handleDragEnd = function(event) {
+ProgrammeUnit.prototype.handleDragEnd = function (event) {
     event.stopPropagation();
 
     this.$el.style.opacity = '1';
 
-    $('.aggregate').removeClass('over');
-    $('#aggregateContainer').removeClass('over');
+    $('*').removeClass('over');
 
     //console.log(this.position);
     this.detach();
 };
 
-ProgrammeUnit.prototype.handleDragOver = function(event) {
+ProgrammeUnit.prototype.handleDragOver = function (event) {
     event.stopPropagation();
 
-    $('.aggregate').addClass('over');
-    $('#aggregateContainer').addClass('over');
+    if (event.dataTransfer.types[0] == 'programmeunit') {
+        $('*').removeClass('over');
+        $('.aggregate').addClass('over');
+        $('#aggregateContainer').addClass('over');
+    }
 
     if (event.preventDefault) {
         event.preventDefault();
@@ -102,37 +104,25 @@ ProgrammeUnit.prototype.handleDragOver = function(event) {
     return false;
 };
 
-// odpalany w chwili wejscia w przestrzen, this/event dotyczy przenoszonego elementu
-ProgrammeUnit.prototype.handleDragEnter = function(event) {
+ProgrammeUnit.prototype.handleDragEnter = function (event) {
     event.stopPropagation();
-
-    //console.log('ProgrammeUnit.handleDragEnter');
-    // event.target is the current hover target.
-    //$('.avatar').addClass('over');
-    //$('#avatarContainer').addClass('over');
 };
 
-// odpalany w chwili wyjscia z przestrzeni, this/event dotyczy przenoszonego elementu
-ProgrammeUnit.prototype.handleDragLeave = function(event) {
+ProgrammeUnit.prototype.handleDragLeave = function (event) {
     event.stopPropagation();
-
-    //console.log('ProgrammeUnit.handleDragLeave');
-    // event.target is previous element
-    //$('.avatar').removeClass('over');
-    //$('#avatarContainer').removeClass('over');
 };
 
-ProgrammeUnit.prototype.createRemoveButton = function() {
+ProgrammeUnit.prototype.createRemoveButton = function () {
     $(this.$el).append('<div class="remove_button"></div>');
-    $(this.$el).find('.remove_button').click(function(){
+    $(this.$el).find('.remove_button').click(function () {
 
         var elem = this;
 
         $("#dialog_remove_confirmation").dialog({
             autoOpen: false,
             modal: true,
-            buttons : {
-                "Confirm" : function() {
+            buttons: {
+                "Confirm": function () {
                     console.log(this);
                     var programmeUnit = $(elem).parent().data('obj');
                     programmeUnit.remove();
@@ -140,7 +130,7 @@ ProgrammeUnit.prototype.createRemoveButton = function() {
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel" : function() {
+                "Cancel": function () {
                     $(this).dialog("close");
                 }
             }
@@ -152,10 +142,10 @@ ProgrammeUnit.prototype.createRemoveButton = function() {
 }
 
 /*
-AJAX
+ AJAX
  */
 
-ProgrammeUnit.prototype.remove = function() {
+ProgrammeUnit.prototype.remove = function () {
     var programmeUnit = this;
 
     $.ajax({
@@ -165,11 +155,11 @@ ProgrammeUnit.prototype.remove = function() {
         data: this.serialize(),
         contentType: 'application/json',
         mimeType: 'application/json',
-        success: function(data) {
+        success: function (data) {
             $(programmeUnit.$el).remove();
             console.log('ProgrammeUnit removed.');
         },
-        error:function(data, status, er) {
+        error: function (data, status, er) {
             console.log('ProgrammeUnit deletion failed.');
         }
     });

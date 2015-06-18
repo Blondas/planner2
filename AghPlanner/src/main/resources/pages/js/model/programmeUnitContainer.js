@@ -8,6 +8,8 @@ function ProgrammeUnitContainer(object) {
     $(this.$el).append('<div class="containerTitle">Jednostki Programów Studiów:</div>');
 
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
+
+    this.loadAllProgrammeUnits();
 }
 
 ProgrammeUnitContainer.prototype.setPosition = function(containerID) {
