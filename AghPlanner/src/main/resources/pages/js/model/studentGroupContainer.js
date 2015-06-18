@@ -51,10 +51,12 @@ StudentGroupContainer.prototype.doesStudentGroupExists = function(studentGroup) 
 
 StudentGroupContainer.prototype.removeStudentGroup = function(studentGroup) {
     this.studentGroups.splice( $.inArray(studentGroup, this.studentGroups), 1 );
-    //studentGroup.detach();
+    studentGroup.detach();
 };
 
 StudentGroupContainer.prototype.handleDocumentDrop = function(event) {
+    event.stopPropagation();
+
     if (event.dataTransfer.types[0] ==  'studentGroup') {
         var studentGroupContainer = $(this).data('obj');
 

@@ -1,16 +1,28 @@
 function ProgrammeUnitContainer(object) {
     this.programmeUnits = Array();
-    this.$el = document.createElement('div');
-    this.setPosition(object.position);
-    this.$el.className = 'objectsContainer';
-    this.$el.id = 'programmeUnitContainer';
 
-    $(this.$el).append('<div class="containerTitle">Jednostki Programów Studiów:</div>');
+    this.setElement();
 
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
     this.loadAllProgrammeUnits();
 }
+
+ProgrammeUnitContainer.prototype.setElement = function () {
+    this.$el = document.createElement('div');
+    this.$el.className = 'objectsContainer';
+    $(this.$el).attr('id', 'programmeUnitContainer');
+    this.$el.setAttribute('draggable', 'true');
+
+    $(this.$el).append('<div class="containerTitle">Jednostki Programu Studiów:</div>');
+
+    $(this.$el).data('obj', this);
+};
 
 ProgrammeUnitContainer.prototype.setPosition = function(containerID) {
     this.position = containerID;
@@ -39,19 +51,30 @@ ProgrammeUnitContainer.prototype.doesProgrammeUnitExists = function(programmeUni
 
 ProgrammeUnitContainer.prototype.removeProgrammeUnit = function(programmeUnit) {
     this.programmeUnits.splice( $.inArray(programmeUnit, this.programmeUnits), 1 );
-    //programmeUnit.detach();
+    programmeUnit.detach();
 };
 
 ProgrammeUnitContainer.prototype.handleDocumentDrop = function(event) {
     event.stopPropagation();
 
-    if (event.dataTransfer.types.indexOf('programmeUnit') > -1) {
-        var programmeUnit = JSON.parse(event.dataTransfer.getData('programmeUnit'));
-        event.dataTransfer.clearData('programmeUnit')
+    if (event.dataTransfer.types[0] ==  'programmeunit') {
+        var programmeUnitContainer = $(this).data('obj');
 
-        var programmeUnit = new ProgrammeUnit({position: this.$el.className});
-        programmeUnit.addProgrammeUnit(new ProgrammeUnit(programmeUnit));
+        var object = JSON.parse(event.dataTransfer.getData('programmeunit'));
+        object.position = programmeUnitContainer.$el;
+
+        programmeUnitContainer.addProgrammeUnit( new ProgrammeUnit(programmeUnit) );
     }
+};
+
+ProgrammeUnitContainer.prototype.handleDragOver = function(event) {
+    event.stopPropagation();
+
+    if (event.preventDefault) {
+        event.preventDefault();
+    }
+
+    return false;
 };
 
 ProgrammeUnitContainer.prototype.loadAllProgrammeUnits = function() {
