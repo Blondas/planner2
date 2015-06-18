@@ -8,7 +8,10 @@ $('document').ready(function(){
             right: 'month,agendaWeek,agendaDay'
         },
         editable: true,
-        eventLimit: true
+        eventLimit: true,
+        eventRender: function(event, element) {
+            console.log('ajax zapisu do bazy');
+        }
     });
 
     calendarAdapter.addEventListeners();
