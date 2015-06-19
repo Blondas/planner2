@@ -1,21 +1,22 @@
 package pl.edu.agh.planner.controllers;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import pl.edu.agh.planner.dao.ProgrammeUnitDao;
 import pl.edu.agh.planner.domain.ProgrammeUnitEntity;
 import pl.edu.agh.planner.dto.ProgrammeUnit;
 import pl.edu.agh.planner.utils.DtoEntityMapper;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class ProgrammeUnitController {
@@ -49,4 +50,14 @@ public class ProgrammeUnitController {
 
         return DtoEntityMapper.entityToProgrammeUnit(programmeUnitDao.saveOrUpdate(programmeUnitEntity));
     }
+
+    @RequestMapping(method=GET,value="/programmeUnitsWithoutAggregate")
+    public List<ProgrammeUnit> findProgrammeUnitsWithoutAggregate(){
+      List<ProgrammeUnitEntity> programmeUnitEntities = programmeUnitDao.getProgrammeUnitsWithoutAggregate();
+      List<ProgrammeUnit> programmeUnits = programmeUnitEntities.stream().map(DtoEntityMapper::entityToProgrammeUnit).collect(Collectors.toList());
+
+      return programmeUnits;
+    }
+
+
 }

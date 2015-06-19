@@ -1,12 +1,14 @@
 package pl.edu.agh.planner.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Component;
+
 import pl.edu.agh.planner.domain.ProgrammeUnitEntity;
 import pl.edu.agh.planner.utils.GenericQuery;
-
-import java.util.List;
 
 @Component("programmeUnitDao")
 public class ProgrammeUnitDao extends GenericQuery implements  DaoInterface<ProgrammeUnitEntity, Long>{
@@ -72,4 +74,17 @@ public class ProgrammeUnitDao extends GenericQuery implements  DaoInterface<Prog
 
         return object;
     }
+
+    public List<ProgrammeUnitEntity> getProgrammeUnitsWithoutAggregate(){
+        beginTransaction();
+        Criteria criteria = session.createCriteria(ProgrammeUnitEntity.class,"programmeUnit");
+        criteria.createAlias("programmeUnit.aggregates","aggregates", JoinType.LEFT_OUTER_JOIN);
+        criteria.add(Restrictions.isNull("aggregates.programmeUnit"));
+
+        List<ProgrammeUnitEntity> list = (List<ProgrammeUnitEntity>) criteria.list();
+        endTransaction();
+
+        return list;
+    }
+
 }

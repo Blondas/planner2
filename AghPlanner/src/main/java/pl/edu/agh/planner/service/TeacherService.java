@@ -1,12 +1,13 @@
 package pl.edu.agh.planner.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pl.edu.agh.planner.dao.TeacherDao;
 import pl.edu.agh.planner.domain.TeacherEntity;
-
-import java.util.List;
 
 @Service("teacherService")
 public class TeacherService implements ServiceInterface<TeacherEntity, Long> {
@@ -48,6 +49,8 @@ public class TeacherService implements ServiceInterface<TeacherEntity, Long> {
     public TeacherEntity saveOrUpdate(TeacherEntity entity) {
         return teacherDao.saveOrUpdate(entity);
     }
+
+    public List<TeacherEntity> getTeachersWithoutAvatar(){ return teacherDao.getTeachersWithoutAvatar(); }
 
 
 }

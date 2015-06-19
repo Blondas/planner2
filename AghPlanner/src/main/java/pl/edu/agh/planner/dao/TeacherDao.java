@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Component;
 
 import pl.edu.agh.planner.domain.TeacherEntity;
@@ -70,5 +71,18 @@ public class TeacherDao extends GenericQuery implements DaoInterface<TeacherEnti
 
         return teacherEntity;
     }
+
+    public List<TeacherEntity> getTeachersWithoutAvatar(){
+      beginTransaction();
+      Criteria criteria = session.createCriteria(TeacherEntity.class,"teacher");
+      criteria.createAlias("teacher.avatar", "avatar", JoinType.LEFT_OUTER_JOIN);
+      criteria.add(Restrictions.isNull("avatar"));
+
+      List<TeacherEntity> list = (List<TeacherEntity>) criteria.list();
+      endTransaction();
+
+      return list;
+    }
+
 
 }

@@ -1,11 +1,12 @@
 package pl.edu.agh.planner.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pl.edu.agh.planner.dao.StudentGroupDao;
 import pl.edu.agh.planner.domain.StudentGroupEntity;
-
-import java.util.List;
 
 @Service("studentGroupService")
 public class StudentGroupService implements ServiceInterface<StudentGroupEntity, Long>{
@@ -50,5 +51,9 @@ public class StudentGroupService implements ServiceInterface<StudentGroupEntity,
     @Override
     public StudentGroupEntity saveOrUpdate(StudentGroupEntity entity) {
         return null;
+    }
+
+    public List<StudentGroupEntity> getStudentGroupsWithoutAggregate() {
+        return studentGroupDao.getStudentGroupsWithoutAggregate();
     }
 }

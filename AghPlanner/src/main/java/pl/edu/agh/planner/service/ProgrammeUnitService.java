@@ -1,11 +1,12 @@
 package pl.edu.agh.planner.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pl.edu.agh.planner.dao.ProgrammeUnitDao;
 import pl.edu.agh.planner.domain.ProgrammeUnitEntity;
-
-import java.util.List;
 
 @Service("programmeUnitService")
 public class ProgrammeUnitService implements ServiceInterface<ProgrammeUnitEntity, Long>{
@@ -51,5 +52,9 @@ public class ProgrammeUnitService implements ServiceInterface<ProgrammeUnitEntit
     @Override
     public ProgrammeUnitEntity saveOrUpdate(ProgrammeUnitEntity entity) {
         return programmeUnitDao.saveOrUpdate(entity);
+    }
+
+    public List<ProgrammeUnitEntity> getProgrammeUnitsWithoutAggregate(){
+        return programmeUnitDao.getProgrammeUnitsWithoutAggregate();
     }
 }

@@ -1,12 +1,14 @@
 package pl.edu.agh.planner.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Component;
+
 import pl.edu.agh.planner.domain.StudentGroupEntity;
 import pl.edu.agh.planner.utils.GenericQuery;
-
-import java.util.List;
 
 @Component("studentGroupDao")
 public class StudentGroupDao extends GenericQuery implements DaoInterface<StudentGroupEntity, Long>{
@@ -72,5 +74,17 @@ public class StudentGroupDao extends GenericQuery implements DaoInterface<Studen
         endTransaction();
 
         return object;
+    }
+
+    public List<StudentGroupEntity> getStudentGroupsWithoutAggregate(){
+        beginTransaction();
+        Criteria criteria = session.createCriteria(StudentGroupEntity.class,"studentGroupEntity");
+        criteria.createAlias("studentGroupEntity.aggregates","aggregates", JoinType.LEFT_OUTER_JOIN);
+        criteria.add(Restrictions.isNull("aggregates.studentGroup"));
+
+        List<StudentGroupEntity> list = (List<StudentGroupEntity>) criteria.list();
+        endTransaction();
+
+        return list;
     }
 }
