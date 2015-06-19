@@ -207,6 +207,8 @@ Teacher.prototype.remove = function() {
 };
 
 Teacher.prototype.save = function() {
+    var teacher = this;
+
     function teacherUPDATE() {
         $.ajax({
             url: "/teacher",
@@ -216,6 +218,7 @@ Teacher.prototype.save = function() {
             contentType: 'application/json',
             mimeType: 'application/json',
             success: function(data) {
+                teacher.setId(data.id);
                 console.log('Teacher saved');
             },
             error:function(data, status, er) {

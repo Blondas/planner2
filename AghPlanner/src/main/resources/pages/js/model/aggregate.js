@@ -215,6 +215,7 @@ Aggregate.prototype.detach = function() {
 };
 
 Aggregate.prototype.save = function() {
+    var aggregate = this;
     $.ajax({
         url: "/aggregate",
         type: 'POST',
@@ -223,6 +224,7 @@ Aggregate.prototype.save = function() {
         contentType: 'application/json',
         mimeType: 'application/json',
         success: function(data) {
+            aggregate.setId(data.id);
             console.log('Aggregate saved');
         },
         error:function(data, status, er) {

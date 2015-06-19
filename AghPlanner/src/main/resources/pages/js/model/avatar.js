@@ -209,6 +209,7 @@ AJAX
  */
 
 Avatar.prototype.save = function() {
+    var avatar = this;
     $.ajax({
         url: "/avatar",
         type: 'POST',
@@ -217,6 +218,7 @@ Avatar.prototype.save = function() {
         contentType: 'application/json',
         mimeType: 'application/json',
         success: function(data) {
+            avatar.setId(data.id);
             console.log('Avatar saved');
         },
         error:function(data, status, er) {

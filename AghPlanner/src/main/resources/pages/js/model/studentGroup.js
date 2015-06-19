@@ -140,7 +140,7 @@ StudentGroup.prototype.createRemoveButton = function() {
         $("#dialog_remove_confirmation").dialog("open");
         $('#dialog_remove_confirmation').show();
     });
-}
+};
 
 
 StudentGroup.prototype.remove = function() {
@@ -161,6 +161,26 @@ StudentGroup.prototype.remove = function() {
             console.log('StudentGroup deletion failed.');
         }
     });
-}
+};
 
+StudentGroup.prototype.save = function() {
+    var studentGroup = this;
 
+    function teacherUPDATE() {
+        $.ajax({
+            url: "/studentGroup",
+            type: 'POST',
+            dataType: 'json',
+            data: this.serialize(),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                studentGroup.setId(data.id);
+                console.log('Student Group saved');
+            },
+            error:function(data, status, er) {
+                console.log('Teacher failed to save');
+            }
+        });
+    }
+};

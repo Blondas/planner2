@@ -166,5 +166,27 @@ ProgrammeUnit.prototype.remove = function () {
             console.log('ProgrammeUnit deletion failed.');
         }
     });
-}
+};
+
+ProgrammeUnit.prototype.save = function() {
+    var programmeUnit = this;
+
+    function teacherUPDATE() {
+        $.ajax({
+            url: "/programmeUnit",
+            type: 'POST',
+            dataType: 'json',
+            data: this.serialize(),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                programmeUnit.setId(data.id);
+                console.log('ProgrammeUnit saved');
+            },
+            error:function(data, status, er) {
+                console.log('Teacher failed to save');
+            }
+        });
+    }
+};
 
