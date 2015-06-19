@@ -1,11 +1,12 @@
 package pl.edu.agh.planner.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pl.edu.agh.planner.dao.AvatarDao;
 import pl.edu.agh.planner.domain.AvatarEntity;
-
-import java.util.List;
 
 @Service("avatarService")
 public class AvatarService implements ServiceInterface<AvatarEntity, Long> {
@@ -50,6 +51,10 @@ public class AvatarService implements ServiceInterface<AvatarEntity, Long> {
     @Override
     public AvatarEntity saveOrUpdate(AvatarEntity entity) {
         return avatarDao.saveOrUpdate(entity);
+    }
+
+    public List<AvatarEntity> getAvatarsWithoutAggregate(){
+        return avatarDao.getAvatarsWithoutAggregate();
     }
 
 }

@@ -1,12 +1,13 @@
 package pl.edu.agh.planner.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+
 import pl.edu.agh.planner.domain.TeacherEntity;
 import pl.edu.agh.planner.utils.GenericQuery;
-
-import java.util.List;
 
 @Component("teacherDao")
 public class TeacherDao extends GenericQuery implements DaoInterface<TeacherEntity, Long>{

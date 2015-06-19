@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Component;
 
@@ -110,5 +111,17 @@ public class AvatarDao extends GenericQuery implements DaoInterface<AvatarEntity
         endTransaction();
 
         return object;
+    }
+
+    public List<AvatarEntity> getAvatarsWithoutAggregate(){
+        beginTransaction();
+        Criteria criteria = session.createCriteria(AvatarEntity.class,"avatar");
+        criteria.createAlias("avatar.aggregates","aggregates", JoinType.LEFT_OUTER_JOIN);
+        criteria.add(Restrictions.isNull("aggregates.avatar"));
+
+        List<AvatarEntity> list = (List<AvatarEntity>) criteria.list();
+        endTransaction();
+
+        return list;
     }
 }
