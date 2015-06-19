@@ -10,7 +10,7 @@ function StudentGroupContainer(object) {
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    this.loadAllStudentGroups();
+    this.loadStudentGroupsWithoutAggregate();
 }
 
 StudentGroupContainer.prototype.setElement = function () {
@@ -82,6 +82,23 @@ StudentGroupContainer.prototype.loadAllStudentGroups = function() {
 
     $.ajax({
         url: "/studentGroups",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                studentGroupContainer.addStudentGroup( new StudentGroup(entry) );
+            });
+        }
+    });
+};
+
+StudentGroupContainer.prototype.loadStudentGroupsWithoutAggregate = function() {
+    var studentGroupContainer = this;
+
+    $.ajax({
+        url: "/getStudentGroupsWithoutAggregate",
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',

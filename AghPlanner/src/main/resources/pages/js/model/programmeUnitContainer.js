@@ -10,7 +10,7 @@ function ProgrammeUnitContainer(object) {
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    this.loadAllProgrammeUnits();
+    this.loadProgrammeUnitsWithoutAggregates();
 }
 
 ProgrammeUnitContainer.prototype.setElement = function () {
@@ -82,6 +82,23 @@ ProgrammeUnitContainer.prototype.loadAllProgrammeUnits = function() {
 
     $.ajax({
         url: "/programmeUnits",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                programmeUnitContainer.addProgrammeUnit( new ProgrammeUnit(entry) );
+            });
+        }
+    });
+};
+
+ProgrammeUnitContainer.prototype.loadProgrammeUnitsWithoutAggregates = function() {
+    var programmeUnit = this;
+
+    $.ajax({
+        url: "/programmeUnitsWithoutAggregate",
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',

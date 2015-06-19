@@ -93,3 +93,19 @@ TeacherContainer.prototype.loadAllTeachers = function() {
     });
 };
 
+TeacherContainer.prototype.loadTeachersWithoutAvatar = function() {
+    var teacherContainer = this;
+
+    $.ajax({
+        url: "/teachersWithoutAvatar",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                teacherContainer.addTeacher( new Teacher(entry) );
+            });
+        }
+    });
+};

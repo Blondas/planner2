@@ -10,7 +10,7 @@ function AvatarContainer(object) {
     this.$el.addEventListener('dragover', this.handleDragOver.bind(this), false);
     this.$el.addEventListener('drop', this.handleDocumentDrop, false);
 
-    this.loadAllAvatars();
+    this.loadAvatarsWithoutAggregates();
 }
 
 AvatarContainer.prototype.setElement = function () {
@@ -91,6 +91,23 @@ AvatarContainer.prototype.loadAllAvatars = function() {
 
     $.ajax({
         url: "/avatars",
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        success: function(data) {
+            data.forEach(function(entry) {
+                avatarContainer.addAvatar( new Avatar(entry) );
+            });
+        }
+    });
+};
+
+AvatarContainer.prototype.loadAvatarsWithoutAggregates = function() {
+    var avatarContainer = this;
+
+    $.ajax({
+        url: "/avatarsWithoutAggregates",
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
