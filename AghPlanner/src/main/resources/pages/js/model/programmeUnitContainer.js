@@ -15,7 +15,7 @@ function ProgrammeUnitContainer(object) {
 
 ProgrammeUnitContainer.prototype.setElement = function () {
     this.$el = document.createElement('div');
-    this.$el.className = 'objectsContainer';
+    this.$el.className = 'objectsContainer view-selectable-element';
     $(this.$el).attr('id', 'programmeUnitContainer');
     this.$el.setAttribute('draggable', 'true');
 

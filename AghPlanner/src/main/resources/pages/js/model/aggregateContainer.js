@@ -15,7 +15,7 @@ function AggregateContainer(object) {
 
 AggregateContainer.prototype.setElement = function () {
     this.$el = document.createElement('div');
-    this.$el.className = 'objectsContainer';
+    this.$el.className = 'objectsContainer view-selectable-element';
     $(this.$el).attr('id', 'aggregateContainer');
     this.$el.setAttribute('draggable', 'true');
 

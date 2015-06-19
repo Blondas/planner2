@@ -111,4 +111,11 @@ public class DtoEntityMapper {
         return mapper.map(user, UserEntity.class);
     }
 
+    public static ViewEntity viewToEntity(View view) {
+        return mapper.map(view, ViewEntity.class);
+    }
+
+    public static View entityToView(ViewEntity viewEntity) {
+        return mapper.map(viewEntity, View.class);
+    }
 }

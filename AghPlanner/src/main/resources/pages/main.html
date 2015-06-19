@@ -36,6 +36,9 @@
 <body>
 
 <div id="menu" class="menu">
+    <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#calendar')">
+        Kalendrz
+    </button>
     <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#teacherContainer')">
         Wykładowcy
     </button>
@@ -53,7 +56,7 @@
     </button>
 </div>
 <div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
-<div id='calendar'></div>
+<div id='calendar' class="view-selectable-element"></div>
 </body>
 
 </html>
