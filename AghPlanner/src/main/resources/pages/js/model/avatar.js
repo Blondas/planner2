@@ -55,6 +55,7 @@ Avatar.prototype.setTeachers = function(teachers) {
     var avatar = this;
 
     teachers.forEach(function(entry) {
+        delete entry.position;
         var teacher = new Teacher(entry);
         avatar.addTeacher(teacher);
     });

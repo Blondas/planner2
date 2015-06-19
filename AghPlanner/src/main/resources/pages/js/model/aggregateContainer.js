@@ -64,7 +64,6 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 object.position = aggregate.$el;
                 aggregate.addStudentGroup( new StudentGroup(object) );
                 aggregate.save();
-
                 break;
 
             case 'programmeunit':
@@ -77,13 +76,13 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
         }
     }
 
-    if (event.dataTransfer.types.indexOf('aggregate') > -1) {
-        var aggregate = JSON.parse(event.dataTransfer.getData('aggregate'));
-        event.dataTransfer.clearData('aggregate')
-
-        var aggregate = new Aggregate({position: this.$el.className});
-        aggregate.addAggregate(new Aggregate(aggregate));
-    }
+    //if (event.dataTransfer.types.indexOf('aggregate') > -1) {
+    //    var aggregate = JSON.parse(event.dataTransfer.getData('aggregate'));
+    //    event.dataTransfer.clearData('aggregate')
+    //
+    //    var aggregate = new Aggregate({position: this.$el.className});
+    //    aggregate.addAggregate(new Aggregate(aggregate));
+    //}
 };
 
 AggregateContainer.prototype.handleDragOver = function(event) {
