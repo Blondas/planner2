@@ -1,7 +1,16 @@
 package pl.edu.agh.planner.domain;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "programme_unit")
 public class ProgrammeUnitEntity implements java.io.Serializable{
@@ -18,10 +27,8 @@ public class ProgrammeUnitEntity implements java.io.Serializable{
     @JoinColumn(name = "pu_type_id")
     private ProgrammeUnitTypeEntity type;
 
-
-//    @OneToMany(mappedBy = "programmeUnit", fetch = FetchType.EAGER)
-//    private Set<AggregateEntity> aggregates;
-
+    @OneToMany(mappedBy = "programmeUnit", fetch = FetchType.EAGER)
+    private Set<AggregateEntity> aggregates;
 
     public Long getId() {
         return id;
@@ -47,11 +54,11 @@ public class ProgrammeUnitEntity implements java.io.Serializable{
         this.type = type;
     }
 
-//    public Set<AggregateEntity> getAggregates() {
-//        return aggregates;
-//    }
-//
-//    public void setAggregates(Set<AggregateEntity> aggregates) {
-//        this.aggregates = aggregates;
-//    }
+    public Set<AggregateEntity> getAggregates() {
+        return aggregates;
+    }
+
+    public void setAggregates(Set<AggregateEntity> aggregates) {
+        this.aggregates = aggregates;
+    }
 }

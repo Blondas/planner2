@@ -1,18 +1,17 @@
 package pl.edu.agh.planner.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Component;
-import pl.edu.agh.planner.domain.AvatarEntity;
-import pl.edu.agh.planner.dto.Avatar;
-import pl.edu.agh.planner.utils.AliasToBeanNestedResultTransformer;
-import pl.edu.agh.planner.utils.GenericQuery;
 
-import java.util.List;
+import pl.edu.agh.planner.domain.AvatarEntity;
+import pl.edu.agh.planner.dto.Foo;
+import pl.edu.agh.planner.utils.GenericQuery;
 
 @Component("avatarDao")
 public class AvatarDao extends GenericQuery implements DaoInterface<AvatarEntity, Long>{
@@ -33,18 +32,26 @@ public class AvatarDao extends GenericQuery implements DaoInterface<AvatarEntity
     @Override
     public List<AvatarEntity> getList() {
         beginTransaction();
-//        Criteria criteria = session.createCriteria(AvatarEntity.class,"avatar");
-//        criteria.createAlias("avatar.teachers","teacher");
+        List<AvatarEntity> list = session.createCriteria(AvatarEntity.class).list();
+        endTransaction();
+        return list;
+    }
 
-//        ProjectionList projections = Projections.projectionList();
-//        projections.add(Projections.distinct(Projections.property("teacher.id")));
-//        projections.add(Projections.property("avatar.id").as("id"));
-//        projections.add(Projections.property("avatar.name").as("name"));
-//        projections.add(Projections.property("teacher.id").as("teacher.id"));
-//        projections.add(Projections.property("teacher.name").as("teacher.name"));
-//        projections.add(Projections.property("teacher.lastName").as("teacher.lastName"));
-//        criteria.setProjection(projections);
-//        criteria.setResultTransformer(new AliasToBeanNestedResultTransformer(AvatarEntity.class));
+    public List<Foo> getList2() {
+        beginTransaction();
+
+
+        Criteria criteria = session.createCriteria(AvatarEntity.class,"avatar");
+        criteria.createAlias("avatar.teachers","teacher");
+
+        ProjectionList projections = Projections.projectionList();
+        projections.add(Projections.property("avatar.id").as("id"));
+        projections.add(Projections.property("avatar.name").as("name"));
+        projections.add(Projections.property("teacher.id").as("teacherId"));
+        projections.add(Projections.property("teacher.name").as("teacherName"));
+        projections.add(Projections.property("teacher.lastName").as("teacherLastName"));
+        criteria.setProjection(projections);
+        criteria.setResultTransformer(Transformers.aliasToBean(Foo.class));
 
 
 
@@ -56,13 +63,13 @@ public class AvatarDao extends GenericQuery implements DaoInterface<AvatarEntity
 //        criteria.setProjection(Projections.groupProperty("avatar.id").as("id"));
 //        criteria.setResultTransformer(Transformers.aliasToBean(AvatarEntity.class));
 //
-//        List<AvatarEntity> list1 = (List<AvatarEntity>) criteria.list();
+        List<Foo> list1 = (List<Foo>) criteria.list();
 
 
-        List<AvatarEntity> list = session.createCriteria(AvatarEntity.class).list();
+//        List<AvatarEntity> list = session.createCriteria(AvatarEntity.class).list();
         endTransaction();
 
-        return list;
+        return list1;
     }
 
     public void add(AvatarEntity avatarEntity) {

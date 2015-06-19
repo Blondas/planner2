@@ -1,17 +1,16 @@
 package pl.edu.agh.planner.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class Avatar implements java.io.Serializable{
 
 	private Long id;
 	private String name;
-	@JsonManagedReference(value = "avatar-aggregate")
-	private Set<Aggregate> aggregates;
+//	@JsonBackReference(value = "avatar-aggregate")
+//	private Set<Aggregate> aggregates;
 	@JsonManagedReference(value = "avatar-teacher")
 	private Set<Teacher> teachers;
 
@@ -35,13 +34,13 @@ public class Avatar implements java.io.Serializable{
 		this.name = name;
 	}
 
-	public Set<Aggregate> getAggregates() {
-		return aggregates;
-	}
-
-	public void setAggregates(Set<Aggregate> aggregates) {
-		this.aggregates = aggregates;
-	}
+//	public Set<Aggregate> getAggregates() {
+//		return aggregates;
+//	}
+//
+//	public void setAggregates(Set<Aggregate> aggregates) {
+//		this.aggregates = aggregates;
+//	}
 
 	public Set<Teacher> getTeachers() {
 		return teachers;
@@ -49,15 +48,5 @@ public class Avatar implements java.io.Serializable{
 
 	public void setTeachers(Set<Teacher> teachers) {
 		this.teachers = teachers;
-	}
-
-	@Override
-	public String toString() {
-		return "Avatar{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", aggregates=" + aggregates +
-				", teachers=" + teachers +
-				'}';
 	}
 }

@@ -55,6 +55,7 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 var object = JSON.parse(event.dataTransfer.getData('avatar'));
                 object.position = aggregate.$el;
                 aggregate.addAvatar( new Avatar(object) );
+                aggregate.save();
 
                 break;
 
@@ -62,6 +63,7 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
                 object.position = aggregate.$el;
                 aggregate.addStudentGroup( new StudentGroup(object) );
+                aggregate.save();
 
                 break;
 
@@ -69,6 +71,7 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
                 object.position = aggregate.$el;
                 aggregate.addProgrammeUnit( new ProgrammeUnit(object) );
+                aggregate.save();
 
                 break;
         }

@@ -66,4 +66,12 @@ public class TeacherEntity implements java.io.Serializable{
     }
 
 
+    @Override
+    public String toString() {
+      return "TeacherEntity{" +
+              "id=" + id +
+              ", name='" + name + '\'' +
+              ", lastName='" + lastName + '\'' +
+              '}';
+    }
 }

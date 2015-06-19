@@ -36,10 +36,10 @@
             <a>name</a>
             <b>name</b>
         </field>
-        <field>
-            <a>aggregates</a>
-            <b>aggregates</b>
-        </field>
+        <!--<field>-->
+            <!--<a>aggregates</a>-->
+            <!--<b>aggregates</b>-->
+        <!--</field>-->
         <field>
             <a>teachers</a>
             <b>teachers</b>
@@ -327,10 +327,10 @@
             <a>faculty</a>
             <b>faculty</b>
         </field>
-        <field>
-            <a>aggregates</a>
-            <b>aggregates</b>
-        </field>
+        <!--<field>-->
+            <!--<a>aggregates</a>-->
+            <!--<b>aggregates</b>-->
+        <!--</field>-->
     </mapping>
 
     <mapping>

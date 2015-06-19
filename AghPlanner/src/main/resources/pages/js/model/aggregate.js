@@ -62,6 +62,21 @@ Aggregate.prototype.setAvatar = function(object) {
     this.avatar = avatar;
 };
 
+Aggregate.prototype.addProgrammeUnit = function(programmeUnit) {
+    programmeUnit.setPosition(this.$el);
+    this.programmeUnit = programmeUnit
+};
+
+Aggregate.prototype.addStudentGroup = function(studentGroup) {
+    studentGroup.setPosition(this.$el);
+    this.studentGroup = studentGroup;
+};
+
+Aggregate.prototype.addAvatar = function(avatar) {
+    avatar.setPosition(this.$el);
+    this.avatar = avatar;
+};
+
 //Aggregate.prototype.removeAvatar = function(avatar) {
 //    this.avatars.splice( $.inArray(avatar, this.avatars), 1 );
 //    avatar.detach();
@@ -166,7 +181,8 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'avatar':
             var object = JSON.parse(event.dataTransfer.getData('avatar'));
             object.position = aggregate.$el;
-            aggregate.avatar =  new Avatar(object) ;
+//            aggregate.avatar =  new Avatar(object) ;
+            aggregate.addAvatar( new Avatar(object) );
             aggregate.save();
 
             break;
@@ -174,7 +190,8 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'studentgroup':
             var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
             object.position = aggregate.$el;
-            aggregate.studentGroup = new StudentGroup(object)
+//            aggregate.studentGroup = new StudentGroup(object);
+            aggregate.addStudentGroup( new StudentGroup(object) );
             aggregate.save();
 
             break;
@@ -182,7 +199,8 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
         case 'programmeunit':
             var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
             object.position = aggregate.$el;
-            aggregate.programmeUnit = new ProgrammeUnit(object)
+//            aggregate.programmeUnit = new ProgrammeUnit(object);
+            aggregate.addProgrammeUnit( new ProgrammeUnit(object) );
             aggregate.save();
 
             break;
