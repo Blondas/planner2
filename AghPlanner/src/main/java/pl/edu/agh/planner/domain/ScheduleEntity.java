@@ -20,6 +20,12 @@ public class ScheduleEntity implements java.io.Serializable{
     @Column(name = "s_date")
     private Date date;
 
+    @Column(name = "s_date_semester_begin")
+    private Date dateSemesterBegin;
+
+    @Column(name = "s_date_semester_end")
+    private Date dateSemesterEnd;
+
     @ManyToOne
     @JoinColumn(name = "s_user_id")
     private UserEntity user;
@@ -62,5 +68,21 @@ public class ScheduleEntity implements java.io.Serializable{
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public Date getDateSemesterBegin() {
+        return dateSemesterBegin;
+    }
+
+    public void setDateSemesterBegin(Date dateSemesterBegin) {
+        this.dateSemesterBegin = dateSemesterBegin;
+    }
+
+    public Date getDateSemesterEnd() {
+        return dateSemesterEnd;
+    }
+
+    public void setDateSemesterEnd(Date dateSemesterEnd) {
+        this.dateSemesterEnd = dateSemesterEnd;
     }
 }

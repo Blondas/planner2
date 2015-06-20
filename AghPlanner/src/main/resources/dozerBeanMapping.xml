@@ -298,6 +298,18 @@
             <a>user</a>
             <b>user</b>
         </field>
+        <field>
+            <a>date</a>
+            <b>date</b>
+        </field>
+        <field>
+            <a>dateSemesterBegin</a>
+            <b>dateSemesterBegin</b>
+        </field>
+        <field>
+            <a>dateSemesterEnd</a>
+            <b>dateSemesterEnd</b>
+        </field>
     </mapping>
 
     <mapping>

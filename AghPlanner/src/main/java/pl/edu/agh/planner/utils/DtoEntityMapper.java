@@ -91,8 +91,8 @@ public class DtoEntityMapper {
         return mapper.map(schedule, ScheduleEntity.class);
     }
 
-    public static StudentGroupEntity scheduleToEntity(StudentGroup studentGroup) {
-        return mapper.map(studentGroup, StudentGroupEntity.class);
+    public static Schedule entityToSchedule(ScheduleEntity entity) {
+        return mapper.map(entity, Schedule.class);
     }
 
     public static TeacherEntity teacherToEntity(Teacher teacher) {

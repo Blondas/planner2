@@ -12,9 +12,7 @@ import pl.edu.agh.planner.dao.AvatarDao;
 import pl.edu.agh.planner.domain.AvatarEntity;
 import pl.edu.agh.planner.dto.Foo;
 
-/**
- * Created by Krystian Ujma.
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 public class AvatarDaoTest {

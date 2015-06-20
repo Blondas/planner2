@@ -16,6 +16,7 @@ $('document').ready(function(){
 
     calendarAdapter.addEventListeners();
     addContainers();
+    addScheduleCreator();
 });
 
 function addContainers() {
@@ -28,4 +29,29 @@ function addContainers() {
     programmeUnitContainer = new ProgrammeUnitContainer({position: 'body'});
 
     addDragEventsForAllElems();
+}
+
+function addScheduleCreator(){
+    $( "#dateSemesterBegin" ).datepicker();
+    $( "#dateSemesterEnd" ).datepicker();
+
+    $( "#scheduleCreator" ).submit(function( event ) {
+        event.preventDefault();
+
+        var dateBegin = $("#dateSemesterBegin").datepicker("getDate");
+        var dateEnd = $("#dateSemesterEnd").datepicker("getDate");
+
+        var dateBeginFormat = $.datepicker.formatDate('dd/mm/yy', new Date(dateBegin));
+        var dateEndFormat = $.datepicker.formatDate('dd/mm/yy', new Date(dateEnd));
+
+        var object = new Object();
+        object.name = $("#name").val();
+        object.dateSemesterBegin = dateBeginFormat;
+        object.dateSemesterEnd = dateEndFormat;
+
+        var schedule = new Schedule(object);
+        schedule.save();
+
+        //console.log($( this ).serializeArray());
+    });
 }

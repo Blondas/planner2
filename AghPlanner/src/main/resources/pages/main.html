@@ -32,6 +32,7 @@
     <script src="js/model/teacherContainer.js"></script>
     <script src="js/model/view.js"></script>
     <script src="js/model/viewContainer.js"></script>
+    <script src="js/model/schedule.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/index.css">
 
@@ -59,8 +60,21 @@
         Jednostki Programu Studiów
     </button>
 </div>
+
+<form id="scheduleCreator">
+    <div>              Nazwa planu: <input type="text" name="name" id="name"></div>
+    <div>Data rozpoczęcia semestru: <input type="text" name="dateSemesterBegin" id="dateSemesterBegin"></div>
+    <div>Data zakończenia semestru: <input type="text" name="dateSemesterEnd" id="dateSemesterEnd"></div>
+    <div>
+        <input type="submit" name="g" value="Submit" id="g">
+    </div>
+</form>
+
 <div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
 <div id='calendar' class="view-selectable-element"></div>
+
+
+
 </body>
 
 </html>
