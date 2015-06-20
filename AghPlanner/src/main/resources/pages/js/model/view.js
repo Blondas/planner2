@@ -1,11 +1,11 @@
 function View(object) {
-    this.views = this.loadAllViews();
-
     if ( typeof object != "undefined" && object.hasOwnProperty('id') ) {
         this.id = object.id;
     }
     if ( typeof object != "undefined" && object.hasOwnProperty('name') ) {
         this.name = object.name;
+    } else {
+        this.name = "";
     }
     if ( typeof object != "undefined" && object.hasOwnProperty('calendar') ) {
         this.calendar = object.calendar;
@@ -34,7 +34,8 @@ function View(object) {
 View.prototype.serialize = function() {
     var data = {
         id: this.id,
-        name: this.name,
+        //name: this.name,
+        name: "aaaaaa",
         calendar: this.calendar,
         teacherContainer: this.teacherContainer,
         avatarContainer: this.avatarContainer,
@@ -77,10 +78,10 @@ View.prototype.save = function() {
         mimeType: 'application/json',
         success: function(data) {
             view.id = data.id;
-            console.log('View saved');
+            view.parent.currentView = view;
         },
         error:function(data, status, er) {
-            console.log('View failed to save');
+            return null;
         }
     });
 };
@@ -88,21 +89,38 @@ View.prototype.save = function() {
 View.prototype.setVisibleElements = function() {
     if (this.calendar) {
         showElement('#calendar');
+    } else {
+        hideElement('#calendar');
     }
+
     if (this.teacherContainer) {
         showElement('#teacherContainer');
+    } else {
+        hideElement('#teacherContainer');
     }
+
     if (this.avatarContainer) {
         showElement('#avatarContainer');
+    } else {
+        hideElement('#avatarContainer');
     }
+
     if (this.aggregateContainer) {
         showElement('#aggregateContainer');
+    } else {
+        hideElement('#aggregateContainer');
     }
+
     if (this.studentGroupContainer) {
         showElement('#studentGroupContainer');
+    } else {
+        hideElement('#studentGroupContainer');
     }
+
     if (this.programmeUnitContainer) {
         showElement('#programmeUnitContainer');
+    } else {
+        hideElement('#programmeUnitContainer');
     }
 };
 

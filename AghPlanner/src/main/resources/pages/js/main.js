@@ -14,15 +14,13 @@ $('document').ready(function(){
         }
     });
 
-    //$(function() {
-    //    $( "#view-menu" ).menu();
-    //});
-
     calendarAdapter.addEventListeners();
     addContainers();
 });
 
 function addContainers() {
+    viewContainer = new ViewContainer({position: '#menu'});
+
     teacherContainer = new TeacherContainer({position: 'body'});
     avatarContainer = new AvatarContainer({position: 'body'});
     aggregateContainer = new AggregateContainer({position: 'body'});

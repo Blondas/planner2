@@ -1,13 +1,116 @@
-function ViewContainer() {
+function ViewContainer(object) {
     this.currentView = null;
-    this.views = this.loadAllViews();
+    this.views = Array();
+
+    if ( typeof object != "undefined" && object.hasOwnProperty('position') ) {
+        this.setPosition(object.position);
+    }
+
+    this.loadAllViews();
 
 }
 
+ViewContainer.prototype.addEventListeners = function() {
+    // save new button:
+    $('#save-new-view-button').click(function() {
+        var viewContainer = $('#view-menu').data('obj');
+
+        viewContainer.currentView = new View();
+        viewContainer.currentView.parent = viewContainer;
+        viewContainer.currentView.getVisibleElements();
+        viewContainer.currentView = viewContainer.currentView.save();
+
+        viewContainer.loadAllViews();
+    });
+
+    // save current button:
+    $('#save-current-view-button').click(function() {
+        var viewContainer = $('#view-menu').data('obj');
+
+        if ( !(viewContainer.currentView instanceof View) ) {
+            viewContainer.currentView = new View();
+            viewContainer.currentView.parent = viewContainer;
+        }
+
+        viewContainer.currentView.getVisibleElements();
+        viewContainer.currentView = viewContainer.currentView.save();
+
+        viewContainer.loadAllViews();
+    });
+
+    // delete button:
+    $('#delete-view-button').click(function() {
+        var viewContainer = $('#view-menu').data('obj');
+        var currentView = viewContainer.currentView;
+
+        if ( currentView instanceof View ) {
+            currentView.remove();
+
+            viewContainer.loadAllViews();
+            currentView = null;
+            viewContainer.renderMenu();
+        }
+    });
+
+    // select view button:
+    var viewItems = $('.viewContainer-viewItem');
+    for (i = 0; i < this.views.length; i++) {
+        $(viewItems[i]).click(function() {
+            var view_id = $(this).attr('view_id');
+            var viewContainer = $('#view-menu').data('obj');
+
+            var selectedView = viewContainer.doesViewExistsById(view_id);
+            selectedView.setVisibleElements();
+
+            viewContainer.loadAllViews();
+            viewContainer.currentView = selectedView;
+            viewContainer.renderMenu();
+        });
+    }
+
+
+};
+
+ViewContainer.prototype.renderMenu = function () {
+    $('#view-menu').remove();
+
+    this.$el = document.createElement('ul');
+    $(this.$el).attr('id', 'view-menu');
+
+    // create list items:
+    var html = '' +
+        '<li>Widok' +
+            '<ul>' +
+                '<li id="save-current-view-button"><span class="ui-icon ui-icon-disk" ></span>Zapisz Bieżący Widok</li>' +
+                '<li id="save-new-view-button"><span class="ui-icon ui-icon-disk" ></span>Zapisz Nowy Widok</li>' +
+                '<li id="delete-view-button"><span class="ui-icon ui-icon-disk" ></span>Usuń Bieżący Widok</li>';
+
+
+    this.views.forEach(function(entry) {
+        html += '<li class="viewContainer-viewItem" view_id="' + entry.id + '"></span>' + entry.name + '</li>';
+    });
+
+    html += '' +
+            '</ul>' +
+        '</li>';
+
+    $(this.$el).html(html);
+
+
+    $(this.$el).data('obj', this);
+    $(this.position).append(this.$el);
+
+    this.addEventListeners();
+
+    $( "#view-menu" ).menu();
+};
+
+ViewContainer.prototype.setPosition = function(containerID) {
+    this.position = containerID;
+};
+
 ViewContainer.prototype.loadAllViews = function() {
     var viewContainer = this;
-
-    var views = new Array();
 
     $.ajax({
         url: "/views",
@@ -17,16 +120,18 @@ ViewContainer.prototype.loadAllViews = function() {
         mimeType: 'application/json',
         success: function(data) {
             data.forEach(function(entry) {
-                entry.parent = viewContainer;
-                views.push( new View(entry) );
+                var view = new View(entry);
+                view.parent = viewContainer;
+
+                viewContainer.addView(view);
             });
 
-            return views;
+            viewContainer.renderMenu();
         }
     });
 };
 
-TeacherContainer.prototype.addView = function(view) {
+ViewContainer.prototype.addView = function(view) {
     var entry = this.doesViewExists(view);
 
     if ( entry == false) {
@@ -34,9 +139,9 @@ TeacherContainer.prototype.addView = function(view) {
     }
 };
 
-TeacherContainer.prototype.doesViewExists = function(view) {
+ViewContainer.prototype.doesViewExists = function(view) {
     var ret = false;
-    this.view.forEach(function(entry) {
+    this.views.forEach(function(entry) {
         if (entry.id == view.id) {
             ret = entry;
         }
@@ -45,62 +150,17 @@ TeacherContainer.prototype.doesViewExists = function(view) {
     return ret;
 };
 
-TeacherContainer.prototype.removeView = function(views) {
+ViewContainer.prototype.removeView = function(views) {
     this.views.splice( $.inArray(view, this.views), 1 );
 };
 
-TeacherContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
-    if (event.dataTransfer.types[0] ==  'teacher') {
-        var teacherContainer = $(this).data('obj');
-
-        var object = JSON.parse(event.dataTransfer.getData('teacher'));
-        object.position = teacherContainer.$el;
-        teacherContainer.addTeacher( new Teacher(object))
-    }
-};
-
-TeacherContainer.prototype.handleDragOver = function(event) {
-    event.stopPropagation();
-
-    if (event.preventDefault) {
-        event.preventDefault();
-    }
-
-    return false;
-};
-
-TeacherContainer.prototype.loadAllTeachers = function() {
-    var teacherContainer = this;
-
-    $.ajax({
-        url: "/teachers",
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        success: function(data) {
-            data.forEach(function(entry) {
-                teacherContainer.addTeacher( new Teacher(entry) );
-            });
+ViewContainer.prototype.doesViewExistsById = function(view_id) {
+    var ret = false;
+    this.views.forEach(function(entry) {
+        if (entry.id == view_id) {
+            ret = entry;
         }
     });
-};
 
-TeacherContainer.prototype.loadTeachersWithoutAvatar = function() {
-    var teacherContainer = this;
-
-    $.ajax({
-        url: "/teachersWithoutAvatar",
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        success: function(data) {
-            data.forEach(function(entry) {
-                teacherContainer.addTeacher( new Teacher(entry) );
-            });
-        }
-    });
+    return ret;
 };
