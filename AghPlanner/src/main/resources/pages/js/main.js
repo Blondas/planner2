@@ -20,6 +20,7 @@ $('document').ready(function(){
 
     calendarAdapter.addEventListeners();
     addContainers();
+    addScheduleCreator();
 });
 
 function addContainers() {
@@ -30,4 +31,15 @@ function addContainers() {
     programmeUnitContainer = new ProgrammeUnitContainer({position: 'body'});
 
     addDragEventsForAllElems();
+}
+
+function addScheduleCreator(){
+    $( "#dateSemesterBegin" ).datepicker();
+    $( "#dateSemesterEnd" ).datepicker();
+
+    $( "#scheduleCreator" ).submit(function( event ) {
+        event.preventDefault();
+        console.log($( this ).serializeArray());
+        new Schedule().save($( this ).serializeArray());
+    });
 }

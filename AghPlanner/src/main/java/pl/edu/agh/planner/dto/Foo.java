@@ -1,8 +1,6 @@
 package pl.edu.agh.planner.dto;
 
-/**
- * Created by Krystian Ujma.
- */
+
 public class Foo {
 
   private Long id;
