@@ -74,12 +74,6 @@ Schedule.prototype.save = function() {
         type: 'POST',
         dataType: 'json',
         data: this.serialize(),
-        //data: JSON.stringify({
-        //    name: "juzer ali",
-        //    dateSemesterBegin: "06/15/2015",
-        //    dateSemesterEnd: "06/16/2015"
-        //}),
-
         contentType: 'application/json',
         mimeType: 'application/json',
         success: function(data) {
