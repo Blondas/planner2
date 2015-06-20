@@ -63,17 +63,17 @@ Schedule.prototype.serialize = function() {
         dateSemesterEnd: this.dateSemesterEnd,
     };
 
-    return JSON.stringify(data);
+    return JSON.stringify(JSON.decycle(data));
 };
 
-Schedule.prototype.save = function(serializedData) {
+Schedule.prototype.save = function() {
     var schedule = this;
 
     $.ajax({
         url: "/schedule",
         type: 'POST',
         dataType: 'json',
-        data: serializedData,
+        data: this.serialize(),
         //data: JSON.stringify({
         //    name: "juzer ali",
         //    dateSemesterBegin: "06/15/2015",
