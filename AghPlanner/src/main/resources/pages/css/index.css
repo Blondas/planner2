@@ -80,3 +80,5 @@
 #dialog_remove_confirmation {
     visibility: hidden;
 }
+
+.ui-menu { width: 400px; }

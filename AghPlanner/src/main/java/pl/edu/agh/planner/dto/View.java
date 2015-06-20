@@ -31,4 +31,52 @@ public class View implements java.io.Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public boolean getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(boolean calendar) {
+		this.calendar = calendar;
+	}
+
+	public boolean getTeacherContainer() {
+		return teacherContainer;
+	}
+
+	public void setTeacherContainer(boolean teacherContainer) {
+		this.teacherContainer = teacherContainer;
+	}
+
+	public boolean getAvatarContainer() {
+		return avatarContainer;
+	}
+
+	public void setAvatarContainer(boolean avatarContainer) {
+		this.avatarContainer = avatarContainer;
+	}
+
+	public boolean getAggregateContainer() {
+		return aggregateContainer;
+	}
+
+	public void setAggregateContainer(boolean aggregateContainer) {
+		this.aggregateContainer = aggregateContainer;
+	}
+
+	public boolean getStudentGroupContainer() {
+		return studentGroupContainer;
+	}
+
+	public void setStudentGroupContainer(boolean studentGroupContainer) {
+		this.studentGroupContainer = studentGroupContainer;
+	}
+
+	public boolean getProgrammeUnitContainer() {
+		return programmeUnitContainer;
+	}
+
+	public void setProgrammeUnitContainer(boolean programmeUnitContainer) {
+		this.programmeUnitContainer = programmeUnitContainer;
+	}
 }

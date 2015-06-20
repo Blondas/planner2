@@ -14,6 +14,10 @@ $('document').ready(function(){
         }
     });
 
+    //$(function() {
+    //    $( "#view-menu" ).menu();
+    //});
+
     calendarAdapter.addEventListeners();
     addContainers();
 });

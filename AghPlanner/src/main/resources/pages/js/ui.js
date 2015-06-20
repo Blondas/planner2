@@ -2,6 +2,14 @@ toggleElement = function(element) {
     $(element).fadeToggle();
 };
 
+showElement = function(element) {
+    $(element).fadeIn();
+};
+
+hideElement = function(element) {
+    $(element).fadeOut();
+};
+
 addDragEventsForAllElems = function() {
     document.addEventListener('dragover', handleDragOver.bind(this), false);
     document.addEventListener('drop', handleDocumentDrop.bind(this), false);

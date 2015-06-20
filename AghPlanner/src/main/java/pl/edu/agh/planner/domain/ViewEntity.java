@@ -15,22 +15,22 @@ public class ViewEntity implements java.io.Serializable{
     private String name;
 
     @Column(name = "v_calendar")
-    public boolean calendar;
+    private boolean calendar;
 
     @Column(name = "v_teacher_container")
-    public boolean teacherContainer;
+    private boolean teacherContainer;
 
     @Column(name = "v_avatar_container")
-    public boolean avatarContainer;
+    private boolean avatarContainer;
 
     @Column(name = "v_aggregate_container")
-    public boolean aggregateContainer;
+    private boolean aggregateContainer;
 
     @Column(name = "v_student_group_container")
-    public boolean studentGroupContainer;
+    private boolean studentGroupContainer;
 
     @Column(name = "v_programme_unit_container")
-    public boolean programmeUnitContainer;
+    private boolean programmeUnitContainer;
 
     public ViewEntity() {
 
@@ -52,6 +52,53 @@ public class ViewEntity implements java.io.Serializable{
         this.name = name;
     }
 
+    public boolean getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(boolean calendar) {
+        this.calendar = calendar;
+    }
+
+    public boolean getTeacherContainer() {
+        return teacherContainer;
+    }
+
+    public void setTeacherContainer(boolean teacherContainer) {
+        this.teacherContainer = teacherContainer;
+    }
+
+    public boolean getAvatarContainer() {
+        return avatarContainer;
+    }
+
+    public void setAvatarContainer(boolean avatarContainer) {
+        this.avatarContainer = avatarContainer;
+    }
+
+    public boolean getAggregateContainer() {
+        return aggregateContainer;
+    }
+
+    public void setAggregateContainer(boolean aggregateContainer) {
+        this.aggregateContainer = aggregateContainer;
+    }
+
+    public boolean getStudentGroupContainer() {
+        return studentGroupContainer;
+    }
+
+    public void setStudentGroupContainer(boolean studentGroupContainer) {
+        this.studentGroupContainer = studentGroupContainer;
+    }
+
+    public boolean getProgrammeUnitContainer() {
+        return programmeUnitContainer;
+    }
+
+    public void setProgrammeUnitContainer(boolean programmeUnitContainer) {
+        this.programmeUnitContainer = programmeUnitContainer;
+    }
 
     @Override
     public String toString() {
