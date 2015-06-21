@@ -64,7 +64,6 @@
 }
 
 #calendar {
-    max-width: 900px;
     margin: 0 auto;
     display: inline-block;
     vertical-align: top;
@@ -82,7 +81,7 @@
     width: 10px;
 }
 
-#dialog_remove_confirmation {
+#dialog_remove_confirmation, dialog_create_view{
     visibility: hidden;
 }
 
