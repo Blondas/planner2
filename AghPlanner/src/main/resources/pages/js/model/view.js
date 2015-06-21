@@ -86,7 +86,7 @@ View.prototype.save = function() {
                     mimeType: 'application/json',
                     success: function(data) {
                         view.id = data.id;
-                        view.parent.currentView = view;
+                        view.parent.setCurrentView(view);
 
                         $("#dialog_create_view").dialog("close");
                         $("#dialog_create_view").hide();

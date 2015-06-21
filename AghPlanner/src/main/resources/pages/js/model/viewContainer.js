@@ -10,15 +10,20 @@ function ViewContainer(object) {
 
 }
 
+ViewContainer.prototype.setCurrentView = function(view) {
+    this.currentView = view;
+    $('#selected-view-title').text('Bieżący widok: ' + view.name);
+};
+
 ViewContainer.prototype.addEventListeners = function() {
     // save new button:
     $('#save-new-view-button').click(function() {
         var viewContainer = $('#view-menu').data('obj');
 
-        viewContainer.currentView = new View();
+        viewContainer.setCurrentView(new View());
         viewContainer.currentView.parent = viewContainer;
         viewContainer.currentView.getVisibleElements();
-        viewContainer.currentView = viewContainer.currentView.save();
+        viewContainer.currentView.save();
 
         viewContainer.loadAllViews();
     });
@@ -28,12 +33,12 @@ ViewContainer.prototype.addEventListeners = function() {
         var viewContainer = $('#view-menu').data('obj');
 
         if ( !(viewContainer.currentView instanceof View) ) {
-            viewContainer.currentView = new View();
+            viewContainer.setCurrentView(new View());
             viewContainer.currentView.parent = viewContainer;
         }
 
         viewContainer.currentView.getVisibleElements();
-        viewContainer.currentView = viewContainer.currentView.save();
+        viewContainer.currentView.save();
 
         viewContainer.loadAllViews();
     });
@@ -63,7 +68,7 @@ ViewContainer.prototype.addEventListeners = function() {
             selectedView.setVisibleElements();
 
             viewContainer.loadAllViews();
-            viewContainer.currentView = selectedView;
+            viewContainer.setCurrentView(selectedView);
             viewContainer.renderMenu();
         });
     }
