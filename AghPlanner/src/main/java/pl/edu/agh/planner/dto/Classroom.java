@@ -1,14 +1,19 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 
 public class Classroom implements java.io.Serializable{
 
     private Long id;
     private String number;
-    private int buildingId;
+    @JsonBackReference(value = "building_classrooms")
+    private Building building;
     private int numberOfSeats;
+    @JsonManagedReference(value = "classroom_classroomHours")
     private Set<ClassroomHour> classroomHours;
 
     public Long getId() {
@@ -27,12 +32,12 @@ public class Classroom implements java.io.Serializable{
         this.number = number;
     }
 
-    public int getBuildingId() {
-        return buildingId;
+    public Building getBuilding() {
+        return building;
     }
 
-    public void setBuildingId(int buildingId) {
-        this.buildingId = buildingId;
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
     public int getNumberOfSeats() {

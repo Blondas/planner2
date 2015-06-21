@@ -11,8 +11,8 @@ public class ScheduleEntity implements java.io.Serializable{
     @Column(name = "s_id")
     private Long id;
 
-    @OneToMany(mappedBy = "schedule")
-    private Set<ConcreteLessonEntity> concreteLesson;
+    @OneToMany(mappedBy = "schedule", fetch = FetchType.EAGER)
+    private Set<ConcreteLessonEntity> concreteLessons;
 
     @Column(name = "s_name")
     private String name;
@@ -38,12 +38,12 @@ public class ScheduleEntity implements java.io.Serializable{
         this.id = id;
     }
 
-    public Set<ConcreteLessonEntity> getConcreteLesson() {
-        return concreteLesson;
+    public Set<ConcreteLessonEntity> getConcreteLessons() {
+        return concreteLessons;
     }
 
-    public void setConcreteLesson(Set<ConcreteLessonEntity> concreteLesson) {
-        this.concreteLesson = concreteLesson;
+    public void setConcreteLessons(Set<ConcreteLessonEntity> concreteLesson) {
+        this.concreteLessons = concreteLesson;
     }
 
     public String getName() {

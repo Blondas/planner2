@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity(name = "classroom")
 public class ClassroomEntity implements java.io.Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_id")
@@ -13,14 +14,18 @@ public class ClassroomEntity implements java.io.Serializable{
     @Column(name = "c_number")
     private String number;
 
-    @Column(name = "c_building_id")
-    private int buildingId;
+    @ManyToOne
+    @JoinColumn(name = "c_building_id")
+    private BuildingEntity building;
 
     @Column(name = "c_number_of_seats")
     private int numberOfSeats;
 
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom", fetch = FetchType.EAGER)
     private Set<ClassroomHourEntity> classroomHours;
+
+    public ClassroomEntity() {
+    }
 
     public Long getId() {
         return id;
@@ -38,12 +43,12 @@ public class ClassroomEntity implements java.io.Serializable{
         this.number = number;
     }
 
-    public int getBuildingId() {
-        return buildingId;
+    public BuildingEntity getBuilding() {
+        return building;
     }
 
-    public void setBuildingId(int buildingId) {
-        this.buildingId = buildingId;
+    public void setBuilding(BuildingEntity building) {
+        this.building = building;
     }
 
     public int getNumberOfSeats() {

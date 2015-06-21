@@ -1,9 +1,12 @@
 package pl.edu.agh.planner.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class ConcreteLesson implements java.io.Serializable{
 
     private Long id;
     private Aggregate aggregate;
+    @JsonBackReference("schedule_concreteLesson")
     private Schedule schedule;
     private ClassroomHour classroomHour;
     private ConcreteDate concreteDate;

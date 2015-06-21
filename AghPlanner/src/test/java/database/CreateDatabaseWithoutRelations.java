@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.edu.agh.planner.Application;
+import pl.edu.agh.planner.domain.BuildingEntity;
 
 import java.util.Date;
 import java.util.Random;
@@ -72,11 +73,35 @@ public class CreateDatabaseWithoutRelations extends DataSources {
         concreteDateDataSource.createConcreteDate(new Date(System.currentTimeMillis() + random.nextInt(10000)));
         concreteDateDataSource.createConcreteDate(new Date(System.currentTimeMillis() + random.nextInt(10000)));
 
-        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 1, 30);
-        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 40, 70);
-        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 80, 110);
-        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 120, 150);
-        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 160, 200);
+
+		BuildingEntity building1 = buildingDataSource.createBuilding("A1");
+        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 1, 30);
+        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 40, 70);
+        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 80, 110);
+        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 120, 150);
+        classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 160, 200);
+
+		BuildingEntity building2 = buildingDataSource.createBuilding("A2");
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 1, 30);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 40, 70);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 80, 110);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 120, 150);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 160, 200);
+
+		BuildingEntity building3 = buildingDataSource.createBuilding("B15");
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building3), 1, 30);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building3), 40, 70);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building3), 80, 110);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building3), 120, 150);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building3), 160, 200);
+
+		BuildingEntity building4 = buildingDataSource.createBuilding("B16");
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building4), 1, 30);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building4), 40, 70);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building4), 80, 110);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building4), 120, 150);
+		classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building4), 160, 200);
+
 
 	}
 

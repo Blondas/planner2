@@ -19,6 +19,14 @@ public class DtoEntityMapper {
         return mapper.map(aggregateEntity, Aggregate.class);
     }
 
+    public static BuildingEntity buildingToEntity(Building building) {
+        return mapper.map(building, BuildingEntity.class);
+    }
+
+    public static Building entityToBuilding(BuildingEntity buildingEntity) {
+        return mapper.map(buildingEntity, Building.class);
+    }
+
     public static AuthorizationEntity authorizationToEntity(DozerBeanMapper mapper, Authorization authorization) {
         return mapper.map(authorization, AuthorizationEntity.class);
     }
@@ -61,6 +69,10 @@ public class DtoEntityMapper {
 
     public static ConcreteLessonEntity concreteLessonToEntity(ConcreteLesson concreteLesson) {
         return mapper.map(concreteLesson, ConcreteLessonEntity.class);
+    }
+
+    public static ConcreteLesson entityToConcreteLesson(ConcreteLessonEntity concreteLessonEntity) {
+        return mapper.map(concreteLessonEntity, ConcreteLesson.class);
     }
 
     public static DepartmentEntity departmentToEntity(Department department) {

@@ -1,6 +1,7 @@
 package pl.edu.agh.planner.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 public class Schedule implements java.io.Serializable{
 
     private Long id;
+    @JsonManagedReference(value = "schedule_concreteLesson")
     private Set<ConcreteLesson> concreteLessons;
     private String name;
     @JsonFormat(pattern = "dd/MM/yyyy")

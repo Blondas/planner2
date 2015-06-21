@@ -39,6 +39,8 @@
         <mapping class="pl.edu.agh.planner.domain.FacultyEntity"/>
         <mapping class="pl.edu.agh.planner.domain.ProgrammeUnitTypeEntity"/>
         <mapping class="pl.edu.agh.planner.domain.ViewEntity"/>
+        <mapping class="pl.edu.agh.planner.domain.BuildingEntity"/>
+
 
 
     </session-factory>

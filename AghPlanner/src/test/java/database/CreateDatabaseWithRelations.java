@@ -99,11 +99,13 @@ public class CreateDatabaseWithRelations extends DataSources {
         ConcreteDateEntity concreteDateEntity9 = concreteDateDataSource.createConcreteDate(getBeginOfMonthPlusDays(9));
         ConcreteDateEntity concreteDateEntity10 = concreteDateDataSource.createConcreteDate(getBeginOfMonthPlusDays(10));
 
-        ClassroomHourEntity classroomHourEntity1 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 1, 30);
-        ClassroomHourEntity classroomHourEntity2 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 40, 70);
-        ClassroomHourEntity classroomHourEntity3 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 80, 110);
-        ClassroomHourEntity classroomHourEntity4 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 120, 150);
-        ClassroomHourEntity classroomHourEntity5 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(), 160, 200);
+        BuildingEntity building1 = buildingDataSource.createBuilding("A1");
+        BuildingEntity building2 = buildingDataSource.createBuilding("A20");
+        ClassroomHourEntity classroomHourEntity1 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 1, 30);
+        ClassroomHourEntity classroomHourEntity2 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building1), 40, 70);
+        ClassroomHourEntity classroomHourEntity3 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 80, 110);
+        ClassroomHourEntity classroomHourEntity4 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 120, 150);
+        ClassroomHourEntity classroomHourEntity5 = classroomHourDataSource.createClassroomHour(classroomDataSource.createClassroom(building2), 160, 200);
 
 
         concreteLessonDataSource.createConcreteLesson(aggregateEntity1, classroomHourEntity1, concreteDateEntity1, scheduleEntity);

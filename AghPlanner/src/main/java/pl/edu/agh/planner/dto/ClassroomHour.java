@@ -1,10 +1,13 @@
 package pl.edu.agh.planner.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class ClassroomHour implements java.io.Serializable{
     private Long id;
     private int lessonBeginId;
     private int lessonEndId;
+    @JsonBackReference(value = "classroom_classroomHours")
     private Classroom classroom;
 
     public Long getId() {

@@ -1,7 +1,5 @@
 package datasources;
 
-import datasources.*;
-
 public class DataSources {
 
     protected TeacherDataSource teacherDataSource = new TeacherDataSource();
@@ -18,5 +16,6 @@ public class DataSources {
     protected ScheduleDataSource scheduleDataSource = new ScheduleDataSource();
     protected UserDataSource userDataSource = new UserDataSource();
     protected ConcreteLessonDataSource concreteLessonDataSource = new ConcreteLessonDataSource();
+    protected BuildingDataSource buildingDataSource = new BuildingDataSource();
 
 }

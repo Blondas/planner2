@@ -109,8 +109,8 @@
             <b>number</b>
         </field>
         <field>
-            <a>buildingId</a>
-            <b>buildingId</b>
+            <a>building</a>
+            <b>building</b>
         </field>
         <field>
             <a>numberOfSeats</a>
@@ -310,6 +310,10 @@
             <a>dateSemesterEnd</a>
             <b>dateSemesterEnd</b>
         </field>
+        <field>
+            <a>concreteLessons</a>
+            <b>concreteLessons</b>
+        </field>
     </mapping>
 
     <mapping>
@@ -382,6 +386,23 @@
             <b>authorizations</b>
         </field>
         <!--@TODO status uzytkownika to enum, nie ma w bazie danych trzeba tez dodac pozniej-->
+    </mapping>
+
+    <mapping>
+        <class-a>pl.edu.agh.planner.dto.Building</class-a>
+        <class-b>pl.edu.agh.planner.domain.BuildingEntity</class-b>
+        <field>
+            <a>id</a>
+            <b>id</b>
+        </field>
+        <field>
+            <a>name</a>
+            <b>name</b>
+        </field>
+        <field>
+            <a>classrooms</a>
+            <b>classrooms</b>
+        </field>
     </mapping>
 
 
