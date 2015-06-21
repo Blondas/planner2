@@ -66,6 +66,26 @@ Schedule.prototype.serialize = function() {
     return JSON.stringify(JSON.decycle(data));
 };
 
+Schedule.prototype.showDialogScheduleCreated = function() {
+    $("#dialogScheduleCreatedConfirmation").dialog({
+        autoOpen: false,
+        modal: true,
+        buttons : {
+            "Potwierdź" : function() {
+
+                $("#dialogScheduleCreatedConfirmation").dialog("close");
+                $('#dialogScheduleCreatedConfirmation').hide();
+            }
+        },
+        open: function(event, ui) {
+            $(".ui-dialog-titlebar-close").hide();
+        }
+    });
+
+    $("#dialogScheduleCreatedConfirmation").dialog("open");
+    $('#dialogScheduleCreatedConfirmation').show();
+}
+
 Schedule.prototype.save = function() {
     var schedule = this;
 
@@ -78,6 +98,7 @@ Schedule.prototype.save = function() {
         mimeType: 'application/json',
         success: function(data) {
             schedule.setId(data.id);
+            schedule.showDialogScheduleCreated();
             console.log('Schedule saved');
         },
         error:function(data, status, er) {

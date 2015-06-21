@@ -52,6 +52,10 @@ function addScheduleCreator(){
         var schedule = new Schedule(object);
         schedule.save();
 
+
         //console.log($( this ).serializeArray());
+
     });
+
 }
+
