@@ -1,4 +1,25 @@
 var calendarAdapter = {
+    saveConcreteLesson: function(event, element) {
+        console.log(event);
+            element.data('obj', event);
+            element.click(function(){
+                $('#dialog-event-details').dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons : {
+                        "Anuluj" : function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    open: function(event, ui) {
+                        $(".ui-dialog-titlebar-close").hide();
+                    }
+                });
+                $('#dialog-event-details').dialog("open");
+                console.log( element.data('obj') );
+            });
+
+    },
     monthHandleDrop: function(event) {
         if (event.dataTransfer.types[0] ==  'aggregate') {
             var object = JSON.parse(event.dataTransfer.getData('aggregate'));
@@ -28,10 +49,14 @@ var calendarAdapter = {
 
     attachEvent: function(aggregate, dateTime) {
         $('#calendar').fullCalendar( 'renderEvent', {
-            title: aggregate.name,
-            start: dateTime
+            title: 'nowy event',
+            start: dateTime,
+            aggregate: aggregate,
+            dupa1: "adsfadsf",
+            dupa2: "asfasdfdsf"
         });
     },
+        //aggregate.programmeUnit.name + aggregate.teachers[0].name + aggregate.studentGroup.id
 
     weekView: {
         getHour: function(elem) {

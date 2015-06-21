@@ -10,7 +10,7 @@ $('document').ready(function(){
         editable: true,
         eventLimit: true,
         eventRender: function(event, element) {
-            console.log('ajax zapisu do bazy');
+            calendarAdapter.saveConcreteLesson(event, element);
         }
     });
 

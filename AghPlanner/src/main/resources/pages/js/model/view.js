@@ -69,6 +69,7 @@ View.prototype.save = function() {
     var view = this;
 
     $('#view-name-input').val(view.name);
+    $('#dialog_create_view').show();
 
     $("#dialog_create_view").dialog({
         autoOpen: false,
@@ -101,12 +102,13 @@ View.prototype.save = function() {
             }
         },
         open: function(event, ui) {
+
             $(".ui-dialog-titlebar-close").hide();
         }
     });
 
     $("#dialog_create_view").dialog("open");
-    $('#dialog_create_view').show();
+
 };
 
 View.prototype.setVisibleElements = function() {
