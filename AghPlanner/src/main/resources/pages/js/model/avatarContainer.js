@@ -57,9 +57,9 @@ AvatarContainer.prototype.removeAvatar = function(avatar) {
 };
 
 AvatarContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     if (event.dataTransfer.types[0] ==  'teacher') {
+        event.stopPropagation();
+
         var avatarContainer = $(this).data('obj');
 
         var avatar = new Avatar();

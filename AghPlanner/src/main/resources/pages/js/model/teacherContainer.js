@@ -55,9 +55,9 @@ TeacherContainer.prototype.removeTeacher = function(teacher) {
 };
 
 TeacherContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     if (event.dataTransfer.types[0] ==  'teacher') {
+        event.stopPropagation();
+
         var teacherContainer = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('teacher'));

@@ -122,7 +122,7 @@ ProgrammeUnit.prototype.createRemoveButton = function () {
             autoOpen: false,
             modal: true,
             buttons: {
-                "Confirm": function () {
+                "Potwierdź": function () {
                     console.log(this);
                     var programmeUnit = $(elem).parent().data('obj');
                     programmeUnit.remove();
@@ -130,7 +130,7 @@ ProgrammeUnit.prototype.createRemoveButton = function () {
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel": function () {
+                "Anuluj": function () {
                     $(this).dialog("close");
                 }
             },

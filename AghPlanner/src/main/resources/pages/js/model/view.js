@@ -34,8 +34,7 @@ function View(object) {
 View.prototype.serialize = function() {
     var data = {
         id: this.id,
-        //name: this.name,
-        name: "aaaaaa",
+        name: this.name,
         calendar: this.calendar,
         teacherContainer: this.teacherContainer,
         avatarContainer: this.avatarContainer,
@@ -69,21 +68,45 @@ View.prototype.remove = function() {
 View.prototype.save = function() {
     var view = this;
 
-    $.ajax({
-        url: "/view",
-        type: 'POST',
-        dataType: 'json',
-        data: this.serialize(),
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        success: function(data) {
-            view.id = data.id;
-            view.parent.currentView = view;
+    $('#view-name-input').val(view.name);
+
+    $("#dialog_create_view").dialog({
+        autoOpen: false,
+        modal: true,
+        buttons : {
+            "Zapisz" : function() {
+                view.name = $('#view-name-input').val();
+
+                $.ajax({
+                    url: "/view",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: view.serialize(),
+                    contentType: 'application/json',
+                    mimeType: 'application/json',
+                    success: function(data) {
+                        view.id = data.id;
+                        view.parent.currentView = view;
+
+                        $("#dialog_create_view").dialog("close");
+                        $("#dialog_create_view").hide();
+                    },
+                    error:function(data, status, er) {
+                        return null;
+                    }
+                });
+            },
+            "Anuluj" : function() {
+                $(this).dialog("close");
+            }
         },
-        error:function(data, status, er) {
-            return null;
+        open: function(event, ui) {
+            $(".ui-dialog-titlebar-close").hide();
         }
     });
+
+    $("#dialog_create_view").dialog("open");
+    $('#dialog_create_view').show();
 };
 
 View.prototype.setVisibleElements = function() {

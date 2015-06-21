@@ -82,7 +82,7 @@
     width: 10px;
 }
 
-#dialog_remove_confirmation {
+#dialog_remove_confirmation, dialog_create_view {
     visibility: hidden;
 }
 

@@ -154,8 +154,8 @@ Avatar.prototype.handleDragLeave = function(event) {
 
 Avatar.prototype.handleDocumentDrop = function(event) {
     if (event.dataTransfer.types[0] ==  'teacher') {
-
         event.stopPropagation();
+
         var avatar = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('teacher'));
@@ -185,7 +185,7 @@ Avatar.prototype.createRemoveButton = function() {
             autoOpen: false,
             modal: true,
             buttons : {
-                "Confirm" : function() {
+                "Potwierdż" : function() {
                     console.log(this);
                     var avatar = $(elem).parent().data('obj');
                     avatar.remove();
@@ -193,7 +193,7 @@ Avatar.prototype.createRemoveButton = function() {
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel" : function() {
+                "Anuluj" : function() {
                     $(this).dialog("close");
                 }
             }

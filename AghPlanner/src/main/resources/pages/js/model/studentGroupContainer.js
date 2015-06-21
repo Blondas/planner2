@@ -55,9 +55,9 @@ StudentGroupContainer.prototype.removeStudentGroup = function(studentGroup) {
 };
 
 StudentGroupContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     if (event.dataTransfer.types[0] ==  'studentGroup') {
+        event.stopPropagation();
+
         var studentGroupContainer = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('studentGroup'));

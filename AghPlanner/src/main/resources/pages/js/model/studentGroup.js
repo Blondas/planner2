@@ -120,7 +120,7 @@ StudentGroup.prototype.createRemoveButton = function() {
             autoOpen: false,
             modal: true,
             buttons : {
-                "Confirm" : function() {
+                "Potwierdź" : function() {
                     console.log(this);
                     var studentGroup = $(elem).parent().data('obj');
                     studentGroup.remove();
@@ -128,7 +128,7 @@ StudentGroup.prototype.createRemoveButton = function() {
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel" : function() {
+                "Anuluj" : function() {
                     $(this).dialog("close");
                 }
             },

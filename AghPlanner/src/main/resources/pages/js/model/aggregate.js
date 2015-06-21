@@ -173,12 +173,12 @@ Aggregate.prototype.handleDragLeave = function(event) {
 };
 
 Aggregate.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     var aggregate = $(this).data('obj');
 
     switch (event.dataTransfer.types[0]) {
         case 'avatar':
+            event.stopPropagation();
+
             var object = JSON.parse(event.dataTransfer.getData('avatar'));
             object.position = aggregate.$el;
 //            aggregate.avatar =  new Avatar(object) ;
@@ -188,6 +188,8 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
             break;
 
         case 'studentgroup':
+            event.stopPropagation();
+
             var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
             object.position = aggregate.$el;
 //            aggregate.studentGroup = new StudentGroup(object);
@@ -197,6 +199,8 @@ Aggregate.prototype.handleDocumentDrop = function(event) {
             break;
 
         case 'programmeunit':
+            event.stopPropagation();
+
             var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
             object.position = aggregate.$el;
 //            aggregate.programmeUnit = new ProgrammeUnit(object);
@@ -243,7 +247,7 @@ Aggregate.prototype.createRemoveButton = function() {
             autoOpen: false,
             modal: true,
             buttons : {
-                "Confirm" : function() {
+                "Potwierdź" : function() {
                     console.log(this);
                     var aggregate = $(elem).parent().data('obj');
                     aggregate.remove();
@@ -251,7 +255,7 @@ Aggregate.prototype.createRemoveButton = function() {
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel" : function() {
+                "Anuluj" : function() {
                     $(this).dialog("close");
                 }
             },

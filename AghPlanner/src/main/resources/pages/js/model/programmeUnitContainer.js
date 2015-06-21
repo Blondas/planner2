@@ -55,9 +55,9 @@ ProgrammeUnitContainer.prototype.removeProgrammeUnit = function(programmeUnit) {
 };
 
 ProgrammeUnitContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     if (event.dataTransfer.types[0] ==  'programmeunit') {
+        event.stopPropagation();
+
         var programmeUnitContainer = $(this).data('obj');
 
         var object = JSON.parse(event.dataTransfer.getData('programmeunit'));

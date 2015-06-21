@@ -157,14 +157,14 @@ Teacher.prototype.createRemoveButton = function() {
             autoOpen: false,
             modal: true,
             buttons : {
-                "Confirm" : function() {
+                "Potwierdź" : function() {
                     console.log(this);
                     var teacher = $(elem).parent().data('obj');
                     teacher.remove();
                     $("#dialog_remove_confirmation").dialog("close");
                     $('#dialog_remove_confirmation').hide();
                 },
-                "Cancel" : function() {
+                "Anuluj" : function() {
                     $(this).dialog("close");
                 }
             },
@@ -176,7 +176,7 @@ Teacher.prototype.createRemoveButton = function() {
         $("#dialog_remove_confirmation").dialog("open");
         $('#dialog_remove_confirmation').show();
     });
-}
+};
 
 
 /*

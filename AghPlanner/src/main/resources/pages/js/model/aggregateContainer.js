@@ -40,8 +40,6 @@ AggregateContainer.prototype.removeAggregate = function(aggregate) {
 };
 
 AggregateContainer.prototype.handleDocumentDrop = function(event) {
-    event.stopPropagation();
-
     if (event.dataTransfer.types[0] ==  'avatar' || event.dataTransfer.types[0] ==  'studentgroup'
             || event.dataTransfer.types[0] ==  'programmeunit') {
         var aggregateContainer = $(this).data('obj');
@@ -52,6 +50,8 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
 
         switch (event.dataTransfer.types[0]) {
             case 'avatar':
+                event.stopPropagation();
+
                 var object = JSON.parse(event.dataTransfer.getData('avatar'));
                 object.position = aggregate.$el;
                 aggregate.addAvatar( new Avatar(object) );
@@ -60,6 +60,8 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 break;
 
             case 'studentgroup':
+                event.stopPropagation();
+
                 var object = JSON.parse(event.dataTransfer.getData('studentGroup'));
                 object.position = aggregate.$el;
                 aggregate.addStudentGroup( new StudentGroup(object) );
@@ -67,6 +69,8 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 break;
 
             case 'programmeunit':
+                event.stopPropagation();
+
                 var object = JSON.parse(event.dataTransfer.getData('programmeUnit'));
                 object.position = aggregate.$el;
                 aggregate.addProgrammeUnit( new ProgrammeUnit(object) );
@@ -75,14 +79,6 @@ AggregateContainer.prototype.handleDocumentDrop = function(event) {
                 break;
         }
     }
-
-    //if (event.dataTransfer.types.indexOf('aggregate') > -1) {
-    //    var aggregate = JSON.parse(event.dataTransfer.getData('aggregate'));
-    //    event.dataTransfer.clearData('aggregate')
-    //
-    //    var aggregate = new Aggregate({position: this.$el.className});
-    //    aggregate.addAggregate(new Aggregate(aggregate));
-    //}
 };
 
 AggregateContainer.prototype.handleDragOver = function(event) {
