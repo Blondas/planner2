@@ -1,5 +1,10 @@
 var calendarAdapter = {
     saveConcreteLesson: function(event, element) {
+        var aggregate = event.aggregate;
+        var aggregate_serialized = aggregate.serialize();
+
+        $('#dialog-event-details').text(aggregate_serialized);
+
         console.log(event);
             element.data('obj', event);
             element.click(function(){
