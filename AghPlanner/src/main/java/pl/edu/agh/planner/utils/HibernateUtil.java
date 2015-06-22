@@ -2,6 +2,7 @@ package pl.edu.agh.planner.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 public class HibernateUtil {
 
@@ -27,6 +28,11 @@ public class HibernateUtil {
     public static void shutdown() {
         // Close caches and connection pools
         getSessionFactory().close();
+    }
+
+    public static void createDropSchema(){
+        SchemaExport schemaExport = new SchemaExport(new Configuration().configure("/hibernate.cfg.xml"));
+        schemaExport.create(true,true);
     }
 
 }

@@ -17,6 +17,7 @@ $('document').ready(function(){
     calendarAdapter.addEventListeners();
     addContainers();
     addScheduleCreator();
+    createDatabaseWithoutRelations();
 });
 
 function addContainers() {
@@ -58,4 +59,23 @@ function addScheduleCreator(){
     });
 
 }
+
+function createDatabaseWithoutRelations(){
+    $('#buttonCreateDropDatabase').click(function() {
+        $.ajax({
+            url: "/createDatabaseWithoutRelations",
+            type: 'GET',
+            dataType: 'json',
+            data: 'text',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            success: function(data) {
+                console.log('Database without relations created');
+            },
+            error:function(data, status, er) {
+                console.log('Database without relations failed to create');
+            }
+        });
+    });
+};
 

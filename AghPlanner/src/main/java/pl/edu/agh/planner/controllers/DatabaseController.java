@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.edu.agh.planner.CreateDatabaseWithRelations;
 import pl.edu.agh.planner.CreateDatabaseWithoutRelations;
+import pl.edu.agh.planner.utils.HibernateUtil;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -13,6 +14,8 @@ public class DatabaseController {
 
     @RequestMapping(method = GET, value = "/createDatabaseWithoutRelations")
     public void createDatabaseWithoutRelations() {
+        HibernateUtil.createDropSchema();
+
         CreateDatabaseWithoutRelations createDatabaseWithoutRelations = new CreateDatabaseWithoutRelations();
         createDatabaseWithoutRelations.contextLoads();
 
