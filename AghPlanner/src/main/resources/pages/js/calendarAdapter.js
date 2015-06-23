@@ -7,6 +7,7 @@ var calendarAdapter = {
         //var aggregate_serialized = aggregate.serialize();
 
 
+
         $('#dialog-event-details').text(aggregate);
 
         console.log(event);
@@ -27,6 +28,9 @@ var calendarAdapter = {
                 $('#dialog-event-details').dialog("open");
                 console.log( element.data('obj') );
             });
+
+        $('#dialog-event-details').append('<select name="building" id="building"><option>10a</option><option>20c</option><option selected="selected">10a</option><option>17e</option><option>C2</option></select>')
+        $('#dialog-event-details').append('<select name="classroom" id="classroom"><option>1a</option><option>2a</option><option selected="selected">1a</option><option>4</option><option>54</option></select>')
 
     },
     monthHandleDrop: function(event) {
@@ -252,4 +256,8 @@ function serialize (aggregate){
         'id grupy studenckiej: ' + JSON.stringify(data.studentGroup) + '\n' +
         'nazwa jednostki programu studiów: ' + JSON.stringify(data.programmeUnit) + '\n'
     )
+}
+
+function addSaleBuildingSelection(){
+
 }
