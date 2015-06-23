@@ -1,9 +1,12 @@
 var calendarAdapter = {
     saveConcreteLesson: function(event, element) {
         var aggregate = event.aggregate;
-        var aggregate_serialized = aggregate.serialize();
+        console.log(aggregate);
+        //console.log(aggregate.serialize());
+        //var aggregate_serialized = aggregate.serialize();
 
-        $('#dialog-event-details').text(aggregate_serialized);
+
+        $('#dialog-event-details').text(aggregate);
 
         console.log(event);
             element.data('obj', event);
@@ -53,10 +56,11 @@ var calendarAdapter = {
     },
 
     attachEvent: function(aggregate, dateTime) {
+        var aggregateSerialized = serialize(aggregate);
         $('#calendar').fullCalendar( 'renderEvent', {
-            title: 'nowy event',
+            title: aggregateSerialized,
             start: dateTime,
-            aggregate: aggregate,
+            aggregate: aggregateSerialized,
             dupa1: "adsfadsf",
             dupa2: "asfasdfdsf"
         });
@@ -205,4 +209,19 @@ var calendarAdapter = {
         });
 
     }
+};
+
+
+function serialize (aggregate){
+    var data = {
+        id: aggregate.id,
+        name: aggregate.name,
+        avatar: aggregate.avatar,
+        studentGroup: aggregate.studentGroup,
+        programmeUnit: aggregate.programmeUnit,
+        className: aggregate.className,
+        position: aggregate.position
+    };
+
+    return JSON.stringify(data);
 };
