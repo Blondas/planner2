@@ -1,40 +1,68 @@
 var calendarAdapter = {
-    saveConcreteLesson: function(event, element) {
-        element.addClass('concrete-lesson');
-        var aggregate = event.aggregate;
-        console.log(aggregate);
-        //console.log(aggregate.serialize());
-        //var aggregate_serialized = aggregate.serialize();
-
-
-
+    selectClassBuilding: function(aggregate, element, calendar_event) {
         $('#dialog-event-details').text(aggregate);
 
-        console.log(event);
-            element.data('obj', event);
-            element.click(function(){
-                $('#dialog-event-details').dialog({
-                    autoOpen: false,
-                    modal: true,
-                    buttons : {
-                        "Anuluj" : function() {
-                            $(this).dialog("close");
-                        }
+        element.click(function () {
+            $('#dialog-event-details').dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    "Anuluj": function () {
+                        $(this).dialog("close");
                     },
-                    open: function(event, ui) {
-                        $(".ui-dialog-titlebar-close").hide();
+                    "Zatwierdź": function() {
+                        var sel_building = $('#building-sel').find(":selected").text();
+                        var sel_class = $('#classroom-sel').find(":selected").text();
+
+                        calendar_event.title += 'budynek: ' + sel_building + ', klasa: ' + sel_class;
+
+                        $('#calendar').fullCalendar('updateEvent', calendar_event);
+
+                        $(this).dialog("close");
                     }
-                });
-                $('#dialog-event-details').dialog("open");
-                console.log( element.data('obj') );
+                },
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+                }
             });
 
-        $('#dialog-event-details').append('<select name="building" id="building"><option>10a</option><option>20c</option><option selected="selected">10a</option><option>17e</option><option>C2</option></select>')
-        $('#dialog-event-details').append('<select name="classroom" id="classroom"><option>1a</option><option>2a</option><option selected="selected">1a</option><option>4</option><option>54</option></select>')
+            $('#dialog-event-details').dialog("open");
+        });
+
+
+        $('#dialog-event-details').append(
+            '<hr>' +
+            'Budynek: <select name="building" id="building-sel">' +
+                '<option>10a</option>' +
+                '<option>20c</option>' +
+                '<option selected="selected">10a</option>' +
+                '<option>17e</option>' +
+                '<option>C2</option>' +
+            '</select>'
+        );
+
+        $('#dialog-event-details').append(
+            'Sala: <select name="classroom" id="classroom-sel">' +
+                '<option>1a</option>' +
+                '<option>2a</option>' +
+                '<option selected="selected">1a</option>' +
+                '<option>4</option>' +
+                '<option>54</option>' +
+            '</select>'
+        );
 
     },
-    monthHandleDrop: function(event) {
-        if (event.dataTransfer.types[0] ==  'aggregate') {
+
+    saveConcreteLesson: function (event, element) {
+        element.addClass('concrete-lesson');
+        element.data('obj', event);
+
+        var aggregate = event.aggregate;
+
+        calendarAdapter.selectClassBuilding(aggregate, element, event);
+    },
+    monthHandleDrop: function (event) {
+        if (event.dataTransfer.types[0] == 'aggregate') {
             var object = JSON.parse(event.dataTransfer.getData('aggregate'));
             var date = $(this).attr('data-date');
 
@@ -42,8 +70,8 @@ var calendarAdapter = {
         }
     },
 
-    weekHandleDrop: function(event) {
-        if (event.dataTransfer.types[0] ==  'aggregate') {
+    weekHandleDrop: function (event) {
+        if (event.dataTransfer.types[0] == 'aggregate') {
             var object = JSON.parse(event.dataTransfer.getData('aggregate'));
             var dateTime = calendarAdapter.weekView.getDate(event);
 
@@ -51,8 +79,8 @@ var calendarAdapter = {
         }
     },
 
-    dayHandleDrop: function(event) {
-        if (event.dataTransfer.types[0] ==  'aggregate') {
+    dayHandleDrop: function (event) {
+        if (event.dataTransfer.types[0] == 'aggregate') {
             var object = JSON.parse(event.dataTransfer.getData('aggregate'));
             var dateTime = calendarAdapter.dayView.getDate(event);
 
@@ -60,9 +88,9 @@ var calendarAdapter = {
         }
     },
 
-    attachEvent: function(aggregate, dateTime) {
+    attachEvent: function (aggregate, dateTime) {
         var aggregateSerialized = serialize(aggregate);
-        $('#calendar').fullCalendar( 'renderEvent', {
+        $('#calendar').fullCalendar('renderEvent', {
             title: aggregateSerialized,
             start: dateTime,
             aggregate: aggregateSerialized,
@@ -70,10 +98,10 @@ var calendarAdapter = {
             dupa2: "asfasdfdsf"
         });
     },
-        //aggregate.programmeUnit.name + aggregate.teachers[0].name + aggregate.studentGroup.id
+    //aggregate.programmeUnit.name + aggregate.teachers[0].name + aggregate.studentGroup.id
 
     weekView: {
-        getHour: function(elem) {
+        getHour: function (elem) {
             var hour_text = $(elem).parent().find('.fc-time').find('span').text();
 
             if (hour_text.length) {
@@ -83,13 +111,13 @@ var calendarAdapter = {
                 return prev_hor_text + '30';
             }
         },
-        getDay: function(event) {
+        getDay: function (event) {
             var x_pos = event.pageX;
             var left;
             var right;
 
             var day = "";
-            $('.fc-day-header').each(function() {
+            $('.fc-day-header').each(function () {
                 left = $(this).offset().left;
                 right = left + $(this).outerWidth();
 
@@ -100,13 +128,13 @@ var calendarAdapter = {
             });
             return day;
         },
-        getMonth: function() {
-            return $('#calendar').fullCalendar( 'getDate' ).month() + 1;
+        getMonth: function () {
+            return $('#calendar').fullCalendar('getDate').month() + 1;
         },
-        getYear: function() {
-            return $('#calendar').fullCalendar( 'getDate' ).year();
+        getYear: function () {
+            return $('#calendar').fullCalendar('getDate').year();
         },
-        getDate: function(event) {
+        getDate: function (event) {
             var year = calendarAdapter.weekView.getYear();
             var month = calendarAdapter.weekView.getMonth();
             var day = calendarAdapter.weekView.getDay(event);
@@ -114,7 +142,7 @@ var calendarAdapter = {
 
             return calendarAdapter.weekView.dateToString(year, month, day, hour);
         },
-        dateToString: function(year, month, day, hour) {
+        dateToString: function (year, month, day, hour) {
             if (month < 10) {
                 month = "0" + month;
             }
@@ -127,7 +155,7 @@ var calendarAdapter = {
 
             var hour_temp = "";
             var minute_temp = "";
-            if ( hour.indexOf('am') > -1 ) {
+            if (hour.indexOf('am') > -1) {
                 hour_temp = hour.split('am')[0];
                 if (hour_temp < 10) {
                     hour_temp = "0" + hour_temp
@@ -158,13 +186,13 @@ var calendarAdapter = {
 
 
             // 2015-02-16T16:00:00
-            var string = year + '-' + month + '-' + day + 'T'+ hour;
+            var string = year + '-' + month + '-' + day + 'T' + hour;
 
             return string;
         }
     },
     dayView: {
-        getDate: function(event) {
+        getDate: function (event) {
             var year = calendarAdapter.weekView.getYear();
             var month = calendarAdapter.weekView.getMonth();
             var day = calendarAdapter.dayView.getDay(event);
@@ -172,14 +200,14 @@ var calendarAdapter = {
 
             return calendarAdapter.weekView.dateToString(year, month, day, hour);
         },
-        getDay: function(event) {
-            var day = $('#calendar').fullCalendar( 'getDate' ).format('DD');
+        getDay: function (event) {
+            var day = $('#calendar').fullCalendar('getDate').format('DD');
 
             return day;
         }
     },
 
-    handleDragOver: function(event) {
+    handleDragOver: function (event) {
         event.stopPropagation();
 
         if (event.preventDefault) {
@@ -189,27 +217,27 @@ var calendarAdapter = {
         return false
     },
 
-    addEventListeners: function() {
+    addEventListeners: function () {
         // month view:
-        $('.fc-month-view .fc-day').each(function() {
+        $('.fc-month-view .fc-day').each(function () {
             this.addEventListener('dragover', calendarAdapter.handleDragOver, false);
             this.addEventListener('drop', calendarAdapter.monthHandleDrop, false);
         });
 
         // week view:
-        $('.fc-agendaWeek-view .fc-slats .ui-widget-content').not('.fc-time').each(function() {
+        $('.fc-agendaWeek-view .fc-slats .ui-widget-content').not('.fc-time').each(function () {
             this.addEventListener('dragover', calendarAdapter.handleDragOver, false);
             this.addEventListener('drop', calendarAdapter.weekHandleDrop, false);
         });
 
         // day view:
-        $('.fc-agendaDay-view .fc-slats .ui-widget-content').not('.fc-time').each(function() {
+        $('.fc-agendaDay-view .fc-slats .ui-widget-content').not('.fc-time').each(function () {
             this.addEventListener('dragover', calendarAdapter.handleDragOver, false);
             this.addEventListener('drop', calendarAdapter.dayHandleDrop, false);
         });
 
 
-        $('#calendar .fc-toolbar').click(function() {
+        $('#calendar .fc-toolbar').click(function () {
             calendarAdapter.addEventListeners();
         });
 
@@ -217,9 +245,9 @@ var calendarAdapter = {
 };
 
 
-function serialize (aggregate){
+function serialize(aggregate) {
     var teachers = '';
-    aggregate.avatar.teachers.forEach(function(teacher) {
+    aggregate.avatar.teachers.forEach(function (teacher) {
         teachers += teacher.name + ' ' + teacher.lastName + ', ';
     });
     teachers = teachers.substring(0, teachers.length - 2);
@@ -249,15 +277,15 @@ function serialize (aggregate){
     };
 
     return (
-        'id agregatu: ' + JSON.stringify(data.id) + '\n' +
-        'nazwa agregatu: ' + JSON.stringify(data.name) + '\n' +
-        'nazwa awataru: ' + JSON.stringify(data.avatar) + '\n' +
-        'nauczyciele: ' + teachers + '\n' +
-        'id grupy studenckiej: ' + JSON.stringify(data.studentGroup) + '\n' +
-        'nazwa jednostki programu studiów: ' + JSON.stringify(data.programmeUnit) + '\n'
+    'id agregatu: ' + JSON.stringify(data.id) + '\n' +
+    'nazwa agregatu: ' + JSON.stringify(data.name) + '\n' +
+    'nazwa awataru: ' + JSON.stringify(data.avatar) + '\n' +
+    'nauczyciele: ' + teachers + '\n' +
+    'id grupy studenckiej: ' + JSON.stringify(data.studentGroup) + '\n' +
+    'nazwa jednostki programu studiów: ' + JSON.stringify(data.programmeUnit) + '\n'
     )
 }
 
-function addSaleBuildingSelection(){
+function addSaleBuildingSelection() {
 
 }
