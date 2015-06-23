@@ -1,5 +1,6 @@
 var calendarAdapter = {
     saveConcreteLesson: function(event, element) {
+        element.addClass('concrete-lesson');
         var aggregate = event.aggregate;
         console.log(aggregate);
         //console.log(aggregate.serialize());
@@ -213,15 +214,42 @@ var calendarAdapter = {
 
 
 function serialize (aggregate){
+    var teachers = '';
+    aggregate.avatar.teachers.forEach(function(teacher) {
+        teachers += teacher.name + ' ' + teacher.lastName + ', ';
+    });
+    teachers = teachers.substring(0, teachers.length - 2);
+
+    if (typeof aggregate.avatar == 'undefined') {
+        aggregate.avatar = new Object();
+        aggregate.avatar.name = "";
+    }
+
+    if (typeof aggregate.studentGroup == 'undefined') {
+        aggregate.studentGroup = new Object();
+        aggregate.studentGroup.id = "";
+    }
+
+    if (typeof aggregate.programmeUnit == 'undefined') {
+        aggregate.programmeUnit = new Object();
+        aggregate.programmeUnit.name = "";
+    }
+
     var data = {
         id: aggregate.id,
         name: aggregate.name,
-        avatar: aggregate.avatar,
-        studentGroup: aggregate.studentGroup,
-        programmeUnit: aggregate.programmeUnit,
-        className: aggregate.className,
-        position: aggregate.position
+        avatar: aggregate.avatar.name,
+        teachers: teachers,
+        studentGroup: aggregate.studentGroup.id,
+        programmeUnit: aggregate.programmeUnit.name
     };
 
-    return JSON.stringify(data);
-};
+    return (
+        'id agregatu: ' + JSON.stringify(data.id) + '\n' +
+        'nazwa agregatu: ' + JSON.stringify(data.name) + '\n' +
+        'nazwa awataru: ' + JSON.stringify(data.avatar) + '\n' +
+        'nauczyciele: ' + teachers + '\n' +
+        'id grupy studenckiej: ' + JSON.stringify(data.studentGroup) + '\n' +
+        'nazwa jednostki programu studiów: ' + JSON.stringify(data.programmeUnit) + '\n'
+    )
+}
