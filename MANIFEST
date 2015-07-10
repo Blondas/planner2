@@ -1,0 +1,14 @@
+Tworzony projekt miał być samodzielnym, skończonym systemem wspomagania
+układania planu lekcji, tworzonym w systemie prototypowania. W trakcie prac z powodu
+dużej objętości projektu, jego zawansowania oraz wystąpienia zagrożenia niespełnienia
+wszystkich wymagań systemu z powodu ograniczeń technologii, zespół zmuszony był na
+zakończenie projektu zawansowanym systemem dowodzącym słuszności założeń projektu
+(ang. Proof of concept) i technologii do jego realizacji.
+
+2. Cel i wizja projektu
+Tematem projektu jest stworzenie interaktywnego systemu wspomagania układania planu
+lekcji w technologii drag and drop, działającej między wieloma oknami(lub zakładkami) prezglądarki obsługującej HTML5.
+
+System jest przeznaczony do uruchomiania na serwerze w sieci osiągalnym dla
+użytkowników. Udostępniana jest platforma do tworzenia, przechowywania, przeglądania
+oraz edytowania planów zajęć.
