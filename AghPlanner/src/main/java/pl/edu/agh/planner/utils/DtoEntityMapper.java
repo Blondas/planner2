@@ -75,6 +75,10 @@ public class DtoEntityMapper {
         return mapper.map(concreteLessonEntity, ConcreteLesson.class);
     }
 
+    public static ConcreteDate entityToConcreteDate(ConcreteDateEntity concreteDateEntity) {
+        return mapper.map(concreteDateEntity, ConcreteDate.class);
+    }
+
     public static DepartmentEntity departmentToEntity(Department department) {
         return mapper.map(department, DepartmentEntity.class);
     }
