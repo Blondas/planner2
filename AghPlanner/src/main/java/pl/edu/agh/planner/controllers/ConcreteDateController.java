@@ -41,7 +41,7 @@ public class ConcreteDateController {
         concreteDateService.delete(concreteDateEntity);
     }
 
-    @RequestMapping(method=POST,value="/concreteLesson")
+    @RequestMapping(method=POST,value="/concreteDate")
     public ConcreteDate saveOrUpdate(@RequestBody ConcreteDate concreteDate){
         ConcreteDateEntity concreteDateEntity = DtoEntityMapper.concreteDateToEntity(concreteDate);
         return DtoEntityMapper.entityToConcreteDate(concreteDateService.saveOrUpdate(concreteDateEntity));
