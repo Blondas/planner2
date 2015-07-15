@@ -79,3 +79,21 @@ function createDatabaseWithoutRelations(){
     });
 };
 
+
+jQuery(document).ready(function($) {
+    $.ajax({
+        type: 'GET',
+        url: '/teachers'
+
+    }).done(function (data, textStatus, jqXHR) {
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 401) {
+            var preLoginInfo = JSON.stringify({method: 'GET', url: '/'});
+            $.cookie('restsecurity.pre.login.request', preLoginInfo);
+            window.location = '/index.html';
+        } else {
+            alert('Houston, we have a problem...');
+        }
+    });
+});
