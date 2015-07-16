@@ -7,6 +7,7 @@
     <script src="libs/cycle.js"></script>
     <script src="libs/jquery-ui.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="css/menuButtons.css">
 
     <link rel="stylesheet" type="text/css" href="libs/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="libs/calendar/fullcalendar.min.css">
@@ -36,64 +37,67 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css">
 
-
 </head>
 <body>
-
-<div id="menu" class="menu">
-    <button class="menu-button" id="EnableScheduleCreator" onclick="toggleElement('#scheduleCreator')">
-        Utwórz plan zajęć
-    </button>
-    <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#calendar')">
-        Kalendrz
-    </button>
-    <button class="menu-button" id="EnableTeacherContainer" onclick="toggleElement('#teacherContainer')">
-        Wykładowcy
-    </button>
-    <button class="menu-button" id="EnableAvatarContainer" onclick="toggleElement('#avatarContainer')">
-        Awatary
-    </button>
-    <button class="menu-button" id="EnableAggregateContainer" onclick="toggleElement('#aggregateContainer')">
-        Agregaty
-    </button>
-    <button class="menu-button" id="EnableStudentContainer" onclick="toggleElement('#studentGroupContainer')">
-        Grupy Studenckie
-    </button>
-    <button class="menu-button" id="EnableProgrammeUnitContainer" onclick="toggleElement('#programmeUnitContainer')">
-        Jednostki Programu Studiów
-    </button>
-    <span id="selected-view-title"></span>
-</div>
-
-<form id="scheduleCreator">
-    <div>
-        Nazwa planu:
-        <input type="text" name="name" id="name">
+    <div id="menu" class="menu">
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#scheduleCreator')">
+            <span class="switch-label" data-on="Kreator planu" data-off="Kreator planu"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#calendar')">
+            <span class="switch-label" data-on="Kalendrz" data-off="Kalendrz"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#teacherContainer')">
+            <span class="switch-label" data-on="Wykładowcy" data-off="Wykładowcy"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#avatarContainer')">
+            <span class="switch-label" data-on="Awatary" data-off="Awatary"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#aggregateContainer')">
+            <span class="switch-label" data-on="Agregaty" data-off="Agregaty"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#studentGroupContainer')">
+            <span class="switch-label" data-on="Grupy Studenckie" data-off="Grupy Studenckie"></span>
+            <span class="switch-handle"></span>
+        </label>
+        <label class="switch">
+            <input type="checkbox" class="switch-input" checked onclick="toggleElement('#programmeUnitContainer')">
+            <span class="switch-label" data-on="Jed. Prog. Studiów" data-off="Jed. Prog. Studiów"></span>
+            <span class="switch-handle"></span>
+        </label>
     </div>
-    <div>
-        Data rozpoczęcia semestru:
-        <input type="text" name="dateSemesterBegin" id="dateSemesterBegin">
-    </div>
-    <div>Data zakończenia semestru:
-        <input type="text" name="dateSemesterEnd" id="dateSemesterEnd">
-    </div>
-    <!--<div>-->
-        <!--<input type="submit" name="createScheduleButton" value="createScheduleButton" id="createScheduleButton">-->
-    <!--</div>-->
-</form>
 
-<button id="buttonCreateDropDatabase">Stwórz nową bazę danych bez relacji</button>
-<div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
-<div id="dialogScheduleCreatedConfirmation" title="Plan stworzony"></div>
-<!--<div id="dialog_create_view" title="Nazwa widoku">-->
-    <!--<input type="text" id="view-name-input">-->
-<!--</div>-->
-<div id="dialog-event-details" title="Szczegóły:"></div>
+    <form id="scheduleCreator">
+        <span id="selected-view-title"></span>
+        <div>
+            Nazwa planu:
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            Data rozpoczęcia semestru:
+            <input type="text" name="dateSemesterBegin" id="dateSemesterBegin">
+        </div>
+        <div>Data zakończenia semestru:
+            <input type="text" name="dateSemesterEnd" id="dateSemesterEnd">
+        </div>
+    </form>
 
-<div id='calendar' class="view-selectable-element"></div>
+    <button id="buttonCreateDropDatabase">Stwórz nową bazę danych bez relacji</button>
+    <div id="dialog_remove_confirmation" title="Wymagane potwierdzenie"></div>
+    <div id="dialogScheduleCreatedConfirmation" title="Plan stworzony"></div>
+    <div id="dialog-event-details" title="Szczegóły:"></div>
 
-
-
+    <div id='calendar' class="view-selectable-element"></div>
 </body>
 
 </html>
